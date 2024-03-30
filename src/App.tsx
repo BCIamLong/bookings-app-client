@@ -1,11 +1,17 @@
-import { getGoogleOauthUrl } from "./utils";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import { getGoogleOauthUrl } from "./utils";
+import AppLayout from "./layouts/AppLayout";
+import Homepage from "./pages/Homepage";
 
 function App() {
   return (
-    <>
-      <h1 className="text-red-400">Login</h1>
-      <a href={getGoogleOauthUrl()}>Login with google</a>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Homepage />}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
