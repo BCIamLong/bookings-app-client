@@ -23,6 +23,9 @@ export default function ButtonLink({ type, href, children }: ButtonLinkProps) {
       baseStyle +
       `flex gap-3 items-center justify-center px-3 py-2 text-sm bg-stone-200 rounded-full`;
 
+  if (type === "simple")
+    style = baseStyle + `flex justify-center text-sm text-brand-700`;
+
   return (
     <a href={href || "#"} className={style}>
       {children}

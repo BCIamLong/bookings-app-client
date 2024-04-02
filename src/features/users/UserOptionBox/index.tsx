@@ -9,9 +9,9 @@ export default function UserOptionBox() {
         <HiBars3 className="px-0.5 text-2xl text-stone-700" />
       </button>
       <div className="bg-stone-700">
-        <ButtonLink type="user-nav-header">
-          <Link to="/login">Login</Link>
-        </ButtonLink>
+        <Link to="/login">
+          <ButtonLink type="user-nav-header">Login</ButtonLink>
+        </Link>
       </div>
     </div>
   );

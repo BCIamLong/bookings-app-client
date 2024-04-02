@@ -7,7 +7,7 @@ interface LabelProps {
 }
 
 export default function Label({ type, labelFor, children }: LabelProps) {
-  const baseStyle = ``;
+  const baseStyle = `capitalize `;
   let style;
   if (type === "search") style = baseStyle + `font-semibold text-stone-600`;
 

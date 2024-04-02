@@ -6,6 +6,7 @@ import FormItem from "../../components/form/FormItem";
 import Input from "../../components/form/Input";
 import ButtonLink from "../../components/ButtonLink";
 import { getGoogleOauthUrl } from "../../utils";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
@@ -16,6 +17,7 @@ export default function Login() {
           <Input
             type="text"
             variant="login"
+            required={true}
             id="email"
             placeholder="Enter your email"
           />
@@ -24,6 +26,7 @@ export default function Login() {
           <Input
             type="password"
             variant="login"
+            required={true}
             id="password"
             placeholder="••••••••"
           />
@@ -49,6 +52,15 @@ export default function Login() {
             <span>Google</span>
           </ButtonLink>
         </div>
+        <ButtonLink type="simple">
+          <Link to="/forgot-password">Forget the password?</Link>
+        </ButtonLink>
+        <p className="flex justify-center gap-1 text-sm text-inherit">
+          <span>You don't have account yet, </span>
+          <ButtonLink type="simple">
+            <Link to="/signup">Sign up</Link>
+          </ButtonLink>
+        </p>
       </Form>
     </div>
   );
