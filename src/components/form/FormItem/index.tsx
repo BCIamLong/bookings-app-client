@@ -17,6 +17,7 @@ export default function FormItem({
   const baseStyle = ``;
   let style;
   if (type === "search") style = baseStyle + `w-full px-2`;
+  if (type === "login") style = baseStyle + `flex flex-col gap-1`;
   return (
     <div className={style}>
       <Label type="search" labelFor={labelFor}>

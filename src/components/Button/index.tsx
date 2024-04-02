@@ -6,7 +6,7 @@ interface ButtonProps {
 }
 
 export default function Button({ type, children }: ButtonProps) {
-  const baseStyle = ``;
+  const baseStyle = `duration-300 transition-all `;
   let style;
   if (type === "footer")
     style =
@@ -24,6 +24,10 @@ export default function Button({ type, children }: ButtonProps) {
     style =
       baseStyle +
       `bg-stone-700 text-stone-50 px-6  text-lg rounded-3xl py-2 flex items-center`;
+  if (type === "login")
+    style =
+      baseStyle +
+      `bg-brand-600 text-brand-100 rounded-md p-2 font-semibold hover:bg-brand-700 flex gap-3 items-center justify-center`;
 
   return <button className={style}>{children}</button>;
 }

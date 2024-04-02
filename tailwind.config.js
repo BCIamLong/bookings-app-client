@@ -6,6 +6,19 @@ export default {
       backgroundImage: {
         hero: "url('public/imgs/cabins/cabin-001.jpg')",
       },
+      colors: {
+        brand: {
+          100: "#eef2ff",
+          200: "#e0e7ff",
+          300: "#c7d2fe",
+          400: "#6366f1",
+          500: "#845ef7",
+          600: "#4f46e5",
+          700: "#4338ca",
+          800: "#3730a3",
+          900: "#312e81",
+        },
+      },
     },
   },
   plugins: [],

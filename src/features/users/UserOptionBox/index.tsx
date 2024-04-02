@@ -1,5 +1,6 @@
 import { HiBars3 } from "react-icons/hi2";
 import ButtonLink from "../../../components/ButtonLink";
+import { Link } from "react-router-dom";
 
 export default function UserOptionBox() {
   return (
@@ -8,7 +9,9 @@ export default function UserOptionBox() {
         <HiBars3 className="px-0.5 text-2xl text-stone-700" />
       </button>
       <div className="bg-stone-700">
-        <ButtonLink type="user-nav-header">Login</ButtonLink>
+        <ButtonLink type="user-nav-header">
+          <Link to="/login">Login</Link>
+        </ButtonLink>
       </div>
     </div>
   );

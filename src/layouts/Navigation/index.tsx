@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Button from "../../components/Button";
 
 export default function Navigation() {
@@ -5,7 +6,7 @@ export default function Navigation() {
     <nav className="flex items-center gap-12 text-xl font-medium text-gray-700">
       <ul className="flex items-center gap-4">
         <li>
-          <a href="#">Homepage</a>
+          <NavLink to="/">Homepage</NavLink>
         </li>
         <li>
           <a href="#">Cabins</a>
