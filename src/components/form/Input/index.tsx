@@ -1,9 +1,13 @@
+import { ChangeEventHandler } from "react";
+
 interface InputProps {
   variant: string;
   type: string;
   id: string;
   placeholder?: string;
   required?: boolean;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  value?: string;
 }
 
 export default function Input({
@@ -12,6 +16,8 @@ export default function Input({
   id,
   placeholder,
   required,
+  onChange,
+  value,
 }: InputProps) {
   const baseStyle = ``;
   let style;
@@ -28,6 +34,8 @@ export default function Input({
       id={id}
       placeholder={placeholder || ""}
       required={required || false}
+      onChange={onChange}
+      value={value}
     />
   );
 }
