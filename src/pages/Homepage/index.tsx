@@ -1,3 +1,4 @@
+import Contact from "../../components/Contact";
 import Hero from "../../components/Hero";
 import CabinsList from "../../features/cabins/CabinsList";
 import LatestCabinsList from "../../features/cabins/LatestCabinsList";
@@ -76,6 +77,7 @@ export default function Homepage() {
       <Hero />
       <LatestCabinsList cabins={cabins} />
       <CabinsList cabins={cabins} />
+      <Contact />
     </div>
   );
 }

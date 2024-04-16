@@ -15,7 +15,7 @@ export default function Button({ type, children }: ButtonProps) {
   if (type === "nav-search")
     style =
       baseStyle +
-      `transition-all duration-100 ease-in-out hover:border-b-2 hover:border-stone-300`;
+      `transition-all duration-[120ms] ease-in-out hover:border-b-2 hover:border-stone-300`;
   if (type === "search")
     style =
       baseStyle +

@@ -2,6 +2,7 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 import Button from "../../../components/Button";
 import FormItem from "../../../components/form/FormItem";
 import Input from "../../../components/form/Input";
+import Form from "../../../components/form/Form";
 
 export default function SearchBox() {
   return (
@@ -23,7 +24,7 @@ export default function SearchBox() {
           </li>
         </ul>
       </nav>
-      <div className="grid grid-cols-[12rem,9rem,9rem,9rem,3rem] gap-3 divide-x-2 rounded-full bg-white px-6 py-3 ">
+      <Form type="search">
         <FormItem type="search" label="Location" labelFor="location">
           <Input
             variant="search"
@@ -63,7 +64,7 @@ export default function SearchBox() {
         <Button type="search">
           <HiMagnifyingGlass className="text-3xl text-stone-50" />
         </Button>
-      </div>
+      </Form>
     </div>
   );
 }

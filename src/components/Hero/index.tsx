@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="max-h-screen ">
       <img
-        className="h-screen w-screen brightness-[60%]"
+        className="outline- h-screen w-screen brightness-[60%] "
         src="/imgs/cabins/cabin-001.jpg"
         alt=""
       />
