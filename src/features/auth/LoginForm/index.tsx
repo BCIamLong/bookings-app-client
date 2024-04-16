@@ -8,11 +8,13 @@ import ButtonLink from "../../../components/ButtonLink";
 import { getGoogleOauthUrl } from "../../../utils";
 import { Link } from "react-router-dom";
 import { FormEventHandler, useState } from "react";
-import { login } from "../../../services/authApiService";
+import { useLogin } from "../useLogin";
+import Spinner from "../../../components/Spinner";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login, isLogging } = useLogin();
 
   const loginHandler: FormEventHandler<HTMLFormElement> = function (e) {
     e.preventDefault();
@@ -29,6 +31,7 @@ export default function LoginForm() {
           id="email"
           placeholder="Enter your email"
           value={email}
+          disabled={isLogging}
           onChange={(e) => setEmail(e.target.value)}
         />
       </FormItem>
@@ -41,10 +44,13 @@ export default function LoginForm() {
           placeholder="••••••••"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={isLogging}
         />
       </FormItem>
       <div className="mt-4 flex flex-col gap-3">
-        <Button type="login">Login</Button>
+        <Button type="login">
+          {isLogging ? <Spinner size="small" /> : "Login"}
+        </Button>
         <ButtonLink href={getGoogleOauthUrl()} type="login">
           <HiOutlineEnvelope className="text-2xl" />
           <span>Login with email</span>

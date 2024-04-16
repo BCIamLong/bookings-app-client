@@ -16,7 +16,7 @@ const login = async function ({
       password,
     });
 
-    console.log(res);
+    return res.data;
   } catch (err) {
     console.log(err);
   }

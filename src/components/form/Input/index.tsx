@@ -8,6 +8,7 @@ interface InputProps {
   required?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   value?: string;
+  disabled?: boolean;
 }
 
 export default function Input({
@@ -18,6 +19,7 @@ export default function Input({
   required,
   onChange,
   value,
+  disabled,
 }: InputProps) {
   const baseStyle = ``;
   let style;
@@ -44,6 +46,7 @@ export default function Input({
       required={required || false}
       onChange={onChange}
       value={value}
+      disabled={disabled}
     />
   );
 }
