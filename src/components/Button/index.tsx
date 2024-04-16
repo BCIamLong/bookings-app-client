@@ -33,5 +33,15 @@ export default function Button({ type, children }: ButtonProps) {
       baseStyle +
       `text-stone-700 font-semibold uppercase text-xs px-2 py-3 bg-stone-300 rounded-md p-2`;
 
+  if (type === "discover-light")
+    style =
+      baseStyle +
+      `text-stone-700 font-semibold text-sm pr-3 py-1 border-b-2 border-white hover:border-b-2 hover:border-stone-700`;
+
+  if (type === "discover")
+    style =
+      baseStyle +
+      `text-stone-100 font-bold capitalize text-sm px-2 py-3 bg-stone-800 rounded-full w-[30%] hover:bg-stone-700`;
+
   return <button className={style}>{children}</button>;
 }
