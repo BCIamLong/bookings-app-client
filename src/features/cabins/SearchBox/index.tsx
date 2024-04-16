@@ -26,22 +26,38 @@ export default function SearchBox() {
       <div className="grid grid-cols-[12rem,9rem,9rem,9rem,3rem] gap-3 divide-x-2 rounded-full bg-white px-6 py-3 ">
         <FormItem type="search" label="Location" labelFor="location">
           <Input
+            variant="search"
             id="location"
             placeholder="Which city do you prefer?"
-            type="search"
+            type="text"
           />
         </FormItem>
 
         <FormItem type="search" label="Check in" labelFor="checked-in">
-          <Input id="checked-in" placeholder="Add dates" type="search" />
+          <Input
+            variant="search"
+            id="checked-in"
+            placeholder="Add dates"
+            type="text"
+          />
         </FormItem>
 
         <FormItem type="search" label="Check out" labelFor="checked-out">
-          <Input id="checked-out" placeholder="Add dates" type="search" />
+          <Input
+            variant="search"
+            id="checked-out"
+            placeholder="Add dates"
+            type="text"
+          />
         </FormItem>
 
         <FormItem type="search" label="Guests" labelFor="guests">
-          <Input id="guests" placeholder="Add guests" type="search" />
+          <Input
+            variant="search"
+            id="guests"
+            placeholder="Add guests"
+            type="text"
+          />
         </FormItem>
 
         <Button type="search">

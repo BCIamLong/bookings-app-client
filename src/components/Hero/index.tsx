@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="max-h-screen ">
       <img
         className="h-screen w-screen brightness-[60%]"
-        src="public/imgs/cabins/cabin-001.jpg"
+        src="/imgs/cabins/cabin-001.jpg"
         alt=""
       />
       {/* <div className="bg-hero h-lvh bg-cover bg-center bg-no-repeat"></div> */}

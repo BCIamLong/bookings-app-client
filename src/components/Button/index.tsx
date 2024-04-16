@@ -28,6 +28,10 @@ export default function Button({ type, children }: ButtonProps) {
     style =
       baseStyle +
       `bg-brand-600 text-brand-100 rounded-md p-2 font-semibold hover:bg-brand-700 flex gap-3 items-center justify-center`;
+  if (type === "item")
+    style =
+      baseStyle +
+      `text-stone-700 font-semibold uppercase text-xs px-2 py-3 bg-stone-300 rounded-md p-2`;
 
   return <button className={style}>{children}</button>;
 }
