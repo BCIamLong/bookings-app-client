@@ -12,7 +12,7 @@ export default function Form({ type, onSubmit, children }: FormProps) {
   if (type === "login")
     style =
       baseStyle +
-      `flex w-[400px] flex-col gap-4 rounded-lg bg-stone-100 px-6 py-8 shadow-2xl shadow-stone-300`;
+      `flex w-[400px] flex-col gap-3 rounded-lg bg-stone-100 px-6 py-8 shadow-2xl shadow-stone-300`;
   if (type === "search")
     style =
       baseStyle +

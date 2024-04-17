@@ -1,11 +1,13 @@
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
-import { login as loginService } from "../../services/authApiService";
+import { AxiosError } from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 
-interface Credentials {
-  email: string;
-  password: string;
+import { LoginInput } from "../../interfaces";
+import { login as loginService } from "../../services/authApiService";
+
+interface ErrorResponse {
+  message: string;
 }
 
 export const useLogin = function () {
@@ -17,7 +19,7 @@ export const useLogin = function () {
     error,
     mutate: login,
   } = useMutation({
-    mutationFn: ({ email, password }: Credentials) =>
+    mutationFn: ({ email, password }: LoginInput) =>
       loginService({ email, password }),
     onSuccess: (data) => {
       // queryClient.setQueryData(["isVerify2FA"], data.enable2FA || false);
@@ -26,6 +28,9 @@ export const useLogin = function () {
       console.log("ok la");
       toast.success("Login successfully");
       navigate("/", { replace: true });
+    },
+    onError: (err: AxiosError<ErrorResponse>) => {
+      toast.error(err?.response?.data?.message || err.message);
     },
   });
 

@@ -7,44 +7,75 @@ import Input from "../../../components/form/Input";
 import ButtonLink from "../../../components/ButtonLink";
 import { getGoogleOauthUrl } from "../../../utils";
 import { Link } from "react-router-dom";
-import { FormEventHandler, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useLogin } from "../useLogin";
 import Spinner from "../../../components/Spinner";
+import { LoginInput } from "../../../interfaces";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const { login, isLogging } = useLogin();
+  const { register, reset, handleSubmit, formState } = useForm();
+  const { errors } = formState;
 
-  const loginHandler: FormEventHandler<HTMLFormElement> = function (e) {
-    e.preventDefault();
-    login({ email, password });
+  const onSubmit: SubmitHandler<LoginInput> = function (data) {
+    // console.log(data);
+    login(data);
+    reset();
   };
 
   return (
-    <Form type="login" onSubmit={loginHandler}>
-      <FormItem type="login" label="Email" labelFor="email">
+    <Form type="login" onSubmit={handleSubmit(onSubmit)}>
+      <FormItem
+        type="login"
+        label="Email"
+        labelFor="email"
+        errorMsg={errors.email?.message}
+      >
         <Input
-          type="text"
+          type="email"
           variant="login"
-          required={true}
           id="email"
           placeholder="Enter your email"
-          value={email}
           disabled={isLogging}
-          onChange={(e) => setEmail(e.target.value)}
+          register={{
+            ...register("email", {
+              required: "This field is required",
+              pattern: {
+                value: /^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i,
+                message: "Please provide the valid email.",
+              },
+            }),
+          }}
         />
       </FormItem>
-      <FormItem type="login" label="Password" labelFor="password">
+      <FormItem
+        type="login"
+        label="Password"
+        labelFor="password"
+        errorMsg={errors.password?.message}
+      >
         <Input
           type="password"
           variant="login"
-          required={true}
           id="password"
           placeholder="••••••••"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
           disabled={isLogging}
+          register={{
+            ...register("password", {
+              required: "This field is required",
+              pattern: {
+                value: /^(?=.*[a-zA-Z0-9]).{8,}$/,
+                message:
+                  "Password must be at least 8 characters long and contain letters or numbers.",
+              },
+              // pattern: {
+              //   value:
+              //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>]).{8,}$/,
+              //   message:
+              //     "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+              // },
+            }),
+          }}
         />
       </FormItem>
       <div className="mt-4 flex flex-col gap-3">

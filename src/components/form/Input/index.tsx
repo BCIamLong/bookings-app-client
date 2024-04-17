@@ -1,14 +1,16 @@
-import { ChangeEventHandler } from "react";
+// import { ChangeEventHandler } from "react";
+import { RegisterOptions } from "react-hook-form";
 
 interface InputProps {
   variant: string;
   type: string;
   id: string;
   placeholder?: string;
-  required?: boolean;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-  value?: string;
   disabled?: boolean;
+  register?: RegisterOptions<HTMLInputElement>;
+  // required?: boolean;
+  // onChange?: ChangeEventHandler<HTMLInputElement>;
+  // value?: string;
 }
 
 export default function Input({
@@ -16,10 +18,11 @@ export default function Input({
   type,
   id,
   placeholder,
-  required,
-  onChange,
-  value,
   disabled,
+  register,
+  // required,
+  // onChange,
+  // value,
 }: InputProps) {
   const baseStyle = ``;
   let style;
@@ -30,7 +33,7 @@ export default function Input({
   if (variant === "login")
     style =
       baseStyle +
-      `w-full p-2 rounded-md focus:border-none outline-none text-stone-600`;
+      `w-full p-2 rounded-md border-white outline-none text-stone-600 border-2`;
 
   if (variant === "contact")
     style =
@@ -43,10 +46,11 @@ export default function Input({
       type={type}
       id={id}
       placeholder={placeholder || ""}
-      required={required || false}
-      onChange={onChange}
-      value={value}
       disabled={disabled}
+      {...register}
+      // required={required || false}
+      // onChange={onChange}
+      // value={value}
     />
   );
 }

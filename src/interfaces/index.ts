@@ -1,4 +1,21 @@
 import ICabin from "./ICabin";
-import { UserSession } from "./IAuth";
+import IUser from "./IUser";
+import {
+  UserSession,
+  SignupInput,
+  LoginInput,
+  ForgotPasswordInput,
+  ResetPasswordInput,
+  Verify2FAInput,
+} from "./IAuth";
 
-export type { ICabin, UserSession };
+export type {
+  ICabin,
+  IUser,
+  UserSession,
+  SignupInput,
+  LoginInput,
+  ForgotPasswordInput,
+  ResetPasswordInput,
+  Verify2FAInput,
+};

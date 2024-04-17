@@ -22,9 +22,9 @@ function App() {
         position="top-right"
         autoClose={5000}
         closeOnClick={false}
-        pauseOnHover={false}
+        pauseOnHover={true}
         transition={Bounce}
-        closeButton={false}
+        closeButton={true}
         theme="light"
         draggable
       />

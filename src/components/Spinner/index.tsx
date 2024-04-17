@@ -25,7 +25,7 @@ export default function Spinner({
 }) {
   let style = "h-16 w-36";
   if (size === "small") style = "h-6 w-6";
-  if (size === "big") style = "h-48 w-48";
+  if (size === "big") style = "h-48 w-48 py-12";
   return (
     <div className="flex items-center justify-center">
       <div role="status">

@@ -19,7 +19,7 @@ export default function ForgotPasswordForm() {
       </div>
       <FormItem type="login" label="Email" labelFor="email">
         <Input
-          type="text"
+          type="email"
           variant="login"
           required={true}
           id="email"

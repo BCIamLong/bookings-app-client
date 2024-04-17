@@ -1,6 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { appConfig } from "../config";
+import { SignupInput } from "../interfaces";
 // import { UserSession } from "../interfaces";
 
 const { SERVER_BASE_URL } = appConfig;
@@ -23,6 +24,20 @@ const login = async function ({
     return res.data;
   } catch (err) {
     console.log(err);
+    throw err;
+  }
+};
+
+const signup = async function (data: SignupInput) {
+  try {
+    const res = await axios.post(`${SERVER_BASE_URL}/api/v1/auth/signup`, data);
+
+    Cookies.set("access-token", res.data.token);
+
+    return res.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
   }
 };
 
@@ -46,6 +61,7 @@ const getUserSession = async function () {
     return res?.data?.session?.user;
   } catch (err) {
     console.log(err);
+    throw err;
   }
 };
-export { login, getUserSession };
+export { login, getUserSession, signup };
