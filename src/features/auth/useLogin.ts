@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { login as loginService } from "../../services/authApiService";
+import { toast } from "react-toastify";
 
 interface Credentials {
   email: string;
@@ -23,6 +24,7 @@ export const useLogin = function () {
       const { enable2FA } = data;
       if (enable2FA) return navigate("/login/verify-2fa");
       console.log("ok la");
+      toast.success("Login successfully");
       navigate("/", { replace: true });
     },
   });
