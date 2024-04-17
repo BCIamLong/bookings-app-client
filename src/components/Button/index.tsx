@@ -3,11 +3,17 @@ import { ReactNode } from "react";
 interface ButtonProps {
   type: string;
   children: ReactNode;
+  size?: "small" | "medium" | "big";
 }
 
-export default function Button({ type, children }: ButtonProps) {
+export default function Button({ type, children, size }: ButtonProps) {
   const baseStyle = `duration-300 transition-all `;
+
   let style;
+  let sizeBtn = "";
+  if (size === "small") sizeBtn = " py-1 px-2 text-sm";
+  if (size === "medium") sizeBtn = " py-2 px-4 text-lg";
+  if (size === "big") sizeBtn = " py-3 px-6 text-xl";
   if (type === "footer")
     style =
       baseStyle +
@@ -43,5 +49,5 @@ export default function Button({ type, children }: ButtonProps) {
       baseStyle +
       `text-stone-100 font-bold capitalize text-sm px-2 py-3 bg-stone-800 rounded-full w-[30%] hover:bg-stone-700`;
 
-  return <button className={style}>{children}</button>;
+  return <button className={style + sizeBtn}>{children}</button>;
 }

@@ -7,12 +7,14 @@ import AppLayout from "../layouts/AppLayout";
 import Homepage from "../pages/Homepage";
 import ProtectedRoute from "./ProtectedRoute";
 import Verify2FA from "../pages/Verify2FA";
+import PageNotFound from "../pages/PageNotFound";
+import LoginLayout from "../layouts/LoginLayout";
 
 export default function AppRoute() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<AppLayout />}>
+        <Route element={<LoginLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -31,6 +33,7 @@ export default function AppRoute() {
         {/* <Route element={<LoginLayout />}>
     <Route path="/login" element={<Login />} />
   </Route> */}
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );

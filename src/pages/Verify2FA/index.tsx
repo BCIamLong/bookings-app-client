@@ -7,7 +7,7 @@ export default function Verify2FA() {
       className="flex h-screen flex-col items-center gap-6 bg-cover p-12"
     >
       <h2 className="text-3xl font-bold text-stone-100">
-        Forget your password?
+        Please verify your 2FA
       </h2>
       <Verify2FAForm />
     </div>
