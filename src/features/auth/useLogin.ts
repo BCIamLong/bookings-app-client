@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { login as loginService } from "../../services/authApiService";
 
@@ -8,7 +8,7 @@ interface Credentials {
 }
 
 export const useLogin = function () {
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   const {
@@ -19,7 +19,10 @@ export const useLogin = function () {
     mutationFn: ({ email, password }: Credentials) =>
       loginService({ email, password }),
     onSuccess: (data) => {
-      queryClient.setQueryData(["user"], data.user);
+      // queryClient.setQueryData(["isVerify2FA"], data.enable2FA || false);
+      const { enable2FA } = data;
+      if (enable2FA) return navigate("/login/verify-2fa");
+      console.log("ok la");
       navigate("/", { replace: true });
     },
   });
