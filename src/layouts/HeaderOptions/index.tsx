@@ -1,5 +1,6 @@
 import { HiBars3 } from "react-icons/hi2";
 import UserOptionBox from "../../features/users/UserOptionBox";
+import Logout from "../../features/auth/Logout";
 
 export default function HeaderOptions() {
   return (
@@ -8,6 +9,7 @@ export default function HeaderOptions() {
         <HiBars3 className="stroke-1 px-0.5 text-3xl text-stone-600" />
       </button>
       <UserOptionBox />
+      <Logout />
     </div>
   );
 }

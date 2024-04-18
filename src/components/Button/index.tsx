@@ -3,10 +3,12 @@ import { ReactNode } from "react";
 interface ButtonProps {
   type: string;
   children: ReactNode;
+  disabled?: boolean,
   size?: "small" | "medium" | "big";
+  onClick?: () => void
 }
 
-export default function Button({ type, children, size }: ButtonProps) {
+export default function Button({ type, children, onClick, disabled, size }: ButtonProps) {
   const baseStyle = `duration-300 transition-all `;
 
   let style;
@@ -49,5 +51,9 @@ export default function Button({ type, children, size }: ButtonProps) {
       baseStyle +
       `text-stone-100 font-bold capitalize text-sm px-2 py-3 bg-stone-800 rounded-full w-[30%] hover:bg-stone-700`;
 
-  return <button className={style + sizeBtn}>{children}</button>;
+  if (type === 'icon') style =
+    baseStyle +
+    `text-stone-700 text-2xl p-2 hover:bg-stone-200`;
+
+  return <button disabled={disabled} onClick={onClick} className={style + sizeBtn}>{children}</button>;
 }

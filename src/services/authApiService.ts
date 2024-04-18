@@ -46,6 +46,24 @@ const signup = async function (data: SignupInput) {
   }
 };
 
+const logout = async function () {
+  try {
+    const token = Cookies.get("access-token");
+
+    const res = await axios.get(`${SERVER_BASE_URL}/api/v1/auth/logout`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    // console.log(res);
+
+    return res?.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
 const getUserSession = async function () {
   try {
     const token = Cookies.get("access-token");
@@ -126,4 +144,5 @@ export {
   forgotPassword,
   resetPassword,
   verify2FA,
+  logout,
 };
