@@ -5,6 +5,7 @@ import {
   SignupInput,
   ForgotPasswordInput,
   ResetPasswordInput,
+  Verify2FAInput,
 } from "../interfaces";
 // import { UserSession } from "../interfaces";
 
@@ -98,4 +99,31 @@ const resetPassword = async function (data: ResetPasswordInput, token: string) {
     throw err;
   }
 };
-export { login, getUserSession, signup, forgotPassword, resetPassword };
+
+const verify2FA = async function (data: Verify2FAInput) {
+  try {
+    const token = Cookies.get("access-token");
+    const res = await axios.post(
+      `${SERVER_BASE_URL}/api/v1/auth/2FA/validate-otp`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+
+    return res.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+export {
+  login,
+  getUserSession,
+  signup,
+  forgotPassword,
+  resetPassword,
+  verify2FA,
+};

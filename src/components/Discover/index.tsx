@@ -3,7 +3,7 @@ import Heading from "../Heading";
 
 export default function Discover() {
   return (
-    <div className="flex items-center gap-24 px-28 py-28">
+    <section className="flex items-center gap-24 px-28 py-28" id='discover'>
       <div className="flex w-[70%] flex-col gap-5">
         <div className="mb-2">
           <Heading type="secondary">
@@ -27,6 +27,6 @@ export default function Discover() {
       <div className="w-[40rem] overflow-hidden rounded-md">
         <img src="/imgs/cabins/cabin-001.jpg" alt="" />
       </div>
-    </div>
+    </section>
   );
 }

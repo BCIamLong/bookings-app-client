@@ -22,10 +22,14 @@ export const useLogin = function () {
     mutationFn: ({ email, password }: LoginInput) =>
       loginService({ email, password }),
     onSuccess: (data) => {
+      // console.log(data);
       // queryClient.setQueryData(["isVerify2FA"], data.enable2FA || false);
       const { enable2FA } = data;
-      if (enable2FA) return navigate("/login/verify-2fa");
-      console.log("ok la");
+      if (enable2FA) {
+        toast.warn(data.message);
+        return navigate("/login/verify-2fa");
+      }
+      // console.log("ok la");
       toast.success("Login successfully");
       navigate("/", { replace: true });
     },

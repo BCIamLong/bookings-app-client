@@ -14,7 +14,7 @@ import { LoginInput } from "../../../interfaces";
 
 export default function LoginForm() {
   const { login, isLogging } = useLogin();
-  const { register, reset, handleSubmit, formState } = useForm();
+  const { register, reset, handleSubmit, formState } = useForm<LoginInput>();
   const { errors } = formState;
 
   const onSubmit: SubmitHandler<LoginInput> = function (data) {
@@ -40,7 +40,7 @@ export default function LoginForm() {
           id="email"
           placeholder="Enter your email"
           disabled={isLogging}
-          register={{
+          registerOb={{
             ...register("email", {
               required: "This field is required",
               pattern: {
@@ -63,7 +63,7 @@ export default function LoginForm() {
           id="password"
           placeholder="••••••••"
           disabled={isLogging}
-          register={{
+          registerOb={{
             ...register("password", {
               required: "This field is required",
               pattern: {

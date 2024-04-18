@@ -47,7 +47,7 @@ export default function ForgotPasswordForm() {
           id="email"
           disabled={isSending}
           placeholder="Enter your email"
-          register={{
+          registerOb={{
             ...register("email", {
               required: "This field is required",
               pattern: {

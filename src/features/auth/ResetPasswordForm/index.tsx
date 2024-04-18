@@ -41,7 +41,7 @@ export default function ResetPasswordForm() {
           id="password"
           disabled={isResetting}
           placeholder="••••••••"
-          register={{
+          registerOb={{
             ...register("password", {
               required: "This field is required",
               pattern: {
@@ -66,7 +66,7 @@ export default function ResetPasswordForm() {
           disabled={isResetting}
           id="passwordConfirm"
           placeholder="••••••••"
-          register={{
+          registerOb={{
             ...register("passwordConfirm", {
               required: "This field is required",
               validate: (val) =>

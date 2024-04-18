@@ -37,7 +37,7 @@ export default function SignUpForm() {
           id="fullName"
           placeholder="Enter your full name"
           disabled={isSigning}
-          register={{
+          registerOb={{
             ...register("fullName", { required: "This field is required" }),
           }}
         />
@@ -54,7 +54,7 @@ export default function SignUpForm() {
           id="email"
           placeholder="Enter your email"
           disabled={isSigning}
-          register={{
+          registerOb={{
             ...register("email", {
               required: "This field is required",
               pattern: {
@@ -77,7 +77,7 @@ export default function SignUpForm() {
           id="password"
           placeholder="••••••••"
           disabled={isSigning}
-          register={{
+          registerOb={{
             ...register("password", {
               required: "This field is required",
               pattern: {
@@ -101,7 +101,7 @@ export default function SignUpForm() {
           id="passwordConfirm"
           placeholder="••••••••"
           disabled={isSigning}
-          register={{
+          registerOb={{
             ...register("passwordConfirm", {
               required: "This field is required",
               validate: (val) =>

@@ -1,5 +1,5 @@
 // import { ChangeEventHandler } from "react";
-import { RegisterOptions } from "react-hook-form";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 interface InputProps {
   variant: string;
@@ -7,7 +7,9 @@ interface InputProps {
   id: string;
   placeholder?: string;
   disabled?: boolean;
-  register?: RegisterOptions<HTMLInputElement>;
+  //! RegisterOptions<HTMLInputElement> this will cause the conflict types and make TS can't work well with our VSCode and it made our intelligence suggestion of TS in VSCode is error with always loading...
+  // * type of register is UseFormRegister<FieldValues(like LoginInput, if we use this type we need to extends the LoginInput with FieldValues)> and its result is UseFormRegisterReturn<string> so basically UseFormRegisterReturn<string> is the result of the register with the key we assign right like {...register('name')}
+  registerOb?: UseFormRegisterReturn<string>
   // required?: boolean;
   // onChange?: ChangeEventHandler<HTMLInputElement>;
   // value?: string;
@@ -19,7 +21,7 @@ export default function Input({
   id,
   placeholder,
   disabled,
-  register,
+  registerOb,
   // required,
   // onChange,
   // value,
@@ -47,10 +49,10 @@ export default function Input({
       id={id}
       placeholder={placeholder || ""}
       disabled={disabled}
-      {...register}
-      // required={required || false}
-      // onChange={onChange}
-      // value={value}
+      {...registerOb}
+    // required={required || false}
+    // onChange={onChange}
+    // value={value}
     />
   );
 }

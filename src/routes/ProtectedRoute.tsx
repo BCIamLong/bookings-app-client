@@ -19,7 +19,7 @@ export default function ProtectedRoute({ children }: { children: ReactNode }) {
       if (!user && !isLoading) {
         toast.error(
           (error as AxiosError<ErrorResponse>)?.response?.data?.message ||
-            (error as AxiosError<ErrorResponse>).message,
+          (error as AxiosError<ErrorResponse>)?.message,
         );
         navigate("/login");
       }

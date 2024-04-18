@@ -9,6 +9,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Verify2FA from "../pages/Verify2FA";
 import PageNotFound from "../pages/PageNotFound";
 import LoginLayout from "../layouts/LoginLayout";
+import Verify2FARoute from "./Verify2FARoute";
 
 export default function AppRoute() {
   return (
@@ -28,7 +29,7 @@ export default function AppRoute() {
           }
         >
           <Route path="/" element={<Homepage />}></Route>
-          <Route path="/login/verify-2fa" element={<Verify2FA />}></Route>
+          <Route path="/login/verify-2fa" element={<Verify2FARoute><Verify2FA /></Verify2FARoute>}></Route>
         </Route>
         {/* <Route element={<LoginLayout />}>
     <Route path="/login" element={<Login />} />
