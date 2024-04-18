@@ -7,7 +7,7 @@ export default function Heading({
   type: "primary" | "secondary" | "tertiary";
   children: ReactNode;
 }) {
-  const baseStyle = `font-bold text-stone-700 `;
+  const baseStyle = `font-bold text-stone-700 flex items-center gap-2 `;
   let style;
   if (type === "primary") style = baseStyle + `text-3xl`;
   if (type === "secondary") style = baseStyle + `text-3xl`;

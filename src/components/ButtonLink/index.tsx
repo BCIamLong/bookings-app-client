@@ -41,6 +41,7 @@ export default function ButtonLink({
   if (type === "simple")
     style = baseStyle + `flex justify-center text-sm text-brand-700`;
 
+
   return (
     <a href={href || "#"} className={style + sizeBtn}>
       {children}

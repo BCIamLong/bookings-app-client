@@ -51,9 +51,10 @@ export default function Button({ type, children, onClick, disabled, size }: Butt
       baseStyle +
       `text-stone-100 font-bold capitalize text-sm px-2 py-3 bg-stone-800 rounded-full w-[30%] hover:bg-stone-700`;
 
-  if (type === 'icon') style =
-    baseStyle +
-    `text-stone-700 text-2xl p-2 hover:bg-stone-200`;
+  if (type === 'icon')
+    style = baseStyle + `text-stone-700 text-2xl p-2 hover:bg-stone-200`;
+  if (type === 'secondary')
+    style = baseStyle + `text-stone-700 text-lg font-semibold p-2 hover:bg-stone-200 rounded-md border-2 capitalize`;
 
   return <button disabled={disabled} onClick={onClick} className={style + sizeBtn}>{children}</button>;
 }

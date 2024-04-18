@@ -10,11 +10,16 @@ import Verify2FA from "../pages/Verify2FA";
 import PageNotFound from "../pages/PageNotFound";
 import LoginLayout from "../layouts/LoginLayout";
 import Verify2FARoute from "./Verify2FARoute";
+import Profile from "../pages/Profile";
 
 export default function AppRoute() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route element={<AppLayout />}
+        >
+          <Route path="/profile" element={<Profile />} />
+        </Route>
         <Route element={<LoginLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
@@ -36,6 +41,6 @@ export default function AppRoute() {
   </Route> */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
