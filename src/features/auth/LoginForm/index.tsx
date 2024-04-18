@@ -19,8 +19,11 @@ export default function LoginForm() {
 
   const onSubmit: SubmitHandler<LoginInput> = function (data) {
     // console.log(data);
-    login(data);
-    reset();
+    login(data, {
+      onSuccess: () => {
+        reset();
+      },
+    });
   };
 
   return (

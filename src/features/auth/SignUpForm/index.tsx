@@ -17,8 +17,11 @@ export default function SignUpForm() {
 
   const onSubmit: SubmitHandler<SignupInput> = function (data) {
     console.log(data);
-    signup(data);
-    reset();
+    signup(data, {
+      onSuccess: () => {
+        reset();
+      },
+    });
   };
   return (
     <Form type="login" onSubmit={handleSubmit(onSubmit)}>

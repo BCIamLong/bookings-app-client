@@ -1,7 +1,11 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { appConfig } from "../config";
-import { SignupInput } from "../interfaces";
+import {
+  SignupInput,
+  ForgotPasswordInput,
+  ResetPasswordInput,
+} from "../interfaces";
 // import { UserSession } from "../interfaces";
 
 const { SERVER_BASE_URL } = appConfig;
@@ -20,7 +24,7 @@ const login = async function ({
     });
 
     Cookies.set("access-token", res.data.token);
-
+    if (res.data.verifyEmail === false) throw new Error(res.data.message);
     return res.data;
   } catch (err) {
     console.log(err);
@@ -64,4 +68,34 @@ const getUserSession = async function () {
     throw err;
   }
 };
-export { login, getUserSession, signup };
+
+const forgotPassword = async function (data: ForgotPasswordInput) {
+  try {
+    const res = await axios.post(
+      `${SERVER_BASE_URL}/api/v1/auth/forgot-password`,
+      data,
+    );
+
+    return res.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
+const resetPassword = async function (data: ResetPasswordInput, token: string) {
+  try {
+    const res = await axios.patch(
+      `${SERVER_BASE_URL}/api/v1/auth/reset-password/${token}`,
+      data,
+    );
+
+    // Cookies.set("access-token", res.data.token);
+
+    return res.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+export { login, getUserSession, signup, forgotPassword, resetPassword };
