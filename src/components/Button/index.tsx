@@ -1,15 +1,16 @@
-import { ReactNode } from "react";
+import { ReactNode, MouseEvent } from "react";
 
 interface ButtonProps {
   type: string;
   children: ReactNode;
   disabled?: boolean,
   size?: "small" | "medium" | "big";
-  onClick?: () => void
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void,
+  reset?: boolean
 }
 
-export default function Button({ type, children, onClick, disabled, size }: ButtonProps) {
-  const baseStyle = `duration-300 transition-all `;
+export default function Button({ type, children, onClick, disabled, size, reset }: ButtonProps) {
+  const baseStyle = `flex items-center gap-2 duration-300 transition-all `;
 
   let style;
   let sizeBtn = "";
@@ -59,6 +60,8 @@ export default function Button({ type, children, onClick, disabled, size }: Butt
 
   if (type === 'secondary')
     style = baseStyle + `text-stone-700 text-lg font-semibold py-2 px-4 hover:bg-stone-200 rounded-lg border-2 capitalize border-stone-300`;
+
+  if (reset) return <button disabled={disabled} type="reset" onClick={onClick} className={style + sizeBtn}>{children}</button>;
 
   return <button disabled={disabled} onClick={onClick} className={style + sizeBtn}>{children}</button>;
 }

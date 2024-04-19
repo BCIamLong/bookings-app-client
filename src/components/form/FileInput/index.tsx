@@ -21,7 +21,7 @@ export default function FileInput({
   let style;
   if (variant === "profile")
     style =
-      baseStyle + `hover:file:cursor-pointer hover:file:bg-stone-600 file:border-none file:bg-stone-700 file:text-stone-100 file:px-3 file:py-2 file:rounded-lg file:font-semibold text-sm file:mr-3 text-stone-700 w-[24%]`;
+      baseStyle + `hover:file:cursor-pointer hover:file:bg-stone-600 file:border-none file:bg-stone-700 file:text-stone-100 file:px-3 file:py-2 file:rounded-lg file:font-semibold text-sm file:mr-3 text-stone-700 w-[24%] border-none`;
   return <input
     className={style}
     type='file'

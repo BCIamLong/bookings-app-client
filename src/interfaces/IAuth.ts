@@ -30,3 +30,12 @@ export interface ResetPasswordInput {
 export interface Verify2FAInput {
   otp: number;
 }
+
+export interface EditProfileInput {
+  name: string;
+  avatar: FileList;
+}
+
+export interface EditEmailInput {
+  email: string;
+}

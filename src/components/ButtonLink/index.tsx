@@ -14,7 +14,7 @@ export default function ButtonLink({
   size,
   children,
 }: ButtonLinkProps) {
-  const baseStyle = `inline-block duration-300 transition-all `;
+  const baseStyle = `inline-block duration-300 transition-all flex items-center gap-2 justify-center `;
   let style;
   let sizeBtn = "";
   if (size === "small") sizeBtn = " py-1 px-2 text-sm";

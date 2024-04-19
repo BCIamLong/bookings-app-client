@@ -6,6 +6,7 @@ import {
   ForgotPasswordInput,
   ResetPasswordInput,
   Verify2FAInput,
+  EditProfileInput,
 } from "../interfaces";
 // import { UserSession } from "../interfaces";
 
@@ -137,6 +138,36 @@ const verify2FA = async function (data: Verify2FAInput) {
     throw err;
   }
 };
+
+const editProfile = async function (data: EditProfileInput) {
+  const token = Cookies.get("access-token");
+  const { name, avatar } = data;
+  const requestBody = new FormData();
+  requestBody.append("name", name);
+  requestBody.append("fullName", name);
+
+  if (avatar[0]) requestBody.append("avatar", avatar[0]);
+
+  try {
+    const res = await axios.patch(
+      `${SERVER_BASE_URL}/api/v1/auth/update-me`,
+      requestBody,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+
+    // Cookies.set("access-token", res.data.token);
+
+    return res.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
 export {
   login,
   getUserSession,
@@ -145,4 +176,5 @@ export {
   resetPassword,
   verify2FA,
   logout,
+  editProfile,
 };

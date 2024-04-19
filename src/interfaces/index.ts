@@ -7,6 +7,8 @@ import {
   ForgotPasswordInput,
   ResetPasswordInput,
   Verify2FAInput,
+  EditEmailInput,
+  EditProfileInput,
 } from "./IAuth";
 
 export type {
@@ -18,4 +20,6 @@ export type {
   ForgotPasswordInput,
   ResetPasswordInput,
   Verify2FAInput,
+  EditEmailInput,
+  EditProfileInput,
 };

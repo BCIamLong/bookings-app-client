@@ -17,11 +17,12 @@ export default function FormItem({
   children,
 }: FormItemProps) {
   const baseStyle = ``;
-  const errorStyle = " [&>input]:border-red-500 [&>input]:border-2";
+  const errorStyle = " [&>input]:border-red-500 [&>input]:border-2 [&>input]:outline-none";
   let style;
   if (type === "search") style = baseStyle + `w-full px-2`;
   if (type === "login") style = baseStyle + `flex flex-col gap-1`;
-  if (type === 'profile') style = baseStyle + `flex flex-col gap-2`;
+  if (type === 'profile')
+    style = baseStyle + `flex flex-col gap-2 [&>input]:border-[1.5px]`;
 
   if (errorMsg) style = style + errorStyle;
 
@@ -29,7 +30,7 @@ export default function FormItem({
     <div className={style}>
       <Label type={type} labelFor={labelFor}>
         <span>{label} </span>
-        {type === "login" && (
+        {type !== "search" && (
           <span className="inline- flex h-7 w-52 justify-end overflow-auto text-xs font-semibold normal-case  leading-3 text-red-500">
             {errorMsg && errorMsg}
           </span>

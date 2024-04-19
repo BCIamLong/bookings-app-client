@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import ForgotPassword from "../pages/ForgotPassword";
@@ -22,7 +22,7 @@ export default function AppRoute() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<AppLayout />}
+        {/* <Route element={<AppLayout />}
         >
           <Route path="/profile" element={<ProfileLayout />} >
             <Route index element={<ProfileInfo />} />
@@ -33,7 +33,7 @@ export default function AppRoute() {
               <Route path="security/setup-2fa" element={<Enable2FAForm />} />
             </Route>
           </Route>
-        </Route>
+        </Route> */}
         <Route element={<LoginLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
@@ -49,6 +49,16 @@ export default function AppRoute() {
         >
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/login/verify-2fa" element={<Verify2FARoute><Verify2FA /></Verify2FARoute>}></Route>
+          <Route path="/profile" element={<ProfileLayout />} >
+            <Route index element={<ProfileInfo />} />
+            <Route path="edit" element={<UpdateProfileForm />} />
+            <Route path="setting" element={<SettingsLayout />}>
+              <Route index element={<Navigate replace to='account' />} />
+              <Route path="account" element={<Account />} />
+              <Route path="security" element={<Security />} />
+              <Route path="security/setup-2fa" element={<Enable2FAForm />} />
+            </Route>
+          </Route>
         </Route>
         {/* <Route element={<LoginLayout />}>
     <Route path="/login" element={<Login />} />
