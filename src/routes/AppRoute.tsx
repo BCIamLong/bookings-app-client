@@ -10,7 +10,9 @@ import Verify2FA from "../pages/Verify2FA";
 import PageNotFound from "../pages/PageNotFound";
 import LoginLayout from "../layouts/LoginLayout";
 import Verify2FARoute from "./Verify2FARoute";
-import Profile from "../pages/Profile";
+import ProfileLayout from "../layouts/ProfileLayout";
+import ProfileInfo from "../features/users/ProfileInfo";
+import UpdateProfileForm from "../features/users/UpdateProfileForm";
 
 export default function AppRoute() {
   return (
@@ -18,7 +20,10 @@ export default function AppRoute() {
       <Routes>
         <Route element={<AppLayout />}
         >
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<ProfileLayout />} >
+            <Route index element={<ProfileInfo />} />
+            <Route path="edit" element={<UpdateProfileForm />} />
+          </Route>
         </Route>
         <Route element={<LoginLayout />}>
           <Route path="/login" element={<Login />} />

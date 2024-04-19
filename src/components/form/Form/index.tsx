@@ -17,6 +17,10 @@ export default function Form({ type, onSubmit, children }: FormProps) {
     style =
       baseStyle +
       `grid grid-cols-[12rem,9rem,9rem,9rem,3rem] gap-3 divide-x-2 rounded-full bg-white px-6 py-3 `;
+  if (type === 'profile')
+    style =
+      baseStyle +
+      `flex w-full flex-col gap-6 rounded-lg pr-6 py-8`;
   return (
     <form onSubmit={onSubmit!} className={style}>
       {children}

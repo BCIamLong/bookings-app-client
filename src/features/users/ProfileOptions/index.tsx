@@ -1,8 +1,8 @@
-import Button from "../../../components/Button";
+import ButtonLink from "../../../components/ButtonLink";
 
 export default function ProfileOptions() {
   return <div className="flex gap-3 py-3">
-    <Button type="secondary">Edit profile</Button>
-    <Button type="secondary">Edit setting</Button>
+    <ButtonLink type="secondary" href="edit">Edit profile</ButtonLink>
+    <ButtonLink type="secondary" href="setting">Setting</ButtonLink>
   </div>
 }

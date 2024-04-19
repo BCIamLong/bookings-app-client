@@ -21,6 +21,7 @@ export default function FormItem({
   let style;
   if (type === "search") style = baseStyle + `w-full px-2`;
   if (type === "login") style = baseStyle + `flex flex-col gap-1`;
+  if (type === 'profile') style = baseStyle + `flex flex-col gap-2`;
 
   if (errorMsg) style = style + errorStyle;
 

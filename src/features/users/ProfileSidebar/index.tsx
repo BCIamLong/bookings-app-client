@@ -3,7 +3,7 @@ import { HiCheck } from "react-icons/hi2";
 
 
 export default function ProfileSidebar() {
-  return <aside className="w-60 h-full p-6 bg-stone-100 text-stone-700">
+  return <aside className="w-60 h-full p-6 bg-stone-100 text-stone-700 rounded-lg">
     <div className="flex flex-col justify-center items-center gap-3 mb-8">
       <img className="rounded-full" src="/default-avatar.jpg" alt="" />
       <div>

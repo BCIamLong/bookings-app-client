@@ -42,6 +42,11 @@ export default function Input({
       baseStyle +
       `w-full rounded-full px-3 py-2 text-xs leading-5 text-inherit focus:outline-none`;
 
+  if (variant === 'profile')
+    style =
+      baseStyle +
+      `w-[80%] rounded-lg  border-[1.5px] border-stone-300 px-3 py-3 text-sm leading-5 text-stone-700 focus:outline-2 outline-stone-500`;
+
   return (
     <input
       className={style}

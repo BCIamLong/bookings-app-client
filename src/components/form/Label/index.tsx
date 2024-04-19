@@ -13,6 +13,9 @@ export default function Label({ type, labelFor, children }: LabelProps) {
   if (type === "login")
     style =
       baseStyle + `font-semibold text-stone-600 flex justify-between items-end`;
+  if (type === "profile")
+    style =
+      baseStyle + `font-semibold text-stone-600 flex justify-between items-end`;
 
   return (
     <label className={style} htmlFor={labelFor}>
