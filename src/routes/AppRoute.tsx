@@ -13,6 +13,10 @@ import Verify2FARoute from "./Verify2FARoute";
 import ProfileLayout from "../layouts/ProfileLayout";
 import ProfileInfo from "../features/users/ProfileInfo";
 import UpdateProfileForm from "../features/users/UpdateProfileForm";
+import SettingsLayout from "../layouts/SettingsLayout";
+import Account from "../features/auth/Account";
+import Security from "../features/auth/Security";
+import Enable2FAForm from "../features/auth/Enable2FAForm";
 
 export default function AppRoute() {
   return (
@@ -23,6 +27,11 @@ export default function AppRoute() {
           <Route path="/profile" element={<ProfileLayout />} >
             <Route index element={<ProfileInfo />} />
             <Route path="edit" element={<UpdateProfileForm />} />
+            <Route path="setting" element={<SettingsLayout />}>
+              <Route path="account" element={<Account />} />
+              <Route path="security" element={<Security />} />
+              <Route path="security/setup-2fa" element={<Enable2FAForm />} />
+            </Route>
           </Route>
         </Route>
         <Route element={<LoginLayout />}>

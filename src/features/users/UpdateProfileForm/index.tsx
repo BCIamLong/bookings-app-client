@@ -1,5 +1,6 @@
 import Button from "../../../components/Button";
 import ButtonLink from "../../../components/ButtonLink";
+import Buttons from "../../../components/Buttons";
 import Heading from "../../../components/Heading";
 import FileInput from "../../../components/form/FileInput";
 import Form from "../../../components/form/Form";
@@ -38,10 +39,10 @@ export default function UpdateProfileForm() {
     </FormItem>
     <div className="flex justify-between items-center w-[80%] py-2">
       <p className="text-stone-500">All the required user information can be added here...</p>
-      <div className="flex gap-2">
+      <Buttons>
         <ButtonLink type="secondary" href='/profile' size="medium"><span></span><span>Cancel</span></ButtonLink>
         <Button type="primary" size="medium">Save</Button>
-      </div>
+      </Buttons>
     </div>
 
   </Form>
