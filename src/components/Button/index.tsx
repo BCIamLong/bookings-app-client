@@ -10,7 +10,7 @@ interface ButtonProps {
 }
 
 export default function Button({ type, children, onClick, disabled, size, reset }: ButtonProps) {
-  const baseStyle = `flex items-center gap-2 duration-300 transition-all `;
+  const baseStyle = `flex items-center gap-2 duration-300 transition-all justify-center `;
 
   let style;
   let sizeBtn = "";

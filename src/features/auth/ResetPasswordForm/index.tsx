@@ -18,7 +18,7 @@ export default function ResetPasswordForm() {
 
   const onSubmit: SubmitHandler<ResetPasswordInput> = function (data) {
     resetPassword(
-      { data, token },
+      { data, token: token || '' },
       {
         onSuccess: () => {
           reset();

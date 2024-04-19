@@ -56,7 +56,7 @@ export default function UpdateProfileForm() {
     <div className="border-b-[1.5px] border-stone-300 py-2 flex justify-between">
       <Heading type="tertiary">Edit your profile</Heading>
       <ButtonLink type="secondary" href="/profile" >
-        <HiArrowLeft className="text-xl" />
+        <HiArrowLeft className="text-xl stroke-[1px]" />
         <span>Back</span>
       </ButtonLink>
     </div>

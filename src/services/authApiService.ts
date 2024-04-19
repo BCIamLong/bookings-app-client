@@ -7,6 +7,7 @@ import {
   ResetPasswordInput,
   Verify2FAInput,
   EditProfileInput,
+  EditEmailInput,
 } from "../interfaces";
 // import { UserSession } from "../interfaces";
 
@@ -168,6 +169,29 @@ const editProfile = async function (data: EditProfileInput) {
     throw err;
   }
 };
+const editEmail = async function (data: EditEmailInput) {
+  const token = Cookies.get("access-token");
+
+  try {
+    const res = await axios.patch(
+      `${SERVER_BASE_URL}/api/v1/auth/update-me`,
+      { email: data.email },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+
+    // Cookies.set("access-token", res.data.token);
+
+    return res.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
 export {
   login,
   getUserSession,
@@ -177,4 +201,5 @@ export {
   verify2FA,
   logout,
   editProfile,
+  editEmail,
 };
