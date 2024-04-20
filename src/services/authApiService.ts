@@ -10,6 +10,7 @@ import {
   EditEmailInput,
   CheckPasswordInput,
   VerifyEnable2FAInput,
+  DeleteMeInput,
 } from "../interfaces";
 // import { UserSession } from "../interfaces";
 
@@ -60,6 +61,8 @@ const logout = async function () {
       },
     });
     // console.log(res);
+
+    Cookies.remove("access-token");
 
     return res?.data;
   } catch (err) {
@@ -299,6 +302,28 @@ const disable2FA = async function () {
     throw err;
   }
 };
+
+const deleteMe = async function (data: DeleteMeInput) {
+  try {
+    const token = Cookies.get("access-token");
+
+    const res = await axios.patch(
+      `${SERVER_BASE_URL}/api/v1/auth/delete-me`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    Cookies.remove("access-token");
+
+    return res.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
 export {
   login,
   getUserSession,
@@ -314,4 +339,5 @@ export {
   enable2FA,
   verifyEnable2FA,
   disable2FA,
+  deleteMe,
 };

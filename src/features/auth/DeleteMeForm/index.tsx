@@ -1,3 +1,4 @@
+import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "../../../components/Button";
 import ButtonLink from "../../../components/ButtonLink";
 import Buttons from "../../../components/Buttons";
@@ -7,9 +8,22 @@ import Select from "../../../components/Select";
 import Form from "../../../components/form/Form";
 import FormItem from "../../../components/form/FormItem";
 import Input from "../../../components/form/Input";
+import { DeleteMeInput } from "../../../interfaces";
+import { useDeleteMe } from "../useDeleteMe";
+import Spinner from "../../../components/Spinner";
+import { HiXMark } from "react-icons/hi2";
 
 export default function DeleteMeForm() {
-  return <Form type="profile">
+  const { formState, register, handleSubmit } = useForm<DeleteMeInput>()
+  const { errors } = formState
+  const { isDeleting, deleteMe } = useDeleteMe()
+
+  const onSubmit: SubmitHandler<DeleteMeInput> = function (data) {
+    // console.log(data)
+    deleteMe(data)
+  }
+
+  return <Form type="profile" onSubmit={handleSubmit(onSubmit)}>
     <div className="border-b-[1.5px] border-stone-300 py-2">
       <Heading type="heading-4">Delete your account</Heading>
     </div>
@@ -24,8 +38,9 @@ export default function DeleteMeForm() {
       type="profile"
       label="Choose delete account reason"
       labelFor="reason"
+      errorMsg={errors.reason?.message}
     >
-      <Select type="delete-me" id="reason" >
+      <Select type="delete-me" id="reason" registerOb={register('reason', { required: 'This field is required' })}>
         <Option type="delete-me" value="reason-1">Bad user experience</Option>
         <Option type="delete-me" value="reason-2">Bad user interface</Option>
       </Select>
@@ -35,17 +50,32 @@ export default function DeleteMeForm() {
       type="profile"
       label="Password"
       labelFor="delete-password"
+      errorMsg={errors.password?.message}
+
     >
       <Input
-        type="text"
+        type="password"
         variant="profile"
         id="delete-password"
         placeholder="Enter your password"
+        registerOb={register("password", {
+          required: "This field is required",
+          pattern: {
+            value: /^(?=.*[a-zA-Z0-9]).{8,}$/,
+            message:
+              "Password must be at least 8 characters long and contain letters or numbers.",
+          },
+        })}
       />
     </FormItem>
     <Buttons>
-      <Button type="secondary" size="medium"><span></span><span>Cancel</span></Button>
-      <Button type="primary" size="medium">Delete</Button>
+      <Button type="secondary" reset={true} size="medium">
+        <span><HiXMark className="stroke-[1.5px]" /></span>
+        <span>Cancel</span>
+      </Button>
+      <Button type="primary" size="medium">
+        {isDeleting ? <Spinner size="small" /> : 'Delete'}
+      </Button>
     </Buttons>
   </Form>
 }

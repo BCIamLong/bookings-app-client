@@ -12,6 +12,7 @@ import {
   EditPasswordInput,
   CheckPasswordInput,
   VerifyEnable2FAInput,
+  DeleteMeInput,
 } from "./IAuth";
 
 export type {
@@ -28,4 +29,5 @@ export type {
   EditPasswordInput,
   CheckPasswordInput,
   VerifyEnable2FAInput,
+  DeleteMeInput,
 };

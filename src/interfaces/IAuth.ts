@@ -47,3 +47,8 @@ export interface CheckPasswordInput {
 }
 
 export interface EditPasswordInput extends ResetPasswordInput {}
+
+export interface DeleteMeInput {
+  reason: string;
+  password: string;
+}
