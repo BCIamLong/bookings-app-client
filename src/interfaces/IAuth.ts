@@ -39,3 +39,9 @@ export interface EditProfileInput {
 export interface EditEmailInput {
   email: string;
 }
+
+export interface CheckPasswordInput {
+  password: string;
+}
+
+export interface EditPasswordInput extends ResetPasswordInput {}
