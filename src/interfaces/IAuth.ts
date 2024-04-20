@@ -31,6 +31,8 @@ export interface Verify2FAInput {
   otp: number;
 }
 
+export interface VerifyEnable2FAInput extends Verify2FAInput {}
+
 export interface EditProfileInput {
   name: string;
   avatar: FileList;

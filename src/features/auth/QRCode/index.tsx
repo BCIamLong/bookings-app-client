@@ -18,5 +18,5 @@ export default function QRCode() {
 
   if (isLoading) return <Spinner size="normal" />
 
-  return <img src={qrCodeUrl} alt="2FA QR code" />
+  return <img className="w-[30%]" src={qrCodeUrl} alt="2FA QR code" />
 }

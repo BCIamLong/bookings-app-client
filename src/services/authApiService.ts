@@ -9,6 +9,7 @@ import {
   EditProfileInput,
   EditEmailInput,
   CheckPasswordInput,
+  VerifyEnable2FAInput,
 } from "../interfaces";
 // import { UserSession } from "../interfaces";
 
@@ -239,6 +240,65 @@ const editPassword = async function (data: ResetPasswordInput, token: string) {
   }
 };
 
+const enable2FA = async function () {
+  try {
+    const token = Cookies.get("access-token");
+
+    const res = await axios.get(
+      `${SERVER_BASE_URL}/api/v1/auth/2FA/generate-otp`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    // console.log(res);
+
+    return res?.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
+const verifyEnable2FA = async function (data: VerifyEnable2FAInput) {
+  try {
+    const token = Cookies.get("access-token");
+
+    const res = await axios.patch(
+      `${SERVER_BASE_URL}/api/v1/auth/2FA/verify-otp`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+
+    return res.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
+const disable2FA = async function () {
+  try {
+    const token = Cookies.get("access-token");
+
+    const res = await axios.get(`${SERVER_BASE_URL}/api/v1/auth/2FA/disable`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    // console.log(res);
+
+    return res?.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
 export {
   login,
   getUserSession,
@@ -251,4 +311,7 @@ export {
   editEmail,
   checkPassword,
   editPassword,
+  enable2FA,
+  verifyEnable2FA,
+  disable2FA,
 };
