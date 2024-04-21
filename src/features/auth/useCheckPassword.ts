@@ -1,12 +1,8 @@
-import { AxiosError } from "axios";
+import { AxiosErrorConfig } from "axios";
 import { toast } from "react-toastify";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { checkPassword as checkPasswordService } from "../../services/authApiService";
 import { CheckPasswordInput } from "../../interfaces";
-
-interface ErrorResponse {
-  message: string;
-}
 
 export const useCheckPassword = function () {
   // const navigate = useNavigate();
@@ -23,7 +19,7 @@ export const useCheckPassword = function () {
       );
       queryClient.invalidateQueries({ queryKey: ["user"] });
     },
-    onError: (err: AxiosError<ErrorResponse>) => {
+    onError: (err: AxiosErrorConfig) => {
       toast.error(err?.response?.data?.message || err.message);
     },
   });
