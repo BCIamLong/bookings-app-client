@@ -12,6 +12,7 @@ import { DeleteMeInput } from "../../../interfaces";
 import { useDeleteMe } from "../useDeleteMe";
 import Spinner from "../../../components/Spinner";
 import { HiXMark } from "react-icons/hi2";
+// import Modal from "../../../components/Modal";
 
 export default function DeleteMeForm() {
   const { formState, register, handleSubmit } = useForm<DeleteMeInput>()
@@ -77,5 +78,33 @@ export default function DeleteMeForm() {
         {isDeleting ? <Spinner size="small" /> : 'Delete'}
       </Button>
     </Buttons>
+    {/* <Modal>
+      <Modal.Open openName="delete">
+        <Button type="primary" size="medium">
+          Delete
+        </Button>
+      </Modal.Open>
+      <Modal.Window name="delete">
+        <div className="flex flex-col gap-4 w-[33rem] bg-stone-100 py-8 px-8 text-stone-600">
+          <Heading type="tertiary">Are you sure to perform this action?</Heading>
+          <p>Deleting your account is irreversible. All your data, including  like saved settings, files, messages, etc., will be permanently deleted.</p>
+
+          <p className="text-sm">If you're sure, click "Delete Account"</p>
+          <p className="text-sm">To cancel, click "Cancel"</p>
+          <p>If you have questions or need assistance, please contact our support team at Booking App.</p>
+
+          <Buttons>
+            <Button type="secondary" reset={true} size="medium">
+              <span><HiXMark className="stroke-[1.5px]" /></span>
+              <span>Cancel</span>
+            </Button>
+            <Button type="primary" size="medium">
+              {isDeleting ? <Spinner size="small" /> : 'Delete'}
+            </Button>
+          </Buttons>
+        </div>
+      </Modal.Window>
+    </Modal> */}
+
   </Form>
 }

@@ -1,3 +1,4 @@
+import { HiCheck, HiXMark } from "react-icons/hi2";
 import Button from "../../../components/Button";
 import ButtonLink from "../../../components/ButtonLink";
 import Heading from "../../../components/Heading";
@@ -5,6 +6,8 @@ import { useEnable2FA } from "../useEnable2FA";
 import Spinner from "../../../components/Spinner";
 import { useUserSession } from "../useUserSession";
 import { useDisable2FA } from "../useDisable2FA";
+import Modal from "../../../components/Modal";
+import Popup from "../../../components/Popup";
 
 export default function Enable2FA() {
   const { user, isLoading } = useUserSession()
@@ -32,10 +35,24 @@ export default function Enable2FA() {
         <Button type="primary" size="small" onClick={enable2FAHandler}>
           {isEnabling ? <Spinner size="small" /> : 'Turn on 2FA'}
         </Button> :
-        <Button type="primary" size="small" onClick={disable2FAHandler}>
-          {isDisabling ? <Spinner size="small" /> : 'Turn off 2FA'}
-        </Button>
+        <Modal>
+          <Modal.Open openName="disable-2fa">
+            <Button type="primary" size="small">
+              Turn off 2FA
+            </Button>
+          </Modal.Open>
+          <Modal.Window name="disable-2fa">
+            <Popup isLoading={isDisabling} btnContent="Disable 2FA" onHandle={disable2FAHandler} >
+              <div className="flex flex-col gap-2 text-stone-600" >
+                <p>Disabling 2FA makes your account less secure. Are you sure you want to proceed?</p>
+                <p className="flex gap-2 text-sm items-center text-stone-500"><span><HiCheck /></span><span>Click "Disable 2FA" to confirm.</span></p>
+                <p className="flex gap-2 text-sm items-center text-stone-500"><span><HiXMark /></span><span>Click "Cancel" to keep it enabled.</span></p>
+                <p>If you need assistance, contact our support team at [support contact information].</p>
+              </div>
+            </Popup>
+          </Modal.Window>
+        </Modal>
       }
     </div>
-  </div>
+  </div >
 }

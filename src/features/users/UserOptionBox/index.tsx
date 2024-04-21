@@ -5,14 +5,19 @@ import Spinner from "../../../components/Spinner";
 
 export default function UserOptionBox() {
   const { isLoading, user } = useUserSession();
+  const { avatar } = user
+
+  const avatarImg = avatar === 'default-avatar.jpg' ? "/default-avatar.jpg" : avatar
+
   if (isLoading) return <Spinner size="small" />;
+
   return (
     <>
       {user ? (
         <div className="bg-stone-100">
           <Link to="/profile">
             <div className="border-stone-50 bg-white p-1 ">
-              <img className="h-9 w-9 rounded-full" src={`${user.avatar}`} alt="" />
+              <img className="h-9 w-9 rounded-full" src={`${avatarImg}`} alt="" />
             </div>
           </Link>
         </div>
