@@ -58,7 +58,7 @@ export default function CabinItem({
     >
       <img
         className="h-full w-full brightness-50"
-        src="/imgs/cabins/cabin-002.jpg"
+        src={cabinImage}
         alt=""
       />
       <div className="justify-en absolute right-2 top-2 flex">

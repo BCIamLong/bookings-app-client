@@ -4,7 +4,7 @@ import CabinItem from "../CabinItem";
 import { useCabins } from "../useCabins";
 
 export default function CabinsList() {
-  const { cabins, isLoading } = useCabins()
+  const { cabins, isLoading } = useCabins({})
 
   if (isLoading) return <Spinner size="normal" />
 
