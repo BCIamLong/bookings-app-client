@@ -1,11 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { getCabins } from "../../services/cabinApiService";
+import { SortOptions } from "../../interfaces/types";
 
-export const useCabins = function ({
-  sort = "none",
-}: {
-  sort?: "none" | "latest";
-}) {
+export const useCabins = function ({ sort = "none" }: { sort: SortOptions }) {
   const {
     data: cabins,
     isLoading,

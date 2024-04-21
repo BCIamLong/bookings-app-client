@@ -77,7 +77,12 @@ export default function Homepage() {
     <div>
       <Hero />
       <LatestCabinsList />
-      <CabinsList />
+      <div className="px-6">
+        <h2 className="inline-block border-b-2 border-stone-700 pb-1 pt-2 text-xl font-bold text-stone-700">
+          Cabins list
+        </h2>
+        <CabinsList />
+      </div>
       <Discover />
       <Contact />
     </div>

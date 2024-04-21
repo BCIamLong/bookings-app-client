@@ -5,7 +5,7 @@ import Spinner from "../../../components/Spinner";
 
 export default function UserOptionBox() {
   const { isLoading, user } = useUserSession();
-  const { avatar } = user
+  const { avatar } = user || {}
 
   const avatarImg = avatar === 'default-avatar.jpg' ? "/default-avatar.jpg" : avatar
 

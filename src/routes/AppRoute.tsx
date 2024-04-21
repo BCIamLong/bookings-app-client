@@ -17,6 +17,7 @@ import SettingsLayout from "../layouts/SettingsLayout";
 import Account from "../features/auth/Account";
 import Security from "../features/auth/Security";
 import Enable2FAForm from "../features/auth/Enable2FAForm";
+import Cabins from "../pages/Cabins";
 
 export default function AppRoute() {
   return (
@@ -39,6 +40,10 @@ export default function AppRoute() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
+
+        </Route>
+        <Route element={<AppLayout />}>
+          <Route path="/cabins" element={<Cabins />} />
         </Route>
         <Route
           element={
