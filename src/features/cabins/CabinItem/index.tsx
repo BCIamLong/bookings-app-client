@@ -9,6 +9,9 @@ export default function CabinItem({
   cabin: ICabin;
   type?: string;
 }) {
+  const { image } = cabin
+  const cabinImage = image.startsWith('cabin-') ? `imgs/cabins/${image}` : image
+
   if (type === "n-lines")
     return (
       <li className="relative h-72  w-72 bg-inherit bg-cover text-stone-700 transition-all duration-1000 ease-in-out [&>.btn-item]:hover:inline-block [&>.item-img]:hover:brightness-50">
@@ -18,7 +21,7 @@ export default function CabinItem({
         <div className="item-img h-60 w-72 overflow-hidden rounded-md">
           <img
             className="h-full w-full"
-            src="/imgs/cabins/cabin-002.jpg"
+            src={cabinImage}
             alt=""
           />
         </div>

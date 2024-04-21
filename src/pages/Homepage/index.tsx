@@ -77,7 +77,7 @@ export default function Homepage() {
     <div>
       <Hero />
       <LatestCabinsList cabins={cabins} />
-      <CabinsList cabins={cabins} />
+      <CabinsList />
       <Discover />
       <Contact />
     </div>
