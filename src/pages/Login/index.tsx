@@ -1,4 +1,6 @@
 import LoginForm from "../../features/auth/LoginForm";
+// import Button from "../../components/Button";
+// import Modal from "../../components/Modal";
 
 export default function Login() {
   return (
@@ -8,6 +10,12 @@ export default function Login() {
     >
       <h2 className="text-3xl font-bold text-stone-100">Have an account?</h2>
       <LoginForm />
+      {/* <Modal>
+        <Modal.Open openName="login"><Button type="primary">Open</Button></Modal.Open>
+        <Modal.Window name="login">
+          <div>Hello</div>
+        </Modal.Window>
+      </Modal> */}
     </div>
   );
 }
