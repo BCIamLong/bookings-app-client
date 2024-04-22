@@ -5,4 +5,5 @@ export default {
   GOOGLE_OAUTH_REDIRECT_URL:
     "http://localhost:3009/api/v1/auth/login/oauth/google",
   SERVER_BASE_URL: "http://localhost:3009",
+  PAGE_LIMIT: 6,
 };

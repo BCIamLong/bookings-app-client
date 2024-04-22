@@ -26,7 +26,7 @@ export default function Cabins() {
           <Option type="sort" value="price-high">Sort by price (high first)</Option>
         </Select>
       </div>
-      <CabinsList />
+      <CabinsList pagination={true} />
     </div>
   )
 }
