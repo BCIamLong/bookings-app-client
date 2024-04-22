@@ -18,6 +18,7 @@ import Account from "../features/auth/Account";
 import Security from "../features/auth/Security";
 import Enable2FAForm from "../features/auth/Enable2FAForm";
 import Cabins from "../pages/Cabins";
+import Cabin from "../pages/Cabin";
 
 export default function AppRoute() {
   return (
@@ -44,6 +45,7 @@ export default function AppRoute() {
         </Route>
         <Route element={<AppLayout />}>
           <Route path="/cabins" element={<Cabins />} />
+          <Route path="/cabins/:id" element={<Cabin />} />
         </Route>
         <Route
           element={
