@@ -5,6 +5,27 @@ import { appConfig } from "../config";
 // const { stripeClient } = stripeConfig;
 const { SERVER_BASE_URL } = appConfig;
 
+const getUserBooking = async function () {
+  const token = Cookies.get("access-token");
+
+  try {
+    const res = await axios.get(
+      `${SERVER_BASE_URL}/api/v1/bookings/user/latest`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    console.log(res);
+
+    return res?.data?.booking;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
 // * NEW VERSION OF STRIPE: https://docs.stripe.com/checkout/quickstart
 const bookCabin = async function (data: {
   cabinId: string;
@@ -56,4 +77,4 @@ const bookCabin = async function (data: {
 //   }
 // };
 
-export { bookCabin };
+export { bookCabin, getUserBooking };

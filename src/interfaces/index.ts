@@ -14,6 +14,7 @@ import {
   VerifyEnable2FAInput,
   DeleteMeInput,
 } from "./IAuth";
+import IBooking, { BookCabin } from "./IBooking";
 
 export type {
   ICabin,
@@ -30,4 +31,6 @@ export type {
   CheckPasswordInput,
   VerifyEnable2FAInput,
   DeleteMeInput,
+  BookCabin,
+  IBooking,
 };
