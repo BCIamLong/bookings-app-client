@@ -33,4 +33,15 @@ const getCabins = async function ({
   }
 };
 
-export { getCabins };
+const getCabin = async function (id: string) {
+  try {
+    const res = await axios.get(`${SERVER_BASE_URL}/api/v1/cabins/${id}`, {});
+    console.log(res);
+    return res?.data?.data?.cabin;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
+export { getCabins, getCabin };

@@ -19,6 +19,7 @@ import Security from "../features/auth/Security";
 import Enable2FAForm from "../features/auth/Enable2FAForm";
 import Cabins from "../pages/Cabins";
 import Cabin from "../pages/Cabin";
+import BookingSuccess from "../features/bookings/BookingSuccess";
 
 export default function AppRoute() {
   return (
@@ -46,6 +47,7 @@ export default function AppRoute() {
         <Route element={<AppLayout />}>
           <Route path="/cabins" element={<Cabins />} />
           <Route path="/cabins/:id" element={<Cabin />} />
+          <Route path="/bookings/success" element={<BookingSuccess />} />
         </Route>
         <Route
           element={

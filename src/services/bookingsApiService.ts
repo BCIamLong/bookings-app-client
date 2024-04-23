@@ -1,0 +1,59 @@
+import axios from "axios";
+import Cookies from "js-cookie";
+import { appConfig } from "../config";
+
+// const { stripeClient } = stripeConfig;
+const { SERVER_BASE_URL } = appConfig;
+
+// * NEW VERSION OF STRIPE: https://docs.stripe.com/checkout/quickstart
+const bookCabin = async function (data: {
+  cabinId: string;
+  regularPrice: number;
+  name: string;
+  description: string;
+  image: string;
+}) {
+  try {
+    const token = Cookies.get("access-token");
+    const res = await axios.post(
+      `${SERVER_BASE_URL}/api/v1/bookings/checkout-session`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Origin: "http://localhost:3009",
+        },
+      },
+    );
+    console.log(res);
+    return res?.data?.redirectUrl;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// * OLD VERSION OF STRIPE: https://docs.stripe.com/js/deprecated/redirect_to_checkout
+// const bookCabin = async function (id: string) {
+//   try {
+//     const token = Cookies.get("access-token");
+//     const res = await axios.get(
+//       `${SERVER_BASE_URL}/api/v1/bookings/checkout-session/${id}`,
+//       {
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//         },
+//       },
+//     );
+
+//     if (res?.data?.status === "success")
+//       await stripeClient.redirectToCheckout({
+//         sessionId: res?.data?.session.id,
+//       });
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+export { bookCabin };
