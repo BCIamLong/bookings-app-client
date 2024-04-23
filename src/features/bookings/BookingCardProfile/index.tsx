@@ -3,27 +3,23 @@ import { format } from "date-fns";
 import Heading from "../../../components/Heading";
 import Spinner from "../../../components/Spinner";
 import { IBooking, ICabin } from "../../../interfaces";
-import { useUserBooking } from "../useUserBooking";
 import { useUserSession } from "../../auth/useUserSession";
 
-export default function BookingCard({ isModal = false }: { isModal?: boolean }) {
-  const { booking, isLoading: isBookingLoading } = useUserBooking()
+export default function BookingCardProfile({ booking }: { booking: IBooking }) {
   const { user, isLoading: isUserLoading } = useUserSession()
   const { startDate, endDate, numNights, numGuests, cabinPrice, totalPrice, extrasPrice, createdAt, cabinId } = booking as IBooking || {}
   const { name: cabinName } = cabinId as ICabin || {}
   const { name, fullName } = user || {}
   const classStyle = `flex justify-between items-center [&>span:first-child]:text-stone-500 [&>span:nth-child(2)]:text-brand-600 [&>span:nth-child(2)]:font-semibold`
-  let style = ''
-  if (isModal) style = style + 'bg-brand-200 w-[30rem] '
 
-  if (isBookingLoading || isUserLoading) return <Spinner size="normal" />
+  if (isUserLoading) return <Spinner size="normal" />
 
   return (
-    <div className={`p-8 shadow-md shadow-brand-300 rounded-md text-stone-700 w-full ${style}`}>
-      <div className="border-b-[1.5px] pb-3">
+    <div className={`p-8 shadow-md shadow-brand-300 rounded-md text-stone-700 bg-brand-200 w-[30rem]`}>
+      <div className="border-b-[1.5px] border-stone-300 pb-4">
         <Heading type="tertiary">{cabinName}</Heading>
       </div>
-      <ul className="flex flex-col gap-3 mt-3">
+      <ul className="flex flex-col gap-3 mt-4">
         <li className={classStyle}>
           <span>Payment time:</span> <span>{format(createdAt, 'MMMM-dd-yyyy, hh:mm')}</span>
         </li>

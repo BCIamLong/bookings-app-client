@@ -10,7 +10,7 @@ export default function BookingItem({ booking }: { booking: IBooking }) {
   const { name } = cabinId as ICabin
 
   return <li className="py-3 px-6 rounded-md bg-stone-100 flex justify-between items-center">
-    <div>
+    <div className="flex flex-col items-start">
       <p className="font-semibold text-sm">Book the {name} cabin</p>
       <p className="text-xs text-stone-500 leading-6">{format(createdAt, 'MM/dd/yyyy - hh:mm:ss')}</p>
     </div>
