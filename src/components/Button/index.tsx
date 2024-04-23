@@ -61,6 +61,9 @@ export default function Button({ type, children, onClick, disabled, size, reset 
   if (type === 'secondary')
     style = baseStyle + `text-stone-700 text-lg font-semibold py-2 px-4 hover:bg-stone-200 rounded-lg border-2 capitalize border-stone-300`;
 
+  if (type === 'brand')
+    style = baseStyle + `text-stone-100 text-lg font-semibold py-2 px-4 hover:bg-brand-700 bg-brand-600 rounded-lg capitalize`;
+
   if (reset) return <button disabled={disabled} type="reset" onClick={onClick} className={style + sizeBtn}>{children}</button>;
 
   return <button disabled={disabled} onClick={onClick} className={style + sizeBtn}>{children}</button>;

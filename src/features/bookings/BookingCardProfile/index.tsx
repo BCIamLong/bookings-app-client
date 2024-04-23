@@ -4,6 +4,7 @@ import Heading from "../../../components/Heading";
 import Spinner from "../../../components/Spinner";
 import { IBooking, ICabin } from "../../../interfaces";
 import { useUserSession } from "../../auth/useUserSession";
+import Button from "../../../components/Button";
 
 export default function BookingCardProfile({ booking }: { booking: IBooking }) {
   const { user, isLoading: isUserLoading } = useUserSession()
@@ -35,6 +36,9 @@ export default function BookingCardProfile({ booking }: { booking: IBooking }) {
         <li className={classStyle}><span>Other fee:</span> <span>${extrasPrice}</span></li>
         <li className={classStyle}><span>Total amount:</span> <span>${totalPrice}</span></li>
       </ul>
+      <div className="flex flex-col w-full mt-8">
+        <Button type="brand" size="small">Delete</Button>
+      </div>
     </div>
   )
 }

@@ -22,7 +22,7 @@ export default function BookingList() {
               </Button>
             </div>
           </Modal.Open>
-          <Modal.Window name={`booking${booking._id}}`}>
+          <Modal.Window name={`booking${booking._id}}`} type="brand">
             <BookingCardProfile booking={booking} />
           </Modal.Window>
         </Modal>)}

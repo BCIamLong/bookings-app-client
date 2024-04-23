@@ -26,7 +26,7 @@ function Open({ openName, children }: { openName: string, children: JSX.Element 
   })
 }
 
-function Window({ name, children }: { name: string, children: JSX.Element }) {
+function Window({ name, type, children }: { name: string, type?: string, children: JSX.Element }) {
   const { close, openName } = useModalContext()!
   // const modal = useRef<HTMLDivElement>(null)
 
@@ -39,15 +39,19 @@ function Window({ name, children }: { name: string, children: JSX.Element }) {
 
   // }, [close])
   const modal = useOutsideClick({ close, listenOnlyEventCapturing: true })
+  const baseStyle = ` `
+  let style;
+  if (!type) style = baseStyle + 'fixed top-0 right-0 left-0 bottom-0 flex justify-center items-center backdrop-blur-sm'
+  if (type === 'brand') style = baseStyle + 'fixed top-0 right-0 left-0 bottom-0 flex justify-center items-center backdrop-blur-sm'
 
 
   if (openName !== name) return
 
-  return createPortal(<div className="fixed top-0 right-0 left-0 bottom-0 flex justify-center items-center backdrop-blur-sm" ref={modal}>
+  return createPortal(<div className={style} ref={modal}>
     <div className="min-h-[10rem] rounded-[1rem] relative overflow-hidden shadow-sm shadow-brand-300">
       {cloneElement(children, { onCloseModal: close })}
       <div className="absolute top-3 right-3">
-        <Button type="primary" onClick={close} size="small"><HiXMark className="stroke-[1.5px]" /></Button>
+        <Button type={type || 'primary'} onClick={close} size="small"><HiXMark className="stroke-[1.5px]" /></Button>
       </div>
     </div>
   </div>, document.body)
