@@ -1,3 +1,5 @@
+import ICabin from "./ICabin";
+
 export interface BookCabin {
   cabinId: string;
   regularPrice: number;
@@ -8,7 +10,7 @@ export interface BookCabin {
 
 export default interface IBooking {
   _id: string;
-  cabinId: string;
+  cabinId: string | ICabin;
   guestId: string;
   startDate: Date;
   endDate: Date;

@@ -5,6 +5,24 @@ import { appConfig } from "../config";
 // const { stripeClient } = stripeConfig;
 const { SERVER_BASE_URL } = appConfig;
 
+const getUserBookings = async function () {
+  const token = Cookies.get("access-token");
+
+  try {
+    const res = await axios.get(`${SERVER_BASE_URL}/api/v1/bookings/user`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(res);
+
+    return res?.data?.bookings;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
 const getUserBooking = async function () {
   const token = Cookies.get("access-token");
 
@@ -17,7 +35,7 @@ const getUserBooking = async function () {
         },
       },
     );
-    console.log(res);
+    // console.log(res);
 
     return res?.data?.booking;
   } catch (err) {
@@ -77,4 +95,4 @@ const bookCabin = async function (data: {
 //   }
 // };
 
-export { bookCabin, getUserBooking };
+export { bookCabin, getUserBooking, getUserBookings };

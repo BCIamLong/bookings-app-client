@@ -45,6 +45,9 @@ export default function ButtonLink({
   if (type === 'secondary')
     style = baseStyle + `text-stone-700 text-lg font-semibold py-2 px-4 hover:bg-stone-200 rounded-lg border-2 capitalize border-stone-300`;
 
+  if (type === 'profile')
+    style = baseStyle + `text-stone-700 text-lg font-semibold py-2 px-4 capitalize hover:underline `;
+
   return (
     <Link to={href || "#"} className={style + sizeBtn}>
       {children}
