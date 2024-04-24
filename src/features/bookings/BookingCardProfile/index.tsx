@@ -5,13 +5,24 @@ import Spinner from "../../../components/Spinner";
 import { IBooking, ICabin } from "../../../interfaces";
 import { useUserSession } from "../../auth/useUserSession";
 import Button from "../../../components/Button";
+import { useDeleteUserBooking } from "../useDeleteUserBooking";
 
-export default function BookingCardProfile({ booking }: { booking: IBooking }) {
+export default function BookingCardProfile({ booking, onCloseModal }: { booking: IBooking, onCloseModal?: () => void }) {
   const { user, isLoading: isUserLoading } = useUserSession()
-  const { startDate, endDate, numNights, numGuests, cabinPrice, totalPrice, extrasPrice, createdAt, cabinId } = booking as IBooking || {}
+  const { deleteUserBooking, isDeleting } = useDeleteUserBooking()
+  const { _id, startDate, endDate, numNights, numGuests, cabinPrice, totalPrice, extrasPrice, createdAt, cabinId } = booking as IBooking || {}
   const { name: cabinName } = cabinId as ICabin || {}
   const { name, fullName } = user || {}
   const classStyle = `flex justify-between items-center [&>span:first-child]:text-stone-500 [&>span:nth-child(2)]:text-brand-600 [&>span:nth-child(2)]:font-semibold`
+
+
+  const handleClick = function () {
+    deleteUserBooking(_id, {
+      onSuccess: () => {
+        onCloseModal?.()
+      }
+    })
+  }
 
   if (isUserLoading) return <Spinner size="normal" />
 
@@ -37,7 +48,9 @@ export default function BookingCardProfile({ booking }: { booking: IBooking }) {
         <li className={classStyle}><span>Total amount:</span> <span>${totalPrice}</span></li>
       </ul>
       <div className="flex flex-col w-full mt-8">
-        <Button type="brand" size="small">Delete</Button>
+        <Button type="brand" size="small" onClick={handleClick}>
+          {isDeleting ? <Spinner size="small" /> : 'Delete'}
+        </Button>
       </div>
     </div>
   )

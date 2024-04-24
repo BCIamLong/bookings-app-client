@@ -9,7 +9,7 @@ const getUserBookings = async function () {
   const token = Cookies.get("access-token");
 
   try {
-    const res = await axios.get(`${SERVER_BASE_URL}/api/v1/bookings/user`, {
+    const res = await axios.get(`${SERVER_BASE_URL}/api/v1/bookings/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -28,7 +28,7 @@ const getUserBooking = async function () {
 
   try {
     const res = await axios.get(
-      `${SERVER_BASE_URL}/api/v1/bookings/user/latest`,
+      `${SERVER_BASE_URL}/api/v1/bookings/me/latest`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -38,6 +38,27 @@ const getUserBooking = async function () {
     // console.log(res);
 
     return res?.data?.booking;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
+const deleteUserBooking = async function (id: string) {
+  const token = Cookies.get("access-token");
+
+  try {
+    const res = await axios.delete(
+      `${SERVER_BASE_URL}/api/v1/bookings/${id}/me/`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    console.log(res);
+
+    return res?.data;
   } catch (err) {
     console.log(err);
     throw err;
@@ -95,4 +116,4 @@ const bookCabin = async function (data: {
 //   }
 // };
 
-export { bookCabin, getUserBooking, getUserBookings };
+export { bookCabin, getUserBooking, getUserBookings, deleteUserBooking };
