@@ -13,7 +13,8 @@ export const useDeleteUserBooking = function () {
     mutationFn: (id: string) => deleteUserBookingService(id),
     onSuccess: () => {
       toast.success("Delete your booking successful");
-      queryClient.invalidateQueries({ queryKey: ["bookings", "booking"] });
+      queryClient.invalidateQueries({ queryKey: ["bookings"] });
+      queryClient.invalidateQueries({ queryKey: ["booking"] });
     },
     onError: (err: AxiosErrorConfig) => {
       toast.error(err?.response?.data?.message || err.message);

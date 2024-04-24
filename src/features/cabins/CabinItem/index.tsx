@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import { HiOutlineHeart } from "react-icons/hi2";
-import { ICabin } from "../../../interfaces";
-import Button from "../../../components/Button";
+
+import { ICabin } from "@/interfaces";
+import Button from "@/components/Button";
 
 export default function CabinItem({
   cabin,
@@ -9,42 +11,44 @@ export default function CabinItem({
   cabin: ICabin;
   type?: string;
 }) {
-  const { image } = cabin
+  const { image, _id } = cabin
   const cabinImage = image.startsWith('cabin-') ? `imgs/cabins/${image}` : image
 
   if (type === "n-lines")
     return (
-      <li className="relative h-72  w-72 bg-inherit bg-cover text-stone-700 transition-all duration-1000 ease-in-out [&>.btn-item]:hover:inline-block [&>.item-img]:hover:brightness-50">
-        <div className="btn-item absolute left-[33%] top-[33%] z-30 hidden h-60 w-72">
-          <Button type="item">Add to cart</Button>
-        </div>
-        <div className="item-img h-60 w-72 overflow-hidden rounded-md">
-          <img
-            className="h-full w-full"
-            src={cabinImage}
-            alt=""
-          />
-        </div>
-        <div className="justify-en absolute right-2 top-2 flex">
-          <HiOutlineHeart className="text-xl text-stone-200" />
-        </div>
-        <div className="absolute bottom-11 left-0 flex w-full justify-between px-3 pb-4 text-sm text-stone-200">
-          <p className="font-semibold">
-            {cabin.regularPrice}$ (-{cabin.discount}%)
-          </p>
-          <div className="flex items-center gap-1">
-            <div className="rounded-full bg-stone-300 p-1"></div>
-            <div className="rounded-full bg-stone-300 p-1"></div>
-            <div className="rounded-full bg-stone-300 p-1"></div>
-            <div className="rounded-full bg-stone-300 p-1"></div>
+      <li>
+        <Link to={_id} className="block relative h-72  w-72 bg-inherit bg-cover text-stone-700 transition-all duration-1000 ease-in-out [&>.btn-item]:hover:inline-block [&>.item-img]:hover:brightness-50">
+          <div className="btn-item absolute left-[33%] top-[33%] z-30 hidden h-60 w-72">
+            <Button type="item">Add to cart</Button>
           </div>
-        </div>
-        <div className="absolute left-0 top-4 flex h-full flex-col justify-end pb-4">
-          <p className="font-semibold">{cabin.name}</p>
-          <p className="text-xs leading-6 text-stone-500">
-            {cabin.description}
-          </p>
-        </div>
+          <div className="item-img h-60 w-72 overflow-hidden rounded-md">
+            <img
+              className="h-full w-full"
+              src={cabinImage}
+              alt=""
+            />
+          </div>
+          <div className="justify-en absolute right-2 top-2 flex">
+            <HiOutlineHeart className="text-xl text-stone-200" />
+          </div>
+          <div className="absolute bottom-11 left-0 flex w-full justify-between px-3 pb-4 text-sm text-stone-200">
+            <p className="font-semibold">
+              {cabin.regularPrice}$ (-{cabin.discount}%)
+            </p>
+            <div className="flex items-center gap-1">
+              <div className="rounded-full bg-stone-300 p-1"></div>
+              <div className="rounded-full bg-stone-300 p-1"></div>
+              <div className="rounded-full bg-stone-300 p-1"></div>
+              <div className="rounded-full bg-stone-300 p-1"></div>
+            </div>
+          </div>
+          <div className="absolute left-0 top-5 flex h-full flex-col justify-end pb-4">
+            <p className="font-semibold">{cabin.name}</p>
+            <p className="text-xs leading-6 text-stone-500">
+              {cabin.description}
+            </p>
+          </div>
+        </Link>
       </li>
     );
 
