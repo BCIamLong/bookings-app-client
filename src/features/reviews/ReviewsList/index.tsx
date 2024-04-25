@@ -1,7 +1,15 @@
+import Button from "@/components/Button";
+import ReviewItem from "../ReviewItem";
 
 
 export default function ReviewsList() {
-  return <div className="flex flex-col gap-4 text-stone-700">
-    <p className="underline capitalize">Reviewed by you</p>
-  </div>
+  return <ul className="grid grid-cols-2 w-[70%] p-6 gap-x-12 gap-y-6">
+    <ReviewItem />
+    <ReviewItem />
+    <ReviewItem />
+    <ReviewItem />
+    <div className="w-[70%]">
+      <Button type="secondary" size="small">Show all reviews</Button>
+    </div>
+  </ul>
 }

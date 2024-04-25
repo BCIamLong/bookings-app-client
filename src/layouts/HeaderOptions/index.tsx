@@ -8,7 +8,7 @@ export default function HeaderOptions() {
       <button className="px-2">
         <HiBars3 className="stroke-1 px-0.5 text-3xl text-stone-600" />
       </button>
-      <UserOptionBox />
+      {/* <UserOptionBox /> */}
       <Logout />
     </div>
   );

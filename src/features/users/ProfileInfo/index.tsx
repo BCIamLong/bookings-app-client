@@ -1,4 +1,3 @@
-import ReviewsList from "../../reviews/ReviewsList"
 import ProfileOptions from "../ProfileOptions"
 
 
@@ -6,6 +5,8 @@ import ProfileOptions from "../ProfileOptions"
 export default function ProfileInfo() {
   return <div>
     <ProfileOptions />
-    <ReviewsList />
+    <div className="flex flex-col gap-4 text-stone-700">
+      <p className="underline capitalize">Reviewed by you</p>
+    </div>
   </div>
 }
