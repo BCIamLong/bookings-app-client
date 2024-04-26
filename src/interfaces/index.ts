@@ -1,5 +1,5 @@
-import ICabin from "./ICabin";
-import IUser from "./IUser";
+import ICabin from './ICabin'
+import IUser from './IUser'
 import {
   UserSession,
   SignupInput,
@@ -13,8 +13,9 @@ import {
   CheckPasswordInput,
   VerifyEnable2FAInput,
   DeleteMeInput,
-} from "./IAuth";
-import IBooking, { BookCabin } from "./IBooking";
+} from './IAuth'
+import IBooking, { BookCabin } from './IBooking'
+import IReview, { ReviewInput } from './IReview'
 
 export type {
   ICabin,
@@ -33,4 +34,6 @@ export type {
   DeleteMeInput,
   BookCabin,
   IBooking,
-};
+  IReview,
+  ReviewInput,
+}
