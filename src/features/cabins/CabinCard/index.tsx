@@ -6,7 +6,7 @@ import { useBookCabin } from "../../bookings/useBookCabin";
 import Spinner from "../../../components/Spinner";
 
 export default function CabinCard({ cabin }: { cabin: ICabin }) {
-  const { _id: cabinId, regularPrice, discount, name, description, image } = cabin
+  const { _id: cabinId, regularPrice, discount, name, description, image } = cabin || {}
   const discountPrice = regularPrice - Math.round(regularPrice * (discount / 100))
   const { isBooking, bookCabin } = useBookCabin()
   const handleClick = async function () {

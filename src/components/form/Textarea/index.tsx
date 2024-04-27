@@ -8,6 +8,7 @@ interface TextareaProps {
   placeholder?: string
   disabled?: boolean
   value?: string;
+  defaultValue?: string;
   registerOb?: UseFormRegisterReturn<string>
   onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void
   // children: ReactNode
@@ -20,6 +21,7 @@ export default function Textarea({
   disabled,
   registerOb,
   value,
+  defaultValue,
   onChange,
   // children,
 }: TextareaProps) {
@@ -35,6 +37,7 @@ export default function Textarea({
       disabled={disabled}
       onChange={onChange}
       value={value}
+      defaultValue={defaultValue}
       {...registerOb}
     >
       {/* {children} */}

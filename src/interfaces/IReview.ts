@@ -1,3 +1,6 @@
+import ICabin from './ICabin'
+import IUser from './IUser'
+
 export interface ReviewInput {
   review: string
   rating: number
@@ -5,8 +8,8 @@ export interface ReviewInput {
 
 export default interface IReview {
   _id: string
-  user: string
-  cabin: string
+  user: string | IUser
+  cabin: string | ICabin
   review: string
   rating: number
   createdAt: Date

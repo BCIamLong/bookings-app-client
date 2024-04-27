@@ -5,6 +5,32 @@ import { ReviewInput } from '@/interfaces'
 
 const { SERVER_BASE_URL } = appConfig
 
+const getReviews = async function ({
+  cabinId,
+  userId,
+}: {
+  cabinId: string
+  userId?: string
+}) {
+  try {
+    let url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews`
+    if (userId)
+      url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews?user=${userId}`
+    const token = Cookies.get('access-token')
+    const res = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    console.log(res)
+    return res?.data?.data?.reviews
+  } catch (err) {
+    console.log(err)
+    throw err
+  }
+}
+
 const addReview = async function (data: ReviewInput, cabinId: string) {
   try {
     const token = Cookies.get('access-token')
@@ -21,11 +47,52 @@ const addReview = async function (data: ReviewInput, cabinId: string) {
       },
     )
     console.log(res)
-    return res?.data?.review
+    return res?.data?.data?.review
   } catch (err) {
     console.log(err)
     throw err
   }
 }
 
-export { addReview }
+const editReview = async function (id: string, data: Partial<ReviewInput>) {
+  const token = Cookies.get('access-token')
+
+  try {
+    const res = await axios.patch(
+      `${SERVER_BASE_URL}/api/v1/reviews/${id}`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    console.log(res)
+
+    return res?.data?.data?.review
+  } catch (err) {
+    console.log(err)
+    throw err
+  }
+}
+
+const deleteReview = async function (id: string) {
+  const token = Cookies.get('access-token')
+
+  try {
+    const res = await axios.delete(`${SERVER_BASE_URL}/api/v1/reviews/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    console.log(res)
+
+    return res?.data
+  } catch (err) {
+    console.log(err)
+    throw err
+  }
+}
+
+export { getReviews, addReview, editReview, deleteReview }

@@ -6,6 +6,8 @@ export default interface ICabin {
   discount: number;
   description: string;
   image: string;
+  ratingAverage: number
+  ratingQuantity: number
   createdAt: Date;
   updatedAt: Date;
 }

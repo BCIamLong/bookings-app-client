@@ -23,6 +23,7 @@ export const useAddReview = function () {
     mutationFn: (data: ReviewInput) => addReviewService(data, _id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['reviews'] })
+      queryClient.invalidateQueries({ queryKey: ['cabin'] })
       toast.success('Your review is added')
     },
     onError: (err: AxiosError<ErrorResponse>) => {
