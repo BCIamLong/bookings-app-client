@@ -5,7 +5,8 @@ import Spinner from "../../../components/Spinner";
 
 
 export default function ProfileSidebar() {
-  const { user: { fullName, createdAt, enable2FA, avatar }, isLoading } = useUserSession()
+  const { user, isLoading } = useUserSession()
+  const { fullName, createdAt, enable2FA, avatar } = user || {}
 
   if (isLoading) return <Spinner size="normal" />
 

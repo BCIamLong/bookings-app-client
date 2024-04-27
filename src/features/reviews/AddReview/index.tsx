@@ -52,7 +52,7 @@ export default function AddReview() {
 
   if (isLoadingUser || isLoadingReview) return <Spinner size='normal' />
 
-  if (reviews.length) return <Modal>
+  if (reviews?.length) return <div id='your-review'> <Modal>
     <Modal.Open openName='your-review'>
       <div className='px-6 mt-6 inline-block'>
         <Button type='secondary' size='small'>See your review</Button>
@@ -100,6 +100,7 @@ export default function AddReview() {
       </div>
     </Modal.Window>
   </Modal>
+  </div>
 
   return (
     <div className='p-6 flex flex-col gap-3 text-stone-700 relative'>

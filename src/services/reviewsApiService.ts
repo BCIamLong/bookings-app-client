@@ -2,6 +2,7 @@ import axios from 'axios'
 import { appConfig } from '@/config'
 import Cookies from 'js-cookie'
 import { ReviewInput } from '@/interfaces'
+import { FilterReviewOption, SortReviewOption } from '@/interfaces/types'
 
 const { SERVER_BASE_URL } = appConfig
 
@@ -9,16 +10,29 @@ const getReviews = async function ({
   cabinId,
   userId,
   isReviewsOfUser,
+  filter,
+  sort,
 }: {
   cabinId: string
   userId?: string
   isReviewsOfUser?: boolean
+  filter?: FilterReviewOption
+  sort?: SortReviewOption
 }) {
   try {
     let url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews`
     if (userId && !isReviewsOfUser)
       url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews?user=${userId}`
     if (isReviewsOfUser) url = `${SERVER_BASE_URL}/api/v1/auth/me/reviews`
+
+    const query = new URLSearchParams()
+    if (filter) query.append('rating', String(filter))
+    let sortQueryStr
+    if (sort === 'latest') sortQueryStr = '-createdAt'
+    if (sort === 'oldest') sortQueryStr = 'createdAt'
+    if (sort) query.append('sort', sortQueryStr!)
+
+    if (filter) url = url + `?${query.toString()}`
 
     const token = Cookies.get('access-token')
     const res = await axios.get(url, {

@@ -3,9 +3,15 @@ import ButtonLink from "../../components/ButtonLink";
 import { Outlet } from "react-router-dom";
 import ProfileOptions from "../../features/users/ProfileOptions";
 import { useUserBookings } from "../../features/bookings/useUserBookings";
+import { useReviews } from "@/features/reviews/useReviews";
+import Spinner from "@/components/Spinner";
 
 export default function ProfileInfoLayout() {
-  const { count } = useUserBookings()
+  const { count: bookingsCount, isLoading: isLoadingBookings } = useUserBookings()
+  const { count: reviewsCount, isLoading: isLoadingReviews } = useReviews({ isReviewsOfUser: true })
+
+  if (isLoadingBookings || isLoadingReviews) return <Spinner size="normal" />
+
   return (
     <div>
       <ProfileOptions />
@@ -14,14 +20,14 @@ export default function ProfileInfoLayout() {
           <ButtonLink type="profile" href="reviews">
             <span><HiStar className="text-xl" /></span>
             <p className="flex gap-1">
-              <span>0</span>
+              <span>{reviewsCount}</span>
               <span>Reviews</span>
             </p>
           </ButtonLink>
           <ButtonLink type="profile" href="bookings">
             <span><HiOutlineCalendarDays className="text-xl" /></span>
             <p className="flex gap-1">
-              <span>{count}</span>
+              <span>{bookingsCount}</span>
               <span>Bookings</span>
             </p>
 

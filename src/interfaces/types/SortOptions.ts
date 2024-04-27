@@ -1,10 +1,10 @@
-type SortOptions =
-  | "none"
-  | "latest"
-  | "oldest"
-  | "price-low"
-  | "price-high"
-  | "name-low"
-  | "name-high";
+export type SortOptions =
+  | 'none'
+  | 'latest'
+  | 'oldest'
+  | 'price-low'
+  | 'price-high'
+  | 'name-low'
+  | 'name-high'
 
-export default SortOptions;
+export type SortReviewOption = 'latest' | 'oldest'
