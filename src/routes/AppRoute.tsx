@@ -65,7 +65,7 @@ export default function AppRoute() {
             {/* <Route index element={<ProfileInfo />} /> */}
             <Route index element={<Navigate replace to='reviews' />} />
             <Route element={<ProfileInfoLayout />}>
-              <Route path="reviews" element={<ReviewsList />} />
+              <Route path="reviews" element={<ReviewsList isReviewsOfUser={true} />} />
               <Route path="bookings" element={<BookingList />} />
             </Route>
             <Route path="edit" element={<UpdateProfileForm />} />

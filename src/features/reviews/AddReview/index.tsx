@@ -19,7 +19,7 @@ export default function AddReview() {
   const { editReview, isEditing } = useEditReview()
   const { user, isLoading: isLoadingUser } = useUserSession()
   const { reviews, isLoading: isLoadingReview } = useReviews({ userId: user?._id })
-  const { _id: reviewId } = reviews[0] || {}
+  const { _id: reviewId } = reviews?.[0] || {}
   const { addReview, isAdding } = useAddReview()
   const [star, setStar] = useState(0)
   const [review, setReview] = useState('')
@@ -54,7 +54,9 @@ export default function AddReview() {
 
   if (reviews.length) return <Modal>
     <Modal.Open openName='your-review'>
-      <Button type='secondary' size='small'>See your review</Button>
+      <div className='px-6 mt-6 inline-block'>
+        <Button type='secondary' size='small'>See your review</Button>
+      </div>
     </Modal.Open>
     <Modal.Window name='your-review'>
       <div className='w-[30rem] p-6 pt-16 bg-stone-50 flex flex-col justify-center'>

@@ -4,22 +4,23 @@ import { useReviews } from "../useReviews";
 import Spinner from "@/components/Spinner";
 import { IReview } from "@/interfaces";
 import Empty from "@/components/Empty";
-import ReviewHeading from "../ReviewHeading";
-import { useCabin } from "@/features/cabins/useCabin";
 
 
-export default function ReviewsList() {
-  const { reviews, isLoading: isLoadingReview } = useReviews({})
-  const { cabin, isLoading: isLoadingCabin } = useCabin()
+export default function ReviewsList({ isReviewsOfUser }: { isReviewsOfUser?: boolean }) {
+  const { reviews, isLoading: isLoading } = useReviews({ isReviewsOfUser })
   const reviewsLength = reviews?.length
-  const { ratingAverage, ratingQuantity } = cabin || {}
+  let style = 'grid grid-cols-2 w-[70%] p-6 gap-x-12 gap-y-6'
+  if (isReviewsOfUser) style = style + ' h-[27rem] overflow-y-hidden w-full'
 
-  if (isLoadingReview || isLoadingCabin) return <Spinner size="normal" />
+  if (isLoading) return <Spinner size="normal" />
 
   return <>
-    <ReviewHeading ratingAverage={ratingAverage} ratingQuantity={ratingQuantity} />
-    <ul className="grid grid-cols-2 w-[70%] p-6 gap-x-12 gap-y-6">
-      {reviews?.map((review: IReview) => <ReviewItem key={review._id} item={review} />)}
+    <ul className={style}>
+      {reviews?.map((review: IReview, i: number) => {
+        if (i === 4) return
+        return isReviewsOfUser ? <div className="h-[7.5rem] [&>li]:h-full"><ReviewItem key={review._id} item={review} /></div> : <ReviewItem key={review._id} item={review} />
+      })}
+      {/* {reviews?.map((review: IReview) => <ReviewItem key={review._id} item={review} />)} */}
 
       {!reviewsLength && <Empty>This cabin doesn't have any review yet</Empty>}
       {reviewsLength > 4 &&

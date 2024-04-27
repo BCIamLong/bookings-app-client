@@ -9,7 +9,7 @@ export default function ProfileInfoLayout() {
   return (
     <div>
       <ProfileOptions />
-      <div className="flex flex-col gap-4 text-stone-700 mt-3">
+      <div className="flex flex-col gap-4 text-stone-700 mt-3 ">
         <div className="flex gap-2 divide-x-[1.5px] divide-stone-300">
           <ButtonLink type="profile" href="reviews">
             <span><HiStar className="text-xl" /></span>

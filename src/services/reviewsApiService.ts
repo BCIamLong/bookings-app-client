@@ -8,14 +8,18 @@ const { SERVER_BASE_URL } = appConfig
 const getReviews = async function ({
   cabinId,
   userId,
+  isReviewsOfUser,
 }: {
   cabinId: string
   userId?: string
+  isReviewsOfUser?: boolean
 }) {
   try {
     let url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews`
-    if (userId)
+    if (userId && !isReviewsOfUser)
       url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews?user=${userId}`
+    if (isReviewsOfUser) url = `${SERVER_BASE_URL}/api/v1/auth/me/reviews`
+
     const token = Cookies.get('access-token')
     const res = await axios.get(url, {
       headers: {
