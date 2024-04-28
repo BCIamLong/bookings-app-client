@@ -7,6 +7,7 @@ import { Link, useSearchParams } from "react-router-dom"
 import { useReviews } from "../useReviews"
 import Spinner from "@/components/Spinner"
 import { FilterReviewOption, SortReviewOption } from "@/interfaces/types"
+import ReviewHeading from "../ReviewHeading"
 
 export default function ReviewProfilePopup({ isReviewsOfUser }: { isReviewsOfUser?: boolean }) {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -15,13 +16,14 @@ export default function ReviewProfilePopup({ isReviewsOfUser }: { isReviewsOfUse
   const { reviews, isLoading: isLoadingReviewsPopup } = useReviews({ isReviewsOfUser, filter: filter as FilterReviewOption, sort: sort as SortReviewOption })
   let style = 'grid grid-cols-2 w-[70%] p-6 gap-x-12 gap-y-6'
   if (isReviewsOfUser) style = style + ' h-[27rem] overflow-y-hidden w-full py-2'
+  if (!isReviewsOfUser) style = style + ' h-[24rem] w-full'
 
   // if (isLoadingReviewsPopup) return <Spinner size="normal" />
 
   return (
     <div className="bg-stone-100 w-[45rem] p-6">
-      <div className="flex justify-between p-6 mt-2">
-        <Heading type="heading-4">Your reviews</Heading>
+      <div className="flex justify-between p-6 mt-2 items-center">
+        {isReviewsOfUser ? <Heading type="heading-4">Your reviews</Heading> : <div className="[&>div]:p-[0px]"><ReviewHeading /></div>}
         <div className="flex gap-2">
           <Select id="filter-user-reviews" type="sort" onChange={(e) => setSearchParams(params => {
             params.set('filter', e.target.value)
@@ -48,6 +50,9 @@ export default function ReviewProfilePopup({ isReviewsOfUser }: { isReviewsOfUse
         <ul className={style + ' overflow-y-scroll'}>
           {reviews?.map((review: IReview) => {
             const { name, _id } = review.cabin as ICabin || {}
+            if (!isReviewsOfUser)
+              return <ReviewItem item={review} />
+
             return <Link to={`/cabins/${_id}`} key={review._id} className="h-[7.5rem] [&>li]:h-full">
               <p className="p-2 bg-stone-100 text-xs uppercase font-semibold text-stone-500">{name} </p>
               <ReviewItem key={review._id} item={review} />
