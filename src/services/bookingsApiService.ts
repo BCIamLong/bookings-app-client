@@ -1,30 +1,31 @@
-import axios from "axios";
-import Cookies from "js-cookie";
-import { appConfig } from "../config";
+import axios from 'axios'
+import Cookies from 'js-cookie'
+import { appConfig } from '../config'
 
 // const { stripeClient } = stripeConfig;
-const { SERVER_BASE_URL } = appConfig;
+const { SERVER_BASE_URL } = appConfig
 
-const getUserBookings = async function () {
-  const token = Cookies.get("access-token");
-
+const getUserBookings = async function ({ cabinId }: { cabinId?: string }) {
+  const token = Cookies.get('access-token')
+  let url = `${SERVER_BASE_URL}/api/v1/bookings/me`
+  if (cabinId) url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookings/me`
   try {
-    const res = await axios.get(`${SERVER_BASE_URL}/api/v1/bookings/me`, {
+    const res = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    });
-    console.log(res);
+    })
+    console.log(res)
 
-    return res?.data?.bookings;
+    return res?.data?.bookings
   } catch (err) {
-    console.log(err);
-    throw err;
+    console.log(err)
+    throw err
   }
-};
+}
 
 const getUserBooking = async function () {
-  const token = Cookies.get("access-token");
+  const token = Cookies.get('access-token')
 
   try {
     const res = await axios.get(
@@ -34,18 +35,18 @@ const getUserBooking = async function () {
           Authorization: `Bearer ${token}`,
         },
       },
-    );
+    )
     // console.log(res);
 
-    return res?.data?.booking;
+    return res?.data?.booking
   } catch (err) {
-    console.log(err);
-    throw err;
+    console.log(err)
+    throw err
   }
-};
+}
 
 const deleteUserBooking = async function (id: string) {
-  const token = Cookies.get("access-token");
+  const token = Cookies.get('access-token')
 
   try {
     const res = await axios.delete(
@@ -55,44 +56,44 @@ const deleteUserBooking = async function (id: string) {
           Authorization: `Bearer ${token}`,
         },
       },
-    );
-    console.log(res);
+    )
+    console.log(res)
 
-    return res?.data;
+    return res?.data
   } catch (err) {
-    console.log(err);
-    throw err;
+    console.log(err)
+    throw err
   }
-};
+}
 
 // * NEW VERSION OF STRIPE: https://docs.stripe.com/checkout/quickstart
 const bookCabin = async function (data: {
-  cabinId: string;
-  regularPrice: number;
-  name: string;
-  description: string;
-  image: string;
+  cabinId: string
+  regularPrice: number
+  name: string
+  description: string
+  image: string
 }) {
   try {
-    const token = Cookies.get("access-token");
+    const token = Cookies.get('access-token')
     const res = await axios.post(
       `${SERVER_BASE_URL}/api/v1/bookings/checkout-session`,
       data,
       {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Origin: "http://localhost:3009",
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Origin: 'http://localhost:3009',
         },
       },
-    );
-    console.log(res);
-    return res?.data?.redirectUrl;
+    )
+    console.log(res)
+    return res?.data?.redirectUrl
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
-};
+}
 
 // * OLD VERSION OF STRIPE: https://docs.stripe.com/js/deprecated/redirect_to_checkout
 // const bookCabin = async function (id: string) {
@@ -116,4 +117,4 @@ const bookCabin = async function (data: {
 //   }
 // };
 
-export { bookCabin, getUserBooking, getUserBookings, deleteUserBooking };
+export { bookCabin, getUserBooking, getUserBookings, deleteUserBooking }

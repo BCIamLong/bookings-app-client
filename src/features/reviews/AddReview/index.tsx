@@ -12,6 +12,7 @@ import Modal from '@/components/Modal'
 import Buttons from '@/components/Buttons'
 import { useDeleteReview } from '../useDeleteReview'
 import { useEditReview } from '../useEditReview'
+import { useUserBookings } from '@/features/bookings/useUserBookings'
 // import ReviewItem from '../ReviewItem'
 
 export default function AddReview() {
@@ -24,6 +25,7 @@ export default function AddReview() {
   const [star, setStar] = useState(0)
   const [review, setReview] = useState('')
   const [isEdit, setIsEdit] = useState(false)
+  const { count, isLoading: isLoadingBookings } = useUserBookings()
 
   const { avatar } = user || {}
   const avatarFormat = avatar === 'default-avatar.jpg' ? '/default-avatar.jpg' : avatar
@@ -50,7 +52,10 @@ export default function AddReview() {
     })
   }
 
-  if (isLoadingUser || isLoadingReview) return <Spinner size='normal' />
+  if (isLoadingUser || isLoadingReview || isLoadingBookings) return <Spinner size='normal' />
+
+  if (!count) return null
+  // <p>You need to purchase this cabin to review</p>
 
   if (reviews?.length) return <div id='your-review'> <Modal>
     <Modal.Open openName='your-review'>

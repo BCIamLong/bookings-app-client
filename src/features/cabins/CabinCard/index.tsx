@@ -4,16 +4,21 @@ import Button from "../../../components/Button";
 import { ICabin } from "../../../interfaces";
 import { useBookCabin } from "../../bookings/useBookCabin";
 import Spinner from "../../../components/Spinner";
+import { useUserBookings } from "@/features/bookings/useUserBookings";
+import ButtonLink from "@/components/ButtonLink";
 
 export default function CabinCard({ cabin }: { cabin: ICabin }) {
   const { _id: cabinId, regularPrice, discount, name, description, image } = cabin || {}
   const discountPrice = regularPrice - Math.round(regularPrice * (discount / 100))
   const { isBooking, bookCabin } = useBookCabin()
+  const { count, isLoading } = useUserBookings()
   const handleClick = async function () {
     bookCabin({ cabinId, regularPrice, name, description, image })
   }
+  if (isLoading) return <Spinner size="normal" />
   return (
-    <div className="min-h-24 text-stone-700 shadow-md shadow-stone-300 px-4 py-6">
+    <div className={`min-h-24 text-stone-700 shadow-md shadow-stone-300 px-4 py-6 ${count ? ' backdrop-brightness-90' : ''}`}>
+      {count && <p className="py-1 px-2 text-xs uppercase font-semibold text-stone-50 bg-green-500 rounded-lg flex justify-center items-center mb-3">Payment Completed</p>}
       <p className="pb-4 border-b-[1.5px] font-bold border-stone-300">
         <span className="line-through text-stone-400">$ {regularPrice} </span>
         <span> &rarr; $ {discountPrice} </span>
@@ -24,7 +29,11 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
         <li>7 days: $ 2000</li>
         <li>14 days: $ 3000</li>
       </ul>
-      <Button type="primary" size="small" onClick={handleClick}>{isBooking ? <Spinner size="small" /> : 'Reserve Now'}</Button>
+      {!count ?
+        <Button type="primary" size="small" onClick={handleClick}>{isBooking ? <Spinner size="small" /> : 'Reserve Now'}</Button> :
+        <div className="w-[62%]">
+          <ButtonLink href='/profile/bookings' type="primary" size="small">See your bookings</ButtonLink>
+        </div>}
       <div className="flex justify-between items-center py-6 text-xs font-semibold">
         <div className="flex items-center gap-2">
           <HiOutlineBuildingOffice className="text-sm" />
