@@ -7,6 +7,7 @@ import ButtonLink from "../../../components/ButtonLink";
 import { useCabin } from "../useCabin";
 import Spinner from "../../../components/Spinner";
 import { ICabin } from "../../../interfaces";
+import Map from "@/components/Map";
 
 export default function CabinDetail() {
   const { cabin, isLoading } = useCabin()
@@ -119,6 +120,7 @@ export default function CabinDetail() {
                 </div>
               </div>
             </div>
+            <Map />
           </div>
           <div className="w-[60%] ml-12">
             <CabinCard cabin={cabin as ICabin} />

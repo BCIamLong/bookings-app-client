@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* * we can use this or use [&>.leaflet-container]  to custom the style of leaflet map container*/
+/* .leaflet-container {
+  height: 40rem;
+  width: 100%;
+} */
