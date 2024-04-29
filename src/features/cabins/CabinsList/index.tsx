@@ -17,7 +17,7 @@ export default function CabinsList({ pagination = false }: { pagination?: boolea
 
   return (
     <>
-      <ul className="grid grid-cols-3 gap-y-6 px-24 py-6 overflow-hidden">
+      <ul className="grid grid-cols-3 gap-y-6 px-24 bg-stone-0 py-6 overflow-hidden">
         {cabins?.map((cabin: ICabin) => (
           <CabinItem cabin={cabin} type="n-lines" key={cabin._id} />
         ))}

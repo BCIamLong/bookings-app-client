@@ -31,21 +31,21 @@ export default function Input({
   if (variant === "search")
     style =
       baseStyle +
-      `w-full outline-none focus:border-b-2 focus:border-stone-600 border-b-2 border-white transition-all duration-[600ms] ease-in-out `;
+      `w-full outline-none focus:border-b-2 focus:border-stone-600 border-b-2 border-stone-0 transition-all duration-[600ms] ease-in-out bg-stone-0`;
   if (variant === "login")
     style =
       baseStyle +
-      `w-full p-2 rounded-md border-white outline-none text-stone-600 border-2`;
+      `w-full p-2 rounded-md border-stone-0 outline-none text-stone-600 border-2 bg-stone-0`;
 
   if (variant === "contact")
     style =
       baseStyle +
-      `w-full rounded-full px-3 py-2 text-xs leading-5 text-inherit focus:outline-none`;
+      `w-full rounded-full px-3 py-2 text-xs leading-5 text-inherit focus:outline-none bg-stone-0`;
 
   if (variant === 'profile')
     style =
       baseStyle +
-      `w-[80%] rounded-lg  border-[1.5px] border-stone-300 px-3 py-3 text-sm leading-5 text-stone-700 focus:outline-2 outline-stone-500`;
+      `w-[80%] rounded-lg  border-[1.5px] border-stone-300 px-3 py-3 text-sm leading-5 text-stone-700 focus:outline-2 outline-stone-500 bg-stone-0`;
 
   return (
     <input

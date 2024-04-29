@@ -39,7 +39,7 @@ function Window({ name, type, children }: { name: string, type?: string, childre
 
   // }, [close])
   const modal = useOutsideClick({ close, listenOnlyEventCapturing: true })
-  const baseStyle = ` `
+  const baseStyle = `z-50 `
   let style;
   if (!type) style = baseStyle + 'fixed top-0 right-0 left-0 bottom-0 flex justify-center items-center backdrop-blur-sm'
   if (type === 'brand') style = baseStyle + 'fixed top-0 right-0 left-0 bottom-0 flex justify-center items-center backdrop-blur-sm'

@@ -3,7 +3,7 @@ import Heading from "../Heading";
 
 export default function Discover() {
   return (
-    <section className="flex items-center gap-24 px-28 py-28" id='discover'>
+    <section className="flex bg-stone-0 items-center gap-24 px-28 py-28" id='discover'>
       <div className="flex w-[70%] flex-col gap-5">
         <div className="mb-2">
           <Heading type="secondary">

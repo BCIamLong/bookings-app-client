@@ -90,7 +90,7 @@ export default function LoginForm() {
           <span>Login with email</span>
         </ButtonLink>
       </div>
-      <div className="flex justify-center gap-2">
+      <div className="flex justify-center gap-2 text-stone-700">
         <ButtonLink type="login-type">
           <FaFacebook className="text-xl" />
           <span>Facebook</span>
@@ -107,7 +107,7 @@ export default function LoginForm() {
       <ButtonLink type="simple">
         <Link to="/forgot-password">Forget the password?</Link>
       </ButtonLink>
-      <p className="flex justify-center gap-1 text-sm text-inherit">
+      <p className="flex justify-center gap-1 text-sm text-stone-500">
         <span>You don't have account yet, </span>
         <ButtonLink type="simple">
           <Link to="/signup">Sign up</Link>

@@ -5,8 +5,8 @@ import ButtonLink from "../../components/ButtonLink";
 
 export default function LoginLayout() {
   return (
-    <div className="grid grid-cols-[1fr_1.5fr]">
-      <div className="flex flex-col justify-center gap-16 p-6">
+    <div className="grid grid-cols-[1fr_1.5fr] bg-stone-0">
+      <div className="flex flex-col justify-center gap-16 p-6 bg-stone-0">
         <Logo size="big" />
         <div className="flex flex-col gap-7">
           <Heading type="secondary">

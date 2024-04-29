@@ -7,7 +7,7 @@ interface SelectProps {
 }
 
 export default function Select({ id, type, disabled, registerOb, children, onChange }: SelectProps) {
-  const baseStyle = 'text-stone-700 text-sm ';
+  const baseStyle = 'text-stone-700 text-sm bg-stone-0 ';
   let style;
   if (type === 'delete-me') style = baseStyle + 'p-2 border-[1.5px] border-stone-300 rounded-lg w-[80%] outline-stone-500'
   if (type === 'sort') style = baseStyle + 'p-2 border-[1.5px] px-6 font-semibold border-stone-300 rounded-lg outline-stone-500'

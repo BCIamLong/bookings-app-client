@@ -5,7 +5,7 @@ import ReviewHeading from "@/features/reviews/ReviewHeading";
 
 export default function Cabin() {
   return (
-    <div className="px-6 pt-8 py-20">
+    <div className="px-6 pt-8 py-20 bg-stone-0">
       <CabinDetail />
       <AddReview />
       <ReviewHeading />

@@ -27,7 +27,7 @@ export default function Textarea({
 }: TextareaProps) {
   const baseStyle = ``
   let style;
-  if (type === 'review') style = baseStyle + 'w-[70%] h-24 border-[1.5px] rounded-lg p-3 resize-none focus:outline-stone-500'
+  if (type === 'review') style = baseStyle + 'w-[70%] h-24 border-[1.5px] rounded-lg p-3 resize-none focus:outline-stone-500 bg-stone-0'
 
   return (
     <textarea

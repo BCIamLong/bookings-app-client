@@ -4,10 +4,12 @@ import Navigation from "../Navigation";
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-between bg-stone-50 px-12 py-3 dark:bg-stone-800">
-      <Logo />
-      <Navigation />
-      <HeaderOptions />
+    <header className="h-24 bg-stone-50">
+      <div className="flex items-center w-full z-40 fixed justify-between bg-stone-50 px-12 py-3">
+        <Logo />
+        <Navigation />
+        <HeaderOptions />
+      </div>
     </header>
   );
 }

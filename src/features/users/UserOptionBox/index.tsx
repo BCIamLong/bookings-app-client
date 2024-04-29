@@ -16,7 +16,7 @@ export default function UserOptionBox() {
       {user ? (
         <div className="bg-stone-100">
           <Link to="/profile">
-            <div className="border-stone-50 bg-white p-1 ">
+            <div className="border-stone-50 bg-stone-0 p-1 ">
               <img className="h-9 w-9 rounded-full" src={`${avatarImg}`} alt="" />
             </div>
           </Link>
