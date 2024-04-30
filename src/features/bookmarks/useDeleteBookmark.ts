@@ -18,7 +18,7 @@ export const useDeleteBookmark = function () {
     onSuccess: () => {
       // queryClient.invalidateQueries({ queryKey: ['bookmark'] })
       queryClient.removeQueries({ queryKey: [`bookmark-me-${cabinId}`] })
-      // queryClient.invalidateQueries({ queryKey: ['bookmarks'] })
+      queryClient.invalidateQueries({ queryKey: ['bookmarks-me'] })
       toast.success('Delete your bookmark successful')
     },
     onError: (err: AxiosErrorConfig) => {

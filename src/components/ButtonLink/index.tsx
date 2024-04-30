@@ -48,6 +48,9 @@ export default function ButtonLink({
   if (type === 'profile')
     style = baseStyle + `text-stone-700 text-lg font-semibold py-2 px-4 capitalize hover:underline `;
 
+  if (type === 'menu')
+    style = baseStyle + `text-brand-700 text-sm font-semibold py-2 px-4 capitalize hover:bg-brand-300 `;
+
   return (
     <Link to={href || "#"} className={style + sizeBtn}>
       {children}

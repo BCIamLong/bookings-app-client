@@ -81,7 +81,7 @@ export default function Homepage() {
         <h2 className="inline-block border-b-2 border-stone-700 pb-1 pt-2 text-xl font-bold text-stone-700">
           Cabins list
         </h2>
-        <CabinsList />
+        <CabinsList isLink={true} />
       </div>
       <Discover />
       <Contact />

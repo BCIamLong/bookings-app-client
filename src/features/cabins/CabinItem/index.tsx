@@ -7,9 +7,11 @@ import Button from "@/components/Button";
 export default function CabinItem({
   cabin,
   type = "1-line",
+  isLink = false,
 }: {
   cabin: ICabin;
   type?: string;
+  isLink?: boolean
 }) {
   const { image, _id } = cabin
   const cabinImage = image.startsWith('cabin-') ? `imgs/cabins/${image}` : image
@@ -17,7 +19,7 @@ export default function CabinItem({
   if (type === "n-lines")
     return (
       <li>
-        <Link to={_id} className="block relative h-72  w-72 bg-inherit bg-cover text-stone-700 transition-all duration-1000 ease-in-out [&>.btn-item]:hover:inline-block [&>.item-img]:hover:brightness-50">
+        <Link to={!isLink ? _id : `/cabins/${_id}`} className="block relative h-72  w-72 bg-inherit bg-cover text-stone-700 transition-all duration-1000 ease-in-out [&>.btn-item]:hover:inline-block [&>.item-img]:hover:brightness-50">
           <div className="btn-item absolute left-[33%] top-[33%] z-30 hidden h-60 w-72">
             <Button type="item">Add to cart</Button>
           </div>

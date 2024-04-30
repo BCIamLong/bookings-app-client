@@ -7,7 +7,7 @@ import { SortOptions } from "../../../interfaces/types";
 import Pagination from "../../../components/Pagination";
 
 
-export default function CabinsList({ pagination = false }: { pagination?: boolean }) {
+export default function CabinsList({ pagination = false, isLink = false }: { pagination?: boolean, isLink?: boolean }) {
   const [searchParams] = useSearchParams()
   const sort = searchParams.get('sort') || "none"
   const page = +searchParams.get('page')! || 1
@@ -19,7 +19,7 @@ export default function CabinsList({ pagination = false }: { pagination?: boolea
     <>
       <ul className="grid grid-cols-3 gap-y-6 px-24 bg-stone-0 py-6 overflow-hidden">
         {cabins?.map((cabin: ICabin) => (
-          <CabinItem cabin={cabin} type="n-lines" key={cabin._id} />
+          <CabinItem cabin={cabin} type="n-lines" key={cabin._id} isLink={isLink} />
         ))}
       </ul>
       {pagination && <Pagination count={count} />}

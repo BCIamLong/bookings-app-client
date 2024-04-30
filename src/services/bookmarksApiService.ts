@@ -5,9 +5,27 @@ import { appConfig } from '@/config'
 
 const { SERVER_BASE_URL } = appConfig
 
-const getBookmark = async function (cabinId: string) {
+const getBookmarks = async function () {
   const token = Cookies.get('access-token')
 
+  try {
+    const res = await axios.get(`${SERVER_BASE_URL}/api/v1/auth/me/bookmarks`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    console.log(res)
+
+    return res?.data?.data?.bookmarks
+  } catch (err) {
+    console.log(err)
+    throw err
+  }
+}
+
+const getBookmark = async function (cabinId: string) {
+  const token = Cookies.get('access-token')
+  console.log(cabinId)
   try {
     const res = await axios.get(
       `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookmarks`,
@@ -67,4 +85,4 @@ const deleteBookmark = async function (id: string) {
   }
 }
 
-export { addBookmark, getBookmark, deleteBookmark }
+export { getBookmarks, addBookmark, getBookmark, deleteBookmark }

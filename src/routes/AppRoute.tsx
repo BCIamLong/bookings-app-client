@@ -22,6 +22,7 @@ import BookingSuccess from "../features/bookings/BookingSuccess";
 import ReviewsList from "../features/reviews/ReviewsList";
 import ProfileInfoLayout from "../layouts/ProfileInfoLayout";
 import BookingList from "../features/bookings/BookingsList";
+import Bookmarks from "@/pages/Bookmarks";
 // import ProfileInfo from "../features/users/ProfileInfo";
 
 export default function AppRoute() {
@@ -75,8 +76,8 @@ export default function AppRoute() {
               <Route path="security" element={<Security />} />
               <Route path="security/setup-2fa" element={<Enable2FAForm />} />
             </Route>
-
           </Route>
+          <Route path="/bookmarks" element={<Bookmarks />} />
         </Route>
         {/* <Route element={<LoginLayout />}>
     <Route path="/login" element={<Login />} />
