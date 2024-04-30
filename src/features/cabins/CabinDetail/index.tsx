@@ -1,4 +1,4 @@
-import { HiOutlineShare, HiOutlineHeart, HiChevronRight } from "react-icons/hi2"
+import { HiOutlineShare, HiChevronRight } from "react-icons/hi2"
 import { IoBedOutline } from "react-icons/io5";
 import { GiKnifeFork } from "react-icons/gi";
 import Heading from "../../../components/Heading"
@@ -8,6 +8,7 @@ import { useCabin } from "../useCabin";
 import Spinner from "../../../components/Spinner";
 import { ICabin } from "../../../interfaces";
 import Map from "@/components/Map";
+import Bookmark from "@/features/bookmarks/Bookmark";
 
 export default function CabinDetail() {
   const { cabin, isLoading } = useCabin()
@@ -15,6 +16,7 @@ export default function CabinDetail() {
   const cabinImage = image?.startsWith('cabin-') ? `/imgs/cabins/${image}` : image
   const classStyle = `rounded-md overflow-hidden h-[98%]`
   if (isLoading) return <Spinner size="normal" />
+
   return (
     <>
       <div className="flex gap-1 items-center text-stone-500 ">
@@ -52,7 +54,7 @@ export default function CabinDetail() {
                 <p className="text-xs text-stone-500">Address</p>
               </div>
               <div className="flex gap-2 items-center">
-                <HiOutlineHeart className="stroke-2 text-2xl" />
+                <Bookmark />
                 <HiOutlineShare className="stroke-2 text-2xl" />
               </div>
             </div>

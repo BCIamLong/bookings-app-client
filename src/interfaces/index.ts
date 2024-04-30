@@ -16,6 +16,7 @@ import {
 } from './IAuth'
 import IBooking, { BookCabin } from './IBooking'
 import IReview, { ReviewInput } from './IReview'
+import IBookmark from './IBookmark'
 
 export type {
   ICabin,
@@ -36,4 +37,5 @@ export type {
   IBooking,
   IReview,
   ReviewInput,
+  IBookmark,
 }
