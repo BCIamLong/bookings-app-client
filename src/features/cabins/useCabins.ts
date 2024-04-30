@@ -2,6 +2,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getCabins } from '../../services/cabinApiService'
 import { SortOptions } from '../../interfaces/types'
 import { appConfig } from '../../config'
+import { useSearchParams } from 'react-router-dom'
 
 const { PAGE_LIMIT } = appConfig
 
@@ -12,8 +13,11 @@ export const useCabins = function ({
   sort: SortOptions
   page?: number
 }) {
+  const [searchParams] = useSearchParams()
+  const search = JSON.parse(searchParams.get('search') || `{}`)
+
   const queryClient = useQueryClient()
-  const options = { sort, page }
+  const options = { sort, page, search }
   const { data, isLoading, error } = useQuery({
     // queryKey: [`cabins${sort !== "none" ? `-sort-by-${sort}` : ""}`],
     queryKey: [`cabins`, options],

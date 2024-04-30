@@ -1,4 +1,4 @@
-import ICabin from './ICabin'
+import ICabin, { SearchCabin } from './ICabin'
 import IUser from './IUser'
 import {
   UserSession,
@@ -20,6 +20,7 @@ import IBookmark from './IBookmark'
 
 export type {
   ICabin,
+  SearchCabin,
   IUser,
   UserSession,
   SignupInput,

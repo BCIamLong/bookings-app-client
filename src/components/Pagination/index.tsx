@@ -30,8 +30,9 @@ export default function Pagination({ count }: { count: number }) {
     searchParams.set('page', String(page))
     setSearchParams(searchParams)
   }
+  console.log(numPages)
 
-  if (numPages === 1) return null
+  if (numPages <= 1) return null
 
   return (
     <div className="flex gap-2 justify-center [&>.active]:border-stone-700 [&>.active]:bg-stone-700 [&>.active]:text-stone-100 [&>.active]:hover:bg-stone-600 z-50 text-stone-700">

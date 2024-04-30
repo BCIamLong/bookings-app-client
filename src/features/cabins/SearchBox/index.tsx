@@ -1,8 +1,5 @@
-import { HiMagnifyingGlass } from "react-icons/hi2";
+import SearchForm from "../SearchForm";
 import Button from "../../../components/Button";
-import FormItem from "../../../components/form/FormItem";
-import Input from "../../../components/form/Input";
-import Form from "../../../components/form/Form";
 
 export default function SearchBox() {
   return (
@@ -11,7 +8,7 @@ export default function SearchBox() {
         <h2 className="text-3xl font-bold uppercase">Find</h2>
         <ul className="flex gap-4 text-lg font-semibold">
           <li className="border-b-2">
-            <Button type="nav-search">Rooms</Button>
+            <Button type="nav-search">Cabins</Button>
           </li>
           <li>
             <Button type="nav-search">Flats</Button>
@@ -24,47 +21,7 @@ export default function SearchBox() {
           </li>
         </ul>
       </nav>
-      <Form type="search">
-        <FormItem type="search" label="Location" labelFor="location">
-          <Input
-            variant="search"
-            id="location"
-            placeholder="Which city do you prefer?"
-            type="text"
-          />
-        </FormItem>
-
-        <FormItem type="search" label="Check in" labelFor="checked-in">
-          <Input
-            variant="search"
-            id="checked-in"
-            placeholder="Add dates"
-            type="text"
-          />
-        </FormItem>
-
-        <FormItem type="search" label="Check out" labelFor="checked-out">
-          <Input
-            variant="search"
-            id="checked-out"
-            placeholder="Add dates"
-            type="text"
-          />
-        </FormItem>
-
-        <FormItem type="search" label="Guests" labelFor="guests">
-          <Input
-            variant="search"
-            id="guests"
-            placeholder="Add guests"
-            type="text"
-          />
-        </FormItem>
-
-        <Button type="search">
-          <HiMagnifyingGlass className="text-3xl text-stone-50" />
-        </Button>
-      </Form>
+      <SearchForm />
     </div>
   );
 }
