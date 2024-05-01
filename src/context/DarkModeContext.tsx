@@ -28,6 +28,7 @@ export default function DarkModeProvider({ children }: { children: ReactNode }) 
   const [isDarkMode, setIsDarkMode] = useLocalStorageState({ key: 'darkMode', initialState: window.matchMedia("(prefers-color-scheme: dark)").matches })
 
   useEffect(function () {
+    // console.log(window.matchMedia("(prefers-color-scheme: dark)").matches)
     if (!isDarkMode) {
       document.documentElement.classList.remove('dark')
       document.documentElement.classList.add('light')

@@ -9,7 +9,8 @@ export const useLocalStorageState = function <T>({
 }) {
   const [state, setState] = useState(() => {
     const rawVal = localStorage.getItem(key)
-    return JSON.parse(rawVal!) || initialState
+    return JSON.parse(rawVal!) ?? initialState
+    // return initialState
   })
 
   useEffect(
