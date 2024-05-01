@@ -3,6 +3,10 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      screens: {
+        thin: '320px',
+        tiny: '440px',
+      },
       backgroundImage: {
         hero: "url('public/imgs/cabins/cabin-001.jpg')",
       },

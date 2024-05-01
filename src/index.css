@@ -8,6 +8,45 @@
   width: 100%;
 } */
 
+html {
+  font-size: 62.5%;
+}
+
+@media (min-width: 320px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (min-width: 440px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 62.5%;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 70%;
+  }
+}
+@media (min-width: 1024px) {
+  html {
+    font-size: 90%;
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 100%;
+  }
+}
+
 .light {
   --color-grey-0: #fff;
   --color-grey-50: #f9fafb;
