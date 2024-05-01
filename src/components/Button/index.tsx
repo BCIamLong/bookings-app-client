@@ -32,7 +32,7 @@ export default function Button({ type, children, onClick, disabled, size, reset 
   if (type === "nav-header")
     style =
       baseStyle +
-      `bg-stone-700 text-stone-50 px-6  text-lg rounded-3xl py-2 flex items-center`;
+      `bg-stone-700 text-stone-50 px-6  text-lg rounded-3xl py-2 flex items-center tiny:max-sm:hidden`;
   if (type === "login")
     style =
       baseStyle +
@@ -50,7 +50,7 @@ export default function Button({ type, children, onClick, disabled, size, reset 
   if (type === "discover")
     style =
       baseStyle +
-      `text-stone-100 font-bold capitalize text-sm px-2 py-3 bg-stone-800 rounded-full w-[30%] hover:bg-stone-700`;
+      `text-stone-100 font-bold capitalize text-sm px-2 py-3 bg-stone-800 rounded-full w-[30%] sm:w-[40%] hover:bg-stone-700 thin:w-[60%] tiny:w-[40%]`;
 
   if (type === 'icon')
     style = baseStyle + `text-stone-700 text-2xl p-2 hover:bg-stone-200`;

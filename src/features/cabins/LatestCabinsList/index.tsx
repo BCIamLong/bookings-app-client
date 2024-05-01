@@ -9,11 +9,11 @@ export default function LatestCabinsList() {
   if (isLoading) return <Spinner size="normal" />
 
   return (
-    <div className="px-6 bg-stone-0">
+    <div className="xl:px-6 bg-stone-0 md:px-4 px-3">
       <h2 className="inline-block border-b-2 border-stone-700 pb-1 pt-2 text-xl font-bold text-stone-700">
         Latest Cabins list
       </h2>
-      <ul className="flex gap-4 py-6">
+      <ul className="flex gap-4 py-6 thin:max-tiny:grid thin:max-tiny:grid-cols-3">
         {cabins.map((cabin: ICabin) => (
           <CabinItem cabin={cabin} key={cabin._id} />
         ))}

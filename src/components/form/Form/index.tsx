@@ -16,7 +16,7 @@ export default function Form({ type, onSubmit, children }: FormProps) {
   if (type === "search")
     style =
       baseStyle +
-      `grid grid-cols-[12rem,9rem,9rem,9rem,3rem] gap-3 divide-x-2 rounded-full bg-stone-0 px-6 py-3 `;
+      `grid grid-cols-[3fr_2fr_2fr_2fr_1fr] gap-3 justify-center divide-x-2 rounded-full bg-stone-0 px-6 py-3 `;
   if (type === 'profile')
     style =
       baseStyle +

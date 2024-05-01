@@ -19,13 +19,13 @@ export default function CabinItem({
   if (type === "n-lines")
     return (
       <li>
-        <Link to={!isLink ? _id : `/cabins/${_id}`} className="block relative h-72  w-72 bg-inherit bg-cover text-stone-700 transition-all duration-1000 ease-in-out [&>.btn-item]:hover:inline-block [&>.item-img]:hover:brightness-50">
+        <Link to={!isLink ? _id : `/cabins/${_id}`} className="block relative min-h-72  min-w-72 bg-inherit bg-cover text-stone-700 transition-all duration-1000 ease-in-out [&>.btn-item]:hover:inline-block [&>.item-img]:hover:brightness-50">
           <div className="btn-item absolute left-[33%] top-[33%] z-30 hidden h-60 w-72">
             <Button type="item">Add to cart</Button>
           </div>
-          <div className="item-img h-60 w-72 overflow-hidden rounded-md">
+          <div className="item-img min-h-60 min-w-72 overflow-hidden rounded-md">
             <img
-              className="h-full w-full"
+              className="min-h-60 w-full"
               src={cabinImage}
               alt=""
             />
@@ -44,8 +44,8 @@ export default function CabinItem({
               <div className="rounded-full bg-stone-300 p-1"></div>
             </div>
           </div>
-          <div className="absolute left-0 top-5 flex h-full flex-col justify-end pb-4">
-            <p className="font-semibold">{cabin.name}</p>
+          <div className="absolute left-0 xl:top-6 md:top-6 sm:top-16 flex h-full flex-col justify-end pb-4 thin:top-10 tiny:top-16">
+            <p className="font-semibold ">{cabin.name}</p>
             <p className="text-xs leading-6 text-stone-500">
               {cabin.description}
             </p>
@@ -60,7 +60,7 @@ export default function CabinItem({
       //     backgroundImage: `url("/imgs/cabins/cabin-002.jpg")`,
       //     backdropFilter: ` grayscale(30%)`,
       //   }}
-      className="relative h-60 w-48 overflow-hidden rounded-md bg-stone-400 bg-cover text-stone-100"
+      className="relative min-h-48 min-w-30 overflow-hidden rounded-md bg-stone-400 bg-cover text-stone-100"
     >
       <img
         className="h-full w-full brightness-50"

@@ -13,7 +13,7 @@ import Copyright from "../Copyright";
 export default function Footer() {
   return (
     <footer className="bg-stone-50">
-      <nav className="grid grid-cols-[2.1fr,1fr,1fr,1fr] gap-x-16 px-16 py-20">
+      <nav className="grid grid-cols-[2.1fr,1fr,1fr,1fr] gap-x-16 gap-y-12 px-16 py-20 thin:max-sm:grid-cols-[2.1fr,1fr] thin:max-sm:gap-x-8">
         <div className="flex flex-col gap-6">
           <Logo />
           <p className="text-xs text-stone-400">
