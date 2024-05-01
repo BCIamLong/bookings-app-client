@@ -1,4 +1,5 @@
-import { ReactNode, createContext, useContext, useEffect, useState } from "react";
+import { useLocalStorageState } from "@/hooks/useLocalStorageState";
+import { ReactNode, createContext, useContext, useEffect } from "react";
 
 interface DarkModeContextProps {
   isDarkMode: boolean
@@ -18,10 +19,13 @@ export const useDarkModeContext = function () {
 
 
 export default function DarkModeProvider({ children }: { children: ReactNode }) {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const rawVal = localStorage.getItem('darkMode');
-    return JSON.parse(rawVal!) || false
-  })
+  // const [isDarkMode, setIsDarkMode] = useState(() => {
+  //   const rawVal = localStorage.getItem('darkMode');
+  //   return JSON.parse(rawVal!) || false
+  // })
+  // const [isDarkMode, setIsDarkMode] = useLocalStorageState({ key: 'darkMode', initialState: false })
+  // * get the dark mode based on our system (browser)
+  const [isDarkMode, setIsDarkMode] = useLocalStorageState({ key: 'darkMode', initialState: window.matchMedia("(prefers-color-scheme: dark)").matches })
 
   useEffect(function () {
     if (!isDarkMode) {
@@ -37,7 +41,7 @@ export default function DarkModeProvider({ children }: { children: ReactNode }) 
 
   const toggleDarkMode = function () {
     setIsDarkMode((isDarkMode: boolean) => !isDarkMode)
-    localStorage.setItem('darkMode', JSON.stringify(!isDarkMode))
+    // localStorage.setItem('darkMode', JSON.stringify(!isDarkMode))
   }
   return <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>{children}</DarkModeContext.Provider>
 }
