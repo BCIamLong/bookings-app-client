@@ -23,6 +23,7 @@ import ReviewsList from "../features/reviews/ReviewsList";
 import ProfileInfoLayout from "../layouts/ProfileInfoLayout";
 import BookingList from "../features/bookings/BookingsList";
 import Bookmarks from "@/pages/Bookmarks";
+import LoginRoute from "./LoginRoute";
 // import ProfileInfo from "../features/users/ProfileInfo";
 
 export default function AppRoute() {
@@ -41,7 +42,11 @@ export default function AppRoute() {
             </Route>
           </Route>
         </Route> */}
-        <Route element={<LoginLayout />}>
+        <Route element={
+          <LoginRoute>
+            <LoginLayout />
+          </LoginRoute>
+        }>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
