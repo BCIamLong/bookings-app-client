@@ -5,13 +5,13 @@ import ButtonLink from "../../components/ButtonLink";
 export default function PageNotFound() {
   return (
     <div className="h-screen text-stone-700">
-      <nav className="flex items-center justify-between px-12 py-4">
+      <nav className="flex items-center justify-between px-12 py-4 thin:max-tiny:px-6">
         <Logo />
         <ButtonLink type="simple" href="/contact">
           Contact us
         </ButtonLink>
       </nav>
-      <div className="px-72 py-12">
+      <div className="xl:px-72 py-12 thin:max-tiny:px-6 tiny:max-sm:px-24 sm:max-lg:px-[14rem] lg:px-60">
         <Heading type="secondary">
           Whoops! 😲 It appears you've stumbled upon a page that doesn't exist.
         </Heading>
