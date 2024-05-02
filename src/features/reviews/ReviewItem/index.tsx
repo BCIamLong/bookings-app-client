@@ -8,7 +8,7 @@ export default function ReviewItem({ item }: { item: IReview }) {
   const avatarFormat = avatar === 'default-avatar.jpg' ? '/default-avatar.jpg' : avatar
 
   return (
-    <li className="flex flex-col gap-3 border-b-[1px] pb-6 border-stone-300 h-48 overflow-y-hidden">
+    <li className="flex flex-col gap-3 border-b-[1px] pb-6 border-stone-300 xl:h-48 lg:h-40 md:h-36 sm:h-36 h-28 tiny:h-32 overflow-y-hidden">
       <div className="flex gap-4 text-stone-700">
         <img className="rounded-full w-12" src={avatarFormat} alt="user avatar" />
         <div>

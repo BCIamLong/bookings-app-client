@@ -14,15 +14,15 @@ export default function ReviewProfilePopup({ isReviewsOfUser }: { isReviewsOfUse
   const filter = searchParams.get('filter') || 5
   const sort = searchParams.get('sort') || 'latest'
   const { reviews, isLoading: isLoadingReviewsPopup } = useReviews({ isReviewsOfUser, filter: filter as FilterReviewOption, sort: sort as SortReviewOption })
-  let style = 'grid grid-cols-2 w-[70%] p-6 gap-x-12 gap-y-6'
+  let style = 'grid grid-cols-2 w-[70%] p-6 gap-x-12 gap-y-6 thin:max-sm:flex thin:max-md:flex-col thin:max-md:gap-8'
   if (isReviewsOfUser) style = style + ' h-[27rem] overflow-y-hidden w-full py-2'
-  if (!isReviewsOfUser) style = style + ' h-[24rem] w-full'
+  if (!isReviewsOfUser) style = style + ' lg:h-[24rem] w-full thin:max-sm:h-[48rem] sm:h-[42rem] md:h-[40rem]'
 
   // if (isLoadingReviewsPopup) return <Spinner size="normal" />
 
   return (
-    <div className="bg-stone-100 w-[45rem] p-6">
-      <div className="flex justify-between p-6 mt-2 items-center">
+    <div className="bg-stone-100 w-[45rem] thin:max-tiny:max-w-[36rem] p-6">
+      <div className="flex justify-between p-6 mt-2 items-center thin:max-sm:flex-col thin:max-sm:justify-start thin:max-sm:items-start thin:max-sm:gap-3">
         {isReviewsOfUser ? <Heading type="heading-4">Your reviews</Heading> : <div className="[&>div]:p-[0px]"><ReviewHeading /></div>}
         <div className="flex gap-2">
           <Select id="filter-user-reviews" type="sort" onChange={(e) => setSearchParams(params => {
