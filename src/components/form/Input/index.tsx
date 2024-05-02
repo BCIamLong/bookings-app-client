@@ -45,7 +45,7 @@ export default function Input({
   if (variant === 'profile')
     style =
       baseStyle +
-      `w-[80%] rounded-lg  border-[1.5px] border-stone-300 px-3 py-3 text-sm leading-5 text-stone-700 focus:outline-2 outline-stone-500 bg-stone-0`;
+      `w-[80%] rounded-lg  border-[1.5px] border-stone-300 px-3 py-3 text-sm leading-5 text-stone-700 focus:outline-2 outline-stone-500 bg-stone-0 thin:max-tiny:w-[100%]`;
 
   return (
     <input

@@ -90,7 +90,7 @@ export default function UpdateProfileForm() {
 
       />
     </FormItem>
-    <div className="flex justify-between items-center w-[80%] py-2">
+    <div className="flex justify-between items-center w-[80%] py-2 thin:max-lg:w-full">
       <p className="text-stone-500">All the required user information can be added here...</p>
       <Buttons>
         <Button type="secondary" size="medium" onClick={resetHandler} >

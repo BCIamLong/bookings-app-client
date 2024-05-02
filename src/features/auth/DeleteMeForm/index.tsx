@@ -31,7 +31,7 @@ export default function DeleteMeForm() {
     <div className="text-xs text-stone-500 flex flex-col gap-2">
 
       <p>Deleting your account gives you full control over your data and privacy. By choosing this option, you permanently remove your information from our platform, ensuring your online presence aligns with your preferences. It's a simple, transparent process designed to empower you</p>
-      <p>Your account will be deleted after 30 days, contact us for more information.</p>
+      <p className="mb-1">Your account will be deleted after 30 days, contact us for more information.</p>
       <ButtonLink type="simple" href="#">Contact</ButtonLink>
     </div>
 
