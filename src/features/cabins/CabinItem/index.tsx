@@ -44,7 +44,7 @@ export default function CabinItem({
               <div className="rounded-full bg-stone-300 p-1"></div>
             </div>
           </div>
-          <div className="absolute left-0 xl:top-6 md:top-6 sm:top-16 flex h-full flex-col justify-end pb-4 thin:top-10 tiny:top-16">
+          <div className="absolute left-0 lg:top-9 xl:top-6 md:top-12 sm:top-16 flex h-full flex-col justify-end pb-4 thin:top-10 tiny:top-16">
             <p className="font-semibold ">{cabin.name}</p>
             <p className="text-xs leading-6 text-stone-500">
               {cabin.description}

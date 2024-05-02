@@ -17,7 +17,7 @@ export default function CabinsList({ pagination = false, isLink = false }: { pag
 
   return (
     <>
-      <ul className="grid grid-cols-3 xl:gap-x-12 md:gap-x-8 xl:gap-y-18 xl:px-24 bg-stone-0 py-6 overflow-hidden md:gap-y-12 md:px-16 sm:max-md:grid-cols-2 sm:gap-x-6 sm:gap-y-16 sm:px-12 sm:py-12 thin:max-sm:grid-cols-2 thin:gap-x-4 tiny:gap-x-6 tiny:px-6 thin:gap-y-16 tiny:gap-y-20">
+      <ul className="grid grid-cols-3 xl:gap-x-12 md:gap-x-8 xl:gap-y-16 xl:px-24 bg-stone-0 py-6 overflow-hidden md:gap-y-16 md:px-16 sm:max-md:grid-cols-2 sm:gap-x-6 sm:gap-y-16 sm:px-12 sm:py-12 thin:max-sm:grid-cols-2 thin:gap-x-4 tiny:gap-x-6 tiny:px-6 thin:gap-y-16 tiny:gap-y-20 tiny:pb-12 md:pb-16">
         {cabins?.map((cabin: ICabin) => (
           <CabinItem cabin={cabin} type="n-lines" key={cabin._id} isLink={isLink} />
         ))}

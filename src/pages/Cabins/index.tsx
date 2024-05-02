@@ -10,7 +10,7 @@ export default function Cabins() {
   // setSearchParams(searchParams)
 
   return (
-    <div className="py-8 px-6 bg-stone-0">
+    <div className="pt-8 pb-28 px-6 bg-stone-0">
       <div className="flex items-center justify-between">
         <Heading type="secondary">Cabins List</Heading>
         <Select id="sort" type="sort" onChange={(e) => setSearchParams(params => {
