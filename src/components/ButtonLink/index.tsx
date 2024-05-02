@@ -1,11 +1,12 @@
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 interface ButtonLinkProps {
   type: string;
   href?: string;
   children: ReactNode;
   size?: "small" | "medium" | "big";
+  isNavLink?: boolean
 }
 
 export default function ButtonLink({
@@ -13,6 +14,7 @@ export default function ButtonLink({
   href,
   size,
   children,
+  isNavLink = false,
 }: ButtonLinkProps) {
   const baseStyle = `inline-block duration-300 transition-all flex items-center gap-2 justify-center `;
   let style;
@@ -52,8 +54,13 @@ export default function ButtonLink({
     style = baseStyle + `text-brand-700 text-sm font-semibold py-2 px-4 capitalize hover:bg-brand-300 `;
 
   return (
-    <Link to={href || "#"} className={style + sizeBtn}>
-      {children}
-    </Link>
+    <>
+      {!isNavLink ? <Link to={href || "#"} className={style + sizeBtn}>
+        {children}
+      </Link> :
+        <NavLink to={href || "#"} className={style + sizeBtn}>
+          {children}
+        </NavLink>}
+    </>
   );
 }
