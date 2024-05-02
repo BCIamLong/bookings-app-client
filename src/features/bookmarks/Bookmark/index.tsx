@@ -11,7 +11,7 @@ export default function Bookmark() {
   const { deleteBookmark, isDeleting } = useDeleteBookmark()
 
   const { _id: bookmarkId } = bookmark || {}
-  console.log(bookmark)
+
 
   const handleAddBookmark = function () {
     addBookmark()

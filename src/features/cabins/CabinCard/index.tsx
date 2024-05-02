@@ -17,7 +17,7 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
   }
   if (isLoading) return <Spinner size="normal" />
   return (
-    <div className={`min-h-24 bg-stone-0 text-stone-700 shadow-md shadow-stone-300 px-4 py-6 ${count ? ' backdrop-brightness-90' : ''}`}>
+    <div className={`min-h-24 bg-stone-0 text-stone-700 shadow-md thin:max-sm:px-6 thin:max-sm:w-[17.4rem] shadow-stone-300 px-4 py-6 ${count ? ' backdrop-brightness-90' : ''}`}>
       {Boolean(count) && <p className="py-1 px-2 text-xs uppercase font-semibold text-stone-50 bg-green-500 rounded-lg flex justify-center items-center mb-3">Payment Completed</p>}
       <p className="pb-4 border-b-[1.5px] font-bold border-stone-300">
         <span className="line-through text-stone-400">$ {regularPrice} </span>

@@ -37,7 +37,7 @@ const getBookmark = async function (cabinId: string) {
     )
     console.log(res)
 
-    return res?.data?.data?.bookmarks?.[0]
+    return res?.data?.data?.bookmarks?.[0] || null
   } catch (err) {
     console.log(err)
     throw err

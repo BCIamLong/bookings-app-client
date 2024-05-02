@@ -46,7 +46,7 @@ export default function CabinDetail() {
             <img src="/imgs/cabins/cabin-001.jpg" alt="" />
           </div>
         </div>
-        <div className="grid grid-cols-[1.5fr_1fr] text-stone-700 p-6 gap-12">
+        <div className="grid grid-cols-[1.5fr_1fr] thin:max-tiny:flex thin:max-tiny:flex-col text-stone-700 p-6 gap-12 sm:max-md:gap-1">
           <div className="flex flex-col gap-8">
             <div className="flex justify-between items-center">
               <div>
@@ -58,20 +58,20 @@ export default function CabinDetail() {
                 <HiOutlineShare className="stroke-2 text-2xl" />
               </div>
             </div>
-            <div className="flex justify-between items-center">
-              <div className="w-36 h-36 rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
+            <div className="flex justify-between items-center gap-6 thin:max-sm:grid thin:max-sm:grid-cols-2">
+              <div className="min-w-36 min-h-36 rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
                 <IoBedOutline className="text-4xl" />
                 <p className="text-xs font-semibold">3 Bedrooms</p>
               </div>
-              <div className="w-36 h-36 rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
+              <div className="min-w-36 min-h-36 rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
                 <IoBedOutline className="text-4xl" />
                 <p className="text-xs font-semibold">3 Bedrooms</p>
               </div>
-              <div className="w-36 h-36 rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
+              <div className="min-w-36 min-h-36 rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
                 <IoBedOutline className="text-4xl" />
                 <p className="text-xs font-semibold">3 Bedrooms</p>
               </div>
-              <div className="w-36 h-36 rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
+              <div className="min-w-36 min-h-36 rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
                 <IoBedOutline className="text-4xl" />
                 <p className="text-xs font-semibold">3 Bedrooms</p>
               </div>
@@ -122,11 +122,13 @@ export default function CabinDetail() {
                 </div>
               </div>
             </div>
-            <Map />
           </div>
-          <div className="w-[60%] ml-12">
-            <CabinCard cabin={cabin as ICabin} />
+          <div className="flex justify-center thin:max-tiny:justify-start">
+            <div className="xl:w-[60%] ml-12 lg:w-[70%] md:w-[20rem] md:max-lg:pr-12 sm:w-[18rem] sm:max-md:pr-8 thin:max-sm:[24rem] thin:max-sm:ml-0 thin:max-sm:pr-0">
+              <CabinCard cabin={cabin as ICabin} />
+            </div>
           </div>
+          <Map />
         </div>
       </div>
     </>

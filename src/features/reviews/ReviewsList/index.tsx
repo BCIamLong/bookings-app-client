@@ -16,7 +16,7 @@ export default function ReviewsList({ isReviewsOfUser }: { isReviewsOfUser?: boo
   const { reviews, isLoading: isLoading } = useReviews({ isReviewsOfUser })
 
   const reviewsLength = reviews?.length
-  let style = 'grid grid-cols-2 w-[70%] p-6 gap-x-12 gap-y-6 bg-stone-0'
+  let style = 'grid grid-cols-2 w-[70%] p-6 gap-x-12 gap-y-6 bg-stone-0 thin:max-tiny:w-[100%]'
   if (isReviewsOfUser) style = style + ' h-[25rem] overflow-y-hidden w-full py-2'
 
   if (isLoading) return <Spinner size="normal" />
