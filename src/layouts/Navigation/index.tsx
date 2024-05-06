@@ -12,10 +12,10 @@ export default function Navigation() {
           <NavLink to="/cabins">Cabins</NavLink>
         </li>
         <li>
-          <a href="#">Contact</a>
+          <NavLink to="/contact">Contact</NavLink>
         </li>
         <li>
-          <a href="#">About us</a>
+          <NavLink to="/about">About us</NavLink>
         </li>
       </ul>
       <Button type="nav-header">Become a host</Button>

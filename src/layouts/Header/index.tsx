@@ -1,15 +1,18 @@
+import { motion } from 'framer-motion'
+
 import HeaderOptions from "../HeaderOptions";
 import Logo from "../Logo";
 import Navigation from "../Navigation";
 
 export default function Header() {
   return (
-    <header className="h-24 bg-stone-50">
+    <motion.header className="h-24 bg-stone-50" initial={{ y: '-100vh', opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+      transition={{ type: 'spring', duration: 1 }}>
       <div className="flex items-center w-full z-40 fixed justify-between bg-stone-50 px-12 py-3 thin:max-tiny:px-3 tiny:max-sm:px-6">
         <Logo />
         <Navigation />
         <HeaderOptions />
       </div>
-    </header>
+    </motion.header >
   );
 }

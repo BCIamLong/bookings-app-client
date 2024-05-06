@@ -24,6 +24,8 @@ import ProfileInfoLayout from "../layouts/ProfileInfoLayout";
 import BookingList from "../features/bookings/BookingsList";
 import Bookmarks from "@/pages/Bookmarks";
 import LoginRoute from "./LoginRoute";
+import Contact from "@/pages/Contact";
+import About from "@/pages/About";
 // import ProfileInfo from "../features/users/ProfileInfo";
 
 export default function AppRoute() {
@@ -57,6 +59,8 @@ export default function AppRoute() {
           <Route path="/cabins" element={<Cabins />} />
           <Route path="/cabins/:id" element={<Cabin />} />
           <Route path="/bookings/success" element={<BookingSuccess />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
         </Route>
         <Route
           element={

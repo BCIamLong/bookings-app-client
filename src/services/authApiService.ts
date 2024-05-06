@@ -159,7 +159,7 @@ const editProfile = async function (data: EditProfileInput) {
 
   try {
     const res = await axios.patch(
-      `${SERVER_BASE_URL}/api/v1/auth/update-me`,
+      `${SERVER_BASE_URL}/api/v1/auth/me`,
       requestBody,
       {
         headers: {
@@ -182,7 +182,7 @@ const editEmail = async function (data: EditEmailInput) {
 
   try {
     const res = await axios.patch(
-      `${SERVER_BASE_URL}/api/v1/auth/update-me`,
+      `${SERVER_BASE_URL}/api/v1/auth/me`,
       { email: data.email },
       {
         headers: {
@@ -312,15 +312,11 @@ const deleteMe = async function (data: DeleteMeInput) {
   try {
     const token = Cookies.get('access-token')
 
-    const res = await axios.patch(
-      `${SERVER_BASE_URL}/api/v1/auth/delete-me`,
-      data,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+    const res = await axios.post(`${SERVER_BASE_URL}/api/v1/auth/me`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-    )
+    })
     Cookies.remove('access-token')
 
     return res.data
