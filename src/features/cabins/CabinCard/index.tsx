@@ -12,6 +12,7 @@ import Select from "@/components/Select";
 import Option from "@/components/Option";
 import { useState } from "react";
 import Label from "@/components/form/Label";
+import { useBookings } from "@/features/bookings/useBookings";
 
 export default function CabinCard({ cabin }: { cabin: ICabin }) {
   const { user, isLoading: isLoadingUser } = useUserSession()
@@ -22,6 +23,7 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
   const discountPrice = price - Math.round(price * (discount / 100))
   const { isBooking, bookCabin } = useBookCabin()
   const { count, isLoading } = useUserBookings()
+  const { count: isCabinBooked, isLoading: isLoadingBookings } = useBookings({ status: { operation: 'ne', value: 'checked-out' } })
   const startDate = new Date()
   const endDate = new Date(Date.now() + days * 24 * 60 * 60 * 1000)
 
@@ -31,17 +33,17 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
     bookCabin({ cabinId, regularPrice: discountPrice, name, description, image, endDate, startDate, numGuests: guests, numNights: days })
 
   }
-  if (isLoading || isLoadingUser) return <Spinner size="normal" />
+  if (isLoading || isLoadingUser || isLoadingBookings) return <Spinner size="normal" />
   return (
-    <div className={`min-h-24 bg-stone-0 text-stone-700 shadow-md thin:max-sm:px-6 thin:max-sm:w-[17.4rem] shadow-stone-300 px-4 py-6 ${count ? ' bg-stone-200' : ''}`}>
+    <div className={`min-h-24 bg-stone-0 text-stone-700 shadow-md thin:max-sm:px-6 thin:max-sm:w-[17.4rem] shadow-stone-300 px-4 py-6 ${count || isCabinBooked ? ' bg-stone-200' : ''}`}>
       {Boolean(count) && <p className="py-1 px-2 text-xs uppercase font-semibold text-stone-50 bg-green-500 rounded-lg flex justify-center items-center mb-3">Payment Completed</p>}
       <p className="pb-4 border-b-[1.5px] font-bold border-stone-300">
         <span className="line-through text-stone-400">$ {price} </span>
         <span> &rarr; $ {discountPrice} </span>
         <span>(-{discount}%)</span>
       </p>
-      <div className={`py-6 flex flex-col gap-6 ${count ? 'blur-sm' : ''}`}>
-        <Select type="sort" id="days" defaultValue='3' onChange={(e) => setDays(+e.target.value)} disabled={Boolean(count)}>
+      <div className={`py-6 flex flex-col gap-6 ${count || isCabinBooked ? 'blur-sm' : ''}`}>
+        <Select type="sort" id="days" defaultValue='3' onChange={(e) => setDays(+e.target.value)} disabled={Boolean(count) || Boolean(isCabinBooked)}>
           <Option type="sort" value="3">3 days: $ 1000</Option>
           <Option type="sort" value="7">7 days: $ 2000</Option>
           <Option type="sort" value="14">14 days: $ 3000</Option>
@@ -51,15 +53,18 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
           <input id='guests' type="number" min={1} max={maxCapacity} value={String(guests)}
             className="py-2 px-6 text-stone-700 text-sm font-semibold border-[1.5px] rounded-md border-stone-300 focus:outline-none"
             onChange={(e) => setGuests(+e.target.value)
-            } disabled={Boolean(count)} />
+            } disabled={Boolean(count) || Boolean(isCabinBooked)} />
         </div>
       </div>
+      {Boolean(isCabinBooked) && <div className=""><Button size="small" type="primary">This cabin is booked</Button></div>}
 
-      {!count ? !user ? <div className="w-[62%]"><ButtonLink type="primary" href="/login">Login to book</ButtonLink></div> : <Button type="primary" size="small" onClick={handleClick}>
-        {isBooking ? <Spinner size="small" /> : 'Reserve Now'}
-      </Button> : <div className="w-[62%]">
-        <ButtonLink href='/profile/bookings' type="primary" size="small">See your bookings</ButtonLink>
-      </div>}
+      {!isCabinBooked &&
+        (!count ? !user ? <div className="w-[62%]"><ButtonLink type="primary" href="/login">Login to book</ButtonLink></div> : <Button type="primary" size="small" onClick={handleClick}>
+          {isBooking ? <Spinner size="small" /> : 'Reserve Now'}
+        </Button> : <div className="w-[62%]">
+          <ButtonLink href='/profile/bookings' type="primary" size="small">See your bookings</ButtonLink>
+        </div>)
+      }
       <div className="flex justify-between items-center py-6 text-xs font-semibold">
         <div className="flex items-center gap-2">
           <HiOutlineBuildingOffice className="text-sm" />

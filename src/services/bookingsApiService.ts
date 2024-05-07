@@ -5,6 +5,34 @@ import { appConfig } from '../config'
 // const { stripeClient } = stripeConfig;
 const { SERVER_BASE_URL } = appConfig
 
+const getBookings = async function ({
+  cabinId,
+  status,
+}: {
+  cabinId?: string
+  status?: string | { operation: string; value: string }
+}) {
+  try {
+    const token = Cookies.get('access-token')
+    let url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookings`
+    if (typeof status === 'string') url = url + `?status=${status}`
+    if (typeof status === 'object')
+      url = url + `?status[${status.operation}]=${status.value}`
+    console.log(url)
+    const res = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    console.log(res)
+
+    return res?.data?.data?.bookings
+  } catch (err) {
+    console.log(err)
+    throw err
+  }
+}
+
 const getUserBookings = async function ({ cabinId }: { cabinId?: string }) {
   const token = Cookies.get('access-token')
   let url = `${SERVER_BASE_URL}/api/v1/bookings/me`
@@ -121,4 +149,10 @@ const bookCabin = async function (data: {
 //   }
 // };
 
-export { bookCabin, getUserBooking, getUserBookings, deleteUserBooking }
+export {
+  bookCabin,
+  getUserBooking,
+  getUserBookings,
+  deleteUserBooking,
+  getBookings,
+}
