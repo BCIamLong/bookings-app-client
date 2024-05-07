@@ -10,7 +10,7 @@ export const useCabin = function () {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['cabin'],
+    queryKey: ['cabin', id],
     queryFn: () => getCabin(id!),
   })
 

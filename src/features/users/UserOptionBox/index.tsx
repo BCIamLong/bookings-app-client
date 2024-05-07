@@ -24,7 +24,7 @@ export default function UserOptionBox() {
       ) : (
         <div className="bg-stone-700">
           <Link to="/login">
-            <ButtonLink type="user-nav-header">Login</ButtonLink>
+            <ButtonLink type="user-nav-header" href="/login">Login</ButtonLink>
           </Link>
         </div>
       )}

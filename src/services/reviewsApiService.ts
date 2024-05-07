@@ -35,6 +35,7 @@ const getReviews = async function ({
     if (filter) url = url + `?${query.toString()}`
 
     const token = Cookies.get('access-token')
+    console.log(url)
     const res = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${token}`,

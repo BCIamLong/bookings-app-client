@@ -6,8 +6,10 @@ import { useBookCabin } from "../../bookings/useBookCabin";
 import Spinner from "../../../components/Spinner";
 import { useUserBookings } from "@/features/bookings/useUserBookings";
 import ButtonLink from "@/components/ButtonLink";
+import { useUserSession } from "@/features/auth/useUserSession";
 
 export default function CabinCard({ cabin }: { cabin: ICabin }) {
+  const { user, isLoading: isLoadingUser } = useUserSession()
   const { _id: cabinId, regularPrice, discount, name, description, image } = cabin || {}
   const discountPrice = regularPrice - Math.round(regularPrice * (discount / 100))
   const { isBooking, bookCabin } = useBookCabin()
@@ -15,7 +17,7 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
   const handleClick = async function () {
     bookCabin({ cabinId, regularPrice, name, description, image })
   }
-  if (isLoading) return <Spinner size="normal" />
+  if (isLoading || isLoadingUser) return <Spinner size="normal" />
   return (
     <div className={`min-h-24 bg-stone-0 text-stone-700 shadow-md thin:max-sm:px-6 thin:max-sm:w-[17.4rem] shadow-stone-300 px-4 py-6 ${count ? ' backdrop-brightness-90' : ''}`}>
       {Boolean(count) && <p className="py-1 px-2 text-xs uppercase font-semibold text-stone-50 bg-green-500 rounded-lg flex justify-center items-center mb-3">Payment Completed</p>}
@@ -29,11 +31,11 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
         <li>7 days: $ 2000</li>
         <li>14 days: $ 3000</li>
       </ul>
-      {!count ?
-        <Button type="primary" size="small" onClick={handleClick}>{isBooking ? <Spinner size="small" /> : 'Reserve Now'}</Button> :
-        <div className="w-[62%]">
-          <ButtonLink href='/profile/bookings' type="primary" size="small">See your bookings</ButtonLink>
-        </div>}
+      {!count ? !user ? <div className="w-[62%]"><ButtonLink type="primary" href="/login">Login to book</ButtonLink></div> : <Button type="primary" size="small" onClick={handleClick}>
+        {isBooking ? <Spinner size="small" /> : 'Reserve Now'}
+      </Button> : <div className="w-[62%]">
+        <ButtonLink href='/profile/bookings' type="primary" size="small">See your bookings</ButtonLink>
+      </div>}
       <div className="flex justify-between items-center py-6 text-xs font-semibold">
         <div className="flex items-center gap-2">
           <HiOutlineBuildingOffice className="text-sm" />

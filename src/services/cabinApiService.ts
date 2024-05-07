@@ -31,6 +31,8 @@ const getCabins = async function ({
     let url = `${SERVER_BASE_URL}/api/v1/cabins?${sortStr}&limit=${PAGE_LIMIT}&page=${page}`
     if (searchOptions)
       url = `${SERVER_BASE_URL}/api/v1/cabins?${sortStr}&limit=${PAGE_LIMIT}&page=${page}&${searchOptions}`
+    url = url.replace('?&', '?')
+
     console.log(url)
     const res = await axios.get(url)
 
