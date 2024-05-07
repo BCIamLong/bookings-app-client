@@ -16,7 +16,7 @@ export default function BookingList() {
 
   return (
     <div>
-      <ul>
+      <ul className="flex flex-col gap-3">
         {bookings?.map((booking: IBooking) => <Modal key={booking._id}>
           <Modal.Open openName={`booking${booking._id}}`}>
             <div className="[&>button]:w-full">

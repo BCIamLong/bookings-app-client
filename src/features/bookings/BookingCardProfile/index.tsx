@@ -11,7 +11,7 @@ export default function BookingCardProfile({ booking, onCloseModal }: { booking:
   const { user, isLoading: isUserLoading } = useUserSession()
   const { deleteUserBooking, isDeleting } = useDeleteUserBooking()
   const { _id, startDate, endDate, numNights, numGuests, cabinPrice, totalPrice, extrasPrice, createdAt, cabinId } = booking as IBooking || {}
-  const { name: cabinName } = cabinId as ICabin || {}
+  const { name: cabinName, discount } = cabinId as ICabin || {}
   const { name, fullName } = user || {}
   const classStyle = `flex justify-between items-center [&>span:first-child]:text-stone-500 [&>span:nth-child(2)]:text-brand-600 [&>span:nth-child(2)]:font-semibold`
 
@@ -45,7 +45,9 @@ export default function BookingCardProfile({ booking, onCloseModal }: { booking:
         <li className={classStyle}><span>Sender name:</span> <span>{fullName || name}</span></li>
         <li className={classStyle}><span>Amount:</span> <span>${cabinPrice}</span></li>
         <li className={classStyle}><span>Other fee:</span> <span>${extrasPrice}</span></li>
-        <li className={classStyle}><span>Total amount:</span> <span>${totalPrice}</span></li>
+        <li className={classStyle}><span>Total amount:</span> <span>${cabinPrice * numGuests * numNights}</span></li>
+        <li className={classStyle}><span>Discount:</span> <span>${discount}</span></li>
+        <li className={classStyle}><span>Final amount:</span> <span>${totalPrice}</span></li>
       </ul>
       <div className="flex flex-col w-full mt-8">
         <Button type="brand" size="small" onClick={handleClick}>

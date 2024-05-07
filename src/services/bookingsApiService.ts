@@ -73,6 +73,10 @@ const bookCabin = async function (data: {
   name: string
   description: string
   image: string
+  startDate: Date
+  endDate: Date
+  numGuests: number
+  numNights: number
 }) {
   try {
     const token = Cookies.get('access-token')
