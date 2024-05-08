@@ -12,6 +12,10 @@ export interface BookCabin {
   numNights: number
 }
 
+export interface UserBookingsOption {
+  status?: string | { operation: string; value: string }
+}
+
 export default interface IBooking {
   _id: string
   cabinId: string | ICabin

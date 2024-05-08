@@ -14,7 +14,7 @@ import {
   VerifyEnable2FAInput,
   DeleteMeInput,
 } from './IAuth'
-import IBooking, { BookCabin } from './IBooking'
+import IBooking, { BookCabin, UserBookingsOption } from './IBooking'
 import IReview, { ReviewInput } from './IReview'
 import IBookmark from './IBookmark'
 
@@ -35,6 +35,7 @@ export type {
   VerifyEnable2FAInput,
   DeleteMeInput,
   BookCabin,
+  UserBookingsOption,
   IBooking,
   IReview,
   ReviewInput,

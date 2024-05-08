@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { appConfig } from '../config'
+import { UserBookingsOption } from '@/interfaces'
 
 // const { stripeClient } = stripeConfig;
 const { SERVER_BASE_URL } = appConfig
@@ -33,10 +34,23 @@ const getBookings = async function ({
   }
 }
 
-const getUserBookings = async function ({ cabinId }: { cabinId?: string }) {
+const getUserBookings = async function ({
+  cabinId,
+  options = {},
+}: {
+  cabinId?: string
+  options?: UserBookingsOption
+}) {
   const token = Cookies.get('access-token')
   let url = `${SERVER_BASE_URL}/api/v1/bookings/me`
   if (cabinId) url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookings/me`
+  const { status } = options
+
+  if (status && typeof status === 'string')
+    url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status=${status}`
+  if (status && typeof status === 'object')
+    url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status[${status.operation}]=${status.value}`
+  console.log(url)
   try {
     const res = await axios.get(url, {
       headers: {
@@ -45,7 +59,7 @@ const getUserBookings = async function ({ cabinId }: { cabinId?: string }) {
     })
     console.log(res)
 
-    return res?.data?.bookings
+    return res?.data?.bookings || res?.data?.data?.bookings || null
   } catch (err) {
     console.log(err)
     throw err

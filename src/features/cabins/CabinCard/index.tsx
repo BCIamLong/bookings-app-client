@@ -15,17 +15,22 @@ import Label from "@/components/form/Label";
 import { useBookings } from "@/features/bookings/useBookings";
 
 export default function CabinCard({ cabin }: { cabin: ICabin }) {
+
+  const { count, isLoading } = useUserBookings()
+  const { count: isNotAllowUserBook, isLoading: isLoadingUserBookings } = useUserBookings({ status: { operation: 'ne', value: 'checked-out' } })
+  const { isBooking, bookCabin } = useBookCabin()
   const { user, isLoading: isLoadingUser } = useUserSession()
+  const { count: isCabinBooked, isLoading: isLoadingBookings } = useBookings({ status: { operation: 'ne', value: 'checked-out' } })
+
   const { _id: cabinId, regularPrice, discount, name, description, image, maxCapacity } = cabin || {}
   const [guests, setGuests] = useState(maxCapacity)
   const [days, setDays] = useState(3)
+
   const price = regularPrice * days * guests
   const discountPrice = price - Math.round(price * (discount / 100))
-  const { isBooking, bookCabin } = useBookCabin()
-  const { count, isLoading } = useUserBookings()
-  const { count: isCabinBooked, isLoading: isLoadingBookings } = useBookings({ status: { operation: 'ne', value: 'checked-out' } })
   const startDate = new Date()
   const endDate = new Date(Date.now() + days * 24 * 60 * 60 * 1000)
+  // console.log(isCabinBooked, count)
 
   const handleClick = async function () {
     if (!guests || !days) return
@@ -36,38 +41,41 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
   // if (isLoading || isLoadingUser || isLoadingBookings) return <Spinner size="normal" />
 
   return (
-    <div className={`min-h-24 bg-stone-0 text-stone-700 shadow-md thin:max-sm:px-6 thin:max-sm:w-[17.4rem] shadow-stone-300 px-4 py-6 ${count || isCabinBooked ? ' bg-stone-200' : ''}`}>
-      {isLoading || isLoadingUser || isLoadingBookings ? <Spinner size="normal" /> :
+    <div className={`min-h-24 bg-stone-0 text-stone-700 shadow-md thin:max-sm:px-6 thin:max-sm:w-[17.4rem] shadow-stone-300 px-4 py-6 ${(count && isCabinBooked) || isCabinBooked || isNotAllowUserBook ? ' bg-stone-200' : ''}`}>
+      {isLoading || isLoadingUser || isLoadingBookings || isLoadingUserBookings ? <Spinner size="normal" /> :
         <>
-          {Boolean(count) && <p className="py-1 px-2 text-xs uppercase font-semibold text-stone-50 bg-green-500 rounded-lg flex justify-center items-center mb-3">Payment Completed</p>}
+          {Boolean(count) && Boolean(isCabinBooked) && <p className="py-1 px-2 text-xs uppercase font-semibold text-stone-50 bg-green-500 rounded-lg flex justify-center items-center mb-3">Payment Completed</p>}
           <p className="pb-4 border-b-[1.5px] font-bold border-stone-300">
             <span className="line-through text-stone-400">$ {price} </span>
             <span> &rarr; $ {discountPrice} </span>
             <span>(-{discount}%)</span>
           </p>
-          <div className={`py-6 flex flex-col gap-6 ${count || isCabinBooked ? 'blur-sm' : ''}`}>
-            <Select type="sort" id="days" defaultValue='3' onChange={(e) => setDays(+e.target.value)} disabled={Boolean(count) || Boolean(isCabinBooked)}>
-              <Option type="sort" value="3">3 days: $ 1000</Option>
-              <Option type="sort" value="7">7 days: $ 2000</Option>
-              <Option type="sort" value="14">14 days: $ 3000</Option>
+          <div className={`py-6 flex flex-col gap-6 ${(count && isCabinBooked) || isCabinBooked || isNotAllowUserBook ? 'blur-sm' : ''}`}>
+            <Select type="sort" id="days" defaultValue='3' onChange={(e) => setDays(+e.target.value)} disabled={(Boolean(count) && isCabinBooked) || Boolean(isCabinBooked) || isNotAllowUserBook}>
+              <Option type="sort" value="3">3 days</Option>
+              <Option type="sort" value="7">7 days</Option>
+              <Option type="sort" value="14">14 days</Option>
             </Select>
             <div className="flex flex-col gap-3">
               <Label type="search" labelFor="guests">Number of guests</Label>
               <input id='guests' type="number" min={1} max={maxCapacity} value={String(guests)}
-                className="py-2 px-6 text-stone-700 text-sm font-semibold border-[1.5px] rounded-md border-stone-300 focus:outline-none"
+                className="py-2 px-8 text-stone-700 text-sm font-semibold border-[1.5px] rounded-md border-stone-300 focus:outline-none"
                 onChange={(e) => setGuests(+e.target.value)
-                } disabled={Boolean(count) || Boolean(isCabinBooked)} />
+                } disabled={(Boolean(count) && isCabinBooked) || Boolean(isCabinBooked) || isNotAllowUserBook} />
             </div>
           </div>
-          {Boolean(isCabinBooked) && !count && <div className=""><Button size="small" type="primary">This cabin is booked</Button></div>}
+          {isNotAllowUserBook && !count ? <div className=""><Button size="small" type="primary">You already have booked another cabin</Button></div> :
+            <>
+              {Boolean(isCabinBooked) && !count && <div className=""><Button size="small" type="primary">This cabin is booked</Button></div>}
 
-          {Boolean(isCabinBooked) && Boolean(count) && <div className="w-[62%]">
-            <ButtonLink href='/profile/bookings' type="primary" size="small">See your bookings</ButtonLink>
-          </div>}
+              {Boolean(isCabinBooked) && Boolean(count) && <div className="w-[62%]">
+                <ButtonLink href='/profile/bookings' type="primary" size="small">See your bookings</ButtonLink>
+              </div>}
 
-          {!isCabinBooked && !count && (!user ? <div className="w-[62%]"><ButtonLink type="primary" href="/login">Login to book</ButtonLink></div> : <Button type="primary" size="small" onClick={handleClick}>
-            {isBooking ? <Spinner size="small" /> : 'Reserve Now'}
-          </Button>)}
+              {((!isCabinBooked && !count) || (!isCabinBooked && Boolean(count))) && (!user ? <div className="w-[62%]"><ButtonLink type="primary" href="/login">Login to book</ButtonLink></div> : <Button type="primary" size="small" onClick={handleClick}>
+                {isBooking ? <Spinner size="small" /> : 'Reserve Now'}
+              </Button>)}
+            </>}
 
           {/* {!isCabinBooked &&
         (!count ? !user ? <div className="w-[62%]"><ButtonLink type="primary" href="/login">Login to book</ButtonLink></div> : <Button type="primary" size="small" onClick={handleClick}>

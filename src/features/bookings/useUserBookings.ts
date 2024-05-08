@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 import { getUserBookings } from '../../services/bookingsApiService'
 import { useParams } from 'react-router-dom'
+import { UserBookingsOption } from '@/interfaces'
 
-export const useUserBookings = function () {
+export const useUserBookings = function (options: UserBookingsOption = {}) {
   const { id: cabinId } = useParams() || {}
 
   const {
@@ -10,8 +11,8 @@ export const useUserBookings = function () {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['bookings', cabinId],
-    queryFn: () => getUserBookings({ cabinId }),
+    queryKey: ['bookings', cabinId, options],
+    queryFn: () => getUserBookings({ cabinId, options }),
   })
 
   return { bookings, isLoading, error, count: bookings?.length }
