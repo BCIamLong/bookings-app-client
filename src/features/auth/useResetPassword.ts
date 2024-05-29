@@ -1,16 +1,16 @@
-import { AxiosError } from "axios";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
-import { resetPassword as resetPasswordService } from "../../services/authApiService";
-import { ResetPasswordInput } from "../../interfaces";
+import { AxiosError } from 'axios'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+import { useMutation } from '@tanstack/react-query'
+import { resetPassword as resetPasswordService } from '../../services/authApiService'
+import { ResetPasswordInput } from '../../interfaces'
 
 interface ErrorResponse {
-  message: string;
+  message: string
 }
 
 export const useResetPassword = function () {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const {
     isPending: isResetting,
     error,
@@ -20,21 +20,21 @@ export const useResetPassword = function () {
       data,
       token,
     }: {
-      data: ResetPasswordInput;
-      token: string;
+      data: ResetPasswordInput
+      token: string
     }) => resetPasswordService(data, token),
-    onSuccess: (data) => {
-      console.log(data);
+    onSuccess: () => {
+      // console.log(data);
       toast.success(
-        "Reset your password successfully, now you can login again.",
-      );
+        'Reset your password successfully, now you can login again.',
+      )
 
-      navigate("/login", { replace: true });
+      navigate('/login', { replace: true })
     },
     onError: (err: AxiosError<ErrorResponse>) => {
-      toast.error(err?.response?.data?.message || err.message);
+      toast.error(err?.response?.data?.message || err.message)
     },
-  });
+  })
 
-  return { isResetting, error, resetPassword };
-};
+  return { isResetting, error, resetPassword }
+}

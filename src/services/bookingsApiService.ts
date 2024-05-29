@@ -19,13 +19,13 @@ const getBookings = async function ({
     if (typeof status === 'string') url = url + `?status=${status}`
     if (typeof status === 'object')
       url = url + `?status[${status.operation}]=${status.value}`
-    console.log(url)
+    // console.log(url)
     const res = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    console.log(res)
+    // console.log(res)
 
     return res?.data?.data?.bookings
   } catch (err) {
@@ -50,14 +50,14 @@ const getUserBookings = async function ({
     url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status=${status}`
   if (status && typeof status === 'object')
     url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status[${status.operation}]=${status.value}`
-  console.log(url)
+  // console.log(url)
   try {
     const res = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    console.log(res)
+    // console.log(res)
 
     return res?.data?.bookings || res?.data?.data?.bookings || null
   } catch (err) {
@@ -99,7 +99,7 @@ const deleteUserBooking = async function (id: string) {
         },
       },
     )
-    console.log(res)
+    // console.log(res)
 
     return res?.data
   } catch (err) {
@@ -134,7 +134,7 @@ const bookCabin = async function (data: {
         },
       },
     )
-    console.log(res)
+    // console.log(res)
     return res?.data?.redirectUrl
   } catch (err) {
     console.log(err)

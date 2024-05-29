@@ -33,10 +33,10 @@ const getCabins = async function ({
       url = `${SERVER_BASE_URL}/api/v1/cabins?${sortStr}&limit=${PAGE_LIMIT}&page=${page}&${searchOptions}`
     url = url.replace('?&', '?')
 
-    console.log(url)
+    // console.log(url)
     const res = await axios.get(url)
 
-    console.log(res)
+    // console.log(res)
     return { cabins: res?.data?.data?.cabins, count: res?.data?.count }
   } catch (err) {
     console.log(err)
@@ -47,7 +47,7 @@ const getCabins = async function ({
 const getCabin = async function (id: string) {
   try {
     const res = await axios.get(`${SERVER_BASE_URL}/api/v1/cabins/${id}`, {})
-    console.log(res)
+    // console.log(res)
     return res?.data?.data?.cabin
   } catch (err) {
     console.log(err)

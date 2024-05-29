@@ -35,14 +35,14 @@ const getReviews = async function ({
     if (filter) url = url + `?${query.toString()}`
 
     const token = Cookies.get('access-token')
-    console.log(url)
+    // console.log(url)
     const res = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
 
-    console.log(res)
+    // console.log(res)
     return res?.data?.data?.reviews
   } catch (err) {
     console.log(err)
@@ -65,7 +65,7 @@ const addReview = async function (data: ReviewInput, cabinId: string) {
         },
       },
     )
-    console.log(res)
+    // console.log(res)
     return res?.data?.data?.review
   } catch (err) {
     console.log(err)
@@ -87,7 +87,7 @@ const editReview = async function (id: string, data: Partial<ReviewInput>) {
         },
       },
     )
-    console.log(res)
+    // console.log(res)
 
     return res?.data?.data?.review
   } catch (err) {
@@ -105,7 +105,7 @@ const deleteReview = async function (id: string) {
         Authorization: `Bearer ${token}`,
       },
     })
-    console.log(res)
+    // console.log(res)
 
     return res?.data
   } catch (err) {

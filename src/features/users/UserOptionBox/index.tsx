@@ -2,6 +2,7 @@ import ButtonLink from "../../../components/ButtonLink";
 import { Link } from "react-router-dom";
 import { useUserSession } from "../../auth/useUserSession";
 import Spinner from "../../../components/Spinner";
+import Logout from "@/features/auth/Logout";
 
 export default function UserOptionBox() {
   const { isLoading, user } = useUserSession();
@@ -14,12 +15,13 @@ export default function UserOptionBox() {
   return (
     <>
       {user ? (
-        <div className="bg-stone-100">
+        <div className="bg-stone-0 flex gap-1">
           <Link to="/profile">
             <div className="border-stone-50 bg-stone-0 p-1 ">
               <img className="h-9 w-9 rounded-full" src={`${avatarImg}`} alt="" />
             </div>
           </Link>
+          <Logout />
         </div>
       ) : (
         <div className="bg-stone-700">

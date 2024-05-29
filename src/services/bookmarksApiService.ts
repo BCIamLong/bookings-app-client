@@ -14,7 +14,7 @@ const getBookmarks = async function () {
         Authorization: `Bearer ${token}`,
       },
     })
-    console.log(res)
+    // console.log(res)
 
     return res?.data?.data?.bookmarks
   } catch (err) {
@@ -25,7 +25,7 @@ const getBookmarks = async function () {
 
 const getBookmark = async function (cabinId: string) {
   const token = Cookies.get('access-token')
-  console.log(cabinId)
+  // console.log(cabinId)
   try {
     const res = await axios.get(
       `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookmarks`,
@@ -35,7 +35,7 @@ const getBookmark = async function (cabinId: string) {
         },
       },
     )
-    console.log(res)
+    // console.log(res)
 
     return res?.data?.data?.bookmarks?.[0] || null
   } catch (err) {
@@ -57,7 +57,7 @@ const addBookmark = async function (cabinId: string, data: { link: string }) {
         },
       },
     )
-    console.log(res)
+    // console.log(res)
     return res?.data?.data?.bookmark
   } catch (err) {
     console.log(err)
@@ -77,7 +77,7 @@ const deleteBookmark = async function (id: string) {
         },
       },
     )
-    console.log(res)
+    // console.log(res)
     return res?.data
   } catch (err) {
     console.log(err)

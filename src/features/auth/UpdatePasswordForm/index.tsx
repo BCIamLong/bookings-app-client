@@ -34,7 +34,7 @@ export default function UpdatePasswordForm() {
   }
 
   const onSubmit: SubmitHandler<EditPasswordInput> = function (data) {
-    console.log(data)
+    // console.log(data)
     editPassword({ data, token }, {
       onSuccess: () => {
         reset()

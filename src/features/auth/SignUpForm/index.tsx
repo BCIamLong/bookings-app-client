@@ -16,7 +16,7 @@ export default function SignUpForm() {
   const { errors } = formState;
 
   const onSubmit: SubmitHandler<SignupInput> = function (data) {
-    console.log(data);
+    // console.log(data);
     signup(data, {
       onSuccess: () => {
         reset();

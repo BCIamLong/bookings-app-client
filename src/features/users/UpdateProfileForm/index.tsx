@@ -31,7 +31,7 @@ export default function UpdateProfileForm() {
   }
 
   const onSubmit: SubmitHandler<EditProfileInput> = function (data) {
-    console.log(data)
+    // console.log(data)
     editProfile(data, {
       onSuccess: () => {
         // * we can use resetField to reset the specific field instead of use reset

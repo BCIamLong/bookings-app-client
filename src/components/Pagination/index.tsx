@@ -30,7 +30,7 @@ export default function Pagination({ count }: { count: number }) {
     searchParams.set('page', String(page))
     setSearchParams(searchParams)
   }
-  console.log(numPages)
+  // console.log(numPages)
 
   if (numPages <= 1) return null
 

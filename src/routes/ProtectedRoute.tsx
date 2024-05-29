@@ -15,7 +15,7 @@ export default function ProtectedRoute({ children }: { children: ReactNode }) {
   //   console.log("ok");
   useEffect(
     function () {
-      console.log("ok");
+      // console.log("ok");
       if (!user && !isLoading) {
         toast.error(
           (error as AxiosError<ErrorResponse>)?.response?.data?.message ||
