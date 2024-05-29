@@ -39,7 +39,7 @@ const getCabins = async function ({
     // console.log(res)
     return { cabins: res?.data?.data?.cabins, count: res?.data?.count }
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -50,7 +50,7 @@ const getCabin = async function (id: string) {
     // console.log(res)
     return res?.data?.data?.cabin
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }

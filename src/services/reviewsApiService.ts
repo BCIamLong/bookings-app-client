@@ -45,7 +45,7 @@ const getReviews = async function ({
     // console.log(res)
     return res?.data?.data?.reviews
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -68,7 +68,7 @@ const addReview = async function (data: ReviewInput, cabinId: string) {
     // console.log(res)
     return res?.data?.data?.review
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -91,7 +91,7 @@ const editReview = async function (id: string, data: Partial<ReviewInput>) {
 
     return res?.data?.data?.review
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -109,7 +109,7 @@ const deleteReview = async function (id: string) {
 
     return res?.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }

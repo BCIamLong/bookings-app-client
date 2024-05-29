@@ -29,7 +29,7 @@ const getBookings = async function ({
 
     return res?.data?.data?.bookings
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -61,7 +61,7 @@ const getUserBookings = async function ({
 
     return res?.data?.bookings || res?.data?.data?.bookings || null
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -82,7 +82,7 @@ const getUserBooking = async function () {
 
     return res?.data?.booking
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -103,7 +103,7 @@ const deleteUserBooking = async function (id: string) {
 
     return res?.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -137,7 +137,7 @@ const bookCabin = async function (data: {
     // console.log(res)
     return res?.data?.redirectUrl
   } catch (err) {
-    console.log(err)
+    // console.log(err)
   }
 }
 
@@ -159,7 +159,7 @@ const bookCabin = async function (data: {
 //         sessionId: res?.data?.session.id,
 //       });
 //   } catch (err) {
-//     console.log(err);
+//       console.log(err);
 //   }
 // };
 

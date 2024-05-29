@@ -36,7 +36,7 @@ const login = async function ({
     if (res.data.verifyEmail === false) throw new Error(res.data.message)
     return res.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -49,7 +49,7 @@ const signup = async function (data: SignupInput) {
 
     return res.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -69,7 +69,7 @@ const logout = async function () {
 
     return res?.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -93,7 +93,7 @@ const getUserSession = async function () {
 
     return res?.data?.session?.user
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -107,7 +107,7 @@ const forgotPassword = async function (data: ForgotPasswordInput) {
 
     return res.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -123,7 +123,7 @@ const resetPassword = async function (data: ResetPasswordInput, token: string) {
 
     return res.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -143,7 +143,7 @@ const verify2FA = async function (data: Verify2FAInput) {
 
     return res.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -173,7 +173,7 @@ const editProfile = async function (data: EditProfileInput) {
 
     return res.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -195,7 +195,7 @@ const editEmail = async function (data: EditEmailInput) {
 
     return res.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -218,7 +218,7 @@ const checkPassword = async function (data: CheckPasswordInput) {
 
     return res.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -243,7 +243,7 @@ const editPassword = async function (data: ResetPasswordInput, token: string) {
 
     return res.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -264,7 +264,7 @@ const enable2FA = async function () {
 
     return res?.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -285,7 +285,7 @@ const verifyEnable2FA = async function (data: VerifyEnable2FAInput) {
 
     return res.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -303,7 +303,7 @@ const disable2FA = async function () {
 
     return res?.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -321,7 +321,7 @@ const deleteMe = async function (data: DeleteMeInput) {
 
     return res.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }

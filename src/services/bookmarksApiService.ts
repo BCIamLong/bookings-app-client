@@ -18,7 +18,7 @@ const getBookmarks = async function () {
 
     return res?.data?.data?.bookmarks
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -39,7 +39,7 @@ const getBookmark = async function (cabinId: string) {
 
     return res?.data?.data?.bookmarks?.[0] || null
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -60,7 +60,7 @@ const addBookmark = async function (cabinId: string, data: { link: string }) {
     // console.log(res)
     return res?.data?.data?.bookmark
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
@@ -80,7 +80,7 @@ const deleteBookmark = async function (id: string) {
     // console.log(res)
     return res?.data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }
