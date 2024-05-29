@@ -3,6 +3,9 @@ import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 import 'leaflet/dist/leaflet.css'
 import { Icon } from "leaflet";
 import { useDarkModeContext } from "@/context/DarkModeContext";
+import { appConfig } from "@/config";
+
+const { MAP_API_KEY } = appConfig
 
 const customLightIcon = new Icon({
   // <a href="https://www.flaticon.com/free-icons/maps-and-location" title="maps and location icons">Maps and location icons created by juicy_fish - Flaticon</a>
@@ -26,13 +29,13 @@ export default function Map() {
     <div className='[&>.leaflet-container]:h-[30rem] w-[100%] relative rounded-lg overflow-hidden z-30 col-span-1 thin:max-sm:col-span-2'>
       <MapContainer center={[51.505, -0.09]} zoom={18} scrollWheelZoom={true}>
         <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url={tileLayerUrl}></TileLayer>
+          url={tileLayerUrl} accessToken={MAP_API_KEY}></TileLayer>
         <Marker position={[51.505, -0.09]} icon={isDarkMode ? customDarkIcon : customLightIcon}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
         </Marker>
       </MapContainer >
-    </div>
+    </div >
   )
 }

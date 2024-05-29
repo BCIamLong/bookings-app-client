@@ -13,7 +13,8 @@ export default {
       : 'http://localhost:3009',
   CLIENT_BASE_UTL:
     import.meta.env.MODE === 'production'
-      ? 'https://bookings-app-client.vercel.app/'
+      ? 'https://bookings-app-client.vercel.app'
       : 'http://localhost:5137',
   PAGE_LIMIT: 6,
+  MAP_API_KEY: 'IigiqXGj105kiRYHhgiW',
 }
