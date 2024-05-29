@@ -23,13 +23,16 @@ const customDarkIcon = new Icon({
 
 export default function Map() {
   const { isDarkMode } = useDarkModeContext()!
-  const tileLayerUrl = !isDarkMode ? 'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png' : 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png';
+  const tileLayerUrl = !isDarkMode ? `https://api.maptiler.com/maps/bright-v2/{z}/{x}/{y}.png?key=${MAP_API_KEY}` : `https://api.maptiler.com/maps/ch-swisstopo-lbm-dark/{z}/{x}/{y}.png?key=${MAP_API_KEY}`;
 
   return (
     <div className='[&>.leaflet-container]:h-[30rem] w-[100%] relative rounded-lg overflow-hidden z-30 col-span-1 thin:max-sm:col-span-2'>
-      <MapContainer center={[51.505, -0.09]} zoom={18} scrollWheelZoom={true}>
-        <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url={tileLayerUrl} accessToken={MAP_API_KEY}></TileLayer>
+      <MapContainer center={[51.505, -0.09]} zoom={18} scrollWheelZoom={true} style={{ height: '100vh', width: '100%' }}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.maptiler.com/copyright/" target="_blank">MapTiler</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+          url={tileLayerUrl}
+        // accessToken={MAP_API_KEY}
+        />
         <Marker position={[51.505, -0.09]} icon={isDarkMode ? customDarkIcon : customLightIcon}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
@@ -39,3 +42,23 @@ export default function Map() {
     </div >
   )
 }
+
+// export default function Map() {
+//   const mapTilerApiKey = 'IigiqXGj105kiRYHhgiW';
+//   const mapTilerUrl = `https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=${mapTilerApiKey}`;
+
+//   return (
+//     <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '100vh', width: '100%' }}>
+//       <TileLayer
+//         attribution='&copy; <a href="https://www.maptiler.com/copyright/" target="_blank">MapTiler</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+//         url={mapTilerUrl}
+//       />
+//       <Marker position={[51.505, -0.09]}>
+//         <Popup>
+//           A pretty CSS3 popup. <br /> Easily customizable.
+//         </Popup>
+//       </Marker>
+//     </MapContainer>
+//   );
+// }
+
