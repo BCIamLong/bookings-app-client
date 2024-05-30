@@ -16,6 +16,7 @@ import {
 
 const { SERVER_BASE_URL } = appConfig
 const { ACCESS_TOKEN_EXPIRE } = cookieConfig
+const env = import.meta.env.MODE
 
 const login = async function ({
   email,
@@ -57,12 +58,22 @@ const signup = async function (data: SignupInput) {
 const logout = async function () {
   try {
     const token = Cookies.get('access-token')
+    let options = {}
+    if (env === 'development')
+      options = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    if (env === 'production')
+      options = {
+        withCredentials: true,
+      }
 
-    const res = await axios.get(`${SERVER_BASE_URL}/api/v1/auth/logout`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    const res = await axios.get(
+      `${SERVER_BASE_URL}/api/v1/auth/logout`,
+      options,
+    )
     // console.log(res);
 
     Cookies.remove('access-token')
