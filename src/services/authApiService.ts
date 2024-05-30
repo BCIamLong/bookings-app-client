@@ -67,11 +67,11 @@ const logout = async function () {
       }
     if (env === 'production')
       options = {
+        withCredentials: true,
         headers: {
           'Content-Type': 'application/json',
           // Authorization: `Bearer ${token}`,
         },
-        withCredentials: true,
       }
 
     const res = await axios.get(
