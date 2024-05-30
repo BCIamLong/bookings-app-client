@@ -6,16 +6,16 @@ export default function Navigation() {
     <nav className="flex items-center gap-12 text-xl font-medium text-stone-700 thin:max-tiny:hidden">
       <ul className="flex items-center gap-4 [&>li>.active]:underline">
         <li>
-          <NavLink to="/">Homepage</NavLink>
+          <NavLink to="">Homepage</NavLink>
         </li>
         <li>
-          <NavLink to="/cabins">Cabins</NavLink>
+          <NavLink to="cabins">Cabins</NavLink>
         </li>
         <li>
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="contact">Contact</NavLink>
         </li>
         <li>
-          <NavLink to="/about">About us</NavLink>
+          <NavLink to="about">About us</NavLink>
         </li>
       </ul>
       <Button type="nav-header">Become a host</Button>

@@ -16,7 +16,7 @@ export default function UserOptionBox() {
     <>
       {user ? (
         <div className="bg-stone-0 flex gap-1">
-          <Link to="/profile">
+          <Link to="profile">
             <div className="border-stone-50 bg-stone-0 p-1 ">
               <img className="h-9 w-9 rounded-full" src={`${avatarImg}`} alt="" />
             </div>
@@ -25,7 +25,7 @@ export default function UserOptionBox() {
         </div>
       ) : (
         <div className="bg-stone-700">
-          <Link to="/login">
+          <Link to="login">
             <ButtonLink type="user-nav-header" href="/login">Login</ButtonLink>
           </Link>
         </div>

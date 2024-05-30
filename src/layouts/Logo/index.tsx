@@ -9,7 +9,7 @@ export default function Logo({ size }: { size?: "small" | "normal" | "big" }) {
 
   return (
     <div className={style}>
-      <Link to="/">
+      <Link to="">
         {!isDarkMode ? <img src="/logo-light.png" /> : <img src="/logo-dark.png" />}
       </Link>
     </div>
