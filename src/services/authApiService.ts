@@ -16,7 +16,7 @@ import {
 
 const { SERVER_BASE_URL } = appConfig
 const { ACCESS_TOKEN_EXPIRE } = cookieConfig
-const env = import.meta.env.MODE
+// const env = import.meta.env.MODE
 
 const login = async function ({
   email,
@@ -33,8 +33,8 @@ const login = async function ({
 
     Cookies.set('access-token', res.data.token, {
       expires: ACCESS_TOKEN_EXPIRE,
-      sameSite: 'none',
-      secure: env === 'production',
+      // sameSite: 'none',
+      // secure: env === 'production',
     })
 
     if (res.data.verifyEmail === false) throw new Error(res.data.message)
@@ -60,23 +60,23 @@ const signup = async function (data: SignupInput) {
 
 const logout = async function () {
   try {
-    const token = Cookies.get('access-token')
-    let options = {}
-    if (env === 'development')
-      options = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    if (env === 'production')
-      options = {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
-          // 'Access-Control-Allow-Origin': 'http://localhost:3009',
-          // Authorization: `Bearer ${token}`,
-        },
-      }
+    // const token = Cookies.get('access-token')
+    // let options = {}
+    // if (env === 'development')
+    //   options = {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   }
+    // if (env === 'production')
+    const options = {
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json',
+        // 'Access-Control-Allow-Origin': 'http://localhost:3009',
+        // Authorization: `Bearer ${token}`,
+      },
+    }
 
     const res = await axios.get(
       `${SERVER_BASE_URL}/api/v1/auth/logout`,
