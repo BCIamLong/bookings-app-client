@@ -16,7 +16,7 @@ import {
 
 const { SERVER_BASE_URL } = appConfig
 const { ACCESS_TOKEN_EXPIRE } = cookieConfig
-// const env = import.meta.env.MODE
+const env = import.meta.env.MODE
 
 const login = async function ({
   email,
@@ -33,8 +33,8 @@ const login = async function ({
 
     Cookies.set('access-token', res.data.token, {
       expires: ACCESS_TOKEN_EXPIRE,
-      // sameSite: 'none',
-      // secure: env === 'production',
+      sameSite: 'none',
+      secure: env === 'production',
     })
 
     if (res.data.verifyEmail === false) throw new Error(res.data.message)
