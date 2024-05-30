@@ -31,9 +31,9 @@ const login = async function ({
       password,
     })
 
-    Cookies.set('access-token', res.data.token, {
-      expires: ACCESS_TOKEN_EXPIRE,
-    })
+    // Cookies.set('access-token', res.data.token, {
+    //   expires: ACCESS_TOKEN_EXPIRE,
+    // })
     if (res.data.verifyEmail === false) throw new Error(res.data.message)
     return res.data
   } catch (err) {
