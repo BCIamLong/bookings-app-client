@@ -70,7 +70,7 @@ const logout = async function () {
         withCredentials: true,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          // 'Access-Control-Allow-Origin': 'http://localhost:3009',
           // Authorization: `Bearer ${token}`,
         },
       }
