@@ -1,5 +1,5 @@
 import axios from 'axios'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import { appConfig } from '../config'
 import { UserBookingsOption } from '@/interfaces'
 
@@ -14,7 +14,7 @@ const getBookings = async function ({
   status?: string | { operation: string; value: string }
 }) {
   try {
-    const token = Cookies.get('access-token')
+    // const token = Cookies.get('access-token')
     let url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookings`
     if (typeof status === 'string') url = url + `?status=${status}`
     if (typeof status === 'object')
@@ -22,7 +22,8 @@ const getBookings = async function ({
     // console.log(url)
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        // Authorization: `Bearer ${token}`,
       },
     })
     // console.log(res)
@@ -41,7 +42,7 @@ const getUserBookings = async function ({
   cabinId?: string
   options?: UserBookingsOption
 }) {
-  const token = Cookies.get('access-token')
+  // const token = Cookies.get('access-token')
   let url = `${SERVER_BASE_URL}/api/v1/bookings/me`
   if (cabinId) url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookings/me`
   const { status } = options
@@ -54,7 +55,8 @@ const getUserBookings = async function ({
   try {
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        // Authorization: `Bearer ${token}`,
       },
     })
     // console.log(res)
@@ -67,14 +69,15 @@ const getUserBookings = async function ({
 }
 
 const getUserBooking = async function () {
-  const token = Cookies.get('access-token')
+  // const token = Cookies.get('access-token')
 
   try {
     const res = await axios.get(
       `${SERVER_BASE_URL}/api/v1/bookings/me/latest`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          // Authorization: `Bearer ${token}`,
         },
       },
     )
@@ -88,14 +91,15 @@ const getUserBooking = async function () {
 }
 
 const deleteUserBooking = async function (id: string) {
-  const token = Cookies.get('access-token')
+  // const token = Cookies.get('access-token')
 
   try {
     const res = await axios.delete(
       `${SERVER_BASE_URL}/api/v1/bookings/${id}/me/`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          // Authorization: `Bearer ${token}`,
         },
       },
     )
@@ -121,13 +125,13 @@ const bookCabin = async function (data: {
   numNights: number
 }) {
   try {
-    const token = Cookies.get('access-token')
+    // const token = Cookies.get('access-token')
     const res = await axios.post(
       `${SERVER_BASE_URL}/api/v1/bookings/checkout-session`,
       data,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          // Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
           Accept: 'application/json',
           Origin: 'http://localhost:3009',

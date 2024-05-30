@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { appConfig } from '@/config'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import { ReviewInput } from '@/interfaces'
 import { FilterReviewOption, SortReviewOption } from '@/interfaces/types'
 
@@ -34,11 +34,12 @@ const getReviews = async function ({
 
     if (filter) url = url + `?${query.toString()}`
 
-    const token = Cookies.get('access-token')
+    // const token = Cookies.get('access-token')
     // console.log(url)
     const res = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        // Authorization: `Bearer ${token}`,
       },
     })
 
@@ -52,13 +53,13 @@ const getReviews = async function ({
 
 const addReview = async function (data: ReviewInput, cabinId: string) {
   try {
-    const token = Cookies.get('access-token')
+    // const token = Cookies.get('access-token')
     const res = await axios.post(
       `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews`,
       data,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          // Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
           // Accept: 'application/json',
           // Origin: 'http://localhost:3009',
@@ -74,7 +75,7 @@ const addReview = async function (data: ReviewInput, cabinId: string) {
 }
 
 const editReview = async function (id: string, data: Partial<ReviewInput>) {
-  const token = Cookies.get('access-token')
+  // const token = Cookies.get('access-token')
 
   try {
     const res = await axios.patch(
@@ -82,7 +83,7 @@ const editReview = async function (id: string, data: Partial<ReviewInput>) {
       data,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          // Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       },
@@ -97,12 +98,13 @@ const editReview = async function (id: string, data: Partial<ReviewInput>) {
 }
 
 const deleteReview = async function (id: string) {
-  const token = Cookies.get('access-token')
+  // const token = Cookies.get('access-token')
 
   try {
     const res = await axios.delete(`${SERVER_BASE_URL}/api/v1/reviews/${id}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        // Authorization: `Bearer ${token}`,
       },
     })
     // console.log(res)

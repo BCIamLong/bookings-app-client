@@ -1,6 +1,6 @@
 import axios from 'axios'
-import Cookies from 'js-cookie'
-import { appConfig, cookieConfig } from '../config'
+// import Cookies from 'js-cookie'
+import { appConfig } from '../config'
 import {
   SignupInput,
   ForgotPasswordInput,
@@ -15,8 +15,17 @@ import {
 // import { UserSession } from "../interfaces";
 
 const { SERVER_BASE_URL } = appConfig
-const { ACCESS_TOKEN_EXPIRE } = cookieConfig
-const env = import.meta.env.MODE
+// const { ACCESS_TOKEN_EXPIRE } = cookieConfig
+
+axios.defaults.withCredentials = true
+
+// ! we don't need to use Cookies.set('access-token', res.data.token) or Cookies.get() from the cookie package to duo with cookies in cors so that my mistake
+// * so basically when we set cookie from server, API like nodejs, express it will set cookies also to our client but we do not see it on browser maybe
+// * but we can use these cookies by use withCredentials in axios to include the credentials infos like cookies...
+// * and the easy way to do that is use: axios.defaults.withCredentials = true at the top to configure all the places we use axios bellow right
+// * or we can go to each place and place withCredentials: true in the option object
+
+// const env = import.meta.env.MODE
 
 const login = async function ({
   email,
@@ -31,11 +40,11 @@ const login = async function ({
       password,
     })
 
-    Cookies.set('access-token', res.data.token, {
-      expires: ACCESS_TOKEN_EXPIRE,
-      sameSite: 'none',
-      secure: env === 'production',
-    })
+    // Cookies.set('access-token', res.data.token, {
+    //   expires: ACCESS_TOKEN_EXPIRE,
+    //   sameSite: 'none',
+    //   secure: env === 'production',
+    // })
 
     if (res.data.verifyEmail === false) throw new Error(res.data.message)
     return res.data
@@ -49,7 +58,7 @@ const signup = async function (data: SignupInput) {
   try {
     const res = await axios.post(`${SERVER_BASE_URL}/api/v1/auth/signup`, data)
 
-    Cookies.set('access-token', res.data.token)
+    // Cookies.set('access-token', res.data.token)
 
     return res.data
   } catch (err) {
@@ -70,7 +79,7 @@ const logout = async function () {
     //   }
     // if (env === 'production')
     const options = {
-      withCredentials: true,
+      // withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
         // 'Access-Control-Allow-Origin': 'http://localhost:3009',
@@ -84,7 +93,7 @@ const logout = async function () {
     )
     // console.log(res);
 
-    Cookies.remove('access-token')
+    // Cookies.remove('access-token')
 
     return res?.data
   } catch (err) {
@@ -95,7 +104,7 @@ const logout = async function () {
 
 const getUserSession = async function () {
   try {
-    const token = Cookies.get('access-token')
+    // const token = Cookies.get('access-token')
 
     //  || Cookies.get("refresh-token");
     // ! so the client will not be able to access to the cookie is set from server because the security reason, so if our app really have SSL, https secure then we can do that we can send credential (cookies) along with request and the client also access to the cookie from server
@@ -104,8 +113,11 @@ const getUserSession = async function () {
     // console.log(token);
     const res = await axios.get(`${SERVER_BASE_URL}/api/v1/auth/session`, {
       // withCredentials: true,
+      // withCredentials: true,
       headers: {
-        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        // Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
       },
     })
     // console.log(res);
@@ -149,13 +161,14 @@ const resetPassword = async function (data: ResetPasswordInput, token: string) {
 
 const verify2FA = async function (data: Verify2FAInput) {
   try {
-    const token = Cookies.get('access-token')
+    // const token = Cookies.get('access-token')
     const res = await axios.post(
       `${SERVER_BASE_URL}/api/v1/auth/2FA/validate-otp`,
       data,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          // Authorization: `Bearer ${token}`,
         },
       },
     )
@@ -168,7 +181,7 @@ const verify2FA = async function (data: Verify2FAInput) {
 }
 
 const editProfile = async function (data: EditProfileInput) {
-  const token = Cookies.get('access-token')
+  // const token = Cookies.get('access-token')
   const { name, avatar } = data
   const requestBody = new FormData()
   requestBody.append('name', name)
@@ -183,7 +196,7 @@ const editProfile = async function (data: EditProfileInput) {
       {
         headers: {
           'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${token}`,
+          // Authorization: `Bearer ${token}`,
         },
       },
     )
@@ -197,7 +210,7 @@ const editProfile = async function (data: EditProfileInput) {
   }
 }
 const editEmail = async function (data: EditEmailInput) {
-  const token = Cookies.get('access-token')
+  // const token = Cookies.get('access-token')
 
   try {
     const res = await axios.patch(
@@ -205,7 +218,8 @@ const editEmail = async function (data: EditEmailInput) {
       { email: data.email },
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          // Authorization: `Bearer ${token}`,
         },
       },
     )
@@ -220,7 +234,7 @@ const editEmail = async function (data: EditEmailInput) {
 }
 
 const checkPassword = async function (data: CheckPasswordInput) {
-  const token = Cookies.get('access-token')
+  // const token = Cookies.get('access-token')
 
   try {
     const res = await axios.post(
@@ -228,7 +242,8 @@ const checkPassword = async function (data: CheckPasswordInput) {
       data,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          // Authorization: `Bearer ${token}`,
         },
       },
     )
@@ -244,21 +259,22 @@ const checkPassword = async function (data: CheckPasswordInput) {
 
 const editPassword = async function (data: ResetPasswordInput, token: string) {
   try {
-    const accessToken = Cookies.get('access-token')
+    // const accessToken = Cookies.get('access-token')
 
     const res = await axios.patch(
       `${SERVER_BASE_URL}/api/v1/auth/update-password/${token}`,
       data,
       {
         headers: {
-          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+          // Authorization: `Bearer ${accessToken}`,
         },
       },
     )
 
-    Cookies.set('access-token', res.data.token, {
-      expires: ACCESS_TOKEN_EXPIRE,
-    })
+    // Cookies.set('access-token', res.data.token, {
+    //   expires: ACCESS_TOKEN_EXPIRE,
+    // })
 
     return res.data
   } catch (err) {
@@ -269,13 +285,14 @@ const editPassword = async function (data: ResetPasswordInput, token: string) {
 
 const enable2FA = async function () {
   try {
-    const token = Cookies.get('access-token')
+    // const token = Cookies.get('access-token')
 
     const res = await axios.get(
       `${SERVER_BASE_URL}/api/v1/auth/2FA/generate-otp`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          // Authorization: `Bearer ${token}`,
         },
       },
     )
@@ -290,14 +307,15 @@ const enable2FA = async function () {
 
 const verifyEnable2FA = async function (data: VerifyEnable2FAInput) {
   try {
-    const token = Cookies.get('access-token')
+    // const token = Cookies.get('access-token')
 
     const res = await axios.patch(
       `${SERVER_BASE_URL}/api/v1/auth/2FA/verify-otp`,
       data,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          // Authorization: `Bearer ${token}`,
         },
       },
     )
@@ -311,11 +329,12 @@ const verifyEnable2FA = async function (data: VerifyEnable2FAInput) {
 
 const disable2FA = async function () {
   try {
-    const token = Cookies.get('access-token')
+    // const token = Cookies.get('access-token')
 
     const res = await axios.get(`${SERVER_BASE_URL}/api/v1/auth/2FA/disable`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        // Authorization: `Bearer ${token}`,
       },
     })
     // console.log(res);
@@ -329,14 +348,15 @@ const disable2FA = async function () {
 
 const deleteMe = async function (data: DeleteMeInput) {
   try {
-    const token = Cookies.get('access-token')
+    // const token = Cookies.get('access-token')
 
     const res = await axios.post(`${SERVER_BASE_URL}/api/v1/auth/me`, data, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        // Authorization: `Bearer ${token}`,
       },
     })
-    Cookies.remove('access-token')
+    // Cookies.remove('access-token')
 
     return res.data
   } catch (err) {
