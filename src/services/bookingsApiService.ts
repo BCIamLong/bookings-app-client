@@ -134,7 +134,7 @@ const bookCabin = async function (data: {
           // Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          Origin: 'http://localhost:3009',
+          // Origin: 'http://localhost:3009',
         },
       },
     )
