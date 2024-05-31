@@ -3,6 +3,8 @@ import axios from 'axios'
 
 import { appConfig } from '@/config'
 
+axios.defaults.withCredentials = true
+
 const { SERVER_BASE_URL } = appConfig
 
 const getBookmarks = async function () {

@@ -3,6 +3,7 @@ import { appConfig } from '../config'
 import { SortOptions } from '../interfaces/types'
 import { SearchCabin } from '@/interfaces'
 
+axios.defaults.withCredentials = true
 const { SERVER_BASE_URL, PAGE_LIMIT } = appConfig
 
 const getCabins = async function ({

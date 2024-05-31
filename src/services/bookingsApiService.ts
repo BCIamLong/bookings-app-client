@@ -3,6 +3,8 @@ import axios from 'axios'
 import { appConfig } from '../config'
 import { UserBookingsOption } from '@/interfaces'
 
+axios.defaults.withCredentials = true
+
 // const { stripeClient } = stripeConfig;
 const { SERVER_BASE_URL } = appConfig
 

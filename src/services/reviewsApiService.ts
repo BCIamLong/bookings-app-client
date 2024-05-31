@@ -4,6 +4,7 @@ import { appConfig } from '@/config'
 import { ReviewInput } from '@/interfaces'
 import { FilterReviewOption, SortReviewOption } from '@/interfaces/types'
 
+axios.defaults.withCredentials = true
 const { SERVER_BASE_URL } = appConfig
 
 const getReviews = async function ({
