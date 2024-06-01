@@ -2,7 +2,7 @@
 
 [Booking web](https://bookings-app-client.vercel.app/) is a single-page application that allows users to login and book cabins. The website includes a variety of features such as user authentication, profile management, payment processing, email notifications, and more.
 
-This Booking web is a client for [Booking API](https://booking-api-ebe1.onrender.com/docs)
+This Booking web is a client for [Booking API](https://github.com/BCIamLong/booking-api)
 
 ### Table of contents
 - [Features](#feature)
