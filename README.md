@@ -15,6 +15,7 @@ This Booking web is a client for [Booking API](https://github.com/BCIamLong/book
 - Profile Management (Upload Image, Update Name,Email, Password)
 - Settings Management (Edit Email, Edit Password, Deactivate Account)
 - Dark Mode
+- Responsive Design
 - Payment Processing
 - Email Notifications
 - Form Handling with React Hook Form
