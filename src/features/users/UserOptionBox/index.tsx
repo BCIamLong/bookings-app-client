@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { useUserSession } from "../../auth/useUserSession";
 import Spinner from "../../../components/Spinner";
 import Logout from "@/features/auth/Logout";
+import { useTranslation } from "react-i18next";
 
 export default function UserOptionBox() {
   const { isLoading, user } = useUserSession();
   const { avatar } = user || {}
+  const { t } = useTranslation()
 
   const avatarImg = avatar === 'default-avatar.jpg' ? "/default-avatar.jpg" : avatar
 
@@ -26,7 +28,7 @@ export default function UserOptionBox() {
       ) : (
         <div className="bg-stone-700">
           <Link to="login">
-            <ButtonLink type="user-nav-header" href="/login">Login</ButtonLink>
+            <ButtonLink type="user-nav-header" href="/login">{t('header.options.login')}</ButtonLink>
           </Link>
         </div>
       )}

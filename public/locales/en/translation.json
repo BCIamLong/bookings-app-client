@@ -1,0 +1,81 @@
+{
+  "header": {
+    "nav": {
+      "homepage": "Homepage",
+      "cabins": "Cabins",
+      "contact": "Contact",
+      "about": "About us"
+    },
+    "btn": "Become a host",
+    "options": {
+      "languages": {
+        "english": "English",
+        "vietnamese": "Vietnamese"
+      },
+      "menu": {
+        "bookmarks": "Your bookmarks"
+      },
+      "login": "Login"
+    }
+  },
+  "footer": {
+    "play-store": "PlayStore",
+    "description": " Welcome to Cabin Retreats, your go-to destination for booking the perfect cabin getaway. Whether you're seeking a peaceful retreat in the woods, a cozy mountain escape, or a lakeside cabin with breathtaking views, our platform offers a wide range of unique and charming cabins to suit every preference.",
+    "nav": {
+      "company": {
+        "heading": "Company",
+        "nav": {
+          "about": "About us",
+          "legal-inf": "Legal information",
+          "contact": "Contact",
+          "blogs": "Blogs"
+        }
+      },
+      "help": {
+        "heading": "Help center",
+        "nav": {
+          "find": "Find a property",
+          "how": "How to host?",
+          "why": "Why us?",
+          "faqs": "FAQs",
+          "guide": "Rental guides"
+        }
+      },
+      "contact": {
+        "heading": "Contact inf",
+        "nav": {
+          "phone": "Phone: 1234567890",
+          "email": "Email: company@example.com",
+          "location": "Location: 123 None"
+        }
+      }
+    }
+  },
+  "hero": {
+    "nav": {
+      "heading": "find",
+      "cabins": "Cabins",
+      "flats": "Flats",
+      "hotels": "Hotels",
+      "villas": "Villas"
+    },
+    "search": {
+      "price": {
+        "label": "Price",
+        "holder": "Which price do you prefer?"
+      },
+      "rating": {
+        "label": "Rating",
+        "holder": "Add ratings"
+      },
+      "discount": {
+        "label": "Discount",
+        "holder": "Add discount"
+      },
+      "guests": {
+        "label": "Guests",
+        "holder": "Add guests"
+      }
+    }
+  }
+}

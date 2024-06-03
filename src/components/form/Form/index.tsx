@@ -1,4 +1,5 @@
 import { ReactNode, FormEventHandler } from "react";
+import { useTranslation } from "react-i18next";
 
 interface FormProps {
   type: string;
@@ -7,6 +8,8 @@ interface FormProps {
 }
 
 export default function Form({ type, onSubmit, children }: FormProps) {
+  const { i18n } = useTranslation()
+  console.log(i18n.language)
   const baseStyle = ` `;
   let style;
   if (type === "login")
@@ -16,7 +19,7 @@ export default function Form({ type, onSubmit, children }: FormProps) {
   if (type === "search")
     style =
       baseStyle +
-      `grid grid-cols-[3fr_2fr_2fr_2fr_1fr] gap-3 justify-center divide-x-2 rounded-full bg-stone-0 px-6 py-3 `;
+      `grid ${i18n.language === 'vi-VN' ? 'grid-cols-[2.2fr_2fr_2fr_2.8fr_1fr]' : 'grid-cols-[3fr_2fr_2fr_2fr_1fr]'} gap-3 justify-center divide-x-2 rounded-full bg-stone-0 px-6 py-3 `;
   if (type === 'profile')
     style =
       baseStyle +

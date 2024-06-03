@@ -2,6 +2,8 @@ import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import "./config/i18n.config";
 import AppRoute from "./routes/AppRoute";
 import DarkModeProvider from "./context/DarkModeContext";
 // import { getGoogleOauthUrl } from "./utils";
@@ -16,9 +18,13 @@ const queryClient = new QueryClient({
   },
 });
 
+
+
+
 function App() {
   return (
     <DarkModeProvider>
+      {/* <I18nextProvider i18n={i18n}> */}
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <ToastContainer
@@ -33,6 +39,7 @@ function App() {
         />
         <AppRoute />
       </QueryClientProvider>
+      {/* </I18nextProvider> */}
     </DarkModeProvider>
   );
 }

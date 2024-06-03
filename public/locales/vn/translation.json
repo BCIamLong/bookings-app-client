@@ -1,0 +1,83 @@
+{
+  "header": {
+    "nav": {
+      "homepage": "Trang chủ",
+      "cabins": "Cabins",
+      "contact": "Liên hệ",
+      "about": "Về chúng tôi"
+    },
+    "btn": "Trở thành chủ nhà",
+    "options": {
+      "languages": {
+        "english": "Tiếng Anh",
+        "vietnamese": "Tiếng Việt"
+      },
+      "menu": {
+        "bookmarks": "Bookmarks của bạn"
+      },
+      "login": "Đăng nhập"
+    }
+  },
+  "footer": {
+    "play-store": "CHPlay",
+    "description": "Chào mừng đến với Cabin Retreats, điểm đến lý tưởng của bạn để đặt chỗ nghỉ dưỡng trong cabin hoàn hảo. Cho dù bạn đang tìm kiếm một nơi ẩn náu yên bình trong rừng, một chỗ trốn ấm cúng trên núi, hay một cabin bên hồ với cảnh quan tuyệt đẹp, nền tảng của chúng tôi cung cấp một loạt các cabin độc đáo và quyến rũ để phù hợp với mọi sở thích.",
+    "nav": {
+      "company": {
+        "heading": "Công ty",
+        "nav": {
+          "about": "Về chúng tôi",
+          "legal-inf": "Thông tin pháp lý",
+          "contact": "Liên hệ",
+          "blogs": "Blogs"
+        }
+      },
+      "help": {
+        "heading": "Trung tâm trợ giúp",
+        "nav": {
+          "find": "Tìm bất động sản",
+          "how": "Làm thế nào để làm chủ nhà?",
+          "why": "Tại sao chọn chúng tôi?",
+          "faqs": "Câu hỏi thường gặp",
+          "guide": "Hướng dẫn thuê"
+        }
+      },
+      "contact": {
+        "heading": "Thông tin liên hệ",
+        "nav": {
+          "phone": "Điện thoại: 1234567890",
+          "email": "Email: company@example.com",
+          "location": "Địa chỉ: 123 None"
+        }
+      }
+    }
+  },
+  "hero": {
+    "nav": {
+      "heading": "Tìm kiếm",
+      "cabins": "Cabins",
+      "flats": "Căn hộ",
+      "hotels": "Khách sạn",
+      "villas": "Biệt thự"
+    },
+    "search": {
+      "price": {
+        "label": "Giá",
+        "holder": "Bạn muốn giá nào?"
+      },
+      "rating": {
+        "label": "Đánh giá",
+        "holder": "Thêm đánh giá"
+      },
+      "discount": {
+        "label": "Giảm giá",
+        "holder": "Thêm giảm giá"
+      },
+      "guests": {
+        "label": "Khách",
+        "holder": "Thêm số lượng khách"
+      }
+    }
+  },
+  "discover": {},
+  "newsletter": {}
+}
