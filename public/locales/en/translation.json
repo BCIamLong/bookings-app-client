@@ -77,5 +77,19 @@
         "holder": "Add guests"
       }
     }
+  },
+  "discover": {
+    "heading": "Discover More About Property Rental",
+    "description": "Escape the ordinary! Discover curates unique places to stay, hidden local experiences, trending destinations, and seasonal adventures. It's more than booking - it's your one-stop shop to spark your travel dreams and ignite your wanderlust. Dive in today!",
+    "links": {
+      "question": "Ask A Question",
+      "find": "Find A Property"
+    },
+    "btn": "Discover More"
+  },
+  "newsletter": {
+    "heading": "Newsletter",
+    "extra-heading": "Stay Upto Date",
+    "holder": "Your email"
   }
 }

@@ -78,6 +78,18 @@
       }
     }
   },
-  "discover": {},
-  "newsletter": {}
+  "discover": {
+    "heading": "Khám phá thêm về Thuê chỗ nghỉ",
+    "description": "Đánh thức tinh thần phiêu lưu! Khám phá giúp bạn tìm những chỗ ở độc đáo, trải nghiệm địa phương thú vị, các điểm đến thịnh hành và những cuộc phiêu lưu theo mùa. Khám phá không chỉ là đặt phòng, đó còn là điểm đến lý tưởng để thắp sáng ước mơ du lịch và khơi dậy niềm đam mê khám phá. Hãy bắt đầu khám phá ngay hôm nay!",
+    "links": {
+      "question": "Đặt câu hỏi",
+      "find": "Tìm chỗ nghỉ"
+    },
+    "btn": "Khám phá thêm"
+  },
+  "newsletter": {
+    "heading": "Bản tin",
+    "extra-heading": "Cập nhật tin tức",
+    "holder": "Email của bạn"
+  }
 }
