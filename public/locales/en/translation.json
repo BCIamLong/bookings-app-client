@@ -122,5 +122,31 @@
   },
   "about": {
     "heading": "About us"
+  },
+  "login": {
+    "heading": "Let's embark on a journey of stress-free bookings together",
+    "description": "Booking App is a user-friendly booking platform designed to simplify the process of planning and booking various services and experiences. Whether you're looking to book flights, accommodations, activities, or events, Booking App provides a seamless and convenient solution for all your booking needs.",
+    "btn": "Start your journey",
+    "form": {
+      "heading": "Have an account",
+      "email": {
+        "label": "Email",
+        "holder": "Enter your email"
+      },
+      "password": {
+        "label": "Password"
+      },
+      "btn": {
+        "default": "Login",
+        "email": "Login with email"
+      },
+      "links": {
+        "forgot-pwd": "Forgot the password?",
+        "signup": {
+          "extra-text": "You don't have account yet?",
+          "link": "Signup"
+        }
+      }
+    }
   }
 }

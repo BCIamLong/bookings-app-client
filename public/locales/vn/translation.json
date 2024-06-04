@@ -122,5 +122,31 @@
   },
   "about": {
     "heading": "Về chúng tôi"
+  },
+  "login": {
+    "heading": "Cùng nhau bắt đầu hành trình đặt chỗ dễ dàng",
+    "description": "Booking App là nền tảng đặt phòng thân thiện với người dùng, được thiết kế để đơn giản hóa quá trình lên kế hoạch và đặt phòng cho các dịch vụ và trải nghiệm khác nhau. Cho dù bạn đang tìm kiếm dịch vụ đặt vé máy bay, chỗ ở, hoạt động giải trí hay sự kiện, Booking App đều cung cấp giải pháp liền mạch và tiện lợi cho mọi nhu cầu đặt phòng của bạn.",
+    "btn": "Bắt đầu hành trình",
+    "form": {
+      "heading": "Đã có tài khoản",
+      "email": {
+        "label": "Email",
+        "holder": "Nhập email của bạn"
+      },
+      "password": {
+        "label": "Mật khẩu"
+      },
+      "btn": {
+        "default": "Đăng nhập",
+        "email": "Đăng nhập bằng email"
+      },
+      "links": {
+        "forgot-pwd": "Quên mật khẩu?",
+        "signup": {
+          "extra-text": "Bạn chưa có tài khoản?",
+          "link": "Đăng ký"
+        }
+      }
+    }
   }
 }

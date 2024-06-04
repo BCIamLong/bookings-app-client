@@ -11,8 +11,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useLogin } from "../useLogin";
 import Spinner from "../../../components/Spinner";
 import { LoginInput } from "../../../interfaces";
+import { useTranslation } from "react-i18next";
 
 export default function LoginForm() {
+  const { t } = useTranslation()
   const { login, isLogging } = useLogin();
   const { register, reset, handleSubmit, formState } = useForm<LoginInput>();
   const { errors } = formState;
@@ -30,7 +32,7 @@ export default function LoginForm() {
     <Form type="login" onSubmit={handleSubmit(onSubmit)}>
       <FormItem
         type="login"
-        label="Email"
+        label={t('login.form.email.label')}
         labelFor="email"
         errorMsg={errors.email?.message}
       >
@@ -38,7 +40,7 @@ export default function LoginForm() {
           type="email"
           variant="login"
           id="email"
-          placeholder="Enter your email"
+          placeholder={t('login.form.email.holder')}
           disabled={isLogging}
           registerOb={{
             ...register("email", {
@@ -53,7 +55,7 @@ export default function LoginForm() {
       </FormItem>
       <FormItem
         type="login"
-        label="Password"
+        label={t('login.form.password.label')}
         labelFor="password"
         errorMsg={errors.password?.message}
       >
@@ -83,11 +85,11 @@ export default function LoginForm() {
       </FormItem>
       <div className="mt-4 flex flex-col gap-3">
         <Button type="login">
-          {isLogging ? <Spinner size="small" /> : "Login"}
+          {isLogging ? <Spinner size="small" /> : `${t('login.form.btn.default')}`}
         </Button>
         <ButtonLink href={getGoogleOauthUrl()} type="login">
           <HiOutlineEnvelope className="text-2xl" />
-          <span>Login with email</span>
+          <span>{t('login.form.btn.email')}</span>
         </ButtonLink>
       </div>
       <div className="flex justify-center gap-2 text-stone-700">
@@ -105,12 +107,12 @@ export default function LoginForm() {
         </ButtonLink>
       </div>
       <ButtonLink type="simple">
-        <Link to="/forgot-password">Forget the password?</Link>
+        <Link to="/forgot-password">{t('login.form.links.forgot-pwd')}</Link>
       </ButtonLink>
       <p className="flex justify-center gap-1 text-sm text-stone-500">
-        <span>You don't have account yet, </span>
+        <span>{t('login.form.links.signup.extra-text')}</span>
         <ButtonLink type="simple">
-          <Link to="/signup">Sign up</Link>
+          <Link to="/signup">{t('login.form.links.signup.link')}</Link>
         </ButtonLink>
       </p>
     </Form>

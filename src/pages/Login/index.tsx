@@ -1,14 +1,16 @@
+import { useTranslation } from "react-i18next";
 import LoginForm from "../../features/auth/LoginForm";
 // import Button from "../../components/Button";
 // import Modal from "../../components/Modal";
 
 export default function Login() {
+  const { t } = useTranslation()
   return (
     <div
       style={{ backgroundImage: `url("/imgs/cabins/cabin-008.jpg")` }}
       className="flex h-screen flex-col items-center justify-center gap-6 rounded-l-[20%] thin:max-tiny:rounded-l-[0%] bg-cover px-12"
     >
-      <h2 className="text-3xl font-bold text-stone-100">Have an account?</h2>
+      <h2 className="text-3xl font-bold text-stone-100">{t('login.form.heading')}</h2>
       <LoginForm />
       {/* <Modal>
         <Modal.Open openName="login"><Button type="primary">Open</Button></Modal.Open>
