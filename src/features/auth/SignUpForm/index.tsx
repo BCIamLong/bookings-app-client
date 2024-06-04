@@ -8,8 +8,10 @@ import { useSignup } from "../useSignup";
 import Spinner from "../../../components/Spinner";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { SignupInput } from "../../../interfaces";
+import { useTranslation } from "react-i18next";
 
 export default function SignUpForm() {
+  const { t } = useTranslation()
   const { isSigning, signup } = useSignup();
   const { register, reset, handleSubmit, getValues, formState } =
     useForm<SignupInput>();
@@ -27,7 +29,7 @@ export default function SignUpForm() {
     <Form type="login" onSubmit={handleSubmit(onSubmit)}>
       <FormItem
         type="login"
-        label="Full name"
+        label={t('signup.form.name.label')}
         labelFor="fullName"
         errorMsg={errors.fullName?.message}
       >
@@ -35,7 +37,7 @@ export default function SignUpForm() {
           type="text"
           variant="login"
           id="fullName"
-          placeholder="Enter your full name"
+          placeholder={t('signup.form.name.holder')}
           disabled={isSigning}
           registerOb={{
             ...register("fullName", { required: "This field is required" }),
@@ -44,7 +46,7 @@ export default function SignUpForm() {
       </FormItem>
       <FormItem
         type="login"
-        label="Email"
+        label={t('signup.form.email.label')}
         labelFor="email"
         errorMsg={errors.email?.message}
       >
@@ -52,7 +54,7 @@ export default function SignUpForm() {
           type="email"
           variant="login"
           id="email"
-          placeholder="Enter your email"
+          placeholder={t('signup.form.email.holder')}
           disabled={isSigning}
           registerOb={{
             ...register("email", {
@@ -67,7 +69,7 @@ export default function SignUpForm() {
       </FormItem>
       <FormItem
         type="login"
-        label="Password"
+        label={t('signup.form.password.label')}
         labelFor="password"
         errorMsg={errors.password?.message}
       >
@@ -91,7 +93,7 @@ export default function SignUpForm() {
       </FormItem>
       <FormItem
         type="login"
-        label="Password confirm"
+        label={t('signup.form.password-confirm.label')}
         labelFor="passwordConfirm"
         errorMsg={errors.passwordConfirm?.message}
       >
@@ -112,12 +114,12 @@ export default function SignUpForm() {
         />
       </FormItem>
       <Button type="login">
-        {isSigning ? <Spinner size="small" /> : "Sign up"}
+        {isSigning ? <Spinner size="small" /> : `${t('signup.btn')}`}
       </Button>
       <p className="flex justify-center gap-1 text-sm text-inherit">
-        <span>You're already have account, </span>
+        <span>{t('signup.links.login.extra-text')}</span>
         <ButtonLink type="simple">
-          <Link to="/login">Login</Link>
+          <Link to="/login">{t('signup.links.login.link')}</Link>
         </ButtonLink>
       </p>
     </Form>

@@ -148,5 +148,55 @@
         }
       }
     }
+  },
+  "forgot-pwd": {
+    "heading": "Quên mật khẩu?",
+    "description1": "Nhập địa chỉ email bạn đã sử dụng khi đăng ký và chúng tôi sẽ gửi cho bạn hướng dẫn để đặt lại mật khẩu.",
+    "description2": "Vì lý do bảo mật, chúng tôi KHÔNG lưu trữ mật khẩu của bạn. Vì vậy, hãy yên tâm rằng chúng tôi sẽ không bao giờ gửi mật khẩu của bạn qua email.",
+    "form": {
+      "email": {
+        "label": "Email",
+        "holder": "Nhập email của bạn"
+      }
+    },
+    "btn": "Gửi hướng dẫn đặt lại"
+  },
+  "signup": {
+    "heading": "Tạo tài khoản mới",
+    "form": {
+      "name": {
+        "label": "Họ và tên",
+        "holder": "Nhập họ và tên"
+      },
+      "email": {
+        "label": "Email",
+        "holder": "Nhập email của bạn"
+      },
+      "password": {
+        "label": "Mật khẩu"
+      },
+      "password-confirm": {
+        "label": "Xác nhận mật khẩu"
+      }
+    },
+    "btn": "Đăng ký",
+    "links": {
+      "login": {
+        "extra-text": "Bạn đã có tài khoản?",
+        "link": "Đăng nhập"
+      }
+    }
+  },
+  "reset-pwd": {
+    "heading": "Đặt lại mật khẩu",
+    "form": {
+      "password": {
+        "label": "Mật khẩu"
+      },
+      "password-confirm": {
+        "label": "Xác nhận mật khẩu"
+      }
+    },
+    "btn": "Đặt lại"
   }
 }

@@ -8,8 +8,10 @@ import Input from "../../../components/form/Input";
 import { useResetPassword } from "../useResetPassword";
 import { ResetPasswordInput } from "../../../interfaces";
 import Spinner from "../../../components/Spinner";
+import { useTranslation } from "react-i18next";
 
 export default function ResetPasswordForm() {
+  const { t } = useTranslation()
   const { token } = useParams();
   const { isResetting, resetPassword } = useResetPassword();
   const { register, formState, handleSubmit, reset, getValues } =
@@ -31,7 +33,7 @@ export default function ResetPasswordForm() {
     <Form type="login" onSubmit={handleSubmit(onSubmit)}>
       <FormItem
         type="login"
-        label="Password"
+        label={t('reset-pwd.form.password.label')}
         labelFor="password"
         errorMsg={errors.password?.message}
       >
@@ -56,7 +58,7 @@ export default function ResetPasswordForm() {
 
       <FormItem
         type="login"
-        label="Password confirm"
+        label={t('reset-pwd.form.password-confirm.label')}
         labelFor="passwordConfirm"
         errorMsg={errors.passwordConfirm?.message}
       >
@@ -77,7 +79,7 @@ export default function ResetPasswordForm() {
         />
       </FormItem>
       <Button type="login">
-        {isResetting ? <Spinner size="small" /> : "Reset"}
+        {isResetting ? <Spinner size="small" /> : `${t('reset-pwd.btn')}`}
       </Button>
     </Form>
   );

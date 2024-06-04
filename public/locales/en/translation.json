@@ -148,5 +148,55 @@
         }
       }
     }
+  },
+  "forgot-pwd": {
+    "heading": "Forget your password?",
+    "description1": "Enter the email address you used when you joined and we'll send you instructions to reset your password.",
+    "description2": "For security reasons, we do NOT store your password. So rest assured that we will never send your password via email.",
+    "form": {
+      "email": {
+        "label": "Email",
+        "holder": "Enter your email"
+      }
+    },
+    "btn": "Send reset instructions"
+  },
+  "signup": {
+    "heading": "Create your new account",
+    "form": {
+      "name": {
+        "label": "Full Name",
+        "holder": "Enter your full name"
+      },
+      "email": {
+        "label": "Email",
+        "holder": "Enter your email"
+      },
+      "password": {
+        "label": "Password"
+      },
+      "password-confirm": {
+        "label": "Password Confirm"
+      }
+    },
+    "btn": "Sign up",
+    "links": {
+      "login": {
+        "extra-text": "You're already have account?",
+        "link": "Login"
+      }
+    }
+  },
+  "reset-pwd": {
+    "heading": "Reset your password",
+    "form": {
+      "password": {
+        "label": "Password"
+      },
+      "password-confirm": {
+        "label": "Password Confirm"
+      }
+    },
+    "btn": "Reset"
   }
 }

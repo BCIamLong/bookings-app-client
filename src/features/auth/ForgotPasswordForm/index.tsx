@@ -7,12 +7,14 @@ import Button from "../../../components/Button";
 import Spinner from "../../../components/Spinner";
 import { useForgotPassword } from "../useForgotPassword";
 import { ForgotPasswordInput } from "../../../interfaces";
+import { useTranslation } from "react-i18next";
 
 export default function ForgotPasswordForm() {
   const { isSending, forgotPassword } = useForgotPassword();
   const { register, formState, handleSubmit, reset } =
     useForm<ForgotPasswordInput>();
   const { errors } = formState;
+  const { t } = useTranslation()
 
   const onSubmit: SubmitHandler<ForgotPasswordInput> = function (data) {
     forgotPassword(data, {
@@ -26,18 +28,16 @@ export default function ForgotPasswordForm() {
     <Form type="login" onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4 text-sm text-stone-600">
         <p>
-          Enter the email address you used when you joined and we'll send you
-          instructions to reset your password.
+          {t('forgot-pwd.description1')}
         </p>
         <br />
         <p>
-          For security reasons, we do NOT store your password. So rest assured
-          that we will never send your password via email.
+          {t('forgot-pwd.description2')}
         </p>
       </div>
       <FormItem
         type="login"
-        label="Email"
+        label={t('forgot-pwd.form.email.label')}
         labelFor="email"
         errorMsg={errors.email?.message}
       >
@@ -46,7 +46,7 @@ export default function ForgotPasswordForm() {
           variant="login"
           id="email"
           disabled={isSending}
-          placeholder="Enter your email"
+          placeholder={t('forgot-pwd.form.email.holder')}
           registerOb={{
             ...register("email", {
               required: "This field is required",
@@ -60,7 +60,7 @@ export default function ForgotPasswordForm() {
       </FormItem>
 
       <Button type="login">
-        {isSending ? <Spinner size="small" /> : "Send reset instructions"}
+        {isSending ? <Spinner size="small" /> : `${t('forgot-pwd.btn')}`}
       </Button>
     </Form>
   );
