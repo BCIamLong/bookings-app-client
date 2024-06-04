@@ -8,8 +8,10 @@ import { useReviews } from "../useReviews"
 import Spinner from "@/components/Spinner"
 import { FilterReviewOption, SortReviewOption } from "@/interfaces/types"
 import ReviewHeading from "../ReviewHeading"
+import { useTranslation } from "react-i18next"
 
 export default function ReviewProfilePopup({ isReviewsOfUser }: { isReviewsOfUser?: boolean }) {
+  const { t } = useTranslation()
   const [searchParams, setSearchParams] = useSearchParams()
   const filter = searchParams.get('filter') || 5
   const sort = searchParams.get('sort') || 'latest'
@@ -23,26 +25,26 @@ export default function ReviewProfilePopup({ isReviewsOfUser }: { isReviewsOfUse
   return (
     <div className="bg-stone-100 w-[45rem] thin:max-tiny:max-w-[36rem] p-6">
       <div className="flex justify-between p-6 mt-2 items-center thin:max-sm:flex-col thin:max-sm:justify-start thin:max-sm:items-start thin:max-sm:gap-3">
-        {isReviewsOfUser ? <Heading type="heading-4">Your reviews</Heading> : <div className="[&>div]:p-[0px]"><ReviewHeading /></div>}
+        {isReviewsOfUser ? <Heading type="heading-4">{t('reviews.box.heading')}</Heading> : <div className="[&>div]:p-[0px]"><ReviewHeading /></div>}
         <div className="flex gap-2">
           <Select id="filter-user-reviews" type="sort" onChange={(e) => setSearchParams(params => {
             params.set('filter', e.target.value)
             return params
           })}>
-            <Option type="sort" value="5">5 Stars</Option>
-            <Option type="sort" value="4">4 Stars</Option>
-            <Option type="sort" value="3">3 Stars</Option>
-            <Option type="sort" value="2">2 Stars</Option>
-            <Option type="sort" value="1">1 Star</Option>
+            <Option type="sort" value="5">{t('reviews.box.filter.stars.5')}</Option>
+            <Option type="sort" value="4">{t('reviews.box.filter.stars.4')}</Option>
+            <Option type="sort" value="3">{t('reviews.box.filter.stars.3')}</Option>
+            <Option type="sort" value="2">{t('reviews.box.filter.stars.2')}</Option>
+            <Option type="sort" value="1">{t('reviews.box.filter.stars.1')}</Option>
           </Select>
 
           <Select id="sort-user-reviews" type="sort" onChange={(e) => setSearchParams(params => {
             params.set('sort', e.target.value)
             return params
           })}>
-            <Option type="sort" value="">Sort by</Option>
-            <Option type="sort" value="latest">Sort by time (latest)</Option>
-            <Option type="sort" value="oldest">Sort by time (oldest)</Option>
+            <Option type="sort" value="">{t('reviews.box.sort.default')}</Option>
+            <Option type="sort" value="latest">{t('reviews.box.sort.time-ins')}</Option>
+            <Option type="sort" value="oldest">{t('reviews.box.sort.time-des')}</Option>
           </Select>
         </div>
       </div>

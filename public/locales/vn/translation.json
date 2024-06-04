@@ -228,6 +228,26 @@
   },
   "reviews": {
     "btn": "Xem tất cả đánh giá",
-    "empty": "Cabin này hiện chưa có đánh giá nào"
+    "empty": {
+      "cabins": "Cabin này hiện chưa có đánh giá nào.",
+      "users": "Bạn chưa có đánh giá nào."
+    },
+    "box": {
+      "heading": "Đánh giá của bạn",
+      "sort": {
+        "default": "Sắp xếp theo",
+        "time-ins": "Sắp xếp theo thời gian (mới nhất)",
+        "time-des": "Sắp xếp theo thời gian (cũ nhất)"
+      },
+      "filter": {
+        "stars": {
+          "1": "1 sao",
+          "2": "2 sao",
+          "3": "3 sao",
+          "4": "4 sao",
+          "5": "5 sao"
+        }
+      }
+    }
   }
 }

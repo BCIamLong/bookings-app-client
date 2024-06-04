@@ -231,6 +231,23 @@
     "empty": {
       "cabins": "This cabin doesn't have any review yet",
       "users": "You don't have any review yet"
+    },
+    "box": {
+      "heading": "Your reviews",
+      "sort": {
+        "default": "Sort by",
+        "time-ins": "Sort by time (latest)",
+        "time-des": "Sort by time (oldest)"
+      },
+      "filter": {
+        "stars": {
+          "1": "1 star",
+          "2": "2 stars",
+          "3": "3 stars",
+          "4": "4 stars",
+          "5": "5 stars"
+        }
+      }
     }
   }
 }
