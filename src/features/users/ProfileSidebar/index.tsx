@@ -2,9 +2,11 @@ import Heading from "../../../components/Heading";
 import { HiCheck } from "react-icons/hi2";
 import { useUserSession } from "../../auth/useUserSession";
 import Spinner from "../../../components/Spinner";
+import { useTranslation } from "react-i18next";
 
 
 export default function ProfileSidebar() {
+  const { t } = useTranslation()
   const { user, isLoading } = useUserSession()
   const { fullName, createdAt, enable2FA, avatar } = user || {}
 
@@ -19,8 +21,8 @@ export default function ProfileSidebar() {
       </div>
     </div>
     <div className="mb-8 thin:max-tiny:mb-0">
-      <p className="text-lg font-semibold">Identity Verification</p>
-      <p className="text-xs text-stone-400 leading-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+      <p className="text-lg font-semibold">{t('profile.infos.verify.heading')}</p>
+      <p className="text-xs text-stone-400 leading-4">{t('profile.infos.verify.description')}</p>
     </div>
     <div className="text-sm text-stone-400">
       <p className="flex gap-2 items-center">

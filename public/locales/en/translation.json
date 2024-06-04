@@ -100,6 +100,9 @@
           "name": "{{name}}",
           "description": "{{description}}"
         }
+      },
+      "default": {
+        "heading": "Cabins list"
       }
     },
     "default": {
@@ -198,5 +201,36 @@
       }
     },
     "btn": "Reset"
+  },
+  "profile": {
+    "infos": {
+      "verify": {
+        "heading": "Identity Verification",
+        "description": "Book with confidence on Booking App. Verify your ID for a safe & secure experience."
+      }
+    },
+    "nav": {
+      "edit": {
+        "btn": "Edit profile",
+        "nav": {
+          "reviews": {
+            "heading": "{{count}} Reviews"
+          },
+          "bookings": {
+            "heading": "{{count}} Bookings"
+          }
+        }
+      },
+      "settings": {
+        "btn": "Settings"
+      }
+    }
+  },
+  "reviews": {
+    "btn": "Show all reviews",
+    "empty": {
+      "cabins": "This cabin doesn't have any review yet",
+      "users": "You don't have any review yet"
+    }
   }
 }

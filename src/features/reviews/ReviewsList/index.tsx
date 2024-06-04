@@ -9,9 +9,11 @@ import ReviewItem from "../ReviewItem";
 import { useReviews } from "../useReviews";
 import ReviewProfilePopup from "../ReviewsProfilePopup";
 import { useUserSession } from "@/features/auth/useUserSession";
+import { useTranslation } from "react-i18next";
 
 
 export default function ReviewsList({ isReviewsOfUser }: { isReviewsOfUser?: boolean }) {
+  const { t } = useTranslation()
 
   const { user, isLoading: isLoadingUser } = useUserSession()
   const { reviews, isLoading: isLoading } = useReviews({ isReviewsOfUser })
@@ -37,12 +39,12 @@ export default function ReviewsList({ isReviewsOfUser }: { isReviewsOfUser?: boo
       })}
       {/* {reviews?.map((review: IReview) => <ReviewItem key={review._id} item={review} />)} */}
 
-      {!reviewsLength && <Empty>This cabin doesn't have any review yet</Empty>}
+      {!reviewsLength && <Empty>{t('reviews.empty.cabins')}</Empty>}
       {reviewsLength > 4 &&
         <Modal>
           <Modal.Open openName="user-reviews">
             <div className="w-[70%]">
-              <Button type="secondary" size="small">Show all reviews</Button>
+              <Button type="secondary" size="small">{t('reviews.btn')}</Button>
             </div>
           </Modal.Open>
           <Modal.Window name="user-reviews">

@@ -5,8 +5,10 @@ import ProfileOptions from "../../features/users/ProfileOptions";
 import { useUserBookings } from "../../features/bookings/useUserBookings";
 import { useReviews } from "@/features/reviews/useReviews";
 import Spinner from "@/components/Spinner";
+import { useTranslation } from "react-i18next";
 
 export default function ProfileInfoLayout() {
+  const { t } = useTranslation()
   const { count: bookingsCount, isLoading: isLoadingBookings } = useUserBookings()
   const { count: reviewsCount, isLoading: isLoadingReviews } = useReviews({ isReviewsOfUser: true })
 
@@ -20,15 +22,17 @@ export default function ProfileInfoLayout() {
           <ButtonLink type="profile" href="reviews">
             <span><HiStar className="text-xl" /></span>
             <p className="flex gap-1">
-              <span>{reviewsCount}</span>
-              <span>Reviews</span>
+              {/* <span>{reviewsCount}</span>
+              <span>Reviews</span> */}
+              {t('profile.nav.edit.nav.reviews.heading', { count: reviewsCount })}
             </p>
           </ButtonLink>
           <ButtonLink type="profile" href="bookings">
             <span><HiOutlineCalendarDays className="text-xl" /></span>
             <p className="flex gap-1">
-              <span>{bookingsCount}</span>
-              <span>Bookings</span>
+              {/* <span>{bookingsCount}</span>
+              <span>Bookings</span> */}
+              {t('profile.nav.edit.nav.bookings.heading', { count: bookingsCount })}
             </p>
 
           </ButtonLink>
