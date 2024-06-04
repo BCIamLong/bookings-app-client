@@ -91,5 +91,36 @@
     "heading": "Newsletter",
     "extra-heading": "Stay Upto Date",
     "holder": "Your email"
+  },
+  "cabins": {
+    "homepage": {
+      "latest": {
+        "heading": "Latest Cabins list",
+        "item": {
+          "name": "{{name}}",
+          "description": "{{description}}"
+        }
+      }
+    },
+    "default": {
+      "heading": "Cabins list",
+      "sort": {
+        "default": "Sort by",
+        "time-ins": "Sort by time (latest)",
+        "time-des": "Sort by time (oldest)",
+        "name-ins": "Sort by name (A-Z)",
+        "name-des": "Sort by name (Z-A)",
+        "price-ins": "Sort by price (low first)",
+        "price-des": "Sort by price (high first)"
+      }
+    }
+  },
+  "contact": {
+    "heading": "Contact us",
+    "description": "Contact us at bookingapp@gmail.com",
+    "btn": "Contact"
+  },
+  "about": {
+    "heading": "About us"
   }
 }

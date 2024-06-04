@@ -79,7 +79,7 @@
     }
   },
   "discover": {
-    "heading": "Khám phá thêm về Thuê chỗ nghỉ",
+    "heading": "Khám phá thêm về thuê chỗ nghỉ",
     "description": "Đánh thức tinh thần phiêu lưu! Khám phá giúp bạn tìm những chỗ ở độc đáo, trải nghiệm địa phương thú vị, các điểm đến thịnh hành và những cuộc phiêu lưu theo mùa. Khám phá không chỉ là đặt phòng, đó còn là điểm đến lý tưởng để thắp sáng ước mơ du lịch và khơi dậy niềm đam mê khám phá. Hãy bắt đầu khám phá ngay hôm nay!",
     "links": {
       "question": "Đặt câu hỏi",
@@ -91,5 +91,36 @@
     "heading": "Bản tin",
     "extra-heading": "Cập nhật tin tức",
     "holder": "Email của bạn"
+  },
+  "cabins": {
+    "homepage": {
+      "latest": {
+        "heading": "Danh sách cabin mới nhất",
+        "item": {
+          "name": "{{name}}",
+          "description": "{{description}}"
+        }
+      }
+    },
+    "default": {
+      "heading": "Danh sách cabin",
+      "sort": {
+        "default": "Sắp xếp theo",
+        "time-ins": "Sắp xếp theo thời gian (mới nhất)",
+        "time-des": "Sắp xếp theo thời gian (cũ nhất)",
+        "name-ins": "Sắp xếp theo tên (A-Z)",
+        "name-des": "Sắp xếp theo tên (Z-A)",
+        "price-ins": "Sắp xếp theo giá (thấp đến cao)",
+        "price-des": "Sắp xếp theo giá (cao đến thấp)"
+      }
+    }
+  },
+  "contact": {
+    "heading": "Liên hệ",
+    "description": "Liên hệ với chúng tôi qua bookingapp@gmail.com",
+    "btn": "Liên hệ"
+  },
+  "about": {
+    "heading": "Về chúng tôi"
   }
 }

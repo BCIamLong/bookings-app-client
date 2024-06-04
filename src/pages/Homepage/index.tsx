@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import Contact from "../../components/Contact";
 import Discover from "../../components/Discover";
 import Hero from "../../components/Hero";
@@ -73,13 +74,14 @@ import LatestCabinsList from "../../features/cabins/LatestCabinsList";
 //   },
 // ];
 export default function Homepage() {
+  const { t } = useTranslation()
   return (
     <div>
       <Hero />
       <LatestCabinsList />
       <div className="px-6 bg-stone-0">
         <h2 className="inline-block border-b-2 border-stone-700 pb-1 pt-2 text-xl font-bold text-stone-700">
-          Cabins list
+          {t('cabins.homepage.default.heading')}
         </h2>
         <CabinsList isLink={true} />
       </div>

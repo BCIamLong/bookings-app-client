@@ -1,5 +1,6 @@
 import Heading from '@/components/Heading'
 import { Variants, motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 const aboutVariants: Variants = {
   default: {
@@ -26,10 +27,11 @@ const buttonVariants: Variants = {
 }
 
 export default function About() {
+  const { t } = useTranslation()
   return (
     <motion.div className="bg-stone-0 min-h-screen flex justify-center items-start p-12" variants={aboutVariants}
       initial='default' animate="light">
-      <Heading type='secondary'>About us</Heading>
+      <Heading type='secondary'>{t('about.heading')}</Heading>
       {/*   <motion.button variants={buttonVariants} initial='default' animate='light'>
         Hello
       </motion.button> 
