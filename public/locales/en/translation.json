@@ -219,6 +219,17 @@
           "bookings": {
             "heading": "{{count}} Bookings"
           }
+        },
+        "form": {
+          "heading": "Edit your profile",
+          "description": "All the required user information can be added here...",
+          "name": {
+            "label": "Name",
+            "holder": "Enter your name"
+          },
+          "avatar": {
+            "label": "Avatar"
+          }
         }
       },
       "settings": {
@@ -248,6 +259,13 @@
           "5": "5 stars"
         }
       }
+    }
+  },
+  "form": {
+    "btn": {
+      "back": "Back",
+      "cancel": "Cancel",
+      "save": "Save"
     }
   }
 }

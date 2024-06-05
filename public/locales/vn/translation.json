@@ -219,6 +219,17 @@
           "bookings": {
             "heading": "{{count}} Đặt phòng"
           }
+        },
+        "form": {
+          "heading": "Chỉnh sửa hồ sơ",
+          "description": "Tất cả thông tin người dùng bắt buộc có thể được thêm vào đây...",
+          "name": {
+            "label": "Tên",
+            "holder": "Nhập tên của bạn"
+          },
+          "avatar": {
+            "label": "Ảnh đại diện"
+          }
         }
       },
       "settings": {
@@ -248,6 +259,13 @@
           "5": "5 sao"
         }
       }
+    }
+  },
+  "form": {
+    "btn": {
+      "back": "Quay lại",
+      "cancel": "Hủy",
+      "save": "Lưu"
     }
   }
 }
