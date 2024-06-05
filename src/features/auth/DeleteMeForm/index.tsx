@@ -12,9 +12,11 @@ import { DeleteMeInput } from "../../../interfaces";
 import { useDeleteMe } from "../useDeleteMe";
 import Spinner from "../../../components/Spinner";
 import { HiXMark } from "react-icons/hi2";
+import { useTranslation } from "react-i18next";
 // import Modal from "../../../components/Modal";
 
 export default function DeleteMeForm() {
+  const { t } = useTranslation()
   const { formState, register, handleSubmit } = useForm<DeleteMeInput>()
   const { errors } = formState
   const { isDeleting, deleteMe } = useDeleteMe()
@@ -26,30 +28,30 @@ export default function DeleteMeForm() {
 
   return <Form type="profile" onSubmit={handleSubmit(onSubmit)}>
     <div className="border-b-[1.5px] border-stone-300 py-2">
-      <Heading type="heading-4">Delete your account</Heading>
+      <Heading type="heading-4">{t('profile.nav.settings.nav.account.forms.delete-account.heading')}</Heading>
     </div>
     <div className="text-xs text-stone-500 flex flex-col gap-2">
 
-      <p>Deleting your account gives you full control over your data and privacy. By choosing this option, you permanently remove your information from our platform, ensuring your online presence aligns with your preferences. It's a simple, transparent process designed to empower you</p>
-      <p className="mb-1">Your account will be deleted after 30 days, contact us for more information.</p>
-      <ButtonLink type="simple" href="#">Contact</ButtonLink>
+      <p>{t('profile.nav.settings.nav.account.forms.delete-account.description1')}</p>
+      <p className="mb-1">{t('profile.nav.settings.nav.account.forms.delete-account.description2')}.</p>
+      <ButtonLink type="simple" href="#">{t('profile.nav.settings.nav.account.forms.delete-account.link')}</ButtonLink>
     </div>
 
     <FormItem
       type="profile"
-      label="Choose delete account reason"
+      label={t('profile.nav.settings.nav.account.forms.delete-account.reason.label')}
       labelFor="reason"
       errorMsg={errors.reason?.message}
     >
       <Select type="delete-me" id="reason" registerOb={register('reason', { required: 'This field is required' })}>
-        <Option type="delete-me" value="reason-1">Bad user experience</Option>
-        <Option type="delete-me" value="reason-2">Bad user interface</Option>
+        <Option type="delete-me" value="reason-1">{t('profile.nav.settings.nav.account.forms.delete-account.reason.values.1')}</Option>
+        <Option type="delete-me" value="reason-2">{t('profile.nav.settings.nav.account.forms.delete-account.reason.values.2')}</Option>
       </Select>
     </FormItem>
 
     <FormItem
       type="profile"
-      label="Password"
+      label={t('profile.nav.settings.nav.account.forms.delete-account.password.label')}
       labelFor="delete-password"
       errorMsg={errors.password?.message}
 
@@ -58,7 +60,7 @@ export default function DeleteMeForm() {
         type="password"
         variant="profile"
         id="delete-password"
-        placeholder="Enter your password"
+        placeholder={t('profile.nav.settings.nav.account.forms.delete-account.password.holder')}
         registerOb={register("password", {
           required: "This field is required",
           pattern: {
@@ -72,10 +74,10 @@ export default function DeleteMeForm() {
     <Buttons>
       <Button type="secondary" reset={true} size="medium">
         <span><HiXMark className="stroke-[1.5px]" /></span>
-        <span>Cancel</span>
+        <span>{t('form.btn.cancel')}</span>
       </Button>
       <Button type="primary" size="medium">
-        {isDeleting ? <Spinner size="small" /> : 'Delete'}
+        {isDeleting ? <Spinner size="small" /> : `${t('form.btn.delete')}`}
       </Button>
     </Buttons>
     {/* <Modal>

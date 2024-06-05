@@ -233,7 +233,55 @@
         }
       },
       "settings": {
-        "btn": "Settings"
+        "heading": "Settings",
+        "btn": "Settings",
+        "nav": {
+          "account": {
+            "heading": "Your account",
+            "forms": {
+              "edit-email": {
+                "heading": "Edit your email",
+                "email": {
+                  "label": "Email",
+                  "holder": "Enter your email"
+                }
+              },
+              "edit-pwd": {
+                "heading": "Edit your password",
+                "password": {
+                  "label": "Current password",
+                  "holder": "Enter your current password"
+                },
+                "new-password": {
+                  "label": "New password",
+                  "holder": "Enter your new password"
+                },
+                "password-confirm": {
+                  "label": "Confirm new password",
+                  "holder": "Confirm your new password"
+                }
+              },
+              "delete-account": {
+                "heading": "Delete your account",
+                "description1": "Deleting your account gives you full control over your data and privacy. By choosing this option, you permanently remove your information from our platform, ensuring your online presence aligns with your preferences. It's a simple, transparent process designed to empower you",
+                "description2": "Your account will be deleted after 30 days, contact us for more information.",
+                "link": "Contact",
+                "reason": {
+                  "label": "Choose Delete Account Reason",
+                  "values": {
+                    "1": "Bad user experience",
+                    "2": "Bad user interface"
+                  }
+                },
+                "password": {
+                  "label": "Password",
+                  "holder": "Enter your password"
+                }
+              }
+            }
+          },
+          "security": { "heading": "Security" }
+        }
       }
     }
   },
@@ -265,7 +313,9 @@
     "btn": {
       "back": "Back",
       "cancel": "Cancel",
-      "save": "Save"
+      "save": "Save",
+      "check": "Check",
+      "delete": "Delete"
     }
   }
 }

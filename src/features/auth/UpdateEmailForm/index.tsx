@@ -12,8 +12,10 @@ import Spinner from "../../../components/Spinner";
 import { EditEmailInput } from "../../../interfaces";
 import { useUserSession } from "../useUserSession";
 import { useEditEmail } from "../useEditEmail";
+import { useTranslation } from "react-i18next";
 
 export default function UpdateEmailForm() {
+  const { t } = useTranslation()
   const { editEmail, isEditing } = useEditEmail()
   const { user: { email }, isLoading } = useUserSession()
   const { register, reset, formState, handleSubmit } = useForm<EditEmailInput>({
@@ -34,11 +36,11 @@ export default function UpdateEmailForm() {
 
   return <Form type="profile" onSubmit={handleSubmit(onSubmit)}>
     <div className="border-b-[1.5px] border-stone-300 py-2">
-      <Heading type="heading-4">Edit your email</Heading>
+      <Heading type="heading-4">{t('profile.nav.settings.nav.account.forms.edit-email.heading')}</Heading>
     </div>
     <FormItem
       type="profile"
-      label="Email"
+      label={t('profile.nav.settings.nav.account.forms.edit-email.email.label')}
       labelFor="email"
       errorMsg={errors.email?.message}
     >
@@ -46,15 +48,15 @@ export default function UpdateEmailForm() {
         type="text"
         variant="profile"
         id="email"
-        placeholder="Enter your new email"
+        placeholder={t('profile.nav.settings.nav.account.forms.edit-email.email.holder')}
         registerOb={register('email', { required: 'This field is required' })}
         disabled={isEditing}
       />
     </FormItem>
     <Buttons>
-      <Button type="secondary" size="medium" onClick={resetHandler}><span><HiOutlineXMark className="text-xl stroke-[2.4px]" /></span><span>Cancel</span></Button>
+      <Button type="secondary" size="medium" onClick={resetHandler}><span><HiOutlineXMark className="text-xl stroke-[2.4px]" /></span><span>{t('form.btn.cancel')}</span></Button>
       <Button type="primary" size="medium">{
-        isEditing ? <Spinner size="small" /> : 'Save'
+        isEditing ? <Spinner size="small" /> : `${t('form.btn.save')}`
       }</Button>
     </Buttons>
   </Form>

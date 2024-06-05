@@ -233,7 +233,57 @@
         }
       },
       "settings": {
-        "btn": "Cài đặt"
+        "heading": "Cài đặt",
+        "btn": "Cài đặt",
+        "nav": {
+          "account": {
+            "heading": "Tài khoản của bạn",
+            "forms": {
+              "edit-email": {
+                "heading": "Chỉnh sửa email",
+                "email": {
+                  "label": "Email",
+                  "holder": "Nhập email của bạn"
+                }
+              },
+              "edit-pwd": {
+                "heading": "Chỉnh sửa mật khẩu",
+                "password": {
+                  "label": "Mật khẩu hiện tại",
+                  "holder": "Nhập mật khẩu hiện tại"
+                },
+                "new-password": {
+                  "label": "Mật khẩu mới",
+                  "holder": "Nhập mật khẩu mới"
+                },
+                "password-confirm": {
+                  "label": "Xác nhận mật khẩu mới",
+                  "holder": "Xác nhận mật khẩu mới"
+                }
+              },
+              "delete-account": {
+                "heading": "Xóa tài khoản",
+                "description1": "Xóa tài khoản cung cấp cho bạn quyền kiểm soát hoàn toàn dữ liệu và quyền riêng tư của mình. Bằng cách chọn tùy chọn này, bạn sẽ xóa vĩnh viễn thông tin của mình khỏi nền tảng của chúng tôi, đảm bảo sự hiện diện trực tuyến của bạn phù hợp với sở thích của bạn. Đây là một quá trình đơn giản, minh bạch được thiết kế để trao quyền cho bạn",
+                "description2": "Tài khoản của bạn sẽ bị xóa sau 30 ngày, hãy liên hệ với chúng tôi để biết thêm thông tin.",
+                "link": "Liên hệ",
+                "reason": {
+                  "label": "Chọn lý do xóa tài khoản",
+                  "values": {
+                    "1": "Trải nghiệm người dùng kém",
+                    "2": "Giao diện người dùng kém"
+                  }
+                },
+                "password": {
+                  "label": "Mật khẩu",
+                  "holder": "Nhập mật khẩu"
+                }
+              }
+            }
+          },
+          "security": {
+            "heading": "Bảo mật"
+          }
+        }
       }
     }
   },
@@ -265,7 +315,9 @@
     "btn": {
       "back": "Quay lại",
       "cancel": "Hủy",
-      "save": "Lưu"
+      "save": "Lưu",
+      "check": "Kiểm tra",
+      "delete": "Xóa"
     }
   }
 }

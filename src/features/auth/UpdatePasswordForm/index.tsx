@@ -11,8 +11,10 @@ import { useCheckPassword } from "../useCheckPassword";
 import Spinner from "../../../components/Spinner";
 import { useEditPassword } from "../useEditPassword";
 import { useUserSession } from "../useUserSession";
+import { useTranslation } from "react-i18next";
 
 export default function UpdatePasswordForm() {
+  const { t } = useTranslation()
   const [isAllowed, setIsAllowed] = useState(false)
   const { checkPassword, isChecking } = useCheckPassword()
   const { editPassword, isEditing } = useEditPassword()
@@ -46,13 +48,13 @@ export default function UpdatePasswordForm() {
   if (isLoading) return <Spinner size="normal" />
   return <div>
     <div className="border-b-[1.5px] border-stone-300 py-2 mt-4">
-      <Heading type="heading-4">Edit your password</Heading>
+      <Heading type="heading-4">{t('profile.nav.settings.nav.account.forms.edit-pwd.heading')}</Heading>
     </div>
     <div className={`${!isAllowed ? '' : 'pointer-events-none blur-[3px]'}`}>
       <Form type="profile" onSubmit={handleSubmit1(onSubmit1)}>
         <FormItem
           type="profile"
-          label="Current Password"
+          label={t('profile.nav.settings.nav.account.forms.edit-pwd.password.label')}
           labelFor="current-password"
           errorMsg={errors1.password?.message}
         >
@@ -60,7 +62,7 @@ export default function UpdatePasswordForm() {
             type="password"
             variant="profile"
             id="current-password"
-            placeholder="Enter your new password"
+            placeholder={t('profile.nav.settings.nav.account.forms.edit-pwd.password.holder')}
             disabled={isChecking}
             registerOb={register1('password', {
               required: "This field is required",
@@ -74,8 +76,8 @@ export default function UpdatePasswordForm() {
         </FormItem>
 
         <Buttons>
-          <Button type="secondary" reset={true} size="medium"><span></span><span>Cancel</span></Button>
-          <Button type="primary" size="medium">{isChecking ? <Spinner size="small" /> : 'Check'}</Button>
+          <Button type="secondary" reset={true} size="medium"><span></span><span>{t('form.btn.cancel')}</span></Button>
+          <Button type="primary" size="medium">{isChecking ? <Spinner size="small" /> : `${t('form.btn.check')}`}</Button>
         </Buttons>
       </Form>
     </div>
@@ -83,7 +85,7 @@ export default function UpdatePasswordForm() {
       <Form type="profile" onSubmit={handleSubmit(onSubmit)}>
         <FormItem
           type="profile"
-          label="New Password"
+          label={t('profile.nav.settings.nav.account.forms.edit-pwd.new-password.label')}
           labelFor="password"
           errorMsg={errors.password?.message}
         >
@@ -92,7 +94,7 @@ export default function UpdatePasswordForm() {
             variant="profile"
             id="password"
             disabled={isEditing}
-            placeholder="Enter your new password"
+            placeholder={t('profile.nav.settings.nav.account.forms.edit-pwd.new-password.holder')}
             registerOb={register("password", {
               required: "This field is required",
               pattern: {
@@ -106,7 +108,7 @@ export default function UpdatePasswordForm() {
 
         <FormItem
           type="profile"
-          label="Confirm New Password"
+          label={t('profile.nav.settings.nav.account.forms.edit-pwd.password-confirm.label')}
           labelFor="passwordConfirm"
           errorMsg={errors.passwordConfirm?.message}
         >
@@ -115,7 +117,7 @@ export default function UpdatePasswordForm() {
             variant="profile"
             id="passwordConfirm"
             disabled={isEditing}
-            placeholder="Confirm your new password"
+            placeholder={t('profile.nav.settings.nav.account.forms.edit-pwd.password-confirm.holder')}
             registerOb={register("passwordConfirm", {
               required: "This field is required",
               validate: (val) =>
@@ -125,8 +127,8 @@ export default function UpdatePasswordForm() {
           />
         </FormItem>
         <Buttons>
-          <Button type="secondary" reset={true} size="medium"><span></span><span>Cancel</span></Button>
-          <Button type="primary" size="medium">{isEditing ? <Spinner size="small" /> : 'Save'}</Button>
+          <Button type="secondary" reset={true} size="medium"><span></span><span>{t('form.btn.cancel')}</span></Button>
+          <Button type="primary" size="medium">{isEditing ? <Spinner size="small" /> : `${t('form.btn.save')}`}</Button>
         </Buttons>
       </Form>
     </div>
