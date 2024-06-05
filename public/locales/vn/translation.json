@@ -49,7 +49,8 @@
           "location": "Địa chỉ: 123 None"
         }
       }
-    }
+    },
+    "copyright": "Bản quyền"
   },
   "hero": {
     "nav": {
@@ -281,7 +282,19 @@
             }
           },
           "security": {
-            "heading": "Bảo mật"
+            "heading": "Bảo mật",
+            "heading1": "Quản lý bảo mật tài khoản của bạn",
+            "forms": {
+              "2fa": {
+                "heading": "Xác thực hai yếu tố",
+                "description": "Giữ an toàn cho tài khoản ứng dụng đặt phòng của bạn với xác thực hai yếu tố (2FA)! Sau khi nhập mật khẩu, bạn sẽ nhận được mã duy nhất qua tin nhắn hoặc ứng dụng xác thực. Bước bổ sung này đảm bảo rằng chỉ bạn mới có thể truy cập tài khoản của mình, ngay cả khi mật khẩu của bạn bị xâm phạm. Bảo mật của bạn là ưu tiên hàng đầu của chúng tôi, vì vậy hãy bật 2FA ngay hôm nay để an tâm mỗi khi đặt phòng.",
+                "btn": {
+                  "on": "Bật 2FA",
+                  "off": "Tắt 2FA"
+                },
+                "link": "Tìm hiểu thêm"
+              }
+            }
           }
         }
       }

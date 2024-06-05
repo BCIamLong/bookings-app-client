@@ -8,8 +8,10 @@ import { useUserSession } from "../useUserSession";
 import { useDisable2FA } from "../useDisable2FA";
 import Modal from "../../../components/Modal";
 import Popup from "../../../components/Popup";
+import { useTranslation } from "react-i18next";
 
 export default function Enable2FA() {
+  const { t } = useTranslation()
   const { user, isLoading } = useUserSession()
   const { enable2FA, isEnabling } = useEnable2FA()
   const { disable2FA, isDisabling } = useDisable2FA()
@@ -26,19 +28,19 @@ export default function Enable2FA() {
 
   return <div className="border-b-[1.5px] border-stone-300 py-4 flex flex-col gap-2">
     <div className="border-b-[1.5px] border-stone-300 py-2 text-stone-700">
-      <Heading type="heading-4">Two-factor authentication</Heading>
+      <Heading type="heading-4">{t('profile.nav.settings.nav.security.forms.2fa.heading')}</Heading>
     </div>
-    <p className="text-xs text-stone-500 leading-5">Keep your booking app account safe with two-factor authentication (2FA)! After entering your password, you'll receive a unique code via text or authentication app. This extra step ensures that only you can access your account, even if your password is compromised. Your security is our priority, so enable 2FA today for peace of mind every time you book.</p>
+    <p className="text-xs text-stone-500 leading-5">{t('profile.nav.settings.nav.security.forms.2fa.description')}</p>
     <div className="flex justify-between items-center">
-      <ButtonLink type="simple" href="#">Learn more</ButtonLink>
+      <ButtonLink type="simple" href="#">{t('profile.nav.settings.nav.security.forms.2fa.link')}</ButtonLink>
       {!user.enable2FA ?
         <Button type="primary" size="small" onClick={enable2FAHandler}>
-          {isEnabling ? <Spinner size="small" /> : 'Turn on 2FA'}
+          {isEnabling ? <Spinner size="small" /> : `${t('profile.nav.settings.nav.security.forms.2fa.btn.on')}`}
         </Button> :
         <Modal>
           <Modal.Open openName="disable-2fa">
             <Button type="primary" size="small">
-              Turn off 2FA
+              {t('profile.nav.settings.nav.security.forms.2fa.btn.off')}
             </Button>
           </Modal.Open>
           <Modal.Window name="disable-2fa">

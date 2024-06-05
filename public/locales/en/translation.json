@@ -49,7 +49,8 @@
           "location": "Location: 123 None"
         }
       }
-    }
+    },
+    "copyright": "Copyright"
   },
   "hero": {
     "nav": {
@@ -280,7 +281,21 @@
               }
             }
           },
-          "security": { "heading": "Security" }
+          "security": {
+            "heading": "Security",
+            "heading1": "Manage your account security",
+            "forms": {
+              "2fa": {
+                "heading": "Two-factor authentication",
+                "description": "Keep your booking app account safe with two-factor authentication (2FA)! After entering your password, you'll receive a unique code via text or authentication app. This extra step ensures that only you can access your account, even if your password is compromised. Your security is our priority, so enable 2FA today for peace of mind every time you book.",
+                "btn": {
+                  "on": "Turn on 2FA",
+                  "off": "Turn off 2FA"
+                },
+                "link": "Learn more"
+              }
+            }
+          }
         }
       }
     }
