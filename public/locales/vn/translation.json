@@ -330,7 +330,51 @@
       "cancel": "Hủy",
       "save": "Lưu",
       "check": "Kiểm tra",
-      "delete": "Xóa"
+      "delete": "Xóa",
+      "edit": "Sửa"
+    }
+  },
+  "cabin": {
+    "card": {
+      "days": {
+        "3": "3 ngày",
+        "7": "7 ngày",
+        "14": "14 ngày"
+      },
+      "guests": {
+        "label": "Số lượng khách"
+      },
+      "btn": {
+        "default": "Đặt ngay",
+        "see": "Xem đặt phòng của bạn"
+      },
+      "notifies": {
+        "cabin-booked": "Cabin này đã được đặt",
+        "your-booked": "Bạn đã đặt một cabin khác"
+      }
+    },
+    "links": {
+      "property": "Tư vấn về chỗ ở",
+      "contact": "Liên hệ với chủ nhà"
+    },
+    "description": {
+      "heading": "Mô tả cabin"
+    },
+    "amenities": {
+      "heading": "Tiện nghi được cung cấp"
+    },
+    "safety": {
+      "heading": "An toàn và vệ sinh"
+    },
+    "reviews": {
+      "add": {
+        "holder": "Thêm đánh giá của bạn",
+        "btn": "Đăng"
+      },
+      "list": {
+        "heading1": "Đánh giá",
+        "heading2": "xếp hạng"
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "header": {
     "nav": {
-      "homepage": "Homepage",
+      "homepage": "Home",
       "cabins": "Cabins",
       "contact": "Contact",
       "about": "About us"
@@ -330,7 +330,51 @@
       "cancel": "Cancel",
       "save": "Save",
       "check": "Check",
-      "delete": "Delete"
+      "delete": "Delete",
+      "edit": "Edit"
+    }
+  },
+  "cabin": {
+    "card": {
+      "days": {
+        "3": "3 days",
+        "7": "7 days",
+        "14": "14 days"
+      },
+      "guests": {
+        "label": "Number Of Guests"
+      },
+      "btn": {
+        "default": "Reserve Now",
+        "see": "See your bookings"
+      },
+      "notifies": {
+        "cabin-booked": "This cabin is booked",
+        "your-booked": "You already have booked another cabin"
+      }
+    },
+    "links": {
+      "property": "Property Inquiry",
+      "contact": "Contact Host"
+    },
+    "description": {
+      "heading": "Cabin description"
+    },
+    "amenities": {
+      "heading": "Offered amenities"
+    },
+    "safety": {
+      "heading": "Safety and hygiene"
+    },
+    "reviews": {
+      "add": {
+        "holder": "Add your review",
+        "btn": "Post"
+      },
+      "list": {
+        "heading1": "Reviews",
+        "heading2": "ratings"
+      }
     }
   }
 }

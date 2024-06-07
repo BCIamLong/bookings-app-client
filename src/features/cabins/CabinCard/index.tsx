@@ -13,9 +13,10 @@ import Option from "@/components/Option";
 import { useState } from "react";
 import Label from "@/components/form/Label";
 import { useBookings } from "@/features/bookings/useBookings";
+import { useTranslation } from "react-i18next";
 
 export default function CabinCard({ cabin }: { cabin: ICabin }) {
-
+  const { t } = useTranslation()
   const { count, isLoading } = useUserBookings()
   const { count: isNotAllowUserBook, isLoading: isLoadingUserBookings } = useUserBookings({ status: { operation: 'ne', value: 'checked-out' } })
   const { isBooking, bookCabin } = useBookCabin()
@@ -52,28 +53,28 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
           </p>
           <div className={`py-6 flex flex-col gap-6 ${(count && isCabinBooked) || isCabinBooked || isNotAllowUserBook ? 'blur-sm' : ''}`}>
             <Select type="sort" id="days" defaultValue='3' onChange={(e) => setDays(+e.target.value)} disabled={(Boolean(count) && isCabinBooked) || Boolean(isCabinBooked) || isNotAllowUserBook}>
-              <Option type="sort" value="3">3 days</Option>
-              <Option type="sort" value="7">7 days</Option>
-              <Option type="sort" value="14">14 days</Option>
+              <Option type="sort" value="3">{t('cabin.card.days.3')}</Option>
+              <Option type="sort" value="7">{t('cabin.card.days.7')}</Option>
+              <Option type="sort" value="14">{t('cabin.card.days.14')}</Option>
             </Select>
             <div className="flex flex-col gap-3">
-              <Label type="search" labelFor="guests">Number of guests</Label>
+              <Label type="search" labelFor="guests">{t('cabin.card.guests.label')}</Label>
               <input id='guests' type="number" min={1} max={maxCapacity} value={String(guests)}
                 className="py-2 px-8 text-stone-700 text-sm font-semibold border-[1.5px] rounded-md border-stone-300 focus:outline-none"
                 onChange={(e) => setGuests(+e.target.value)
                 } disabled={(Boolean(count) && isCabinBooked) || Boolean(isCabinBooked) || isNotAllowUserBook} />
             </div>
           </div>
-          {isNotAllowUserBook && !count ? <div className=""><Button size="small" type="primary">You already have booked another cabin</Button></div> :
+          {isNotAllowUserBook && !count ? <div className=""><Button size="small" type="primary">{t('cabin.card.notifies.your-booked')}</Button></div> :
             <>
-              {Boolean(isCabinBooked) && !count && <div className=""><Button size="small" type="primary">This cabin is booked</Button></div>}
+              {Boolean(isCabinBooked) && !count && <div className=""><Button size="small" type="primary">{t('cabin.card.notifies.cabin-booked')}</Button></div>}
 
               {Boolean(isCabinBooked) && Boolean(count) && <div className="w-[62%]">
-                <ButtonLink href='/profile/bookings' type="primary" size="small">See your bookings</ButtonLink>
+                <ButtonLink href='/profile/bookings' type="primary" size="small">{t('cabin.card.btn.see')}</ButtonLink>
               </div>}
 
               {((!isCabinBooked && !count) || (!isCabinBooked && Boolean(count))) && (!user ? <div className="w-[62%]"><ButtonLink type="primary" href="/login">Login to book</ButtonLink></div> : <Button type="primary" size="small" onClick={handleClick}>
-                {isBooking ? <Spinner size="small" /> : 'Reserve Now'}
+                {isBooking ? <Spinner size="small" /> : `${t('cabin.card.btn.default')}`}
               </Button>)}
             </>}
 
@@ -87,11 +88,11 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
           <div className="flex justify-between items-center py-6 text-xs font-semibold">
             <div className="flex items-center gap-2">
               <HiOutlineBuildingOffice className="text-sm" />
-              <p>Property Inquiry</p>
+              <p>{t('cabin.links.property')}</p>
             </div>
             <div className="flex items-center gap-2">
               <HiOutlinePhone className="text-sm" />
-              <p>Contact Host</p>
+              <p>{t('cabin.links.contact')}</p>
             </div>
           </div>
         </>

@@ -13,9 +13,11 @@ import Buttons from '@/components/Buttons'
 import { useDeleteReview } from '../useDeleteReview'
 import { useEditReview } from '../useEditReview'
 import { useUserBookings } from '@/features/bookings/useUserBookings'
+import { useTranslation } from 'react-i18next'
 // import ReviewItem from '../ReviewItem'
 
 export default function AddReview() {
+  const { t } = useTranslation()
   const { deleteReview, isDeleting } = useDeleteReview()
   const { editReview, isEditing } = useEditReview()
   const { user, isLoading: isLoadingUser } = useUserSession()
@@ -92,15 +94,15 @@ export default function AddReview() {
         </div>
         {!isEdit ?
           <Buttons>
-            <Button type='primary' size='small' onClick={() => setIsEdit(true)} disabled={isDeleting}>Edit</Button>
-            <Button type='primary' size='small' onClick={handleDeleteClick} disabled={isDeleting}>{isDeleting ? <Spinner size='small' /> : 'Delete'}</Button>
+            <Button type='primary' size='small' onClick={() => setIsEdit(true)} disabled={isDeleting}>{t('form.btn.edit')}</Button>
+            <Button type='primary' size='small' onClick={handleDeleteClick} disabled={isDeleting}>{isDeleting ? <Spinner size='small' /> : `${t('form.btn.delete')}`}</Button>
           </Buttons>
           :
           <Buttons>
             <Button type='primary' size='small' onClick={handleEditClick}>
-              {isEditing ? <Spinner size='small' /> : 'Edit'}
+              {isEditing ? <Spinner size='small' /> : `${t('form.btn.edit')}`}
             </Button>
-            <Button type='primary' size='small' onClick={() => setIsEdit(false)}>Cancel</Button>
+            <Button type='primary' size='small' onClick={() => setIsEdit(false)}>{t('form.btn.cancel')}</Button>
           </Buttons>}
       </div>
     </Modal.Window>
@@ -121,10 +123,10 @@ export default function AddReview() {
           </Button>)}
         </div>
       </div>
-      <Textarea id='review' type='review' value={review} onChange={(e) => setReview(e.target.value)} placeholder='Add your review' disabled={isAdding}></Textarea>
+      <Textarea id='review' type='review' value={review} onChange={(e) => setReview(e.target.value)} placeholder={t('cabin.reviews.add.holder')} disabled={isAdding}></Textarea>
       <div className='absolute bottom-[15%] right-[31.2%]'>
         <Button type='primary' size='small' onClick={handleClick}>
-          {isAdding ? <Spinner size='small' /> : "Post"}
+          {isAdding ? <Spinner size='small' /> : `${t('cabin.reviews.add.btn')}`}
         </Button>
       </div>
     </div>

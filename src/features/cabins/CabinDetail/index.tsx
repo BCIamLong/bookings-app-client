@@ -9,8 +9,10 @@ import Spinner from "../../../components/Spinner";
 import { ICabin } from "../../../interfaces";
 import Map from "@/components/Map";
 import Bookmark from "@/features/bookmarks/Bookmark";
+import { useTranslation } from "react-i18next";
 
 export default function CabinDetail() {
+  const { t } = useTranslation()
   const { cabin, isLoading } = useCabin()
   const { name, description, image } = cabin || {}
   const cabinImage = image?.startsWith('cabin-') ? `/imgs/cabins/${image}` : image
@@ -20,9 +22,9 @@ export default function CabinDetail() {
   return (
     <>
       <div className="flex gap-1 items-center text-stone-500 ">
-        <ButtonLink type="simple" href="/">Home</ButtonLink>
+        <ButtonLink type="simple" href="/">{t('header.nav.homepage')}</ButtonLink>
         <HiChevronRight />
-        <ButtonLink type="simple" href="/cabins">Cabins</ButtonLink>
+        <ButtonLink type="simple" href="/cabins">{t('header.nav.cabins')}</ButtonLink>
         <HiChevronRight />
         <Heading type="tertiary">
           {name}
@@ -77,11 +79,11 @@ export default function CabinDetail() {
               </div>
             </div>
             <div className="flex flex-col gap-3 text-stone-500">
-              <Heading type="heading-4">Cabin description</Heading>
+              <Heading type="heading-4">{t('cabin.description.heading')}</Heading>
               <p className="text-sm">{description}</p>
             </div>
             <div>
-              <Heading type="heading-4">Offered Amenities</Heading>
+              <Heading type="heading-4">{t('cabin.amenities.heading')}</Heading>
               <div className="grid grid-cols-2 gap-4 py-3 w-[80%] text-sm text-stone-600">
                 <div className="flex items-center gap-3">
                   <GiKnifeFork />
@@ -102,7 +104,7 @@ export default function CabinDetail() {
               </div>
             </div>
             <div>
-              <Heading type="heading-4">Safety and Hygiene</Heading>
+              <Heading type="heading-4">{t('cabin.safety.heading')}</Heading>
               <div className="grid grid-cols-2 gap-4 py-3 w-[80%] text-sm text-stone-600">
                 <div className="flex items-center gap-3">
                   <GiKnifeFork />
