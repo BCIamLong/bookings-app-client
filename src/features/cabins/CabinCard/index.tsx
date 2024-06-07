@@ -16,7 +16,9 @@ import { useBookings } from "@/features/bookings/useBookings";
 import { useTranslation } from "react-i18next";
 
 export default function CabinCard({ cabin }: { cabin: ICabin }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const locale = i18n.language.split('-')[0]
+
   const { count, isLoading } = useUserBookings()
   const { count: isNotAllowUserBook, isLoading: isLoadingUserBookings } = useUserBookings({ status: { operation: 'ne', value: 'checked-out' } })
   const { isBooking, bookCabin } = useBookCabin()
@@ -36,7 +38,7 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
   const handleClick = async function () {
     if (!guests || !days) return
 
-    bookCabin({ cabinId, regularPrice: discountPrice, name, description, image, endDate, startDate, numGuests: guests, numNights: days })
+    bookCabin({ cabinId, regularPrice: discountPrice, name, description, image, endDate, startDate, numGuests: guests, numNights: days, locale })
 
   }
   // if (isLoading || isLoadingUser || isLoadingBookings) return <Spinner size="normal" />

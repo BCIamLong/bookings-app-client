@@ -10,6 +10,7 @@ export interface BookCabin {
   endDate: Date
   numGuests: number
   numNights: number
+  locale?: string
 }
 
 export interface UserBookingsOption {

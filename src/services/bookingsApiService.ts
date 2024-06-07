@@ -125,6 +125,7 @@ const bookCabin = async function (data: {
   endDate: Date
   numGuests: number
   numNights: number
+  locale?: string
 }) {
   try {
     // const token = Cookies.get('access-token')
