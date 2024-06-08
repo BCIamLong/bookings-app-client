@@ -1,30 +1,78 @@
-# React + TypeScript + Vite
+# Booking Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Booking web](https://bookings-app-client.vercel.app/) is a single-page application that allows users to login and book cabins. The website includes a variety of features such as user authentication, profile management, payment processing, email notifications, and more.
 
-Currently, two official plugins are available:
+This Booking web is a client for [Booking API](https://github.com/BCIamLong/booking-api)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Table of contents
+- [Features](#feature)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Deployment](#deployment)
 
-## Expanding the ESLint configuration
+### Features
+- User authentication and authorization (Login, Register, 2FA)
+- Profile Management (Upload Image, Update Name,Email, Password)
+- Settings Management (Edit Email, Edit Password, Deactivate Account)
+- Dark Mode
+- Responsive Design
+- Payment Processing
+- Email Notifications
+- Form Handling with React Hook Form
+- Animations with Framer Motion
+- Notifications with React Toastify
+- Errors handler with React Error Boundary
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Tech Stack
+- Frontend: React, TypeScript
+- Styling: Tailwind CSS
+- State Management: React Query
+- Form Handling: React Hook Form
+- Animations: Framer Motion
+- Routing and Navigation: React Router
+- Errors handler: React Error Boundary
+- Notifications: React Toastify
+- Deployment: Vercel
+- Version Control: Git
 
-- Configure the top-level `parserOptions` property like this:
+### Installation
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+#### Prerequisites
+- Node.js
+- npm or yarn (in this project i used yarn)
+- Vercel accountount
+#### Steps
+1, Clone the repository
+```bash
+git clone https://github.com/BCIamLong/bookings-app-client.git
+cd bookings-app-client
+```
+2, Install dependencies
+```bash
+yarn install
+```
+3, Install backend:
+
+Go to this [repo](https://github.com/BCIamLong/booking-api) to install and set up the booking API for backend
+
+If you already have backend then just use it
+
+4, Set up environment variables
+
+Go to the config folder and go through the config files and change the environment variables for your project
+
+5, Run the application
+
+Notice: you need to start API server and then after than run client
+```bash
+yarn run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+### Deployment
+The project is deployed on Vercel. Follow these steps to deploy your own instance:
+
+- Create a Vercel account and set up a new project.
+- Connect your GitHub repository containing the booking website project.
+- Set up CI/CD commands, environment variables
+- Deploy the project.
