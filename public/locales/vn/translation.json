@@ -125,7 +125,28 @@
     "btn": "Liên hệ"
   },
   "about": {
-    "heading": "Về chúng tôi"
+    "heading": "Giới Thiệu",
+    "greet": {
+      "heading": "Chào Mừng Đến Với Ứng Dụng Đặt Phòng",
+      "content": "Tại Ứng Dụng Đặt Phòng, chúng tôi tin rằng kỳ nghỉ hoàn hảo chỉ cách bạn một cú nhấp chuột. Nằm giữa lòng thiên nhiên, lựa chọn cabin được chọn lọc kỹ càng của chúng tôi mang đến một nơi nghỉ ngơi từ sự hối hả và nhộn nhịp của cuộc sống hàng ngày. Cho dù bạn đang tìm kiếm một kỳ nghỉ lãng mạn, một cuộc phiêu lưu gia đình, hay một kỳ nghỉ riêng để tái tạo năng lượng, cabin của chúng tôi cung cấp bối cảnh lý tưởng cho trải nghiệm độc đáo của bạn."
+    },
+    "story": {
+      "heading": "Câu Chuyện Của Chúng Tôi",
+      "content1": "Ứng Dụng Đặt Phòng được thành lập với một sứ mệnh đơn giản: kết nối con người với thiên nhiên. Hành trình của chúng tôi bắt đầu khi người sáng lập, một người yêu thiên nhiên nhiệt thành, gặp khó khăn trong việc tìm một nền tảng đáng tin cậy và được chọn lọc cho việc thuê cabin. Nhận ra khoảng trống này, chúng tôi quyết định tạo ra một giải pháp kết hợp giữa sự quyến rũ của những cabin mộc mạc với sự tiện lợi của công nghệ hiện đại.",
+      "content2": "Kể từ khi ra đời, chúng tôi đã phát triển thành một cộng đồng những người yêu thiên nhiên, những người tìm kiếm cuộc phiêu lưu, và những người cần một nơi nghỉ ngơi yên bình. Cam kết của chúng tôi về chất lượng và sự hài lòng của khách hàng luôn là trọng tâm của sự phát triển, đảm bảo rằng mỗi lần lưu trú với chúng tôi đều đáng nhớ và mang lại sự thư giãn."
+    },
+    "values": {
+      "heading": "Giá Trị Của Chúng Tôi",
+      "content1": "Kết Nối Với Thiên Nhiên: Chúng tôi tin vào sức mạnh phục hồi của thiên nhiên và cố gắng cung cấp các địa điểm giúp bạn kết nối lại với môi trường xung quanh.",
+      "content2": "Bền Vững: Chúng tôi cam kết thúc đẩy các thực hành du lịch bền vững. Nhiều cabin của chúng tôi thân thiện với môi trường, và chúng tôi khuyến khích khách hàng tôn trọng và bảo vệ các môi trường tự nhiên họ ghé thăm.",
+      "content3": "Cộng Đồng: Khách hàng là trọng tâm của mọi hoạt động của chúng tôi. Chúng tôi đánh giá cao phản hồi của bạn và không ngừng nỗ lực cải thiện dịch vụ dựa trên trải nghiệm và ý kiến của bạn."
+    },
+    "community": {
+      "heading": "Tham Gia Cộng Đồng Của Chúng Tôi",
+      "content1": "Chúng tôi mời bạn khám phá bộ sưu tập cabin của chúng tôi và tìm ra nơi nghỉ ngơi hoàn hảo cho kỳ nghỉ tiếp theo của bạn. Hãy theo dõi chúng tôi trên mạng xã hội, đăng ký nhận bản tin và trở thành một phần của cộng đồng Tranquil Cabins. Chia sẻ câu chuyện của bạn, kết nối với những người du lịch khác, và được truyền cảm hứng bởi vẻ đẹp xung quanh chúng ta.",
+      "content2": "Cảm ơn bạn đã chọn Tranquil Cabins. Cuộc phiêu lưu của bạn với thiên nhiên đang chờ đón!"
+    },
+    "btn": "Khám Phá Thêm"
   },
   "login": {
     "heading": "Cùng nhau bắt đầu hành trình đặt chỗ dễ dàng",
@@ -335,6 +356,7 @@
     }
   },
   "cabin": {
+    "btn": "Đặt ngay",
     "card": {
       "days": {
         "3": "3 ngày",

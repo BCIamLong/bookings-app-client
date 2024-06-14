@@ -125,7 +125,28 @@
     "btn": "Contact"
   },
   "about": {
-    "heading": "About us"
+    "heading": "About us",
+    "greet": {
+      "heading": "Welcome to Booking App",
+      "content": "At Booking App, we believe that the perfect getaway is just a click away. Nestled in the heart of nature, our handpicked selection of cabins offers a retreat from the hustle and bustle of everyday life. Whether you’re seeking a romantic escape, a family adventure, or a solo retreat to recharge, our cabins provide the ideal setting for your unique experience."
+    },
+    "story": {
+      "heading": "Our Story",
+      "content1": "Booking App was founded with a simple mission: to connect people with nature. Our journey began when our founder, an avid nature enthusiast, struggled to find a reliable and curated platform for cabin rentals. Recognizing this gap, we decided to create a solution that combines the charm of rustic cabins with the convenience of modern technology.",
+      "content2": "Since our inception, we have grown into a community of nature lovers, adventure seekers, and those in need of a serene escape. Our commitment to quality and customer satisfaction has remained at the forefront of our growth, ensuring that every stay with us is memorable and rejuvenating."
+    },
+    "values": {
+      "heading": "Our Values",
+      "content1": "Connection with Nature: We believe in the restorative power of nature and strive to offer locations that help you reconnect with the great outdoors.",
+      "content2": "Sustainability: We are committed to promoting sustainable travel practices. Many of our cabins are eco-friendly, and we encourage our guests to respect and preserve the natural environments they visit.",
+      "content3": "Community: Our guests are at the heart of everything we do. We value your feedback and continuously work to improve our offerings based on your experiences and suggestions."
+    },
+    "community": {
+      "heading": "Join Our Community",
+      "content1": "We invite you to explore our collection of cabins and discover the perfect retreat for your next getaway. Follow us on social media, sign up for our newsletter, and become a part of the Tranquil Cabins community. Share your stories, connect with fellow travelers, and be inspired by the beauty that surrounds us.",
+      "content2": "Thank you for choosing Tranquil Cabins. Your adventure in nature awaits!"
+    },
+    "btn": "Explore more"
   },
   "login": {
     "heading": "Let's embark on a journey of stress-free bookings together",
@@ -335,6 +356,7 @@
     }
   },
   "cabin": {
+    "btn": "Order now",
     "card": {
       "days": {
         "3": "3 days",

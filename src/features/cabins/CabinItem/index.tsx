@@ -3,6 +3,7 @@ import { HiOutlineHeart } from "react-icons/hi2";
 
 import { ICabin } from "@/interfaces";
 import Button from "@/components/Button";
+import { useTranslation } from "react-i18next";
 
 export default function CabinItem({
   cabin,
@@ -13,6 +14,7 @@ export default function CabinItem({
   type?: string;
   isLink?: boolean
 }) {
+  const { t } = useTranslation()
   const { image, _id } = cabin
   const cabinImage = image.startsWith('cabin-') ? `imgs/cabins/${image}` : image
 
@@ -21,7 +23,7 @@ export default function CabinItem({
       <li>
         <Link to={!isLink ? _id : `/cabins/${_id}`} className="block relative min-h-72  min-w-72 bg-inherit bg-cover text-stone-700 transition-all duration-1000 ease-in-out [&>.btn-item]:hover:inline-block [&>.item-img]:hover:brightness-50">
           <div className="btn-item absolute left-[33%] top-[33%] z-30 hidden h-60 w-72">
-            <Button type="item">Add to cart</Button>
+            <Button type="item">{t('cabin.btn')}</Button>
           </div>
           <div className="item-img min-h-60 min-w-72 overflow-hidden rounded-md">
             <img
