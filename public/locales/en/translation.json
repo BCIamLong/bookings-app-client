@@ -121,8 +121,22 @@
   },
   "contact": {
     "heading": "Contact us",
-    "description": "Contact us at bookingapp@gmail.com",
-    "btn": "Contact"
+    "description": "Contact us at bookingapp@gmail.com or via the form bellow",
+    "btn": "Contact",
+    "form": {
+      "fullName": {
+        "label": "Full Name",
+        "holder": "Enter your full name"
+      },
+      "email": {
+        "label": "Email",
+        "holder": "Enter your email"
+      },
+      "phone": {
+        "label": "Phone Number",
+        "holder": "Enter your phone number"
+      }
+    }
   },
   "about": {
     "heading": "About us",

@@ -121,8 +121,22 @@
   },
   "contact": {
     "heading": "Liên hệ",
-    "description": "Liên hệ với chúng tôi qua bookingapp@gmail.com",
-    "btn": "Liên hệ"
+    "description": "Liên hệ với chúng tôi tại bookingapp@gmail.com hoặc qua mẫu dưới đây",
+    "btn": "Liên hệ",
+    "form": {
+      "fullName": {
+        "label": "Họ và Tên",
+        "holder": "Nhập họ và tên của bạn"
+      },
+      "email": {
+        "label": "Email",
+        "holder": "Nhập email của bạn"
+      },
+      "phone": {
+        "label": "Số Điện Thoại",
+        "holder": "Nhập số điện thoại của bạn"
+      }
+    }
   },
   "about": {
     "heading": "Giới Thiệu",
