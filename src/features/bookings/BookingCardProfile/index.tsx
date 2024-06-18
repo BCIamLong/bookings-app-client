@@ -43,7 +43,7 @@ export default function BookingCardProfile({ booking, onCloseModal }: { booking:
         </li>
         <li className={classStyle}><span>Payment method:</span> <span>Credit Card (Visa)</span></li>
         <li className={classStyle}><span>Sender name:</span> <span>{fullName || name}</span></li>
-        <li className={classStyle}><span>Amount:</span> <span>${cabinPrice}</span></li>
+        <li className={classStyle}><span>Amount of cabin:</span> <span>${cabinPrice}</span></li>
         <li className={classStyle}><span>Other fee:</span> <span>${extrasPrice}</span></li>
         <li className={classStyle}><span>Total amount:</span> <span>${cabinPrice * numGuests * numNights}</span></li>
         <li className={classStyle}><span>Discount:</span> <span>${discount}</span></li>

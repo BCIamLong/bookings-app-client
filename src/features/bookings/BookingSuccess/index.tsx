@@ -6,7 +6,7 @@ import Buttons from "../../../components/Buttons";
 import Button from "../../../components/Button";
 
 export default function BookingSuccess() {
-  return <div className="py-12 px-6 bg-brand-100 flex flex-col items-center thin:max-tiny:px-3 pb-28">
+  return <div className="py-12 px-6 bg-stone-0 flex flex-col items-center thin:max-tiny:px-3 pb-28">
     <div className="flex justify-center items-center gap-2 mb-6">
       <Heading type="secondary">
         <span className="text-brand-600">Payment successfully</span>

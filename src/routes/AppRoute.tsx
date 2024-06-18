@@ -102,7 +102,6 @@ export default function AppRoute() {
             <Route path="/" element={<Homepage />}></Route>
             <Route path="/cabins" element={<Cabins />} />
             <Route path="/cabins/:id" element={<Cabin />} />
-            <Route path="/bookings/success" element={<BookingSuccess />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
           </Route>
@@ -113,6 +112,7 @@ export default function AppRoute() {
               </ProtectedRoute>
             }
           >
+            <Route path="/bookings/success" element={<BookingSuccess />} />
             <Route path="/login/verify-2fa" element={<Verify2FARoute><Verify2FA /></Verify2FARoute>}></Route>
             <Route path="/profile" element={<ProfileLayout />} >
               {/* <Route index element={<ProfileInfo />} /> */}
