@@ -38,7 +38,7 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
   const handleClick = async function () {
     if (!guests || !days) return
 
-    bookCabin({ cabinId, regularPrice: discountPrice, name, description, image, endDate, startDate, numGuests: guests, numNights: days, locale })
+    bookCabin({ cabinId, cabinPrice: regularPrice, regularPrice: discountPrice, name, description, image, endDate, startDate, numGuests: guests, numNights: days, locale })
 
   }
   // if (isLoading || isLoadingUser || isLoadingBookings) return <Spinner size="normal" />
@@ -62,7 +62,7 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
             <div className="flex flex-col gap-3">
               <Label type="search" labelFor="guests">{t('cabin.card.guests.label')}</Label>
               <input id='guests' type="number" min={1} max={maxCapacity} value={String(guests)}
-                className="py-2 px-8 text-stone-700 text-sm font-semibold border-[1.5px] rounded-md border-stone-300 focus:outline-none"
+                className="py-2 px-8 text-stone-700 bg-stone-0 text-sm font-semibold border-[1.5px] rounded-md border-stone-300 focus:outline-none"
                 onChange={(e) => setGuests(+e.target.value)
                 } disabled={(Boolean(count) && isCabinBooked) || Boolean(isCabinBooked) || isNotAllowUserBook} />
             </div>
