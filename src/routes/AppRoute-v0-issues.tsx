@@ -3,7 +3,7 @@ import { Suspense, lazy } from "react";
 // import { AnimatePresence } from "framer-motion";
 
 import LoginRoute from "./LoginRoute";
-import ProtectedRoute from "./ProtectedRoute";
+// import ProtectedRoute from "./ProtectedRoute";
 import Verify2FARoute from "./Verify2FARoute";
 
 
@@ -110,33 +110,33 @@ export default function AppRoute() {
           {/* ! issue that we have two app layout, and because the way react work it will not re-render because app layout is now render at the same position and also the same type right
           ! and especially the way framer motion work despite we add the key to make the app layout re-render there is no way to make the animation run again in this re-render
           ! so therefore to fix this we should make one app layout and that's also my error because we should structure our router better*/}
-          <Route
+          {/* <Route
             element={
               <ProtectedRoute>
-                {/* <AnimatePresence mode="wait"> */}
+                <AnimatePresence mode="wait">
                 <AppLayout key='header-profile' />
-                {/* </AnimatePresence> */}
+                </AnimatePresence>
               </ProtectedRoute>
             }
-          >
-            <Route path="/login/verify-2fa" element={<Verify2FARoute><Verify2FA /></Verify2FARoute>}></Route>
-            <Route path="/profile" element={<ProfileLayout />} >
-              {/* <Route index element={<ProfileInfo />} /> */}
-              <Route index element={<Navigate replace to='reviews' />} />
-              <Route element={<ProfileInfoLayout />}>
-                <Route path="reviews" element={<ReviewsList isReviewsOfUser={true} />} />
-                <Route path="bookings" element={<BookingList />} />
-              </Route>
-              <Route path="edit" element={<UpdateProfileForm />} />
-              <Route path="setting" element={<SettingsLayout />}>
-                <Route index element={<Navigate replace to='account' />} />
-                <Route path="account" element={<Account />} />
-                <Route path="security" element={<Security />} />
-                <Route path="security/setup-2fa" element={<Enable2FAForm />} />
-              </Route>
+          > */}
+          <Route path="/login/verify-2fa" element={<Verify2FARoute><Verify2FA /></Verify2FARoute>}></Route>
+          <Route path="/profile" element={<ProfileLayout />} >
+            {/* <Route index element={<ProfileInfo />} /> */}
+            <Route index element={<Navigate replace to='reviews' />} />
+            <Route element={<ProfileInfoLayout />}>
+              <Route path="reviews" element={<ReviewsList isReviewsOfUser={true} />} />
+              <Route path="bookings" element={<BookingList />} />
             </Route>
-            <Route path="/bookmarks" element={<Bookmarks />} />
+            <Route path="edit" element={<UpdateProfileForm />} />
+            <Route path="setting" element={<SettingsLayout />}>
+              <Route index element={<Navigate replace to='account' />} />
+              <Route path="account" element={<Account />} />
+              <Route path="security" element={<Security />} />
+              <Route path="security/setup-2fa" element={<Enable2FAForm />} />
+            </Route>
           </Route>
+          <Route path="/bookmarks" element={<Bookmarks />} />
+          {/* </Route> */}
           {/* <Route element={<LoginLayout />}>
     <Route path="/login" element={<Login />} />
   </Route> */}
