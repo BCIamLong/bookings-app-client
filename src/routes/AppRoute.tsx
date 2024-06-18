@@ -110,7 +110,7 @@ export default function AppRoute() {
             element={
               <ProtectedRoute>
                 {/* <AnimatePresence mode="wait"> */}
-                <AppLayout key="profile-header" />
+                <AppLayout key='header-profile' />
                 {/* </AnimatePresence> */}
               </ProtectedRoute>
             }
