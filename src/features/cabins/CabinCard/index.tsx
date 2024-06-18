@@ -75,7 +75,7 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
                 <ButtonLink href='/profile/bookings' type="primary" size="small">{t('cabin.card.btn.see')}</ButtonLink>
               </div>}
 
-              {((!isCabinBooked && !count) || (!isCabinBooked && Boolean(count))) && (!user ? <div className="w-[62%]"><ButtonLink type="primary" href="/login">Login to book</ButtonLink></div> : <Button type="primary" size="small" onClick={handleClick}>
+              {((!isCabinBooked && !count) || (!isCabinBooked && Boolean(count))) && (!user ? <div className={`${i18n.language === 'vi-VN' ? 'w-[70%]' : 'w-[62%]'}`}><ButtonLink type="primary" href="/login">{t('cabin.card.btn.login')}</ButtonLink></div> : <Button type="primary" size="small" onClick={handleClick}>
                 {isBooking ? <Spinner size="small" /> : `${t('cabin.card.btn.default')}`}
               </Button>)}
             </>}

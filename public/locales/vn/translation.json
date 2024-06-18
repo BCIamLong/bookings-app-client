@@ -382,7 +382,8 @@
       },
       "btn": {
         "default": "Đặt ngay",
-        "see": "Xem đặt phòng của bạn"
+        "see": "Xem đặt phòng của bạn",
+        "login": "Đăng nhập để đặt phòng"
       },
       "notifies": {
         "cabin-booked": "Cabin này đã được đặt",

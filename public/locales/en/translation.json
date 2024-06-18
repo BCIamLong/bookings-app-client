@@ -382,7 +382,8 @@
       },
       "btn": {
         "default": "Reserve Now",
-        "see": "See your bookings"
+        "see": "See your bookings",
+        "login": "Login to book"
       },
       "notifies": {
         "cabin-booked": "This cabin is booked",
