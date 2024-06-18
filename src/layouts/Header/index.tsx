@@ -6,8 +6,8 @@ import Navigation from "../Navigation";
 
 export default function Header() {
   return (
-    <motion.header className="h-24 bg-stone-50" initial={{ y: '-60vh', opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-      transition={{ type: 'spring', duration: 1 }}>
+    <motion.header className="h-24 bg-stone-50" initial={{ y: '-60vh', opacity: 1 }} animate={{ y: 0, opacity: 1 }}
+      transition={{ type: 'spring', duration: 0.7 }}>
       <div className="flex items-center w-full z-40 fixed justify-between bg-stone-50 px-12 py-3 thin:max-tiny:px-3 tiny:max-sm:px-6">
         <Logo />
         <Navigation />
