@@ -47,13 +47,15 @@ const getUserBookings = async function ({
   // const token = Cookies.get('access-token')
   let url = `${SERVER_BASE_URL}/api/v1/bookings/me`
   if (cabinId) url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookings/me`
-  const { status } = options
+  const { status, cabin } = options
 
   if (status && typeof status === 'string')
     url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status=${status}`
-  if (status && typeof status === 'object')
+  if (status && typeof status === 'object' && !cabin)
     url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status[${status.operation}]=${status.value}`
   // console.log(url)
+  if (status && typeof status === 'object' && cabin)
+    url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status[${status.operation}]=${status.value}&&cabinId=${cabinId}`
   try {
     const res = await axios.get(url, {
       headers: {

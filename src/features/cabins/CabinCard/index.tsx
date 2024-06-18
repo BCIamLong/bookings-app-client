@@ -19,7 +19,7 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
   const { t, i18n } = useTranslation()
   const locale = i18n.language.split('-')[0]
 
-  const { count, isLoading } = useUserBookings()
+  const { count, isLoading } = useUserBookings({ status: { operation: 'ne', value: 'checked-out' }, cabin: true })
   const { count: isNotAllowUserBook, isLoading: isLoadingUserBookings } = useUserBookings({ status: { operation: 'ne', value: 'checked-out' } })
   const { isBooking, bookCabin } = useBookCabin()
   const { user, isLoading: isLoadingUser } = useUserSession()
@@ -33,7 +33,7 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
   const discountPrice = price - Math.round(price * (discount / 100))
   const startDate = new Date()
   const endDate = new Date(Date.now() + days * 24 * 60 * 60 * 1000)
-  // console.log(isCabinBooked, count)
+  console.log(isNotAllowUserBook, count)
 
   const handleClick = async function () {
     if (!guests || !days) return

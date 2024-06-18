@@ -16,6 +16,7 @@ export interface BookCabin {
 
 export interface UserBookingsOption {
   status?: string | { operation: string; value: string }
+  cabin?: boolean
 }
 
 export default interface IBooking {
