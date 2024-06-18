@@ -15,7 +15,7 @@ export default function BookingList() {
   if (!bookings.length) return <Empty>You have no bookings yet</Empty>
 
   return (
-    <div>
+    <div className="h-[25rem] overflow-auto">
       <ul className="flex flex-col gap-3">
         {bookings?.map((booking: IBooking) => <Modal key={booking._id}>
           <Modal.Open openName={`booking${booking._id}}`}>
