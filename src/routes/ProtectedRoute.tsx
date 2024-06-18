@@ -1,17 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { useUserSession } from "../features/auth/useUserSession";
 import { toast } from "react-toastify";
 // import { AxiosError } from "axios";
-import { Outlet } from "react-router-dom";
+// import { Outlet } from "react-router-dom";
 
 // interface ErrorResponse {
 //   message: string;
 // }
 
-// export default function ProtectedRoute({ children }: { children: ReactNode }) {
-export default function ProtectedRoute() {
+// export default function ProtectedRoute() {
+export default function ProtectedRoute({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const { isLoading, user, error } = useUserSession();
   //   console.log("ok");
@@ -34,6 +34,6 @@ export default function ProtectedRoute() {
 
   if (isLoading) return <Spinner size="big" />;
 
-  return <Outlet />;
-  // return children;
+  // return <Outlet />;
+  return children;
 }

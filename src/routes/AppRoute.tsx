@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import { AnimatePresence } from "framer-motion";
+// import { AnimatePresence } from "framer-motion";
 
 import LoginRoute from "./LoginRoute";
 import ProtectedRoute from "./ProtectedRoute";
@@ -98,37 +98,38 @@ export default function AppRoute() {
             <Route path="/reset-password/:token" element={<ResetPassword />} />
 
           </Route>
-          <Route element={<AnimatePresence mode="wait"><AppLayout /></AnimatePresence>}>
+          <Route element={<AppLayout />}>
             <Route path="/" element={<Homepage />}></Route>
             <Route path="/cabins" element={<Cabins />} />
             <Route path="/cabins/:id" element={<Cabin />} />
             <Route path="/bookings/success" element={<BookingSuccess />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
-
-            <Route
-              element={
-                <ProtectedRoute />
-              }
-            >
-              <Route path="/login/verify-2fa" element={<Verify2FARoute><Verify2FA /></Verify2FARoute>}></Route>
-              <Route path="/profile" element={<ProfileLayout />} >
-                {/* <Route index element={<ProfileInfo />} /> */}
-                <Route index element={<Navigate replace to='reviews' />} />
-                <Route element={<ProfileInfoLayout />}>
-                  <Route path="reviews" element={<ReviewsList isReviewsOfUser={true} />} />
-                  <Route path="bookings" element={<BookingList />} />
-                </Route>
-                <Route path="edit" element={<UpdateProfileForm />} />
-                <Route path="setting" element={<SettingsLayout />}>
-                  <Route index element={<Navigate replace to='account' />} />
-                  <Route path="account" element={<Account />} />
-                  <Route path="security" element={<Security />} />
-                  <Route path="security/setup-2fa" element={<Enable2FAForm />} />
-                </Route>
+          </Route>
+          <Route
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="/login/verify-2fa" element={<Verify2FARoute><Verify2FA /></Verify2FARoute>}></Route>
+            <Route path="/profile" element={<ProfileLayout />} >
+              {/* <Route index element={<ProfileInfo />} /> */}
+              <Route index element={<Navigate replace to='reviews' />} />
+              <Route element={<ProfileInfoLayout />}>
+                <Route path="reviews" element={<ReviewsList isReviewsOfUser={true} />} />
+                <Route path="bookings" element={<BookingList />} />
               </Route>
-              <Route path="/bookmarks" element={<Bookmarks />} />
+              <Route path="edit" element={<UpdateProfileForm />} />
+              <Route path="setting" element={<SettingsLayout />}>
+                <Route index element={<Navigate replace to='account' />} />
+                <Route path="account" element={<Account />} />
+                <Route path="security" element={<Security />} />
+                <Route path="security/setup-2fa" element={<Enable2FAForm />} />
+              </Route>
             </Route>
+            <Route path="/bookmarks" element={<Bookmarks />} />
           </Route>
           {/* <Route element={<LoginLayout />}>
     <Route path="/login" element={<Login />} />
