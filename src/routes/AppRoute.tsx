@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import { AnimatePresence } from "framer-motion";
+// import { AnimatePresence } from "framer-motion";
 
 import LoginRoute from "./LoginRoute";
 import ProtectedRoute from "./ProtectedRoute";
@@ -109,9 +109,9 @@ export default function AppRoute() {
           <Route
             element={
               <ProtectedRoute>
-                <AnimatePresence mode="wait">
-                  <AppLayout />
-                </AnimatePresence>
+                {/* <AnimatePresence mode="wait"> */}
+                <AppLayout key="profile-header" />
+                {/* </AnimatePresence> */}
               </ProtectedRoute>
             }
           >
