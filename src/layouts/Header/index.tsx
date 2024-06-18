@@ -4,6 +4,7 @@ import HeaderOptions from "../HeaderOptions";
 import Logo from "../Logo";
 import Navigation from "../Navigation";
 
+// ! the issues with framer motion is still happened so for now let's just remove it and animation
 export default function Header() {
   return (
     <header className="h-24 bg-stone-50">
