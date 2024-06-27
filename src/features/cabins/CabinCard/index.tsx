@@ -44,7 +44,10 @@ export default function CabinCard({ cabin }: { cabin: ICabin }) {
   // if (isLoading || isLoadingUser || isLoadingBookings) return <Spinner size="normal" />
 
   return (
-    <div className={`min-h-24 bg-stone-0 text-stone-700 shadow-md thin:max-sm:px-6 thin:max-sm:w-[17.4rem] shadow-stone-300 px-4 py-6 ${(count && isCabinBooked) || isCabinBooked || isNotAllowUserBook ? ' bg-stone-200' : ''}`}>
+    <div className={`relative min-h-24 bg-stone-0 text-stone-700 shadow-md thin:max-sm:px-6 thin:max-sm:w-[17.4rem] shadow-stone-300 px-4 py-6 ${(count && isCabinBooked) || isCabinBooked || isNotAllowUserBook ? ' bg-stone-200' : ''}`}>
+      <div className="absolute top-[-2rem] left-0 text-xs uppercase text-brand-700 border-dashed border-brand-500 border-2 px-2 hover:bg-brand-200 transition-all duration-300">
+        <a target="_blank" href="https://docs.stripe.com/testing#testing-interactively">Want to pay? let's click here and Use this TEST CARD to pay</a>
+      </div>
       {isLoading || isLoadingUser || isLoadingBookings || isLoadingUserBookings ? <Spinner size="normal" /> :
         <>
           {Boolean(count) && Boolean(isCabinBooked) && <p className="py-1 px-2 text-xs uppercase font-semibold text-stone-50 bg-green-500 rounded-lg flex justify-center items-center mb-3">Payment Completed</p>}
