@@ -7,5 +7,5 @@ export default function Logout() {
     const logoutHandler = function () {
         logout()
     }
-    return <Button type="icon" disabled={isLoggingOut} onClick={logoutHandler}><HiArrowRightOnRectangle /></Button>
+    return <Button type="icon-1" disabled={isLoggingOut} onClick={logoutHandler}><HiArrowRightOnRectangle /></Button>
 }

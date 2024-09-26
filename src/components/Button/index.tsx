@@ -52,8 +52,11 @@ export default function Button({ type, children, onClick, disabled, size, reset 
       baseStyle +
       `text-stone-100 font-bold capitalize text-sm px-2 py-3 bg-stone-800 rounded-full w-[30%] sm:w-[40%] hover:bg-stone-700 thin:w-[60%] tiny:w-[40%]`;
 
+  if (type === 'icon-1')
+    style = baseStyle + `text-stone-700 text-xl p-[0.84rem] hover:bg-stone-200`;
+
   if (type === 'icon')
-    style = baseStyle + `text-stone-700 text-2xl p-2 hover:bg-stone-200`;
+    style = baseStyle + `text-stone-700 text-xl p-2 hover:bg-stone-200`;
 
   if (type === 'primary')
     style = baseStyle + `text-stone-100 text-lg font-semibold py-2 px-4 hover:bg-stone-600 bg-stone-700 rounded-lg border-2 capitalize border-stone-700`;
@@ -63,6 +66,9 @@ export default function Button({ type, children, onClick, disabled, size, reset 
 
   if (type === 'brand')
     style = baseStyle + `text-stone-100 text-lg font-semibold py-2 px-4 hover:bg-brand-700 bg-brand-600 rounded-lg capitalize`;
+
+  if (type === 'menu-1')
+    style = 'flex items-center gap-2 duration-300 transition-all justify-start hover:bg-stone-300 rounded-md cursor-pointer w-full text-sm font-semibold'
 
   if (reset) return <button disabled={disabled} type="reset" onClick={onClick} className={style + sizeBtn}>{children}</button>;
 

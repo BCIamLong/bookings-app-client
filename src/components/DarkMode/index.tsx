@@ -7,8 +7,8 @@ export default function DarkMode() {
 
   return <>
     {
-      isDarkMode ? <Button type="icon" onClick={toggleDarkMode}>< HiSun /></Button > :
-        <Button type="icon" onClick={toggleDarkMode}><HiMoon /></Button>
+      isDarkMode ? <Button type="icon-1" onClick={toggleDarkMode}>< HiSun /></Button > :
+        <Button type="icon-1" onClick={toggleDarkMode}><HiMoon /></Button>
     }
   </>
 }

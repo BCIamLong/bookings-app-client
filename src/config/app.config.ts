@@ -7,10 +7,10 @@ export default {
     import.meta.env.MODE === 'production'
       ? 'https://booking-api-ebe1.onrender.com/api/v1/auth/login/oauth/google'
       : 'http://localhost:3009/api/v1/auth/login/oauth/google',
-  SERVER_BASE_URL:
-    import.meta.env.MODE === 'production'
-      ? 'https://booking-api-ebe1.onrender.com'
-      : 'http://localhost:3009',
+  SERVER_BASE_URL: 'https://booking-api-ebe1.onrender.com',
+  // import.meta.env.MODE === 'production'
+  //   ? 'https://booking-api-ebe1.onrender.com'
+  //   : 'http://localhost:3009',
   CLIENT_BASE_UTL:
     import.meta.env.MODE === 'production'
       ? 'https://bookings-app-client.vercel.app'
