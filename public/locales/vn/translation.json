@@ -77,6 +77,10 @@
         "label": "Khách",
         "holder": "Thêm số lượng khách"
       }
+    },
+    "box": {
+      "title": "Dù bạn đi đến đâu, chúng tôi sẽ đưa bạn đến đó.",
+      "content": "Có 2.500 người đã đặt vé cho sự kiện The Wild Oasis trong 24 giờ qua."
     }
   },
   "discover": {

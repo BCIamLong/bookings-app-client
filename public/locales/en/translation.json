@@ -77,6 +77,10 @@
         "label": "Guests",
         "holder": "Add guests"
       }
+    },
+    "box": {
+      "title": "No matter where you’re going to, we’ll take you there",
+      "content": "2,500 people booked The Wild Oasis Event in last 24 hours"
     }
   },
   "discover": {
