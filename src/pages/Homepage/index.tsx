@@ -4,6 +4,11 @@ import Discover from "../../components/Discover";
 import Hero from "../../components/Hero";
 import CabinsList from "../../features/cabins/CabinsList";
 import LatestCabinsList from "../../features/cabins/LatestCabinsList";
+import CategoriesList from "@/features/cabins/CategoriesList";
+import ToursList from "@/features/cabins/ToursList";
+import Services from "@/components/Services";
+import Instructions from "@/components/Instructions";
+import PostsHome from "@/features/Posts/PostsHome";
 
 // const cabins = [
 //   {
@@ -78,13 +83,19 @@ export default function Homepage() {
   return (
     <div>
       <Hero />
-      <LatestCabinsList />
+      <CategoriesList />
+      <ToursList title="Our trending tours" />
+      <Services />
+      <Instructions />
+      <ToursList title="Our best tours" />
+      <PostsHome />
+      {/* <LatestCabinsList />
       <div className="px-6 bg-stone-0">
         <h2 className="inline-block border-b-2 border-stone-700 pb-1 pt-2 text-xl font-bold text-stone-700">
           {t('cabins.homepage.default.heading')}
         </h2>
         <CabinsList isLink={true} />
-      </div>
+      </div> */}
       <Discover />
       <Contact />
     </div>

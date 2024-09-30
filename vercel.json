@@ -16,5 +16,10 @@
         }
       ]
     }
-  ]
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "tour-booking": false
+    }
+  }
 }

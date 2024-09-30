@@ -5,7 +5,7 @@ import Heading from "../Heading";
 export default function Discover() {
   const { t } = useTranslation()
   return (
-    <section className="flex bg-stone-0 items-center gap-24 sm:px-28 tiny:px-12 thin:px-0 py-28 thin:max-tiny:flex-col thin:max-tiny:justify-start" id='discover'>
+    <section className="flex bg-stone-0 items-center gap-24 sm:px-28 tiny:px-12 thin:px-0 pt-12 pb-28 md:px-12 thin:max-tiny:flex-col thin:max-tiny:justify-start" id='discover'>
       <div className="flex w-[70%] flex-col gap-5">
         <div className="mb-2">
           <Heading type="secondary">

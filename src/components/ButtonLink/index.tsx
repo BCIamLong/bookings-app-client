@@ -53,6 +53,10 @@ export default function ButtonLink({
   if (type === 'menu')
     style = baseStyle + `text-brand-700 text-sm font-semibold py-2 px-4 capitalize hover:bg-brand-300 `;
 
+  if (type === 'simple1')
+    style = baseStyle + `flex justify-center text-sm text-brand-700 underline hover:no-underline hover:text-brand-900 font-semibold`;
+
+
   return (
     <>
       {!isNavLink ? <Link to={href || "#"} className={style + sizeBtn}>
