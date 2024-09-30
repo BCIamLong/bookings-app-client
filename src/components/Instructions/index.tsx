@@ -2,8 +2,8 @@ import Heading from "../Heading";
 
 export default function Instructions() {
   return (
-    <div className="grid grid-cols-2 py-10 px-20 gap-x-24 items-center bg-stone-0">
-      <div className="bg-stone-0 p-6 shadow-sm">
+    <div className="grid grid-cols-2 py-10 px-20 gap-x-24 items-center bg-stone-0  thin:max-tiny:gap-x-12 thin:max-sm:px-12">
+      <div className="bg-stone-0 p-6 shadow-sm thin:max-tiny:col-span-2">
         <p className="text-brand-600 font-bold text-sm mb-3">Fast & Easy</p>
         <Heading type="secondary">Get Your Favourite
           Tour Bookings</Heading>

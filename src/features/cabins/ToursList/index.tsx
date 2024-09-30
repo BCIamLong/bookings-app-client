@@ -11,7 +11,7 @@ export default function ToursList({ title }: { title: string }) {
         <Heading type="secondary">{title}</Heading>
         <ButtonLink type="simple1" href="#">See more &#8594;</ButtonLink>
       </div>
-      <ul className="flex gap-6">
+      <ul className="flex gap-6 thin:max-sm:grid thin:max-sm:grid-cols-2">
         <TourItem />
         <TourItem />
         <TourItem />

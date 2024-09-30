@@ -54,7 +54,7 @@ export default function ButtonLink({
     style = baseStyle + `text-brand-700 text-sm font-semibold py-2 px-4 capitalize hover:bg-brand-300 `;
 
   if (type === 'simple1')
-    style = baseStyle + `flex justify-center text-sm text-brand-700 underline hover:no-underline hover:text-brand-900 font-semibold`;
+    style = baseStyle + `flex justify-center items-center text-sm text-brand-700 underline hover:no-underline hover:text-brand-900 font-semibold`;
 
 
   return (
