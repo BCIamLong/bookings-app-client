@@ -5,7 +5,7 @@ export default function TourItem() {
     <li className="bg-stone-50 shadow-sm rounded-lg overflow-hidden">
       <div className="cursor-pointer">
         <img className="w-full" src="https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
-        <div className="flex justify-between bg-brand-500 px-4 py-1 sm:max-xl:px-2 thin:max-sm:px-3">
+        <div className="decorate flex justify-between bg-brand-500 px-4 py-1 sm:max-xl:px-2 thin:max-sm:px-3">
           <p className="flex gap-1 text-stone-50 text-xs font-semibold lg:max-xl:text-xs">
             <span>📅</span>
             <span>12, September 2022</span>

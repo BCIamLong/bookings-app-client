@@ -11,7 +11,8 @@ export default function Navigation() {
           <NavLink to="">{t('header.nav.homepage')}</NavLink>
         </li>
         <li>
-          <NavLink to="cabins">{t('header.nav.cabins')}</NavLink>
+          {/* <NavLink to="cabins">{t('header.nav.cabins')}</NavLink> */}
+          <NavLink to="tours">Tours</NavLink>
         </li>
         <li>
           <NavLink to="contact">{t('header.nav.contact')}</NavLink>

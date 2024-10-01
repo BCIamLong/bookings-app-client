@@ -16,6 +16,8 @@ import UpdateProfileForm from "../features/users/UpdateProfileForm";
 import BookingSuccess from "../features/bookings/BookingSuccess";
 import ReviewsList from "../features/reviews/ReviewsList";
 import BookingList from "../features/bookings/BookingsList";
+import HomeLayout from "@/layouts/HomeLayout";
+import Tours from "@/pages/Tours";
 
 // const Account = lazy(() => import("../features/auth/Account"))
 // const Security = lazy(() => import("../features/auth/Security"))
@@ -98,8 +100,11 @@ export default function AppRoute() {
             <Route path="/reset-password/:token" element={<ResetPassword />} />
 
           </Route>
-          <Route element={<AppLayout />}>
+          <Route element={<HomeLayout />}>
             <Route path="/" element={<Homepage />}></Route>
+          </Route>
+          <Route element={<AppLayout />}>
+            <Route path="/tours" element={<Tours />} />
             <Route path="/cabins" element={<Cabins />} />
             <Route path="/cabins/:id" element={<Cabin />} />
             <Route path="/contact" element={<Contact />} />

@@ -36,6 +36,9 @@ export default {
           900: 'var(--color-grey-900)',
         },
       },
+      fontFamily: {
+        title: ['Oswald', 'serif'],
+      },
     },
   },
   plugins: [],
