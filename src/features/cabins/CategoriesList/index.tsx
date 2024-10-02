@@ -2,7 +2,21 @@ import Heading from "@/components/Heading";
 import CategoryItem from "../CategoryItem";
 import ButtonLink from "@/components/ButtonLink";
 
-export default function CategoriesList() {
+export default function CategoriesList({ type }: { type?: 'normal' | 'full' }) {
+
+  if (type === 'normal') return (
+    <div className="pt-16 px-12 flex flex-col bg-stone-0">
+      <ul className=" grid grid-cols-3 gap-4 [&>li>div>img]:w-full">
+        <CategoryItem title="Challenges" numTours={12} />
+        <CategoryItem title="Challenges" numTours={12} />
+        <CategoryItem title="Challenges" numTours={12} />
+        <CategoryItem title="Challenges" numTours={12} />
+        <CategoryItem title="Challenges" numTours={12} />
+        <CategoryItem title="Challenges" numTours={12} />
+      </ul>
+    </div>
+  )
+
   return (
     <div className="pt-16 px-12 flex flex-col gap-6 bg-stone-0">
       <div className="flex justify-between items-center">
