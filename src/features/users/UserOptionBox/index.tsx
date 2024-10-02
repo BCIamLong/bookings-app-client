@@ -31,7 +31,7 @@ export default function UserOptionBox() {
         <div className="relative p-[3px] [&>div]:hover:flex">
           {/* <ButtonLink type="user-nav-header" href="/login">{t('header.options.login')}</ButtonLink> */}
           <div className="border-stone-50 bg-stone-0 rounded-full cursor-pointer">
-            <img className="h-9 w-9 rounded-full" src={`default-avatar.jpg`} alt="" />
+            <img className="h-9 w-9 rounded-full" src={`/default-avatar.jpg`} alt="" />
           </div>
           <div className="absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md hidden flex-col gap-3 ">
             <h2 className="text-xl text-stone-800 font-semibold">My account</h2>

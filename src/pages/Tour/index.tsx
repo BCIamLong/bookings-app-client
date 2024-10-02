@@ -3,7 +3,7 @@ import CabinDetail from "../../features/cabins/CabinDetail";
 import AddReview from "@/features/reviews/AddReview";
 import ReviewHeading from "@/features/reviews/ReviewHeading";
 
-export default function Cabin() {
+export default function Tour() {
   return (
     <>
 
