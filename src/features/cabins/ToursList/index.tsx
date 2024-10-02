@@ -9,13 +9,13 @@ export default function ToursList({ type, title }: { type?: 'full' | 'normal', t
 
   if (type === 'normal')
     return <div className="p-12 flex flex-col gap-6 bg-stone-0">
-      <ul className="grid grid-cols-3 gap-6 mb-4 [&>li>div>.decorate>p]:text-[0.6rem] thin:max-sm:grid-cols-2">
-        <TourItem />
-        <TourItem />
-        <TourItem />
-        <TourItem />
-        <TourItem />
-        <TourItem />
+      <ul className="grid grid-cols-3 gap-x-6 gap-y-6 mb-4 [&>li>div>.decorate>p]:text-[0.6rem] thin:max-sm:grid-cols-2">
+        <TourItem type="normal" />
+        <TourItem type="normal" />
+        <TourItem type="normal" />
+        <TourItem type="normal" />
+        <TourItem type="normal" />
+        <TourItem type="normal" />
       </ul>
       <Pagination count={12} />
     </div>
@@ -26,7 +26,7 @@ export default function ToursList({ type, title }: { type?: 'full' | 'normal', t
         <Heading type="secondary">{title}</Heading>
         <ButtonLink type="simple1" href="#">See more &#8594;</ButtonLink>
       </div>
-      <ul className="flex gap-6 thin:max-sm:grid thin:max-sm:grid-cols-2">
+      <ul className="flex gap-6 thin:max-sm:grid thin:max-sm:grid-cols-2 [&>li]:shadow-md">
         <TourItem />
         <TourItem />
         <TourItem />
