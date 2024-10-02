@@ -22,7 +22,7 @@ export default function Tours() {
         </div>
         <img className="brightness-[90%] z-10 h-[33rem] w-full" src="https://images.pexels.com/photos/238622/pexels-photo-238622.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
       </div>
-      <div className="pb-24">
+      <div className="pb-24 bg-stone-0">
         <div className="">
           <ul className="flex justify-around bg-stone-50 shadow-md px-6 py-3 w-[70%] thin:max-tiny:w-[90%] tiny:max-sm:w-[80%] mx-auto -translate-y-1/2 items-center thin:max-tiny:grid thin:max-tiny:grid-cols-2 thin:max-tiny:gap-6 ">
             <li className="text-stone-600 font-semibold flex gap-2">

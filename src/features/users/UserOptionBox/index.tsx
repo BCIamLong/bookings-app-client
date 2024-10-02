@@ -17,7 +17,7 @@ export default function UserOptionBox() {
   return (
     <>
       {user ? (
-        <div className="flex gap-1">
+        <div className="flex gap-1 transition-all duration-300">
           <Link to="profile">
             <div className="border-stone-50 bg-stone-0 p-1 ">
               <img className="h-9 w-9 rounded-full" src={`${avatarImg}`} alt="" />
@@ -28,12 +28,14 @@ export default function UserOptionBox() {
           </div>
         </div>
       ) : (
-        <div className="relative p-[3px] [&>div]:hover:flex">
+        <div className="relative p-[3px] [&>div]:hover:visible  [&>div]:hover:opacity-100 ">
+          {/* <div className="relative p-[3px] [&>div]:hover:flex"> */}
           {/* <ButtonLink type="user-nav-header" href="/login">{t('header.options.login')}</ButtonLink> */}
           <div className="border-stone-50 bg-stone-0 rounded-full cursor-pointer">
             <img className="h-9 w-9 rounded-full" src={`/default-avatar.jpg`} alt="" />
           </div>
-          <div className="absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md hidden flex-col gap-3 ">
+          <div className="transition-all flex opacity-0 ease-in-out duration-300 invisible  absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md flex-col gap-3 ">
+            {/* <div className="absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md hidden flex-col gap-3 "> */}
             <h2 className="text-xl text-stone-800 font-semibold">My account</h2>
             <ul className="p-3 flex gap-3 flex-col">
               <li><p className="p-2 text-stone-700 font-semibold hover:bg-stone-300 rounded-md cursor-pointer"> <Link to="bookmarks">Your bookmarks</Link></p></li>

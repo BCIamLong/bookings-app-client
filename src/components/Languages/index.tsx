@@ -13,7 +13,7 @@ function Languages() {
     i18n.changeLanguage(lan)
 
   }
-  return <div className="[&>div]:hover:flex relative">
+  return <div className="[&>div]:hover:visible  [&>div]:hover:opacity-100 relative transition-all duration-400 ">
     <Button type="icon-1">
       <HiLanguage className="stroke-1 px-0.5 text-stone-600" />
     </Button>

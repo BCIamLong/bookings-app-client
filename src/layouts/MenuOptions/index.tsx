@@ -16,11 +16,13 @@ export default function MenuOptions() {
 
   return <>
     {user &&
-      <div className="[&>.div2]:tiny:hover:flex [&>.div1]:thin:max-tiny:hover:flex relative">
+      <div className="[&>.div2]:tiny:hover:visible [&>.div2]:tiny:hover:opacity-100 [&>.div1]:thin:max-tiny:hover:visible [&>.div1]:thin:max-tiny:hover:opacity-100 relative">
+        {/* <div className="[&>.div2]:tiny:hover:flex [&>.div1]:thin:max-tiny:hover:flex relative"> */}
         <Button type="icon">
           <HiBars3 className="stroke-1 px-0.5 text-3xl text-stone-600" />
         </Button>
-        <div className="div1 absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md hidden flex-col gap-3 ">
+        <div className="div1 transition-all flex opacity-0 ease-in-out duration-300 invisible absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md flex-col gap-3 ">
+          {/* <div className="div1 absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md hidden flex-col gap-3 "> */}
           <ul className="p-3 flex gap-3 flex-col">
             <li><ButtonLink href="/" type="menu" size="medium" isNavLink={true}>{t('header.nav.homepage')}</ButtonLink></li>
             <li><ButtonLink href="/cabins" type="menu" size="medium" isNavLink={true}>{t('header.nav.cabins')}</ButtonLink></li>
@@ -29,7 +31,8 @@ export default function MenuOptions() {
             <li><ButtonLink href="/bookmarks" type="menu" size="medium" isNavLink={true}>{t('header.options.menu.bookmarks')}</ButtonLink></li>
           </ul>
         </div>
-        <div className="div2 absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md hidden flex-col gap-3 ">
+        <div className="div2 transition-all flex opacity-0 ease-in-out duration-300 invisible absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md flex-col gap-3 ">
+          {/* <div className="div2 absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md hidden flex-col gap-3 "> */}
           <ul className="p-3 flex gap-3 flex-col">
             <li><ButtonLink href="/bookmarks" type="menu" size="medium" isNavLink={true}>{t('header.options.menu.bookmarks')}</ButtonLink></li>
             <li><ButtonLink href="/bookmarks" type="menu" size="medium" isNavLink={true}>{t('header.options.menu.bookmarks')}</ButtonLink></li>
