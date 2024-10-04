@@ -4,7 +4,7 @@ import { UseFormRegisterReturn } from 'react-hook-form'
 
 interface TextareaProps {
   id: string
-  type: 'review' | 'form'
+  type: 'review' | 'form' | "posts"
   placeholder?: string
   disabled?: boolean
   value?: string;
@@ -28,6 +28,7 @@ export default function Textarea({
   const baseStyle = ``
   let style;
   if (type === 'review') style = baseStyle + 'w-[70%] h-24 border-[1.5px] rounded-lg p-3 resize-none focus:outline-stone-500 bg-stone-0'
+  if (type === 'posts') style = baseStyle + 'w-[70%] h-24 border-[1.5px] rounded-lg p-3 resize-none border-stone-300 bg-stone-0 focus:outline-stone-400 transition-all duration-100 text-stone-600'
 
   return (
     <textarea

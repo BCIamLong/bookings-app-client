@@ -16,6 +16,10 @@ export default function Navigation() {
           <NavLink to="tours">Tours</NavLink>
         </li>
         <li className="[&>a]:hover:border-b-2  [&>a]:border-stone-500 [&>.active]:transition-none [&>a]:transition-all [&>a]:ease-in-out [&>a]:duration-100">
+          {/* <NavLink to="cabins">{t('header.nav.cabins')}</NavLink> */}
+          <NavLink to="posts">Posts</NavLink>
+        </li>
+        <li className="[&>a]:hover:border-b-2  [&>a]:border-stone-500 [&>.active]:transition-none [&>a]:transition-all [&>a]:ease-in-out [&>a]:duration-100">
           <NavLink to="contact">{t('header.nav.contact')}</NavLink>
         </li>
         <li className="[&>a]:hover:border-b-2  [&>a]:border-stone-500 [&>.active]:transition-none [&>a]:transition-all [&>a]:ease-in-out [&>a]:duration-100">

@@ -19,6 +19,7 @@ import BookingList from "../features/bookings/BookingsList";
 import HomeLayout from "@/layouts/HomeLayout";
 import Tours from "@/pages/Tours";
 import Tour from "@/pages/Tour";
+import Posts from "@/pages/Posts";
 
 // const Account = lazy(() => import("../features/auth/Account"))
 // const Security = lazy(() => import("../features/auth/Security"))
@@ -105,6 +106,7 @@ export default function AppRoute() {
             <Route path="/" element={<Homepage />}></Route>
           </Route>
           <Route element={<AppLayout />}>
+            <Route path="/posts" element={<Posts />} />
             <Route path="/tours" element={<Tours />} />
             <Route path="/tours/:id" element={<Tour />} />
             <Route path="/cabins" element={<Cabins />} />
