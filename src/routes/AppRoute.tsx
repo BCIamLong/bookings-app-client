@@ -19,7 +19,12 @@ import BookingList from "../features/bookings/BookingsList";
 import HomeLayout from "@/layouts/HomeLayout";
 import Tours from "@/pages/Tours";
 import Tour from "@/pages/Tour";
-import Posts from "@/pages/Posts";
+// import Posts from "@/pages/Posts";
+import PostsLayout from "@/layouts/PostsLayout";
+import PostsList from "@/features/Posts/PostsList";
+import CreatePost from "@/features/Posts/CreatPost";
+import PostDetail from "@/features/Posts/PostDetail";
+import ExplorePosts from "@/features/Posts/ExplorePosts";
 
 // const Account = lazy(() => import("../features/auth/Account"))
 // const Security = lazy(() => import("../features/auth/Security"))
@@ -106,7 +111,13 @@ export default function AppRoute() {
             <Route path="/" element={<Homepage />}></Route>
           </Route>
           <Route element={<AppLayout />}>
-            <Route path="/posts" element={<Posts />} />
+            <Route path="posts" element={<PostsLayout />} >
+              <Route index element={<PostsList />} />
+              <Route path="create" element={<CreatePost />} />
+              <Route path=":id" element={<PostDetail />} />
+              <Route path="explore" element={<ExplorePosts />} />
+            </Route>
+            {/* <Route path="/posts" element={<Posts />} /> */}
             <Route path="/tours" element={<Tours />} />
             <Route path="/tours/:id" element={<Tour />} />
             <Route path="/cabins" element={<Cabins />} />

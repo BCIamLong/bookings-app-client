@@ -4,7 +4,8 @@ import FileInput from "@/components/form/FileInput";
 import Input from "@/components/form/Input";
 import Textarea from "@/components/form/Textarea";
 import Heading from "@/components/Heading";
-import { HiOutlineHeart, HiOutlineChatBubbleOvalLeft, HiOutlineShare, HiMiniEllipsisHorizontal, HiOutlineBookmark, HiChevronRight, HiOutlineHome } from "react-icons/hi2";
+import PostsSidebar from "@/features/Posts/PostsSidebar";
+import { HiOutlineHeart, HiOutlineChatBubbleOvalLeft, HiOutlineShare, HiMiniEllipsisHorizontal, HiOutlineBookmark, HiChevronRight } from "react-icons/hi2";
 import { LuImagePlus, LuImage } from "react-icons/lu";
 
 export default function Posts() {
@@ -14,31 +15,7 @@ export default function Posts() {
     </div>
     <div className="p-12 grid grid-cols-[1fr_3fr] bg-stone-0 tiny:max-sm:px-8 gap-x-6 sm:max-md:px-12 thin:max-tiny:grid-cols-1 thin:max-tiny:gap-y-6 thin:max-tiny:px-6 tiny:max-sm:grid-cols-[1fr_2fr] sm:max-lg:grid-cols-[1fr_2.5fr]">
       {/* * this is place for sidebar */}
-      <div className="h-screen">
-        <ul className="bg-stone-0 flex flex-col gap-3 h-full border-r-2 border-stone-50 shadow-sm overflow-hidden">
-          <li >
-            <div className="[&>.icon]:hover:text-brand-600 transition-all duration-300 hover:bg-stone-50 items-center gap-3 cursor-pointer flex px-6 py-3 capitalize bg-stone-0 text-stone-600 font-semibold text-lg">
-              <span className="icon text-2xl transition-all duration-300">
-                <HiOutlineHome />
-              </span>
-              <span>
-                Home
-              </span>
-            </div>
-          </li>
-          <li >
-            <div className="[&>.icon]:hover:text-brand-600 transition-all duration-300 hover:bg-stone-50 items-center gap-3 cursor-pointer flex px-6 py-3 capitalize bg-stone-0 text-stone-600 font-semibold text-lg">
-              <span className="icon text-2xl transition-all duration-300">
-                <HiOutlineHome />
-              </span>
-              <span>
-                Create post
-              </span>
-            </div>
-          </li>
-
-        </ul>
-      </div>
+      <PostsSidebar />
       <div className="px-24">
         <div className="flex gap-6 flex-col pb-12">
           <Heading type="secondary">
