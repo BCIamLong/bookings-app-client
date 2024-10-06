@@ -3,7 +3,7 @@ import { LuSendHorizonal } from "react-icons/lu";
 
 export default function PostDetail() {
   return (
-    <div className="px-6 py-6 flex flex-col border-b-2 border-stone-50 shadow-sm">
+    <div className="px-6 py-6 flex flex-col border-b-2 border-stone-50 shadow-sm overflow-scroll h-[100vh] no-scrollbar">
       <div className="flex justify-between items-center">
         <div className="flex gap-3 items-center">
           <img className="w-12" src="/default-avatar.jpg" alt="" />
@@ -60,6 +60,30 @@ export default function PostDetail() {
               <div className="flex gap-3 text-sm text-stone-600 font-semibold">
                 <p>1 like</p>
                 <p>Reply</p>
+              </div>
+              <div>
+                <p className="flex gap-1 text-stone-500 text-sm font-semibold cursor-pointer">
+                  <span className="mr-4">&mdash;&mdash;</span>
+                  <span>View replies</span>
+                  <span>(1)</span>
+                </p>
+                <ul className="hidden">
+                  <li>
+                    <div className="flex flex-col gap-2 py-3 px-3">
+                      <div className="flex gap-3 items-center">
+                        <div className="flex gap-3 items-center">
+                          <img className="w-8" src="/default-avatar.jpg" alt="" />
+                          <p className="text-sm font-semibold text-stone-600">User Name</p>
+                        </div>
+                        <p className="text-xs text-stone-600 font-semibold">84w</p>
+                      </div>
+                      <p className="text-sm text-stone-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore ratione eaque placeat modi laboriosam hic ut itaque quisquam impedit tenetur, eum debitis, officia similique repudiandae, sit autem accusamus blanditiis.</p>
+                      <div className="flex gap-3 text-sm text-stone-600 font-semibold">
+                        <p>1 like</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </li>
