@@ -25,23 +25,23 @@ function Languages() {
 
 
 }
-//   return <Menu>
-//     <Menu.Toggle id="nav-menu">
-//       <Button type="icon-1">
-//         <HiLanguage className="stroke-1 px-0.5 text-stone-600" />
-//       </Button>
-//     </Menu.Toggle>
-//     <Menu.Box id="nav-menu">
-//       {/* <div className="hidden tiny:block"> */}
-//       <div className="">
-//         <ul className="flex py-2 flex-col gap-2 bg-stone-0 text-stone-700 rounded-md shadow-sm shadow-stone-100">
-//           <li><Button type="menu" size="medium" onClick={() => handleClickBtn('en-US')}>{t('header.options.languages.english')}</Button></li>
-//           <li><Button type="menu" size="medium" onClick={() => handleClickBtn('vi-VN')}>{t('header.options.languages.vietnamese')}</Button></li>
-//           {/* <li><ButtonLink type="menu" size="medium">Your bookmarks</ButtonLink></li> */}
-//         </ul>
-//       </div>
-//     </Menu.Box>
-//   </Menu>
+// return <Menu>
+//   <Menu.Toggle id="nav-menu">
+//     <Button type="icon-1">
+//       <HiLanguage className="stroke-1 px-0.5 text-stone-600" />
+//     </Button>
+//   </Menu.Toggle>
+//   <Menu.Box id="nav-menu">
+//     {/* <div className="hidden tiny:block"> */}
+//     <div className="">
+//       <ul className="flex py-2 flex-col gap-2 bg-stone-0 text-stone-700 rounded-md shadow-sm shadow-stone-100">
+//         <li><Button type="menu" size="medium" onClick={() => handleClickBtn('en-US')}>{t('header.options.languages.english')}</Button></li>
+//         <li><Button type="menu" size="medium" onClick={() => handleClickBtn('vi-VN')}>{t('header.options.languages.vietnamese')}</Button></li>
+//         {/* <li><ButtonLink type="menu" size="medium">Your bookmarks</ButtonLink></li> */}
+//       </ul>
+//     </div>
+//   </Menu.Box>
+// </Menu>
 // }
 
 export default Languages

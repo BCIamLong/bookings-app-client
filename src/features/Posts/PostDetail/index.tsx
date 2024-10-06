@@ -1,3 +1,6 @@
+import Button from "@/components/Button";
+import Modal from "@/components/Modal";
+import Popup from "@/components/Popup";
 import { HiChevronRight, HiMiniEllipsisHorizontal, HiOutlineBookmark, HiOutlineChatBubbleOvalLeft, HiOutlineHeart, HiOutlineShare } from "react-icons/hi2";
 import { LuSendHorizonal } from "react-icons/lu";
 
@@ -6,10 +9,27 @@ export default function PostDetail() {
     <div className="px-6 py-6 flex flex-col border-b-2 border-stone-50 shadow-sm overflow-scroll h-[100vh] no-scrollbar">
       <div className="flex justify-between items-center">
         <div className="flex gap-3 items-center">
-          <img className="w-12" src="/default-avatar.jpg" alt="" />
+          <img className="w-12 rounded-full" src="/default-avatar.jpg" alt="" />
           <p className="text-stone-700 font-semibold">User name</p>
         </div>
-        <HiMiniEllipsisHorizontal className="text-stone-600" />
+        <div className=''>
+          <Modal>
+            <Modal.Open openName="disable-2fa">
+              <Button type="icon-1" size="small">
+                <HiMiniEllipsisHorizontal className="text-stone-600 text-2xl" />
+              </Button>
+            </Modal.Open>
+            <Modal.Window name="disable-2fa">
+              <Popup title='Choose an action' isLoading={false} btnContent="" onHandle={() => 1} >
+                <ul className='flex flex-col gap-2'>
+                  <li className='py-2 text-center text-stone-600 font-semibold border-y-[1.5px]'>Edit</li>
+                  <li className='py-2 text-red-600 text-center text-stone-600 font-semibold border-y-[1.5px]'>Delete</li>
+                  <li className='py-2  text-red-600 text-center text-stone-600 font-semibold border-y-[1.5px]'>Report</li>
+                </ul>
+              </Popup>
+            </Modal.Window>
+          </Modal>
+        </div>
       </div>
       <div className="mt-2">
         <p className="text-stone-600 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi qui temporibus dicta itaque, numquam tempore minima aperiam corporis, aliquid autem explicabo recusandae excepturi odio labore hic nulla, tenetur accusamus saepe.</p>
