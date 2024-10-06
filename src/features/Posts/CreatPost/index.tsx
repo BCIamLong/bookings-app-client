@@ -38,14 +38,16 @@ export default function CreatePost() {
       </div>
       <div className="flex gap-3 flex-col">
         <Heading type="heading-4">Add photos</Heading>
-        <div className="[&>input]:w-[30%] gap-3 border-[1.5px] border-stone-300 py-12 flex-col rounded-lg flex justify-center items-center">
+        <div className=" [&>input]:w-[30%] gap-3 border-[1.5px] border-stone-300 py-12 flex-col rounded-lg flex justify-center items-center">
           <div className="flex">
             <LuImage className="text-6xl text-stone-500  -rotate-6" />
             <LuImage className="text-6xl text-stone-500 rotate-[20deg] -mt-3" />
           </div>
           <p className="text-lg text-stone-600 font-semibold">Drag photo here</p>
           <p className="text-sm text-stone-400">SVG, PNG, JPG</p>
-          <FileInput id="" variant="posts" />
+          <div className="flex justify-center [&>input]:w-[80%]">
+            <FileInput id="" variant="posts" />
+          </div>
         </div>
       </div>
       <Buttons>
