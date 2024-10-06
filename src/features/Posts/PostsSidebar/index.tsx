@@ -1,4 +1,4 @@
-import { HiOutlineHome, HiMagnifyingGlass, HiMiniSquaresPlus } from 'react-icons/hi2'
+import { HiOutlineHome, HiMagnifyingGlass, HiMiniSquaresPlus, HiOutlineBookmark } from 'react-icons/hi2'
 import { NavLink } from 'react-router-dom'
 
 export default function PostsSidebar() {
@@ -37,6 +37,18 @@ export default function PostsSidebar() {
               </span>
               <span>
                 Explore
+              </span>
+            </div>
+          </NavLink>
+        </li>
+        <li >
+          <NavLink to='saved'>
+            <div className="[&>.icon]:hover:text-brand-600 transition-all duration-300 hover:bg-stone-50 items-center gap-3 cursor-pointer flex px-6 py-3 capitalize bg-stone-0 text-stone-600 font-semibold text-lg">
+              <span className="icon text-2xl transition-all duration-300">
+                <HiOutlineBookmark />
+              </span>
+              <span>
+                Saved
               </span>
             </div>
           </NavLink>

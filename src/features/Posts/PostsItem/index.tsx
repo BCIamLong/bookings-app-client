@@ -1,11 +1,11 @@
-import { HiChevronRight, HiMiniEllipsisHorizontal, HiOutlineBookmark, HiOutlineChatBubbleOvalLeft, HiOutlineHeart, HiOutlineShare } from 'react-icons/hi2'
+import { HiBookmark, HiChevronRight, HiMiniEllipsisHorizontal, HiOutlineBookmark, HiOutlineChatBubbleOvalLeft, HiOutlineHeart, HiOutlineShare } from 'react-icons/hi2'
 
-export default function PostsItem() {
+export default function PostsItem({ isSaved }: { isSaved?: boolean }) {
   return (
     <div className="px-6 py-6 flex flex-col border-b-2 border-stone-50 shadow-sm">
       <div className="flex justify-between items-center">
         <div className="flex gap-3 items-center">
-          <img className="w-12" src="default-avatar.jpg" alt="" />
+          <img className="w-12" src="/default-avatar.jpg" alt="" />
           <p className="text-stone-700 font-semibold">User name</p>
         </div>
         <HiMiniEllipsisHorizontal className="text-stone-600" />
@@ -30,7 +30,10 @@ export default function PostsItem() {
           <span className="text-sm font-semibold">12</span>
         </li>
         <li className="flex gap-2 items-center">
-          <HiOutlineBookmark className="text-2xl" />
+          {isSaved ?
+            <HiBookmark className="text-2xl" />
+            :
+            <HiOutlineBookmark className="text-2xl" />}
           <span className="text-sm font-semibold">12</span>
         </li>
         <li className="flex gap-2 items-center">
