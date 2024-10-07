@@ -17,6 +17,7 @@ import {
 import IBooking, { BookCabin, UserBookingsOption } from './IBooking'
 import IReview, { ReviewInput } from './IReview'
 import IBookmark from './IBookmark'
+import { ITour, SearchTour } from './ITour'
 
 export type {
   ICabin,
@@ -40,4 +41,6 @@ export type {
   IReview,
   ReviewInput,
   IBookmark,
+  ITour,
+  SearchTour,
 }
