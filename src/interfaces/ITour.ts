@@ -1,10 +1,12 @@
 export interface SearchTour {
+  name: string
   duration?: number
   maxGroupSize?: number
   difficulty?: string
   type?: string
   price?: number
   vip?: boolean
+  createdAt: Date
 }
 
 interface StartDate {
