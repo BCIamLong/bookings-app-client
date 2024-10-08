@@ -4,7 +4,7 @@ import Discover from "../../components/Discover";
 import Hero from "../../components/Hero";
 import CabinsList from "../../features/cabins/CabinsList";
 import LatestCabinsList from "../../features/cabins/LatestCabinsList";
-import CategoriesList from "@/features/cabins/CategoriesList";
+import CategoriesList from "@/features/tours/CategoriesList";
 import ToursList from "@/features/cabins/ToursList";
 import Services from "@/components/Services";
 import Instructions from "@/components/Instructions";

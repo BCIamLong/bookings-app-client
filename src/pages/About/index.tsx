@@ -1,7 +1,7 @@
 import Button from '@/components/Button'
 import Contact from '@/components/Contact'
 import Heading from '@/components/Heading'
-import CategoriesList from '@/features/cabins/CategoriesList'
+import CategoriesList from '@/features/tours/CategoriesList'
 import { Variants, motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
