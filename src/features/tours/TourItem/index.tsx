@@ -1,28 +1,34 @@
 import Heading from "@/components/Heading";
+import { ITour } from "@/interfaces";
 
-export default function TourItem({ id, type }: { id?: string, type?: 'normal' }) {
+export default function TourItem({ tour, type }: { tour: ITour, type?: 'normal' }) {
+
+  const tourDate = new Date(tour.startDates[0]?.date).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' })
+  const description = tour.description.split(' ').slice(0, 10).join(' ') + '...'
+  const price = tour.price.toLocaleString()
 
   if (type === 'normal') return (
-    <li id={id} className="bg-stone-50 shadow-sm rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-2">
+    <li id={tour._id} className="bg-stone-50 shadow-sm rounded-lg overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-2">
       <div className="cursor-pointer w-full">
-        <img className="w-full" src="https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+        <img className="w-full h-[11rem]" src={tour.imageCover} alt="" />
         <div className="decorate flex justify-between bg-brand-500 px-4 py-1 sm:max-xl:px-2 thin:max-sm:px-3">
           <p className="flex gap-1 text-stone-50 text-xs font-semibold lg:max-xl:text-xs">
             <span>📅</span>
-            <span>12, September 2022</span>
+            <span>{tourDate}</span>
+            {/* <span>12, September 2022</span> */}
           </p>
           <p className="flex gap-1 text-stone-50 text-xs font-semibold lg:max-xl:text-xs">
             <span>🤼</span>
-            <span>120+ People</span></p>
+            <span>{tour.maxGroupSize} People</span></p>
         </div>
-        <div className="py-5 px-4 flex flex-col gap-2 text-stone-600">
-          <Heading type="tertiary">Switzerland</Heading>
-          <p>Qui tempore voluptate qui quia commodi rem praesentium alias et.</p>
-          <div className="flex gap-3 font-semibold">
-            <p>1,100 $</p>
+        <div className="py-5 px-4 flex flex-col gap-2 text-stone-600 min-h-[12rem] sm:max-md:min-h-[13rem] md:max-lg:min-h-[12rem] tiny:max-sm:min-h-[12rem]">
+          <Heading type="heading-4">{tour.name}</Heading>
+          <p className="text-sm">{description}</p>
+          <div className="flex gap-3 font-semibold mb-1 mt-auto items-end">
+            <p>{price} $</p>
             <p className="flex gap-1">
               <span>⭐</span>
-              <span>5.0</span></p>
+              <span>{tour.ratingsAverage}</span></p>
           </div>
         </div>
       </div>
@@ -30,26 +36,27 @@ export default function TourItem({ id, type }: { id?: string, type?: 'normal' })
   )
 
   return (
-    <li id={id} className="bg-stone-50 shadow-sm rounded-lg overflow-hidden">
-      <div className="cursor-pointer">
-        <img className="w-full" src="https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+    <li id={tour._id} className="bg-stone-50 shadow-sm rounded-lg overflow-hidden h-full">
+      <div className="cursor-pointer h-full">
+        <img className="w-full h-[12rem]" src={tour.imageCover} alt="" />
         <div className="decorate flex justify-between bg-brand-500 px-4 py-1 sm:max-xl:px-2 thin:max-sm:px-3">
           <p className="flex gap-1 text-stone-50 text-xs font-semibold lg:max-xl:text-xs">
             <span>📅</span>
-            <span>12, September 2022</span>
+            <span>{tourDate}</span>
+            {/* <span>{tour.duration} days</span> */}
           </p>
           <p className="flex gap-1 text-stone-50 text-xs font-semibold lg:max-xl:text-xs">
             <span>🤼</span>
-            <span>120+ People</span></p>
+            <span>{tour.maxGroupSize} People</span></p>
         </div>
-        <div className="py-5 px-4 flex flex-col gap-2 text-stone-600">
-          <Heading type="tertiary">Switzerland</Heading>
-          <p>Qui tempore voluptate qui quia commodi rem praesentium alias et.</p>
-          <div className="flex gap-3 font-semibold">
-            <p>1,100 $</p>
+        <div className="py-5 px-4 flex flex-col gap-2 text-stone-600 min-h-[12rem] md:max-lg:min-h-[13rem]">
+          <Heading type="tertiary">{tour.name}</Heading>
+          <p>{description}</p>
+          <div className="flex gap-3 font-semibold mb-1 mt-auto items-end">
+            <p>{price} $</p>
             <p className="flex gap-1">
               <span>⭐</span>
-              <span>5.0</span></p>
+              <span>{tour.ratingsAverage}</span></p>
           </div>
         </div>
       </div>

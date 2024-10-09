@@ -9,10 +9,12 @@ const { SERVER_BASE_URL, PAGE_LIMIT } = appConfig
 const getTours = async function ({
   sort = 'none',
   page = 1,
+  limit = PAGE_LIMIT,
   search,
 }: {
   sort?: SortOptions
   page?: number
+  limit?: number
   search?: SearchTour | URLSearchParams
 }) {
   try {
@@ -29,9 +31,9 @@ const getTours = async function ({
       (search as URLSearchParams) || {},
     ).toString()
 
-    let url = `${SERVER_BASE_URL}/api/v1/tours?${sortStr}&limit=${PAGE_LIMIT}&page=${page}`
+    let url = `${SERVER_BASE_URL}/api/v1/tours?${sortStr}&limit=${limit}&page=${page}`
     if (searchOptions)
-      url = `${SERVER_BASE_URL}/api/v1/tours?${sortStr}&limit=${PAGE_LIMIT}&page=${page}&${searchOptions}`
+      url = `${SERVER_BASE_URL}/api/v1/tours?${sortStr}&limit=${limit}&page=${page}&${searchOptions}`
     url = url.replace('?&', '?')
 
     // console.log(url)

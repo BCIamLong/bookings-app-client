@@ -3,7 +3,7 @@ import Heading from "../../components/Heading";
 import Option from "../../components/Option";
 import Select from "../../components/Select";
 import { useTranslation } from "react-i18next";
-import ToursList from "@/features/cabins/ToursList";
+import ToursList from "@/features/tours/ToursList";
 import Input from "@/components/form/Input";
 import Button from "@/components/Button";
 
@@ -53,8 +53,8 @@ export default function Tours() {
             </li>
           </ul>
         </div>
-        <div className="grid grid-cols-[1fr_3fr] gap-x-4 px-12  thin:max-tiny:grid-cols-1">
-          <div className="bg-stone-50 px-5 py-4  shadow-md">
+        <div className="grid grid-cols-[1fr_3fr] gap-x-4 px-12  thin:max-tiny:grid-cols-1 items-start">
+          <div className="bg-stone-50 px-5 py-4  shadow-md h-[full]">
             <div className="text-center [&>h1]:justify-center flex flex-col gap-3">
               <Heading type="secondary">Plan Your Trip</Heading>
               <p className="text-stone-500 text-xs">Ex optio sequi et quos praesentium in nostrum labore nam rerum iusto aut magni nesciunt? Quo quidem neque iste expedita est dolo.</p>

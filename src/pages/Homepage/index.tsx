@@ -5,7 +5,7 @@ import Hero from "../../components/Hero";
 import CabinsList from "../../features/cabins/CabinsList";
 import LatestCabinsList from "../../features/cabins/LatestCabinsList";
 import CategoriesList from "@/features/tours/CategoriesList";
-import ToursList from "@/features/cabins/ToursList";
+import ToursList from "@/features/tours/ToursList";
 import Services from "@/components/Services";
 import Instructions from "@/components/Instructions";
 import PostsHome from "@/features/Posts/PostsHome";

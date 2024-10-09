@@ -9,15 +9,17 @@ const { PAGE_LIMIT } = appConfig
 export const useTours = function ({
   sort = 'none',
   page = 1,
+  limit,
 }: {
   sort: SortOptions
   page?: number
+  limit?: number
 }) {
   const [searchParams] = useSearchParams()
   const search = JSON.parse(searchParams.get('search') || `{}`)
 
   const queryClient = useQueryClient()
-  const options = { sort, page, search }
+  const options = { sort, page, limit, search }
   const { data, isLoading, error } = useQuery({
     // queryKey: [`tours${sort !== "none" ? `-sort-by-${sort}` : ""}`],
     queryKey: [`tours`, options],
