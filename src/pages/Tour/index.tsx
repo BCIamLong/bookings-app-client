@@ -1,14 +1,14 @@
 import ReviewsList from "@/features/reviews/ReviewsList";
-import CabinDetail from "../../features/cabins/CabinDetail";
 import AddReview from "@/features/reviews/AddReview";
 import ReviewHeading from "@/features/reviews/ReviewHeading";
+import TourDetail from "@/features/tours/TourDetail";
 
 export default function Tour() {
   return (
     <>
 
       <div className="bg-stone-0">
-        <CabinDetail />
+        <TourDetail />
         <div className="px-6 pt-8 py-20">
           <AddReview />
           <ReviewHeading />
