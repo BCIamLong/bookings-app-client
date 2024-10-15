@@ -2,15 +2,16 @@ import { HiOutlineShare, HiChevronRight } from "react-icons/hi2"
 import { IoBedOutline } from "react-icons/io5";
 import { GiKnifeFork } from "react-icons/gi";
 import Heading from "../../../components/Heading"
-import CabinCard from "@/features/cabins/CabinCard";
+// import CabinCard from "@/features/cabins/CabinCard";
 import ButtonLink from "../../../components/ButtonLink";
 import Spinner from "../../../components/Spinner";
-import Map from "@/components/Map";
+// import Map from "@/components/Map";
 import Bookmark from "@/features/bookmarks/Bookmark";
 import { useTranslation } from "react-i18next";
 import { useTour } from "../useTour";
 import { ITour } from "@/interfaces";
 import TourCard from "../TourCard";
+import ToursMap from "../ToursMap";
 
 export default function TourDetail() {
   const { t } = useTranslation()
@@ -41,21 +42,21 @@ export default function TourDetail() {
           </Heading>
         </div>
         <div>
-          <div className="grid grid-cols-4 gap-3 items-center py-12">
-            <div className="row-span-2 col-span-2 rounded-lg overflow-hidden">
-              <img src={tourImage} alt={`${name} tour`} />
+          <div className="grid grid-cols-4 gap-3 items-center py-12 thin:max-tiny:grid-cols-2">
+            <div className="row-span-2 col-span-2 rounded-lg overflow-hidden tiny:max-sm:col-span-4">
+              <img className="h-[30rem] w-full" src={tourImage} alt={`${name} tour`} />
             </div>
             <div className={classStyle}>
-              <img src={tour.images[0]} alt="" />
+              <img src={tour.images[0]} alt="" className="h-[15rem] w-full" />
             </div>
             <div className={classStyle}>
-              <img src={tour.images[1]} alt="" />
+              <img src={tour.images[1]} alt="" className="h-[15rem] w-full" />
             </div>
             <div className={classStyle}>
-              <img src={tour.images[2]} alt="" />
+              <img src={tour.images[2]} alt="" className="h-[15rem] w-full" />
             </div>
             <div className={classStyle}>
-              <img src={tour.images[0]} alt="" />
+              <img src={tour.images[0]} alt="" className="h-[15rem] w-full" />
             </div>
           </div>
           <div className="grid grid-cols-[1.5fr_1fr] thin:max-tiny:flex thin:max-tiny:flex-col text-stone-700 p-6 gap-12 sm:max-md:gap-1">
@@ -153,7 +154,7 @@ export default function TourDetail() {
                 <TourCard tour={tour} />
               </div>
             </div>
-            <Map />
+            <ToursMap locations={tour.locations} />
           </div>
         </div>
       </div>
