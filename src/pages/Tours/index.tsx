@@ -6,11 +6,15 @@ import { useTranslation } from "react-i18next";
 import ToursList from "@/features/tours/ToursList";
 import Input from "@/components/form/Input";
 import Button from "@/components/Button";
+import DateBox from "@/components/DateBox";
 
 export default function Tours() {
   const { t } = useTranslation()
   const [searchParams, setSearchParams] = useSearchParams()
-  if (!searchParams.get('sort')) searchParams.set('sort', 'name-low')
+  if (!searchParams.get('sort')) searchParams.set('sort', 'none')
+  // if (!searchParams.get('sort')) searchParams.set('sort', 'none')
+
+  // if (!searchParams.get('sort')) searchParams.set('sort', 'name-low')
   // setSearchParams(searchParams)
 
   return (
@@ -26,16 +30,42 @@ export default function Tours() {
         <div className="">
           <ul className="flex justify-around bg-stone-50 shadow-md px-6 py-3 w-[70%] thin:max-tiny:w-[90%] tiny:max-sm:w-[80%] mx-auto -translate-y-1/2 items-center thin:max-tiny:grid thin:max-tiny:grid-cols-2 thin:max-tiny:gap-6 ">
             <li className="text-stone-600 font-semibold flex gap-2">
-              <span>📅</span>
-              <span>Date</span>
+              {/* <span>📅</span>
+              <span>Date</span> */}
+              <DateBox />
             </li>
             <li className="text-stone-600 font-semibold flex gap-2">
-              <span>📅</span>
-              <span>Type</span>
+              <Select id="sort" type="type" onChange={(e) => setSearchParams(params => {
+                params.set('type', e.target.value)
+                return params
+              })}>
+                <Option type="type" value="none">
+                  <div className="flex gap-2">
+                    <span>📅 </span>
+                    <span> Type</span>
+                  </div>
+                </Option>
+                <Option type="type" value="group">Group</Option>
+                <Option type="type" value="private">Private</Option>
+                <Option type="type" value="personal">Personal</Option>
+              </Select>
+
             </li>
             <li className="text-stone-600 font-semibold flex gap-2">
-              <span>📅</span>
-              <span>Popular</span>
+              <Select id="sort" type="sort" onChange={(e) => setSearchParams(params => {
+                params.set('sort', e.target.value)
+                return params
+              })}>
+                <Option type="sort" value="none">
+                  <div className="flex gap-2">
+                    <span>📅 </span>
+                    <span> Status</span>
+                  </div>
+                </Option>
+                <Option type="sort" value="latest">Trending</Option>
+                <Option type="sort" value="name-low">Popular</Option>
+                <Option type="sort" value="oldest">Discount</Option>
+              </Select>
             </li>
             <li>
               <Select id="sort" type="sort" onChange={(e) => setSearchParams(params => {

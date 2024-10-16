@@ -11,14 +11,20 @@ const getTours = async function ({
   page = 1,
   limit = PAGE_LIMIT,
   search,
+  type = 'none',
+  status = 'none',
 }: {
   sort?: SortOptions
   page?: number
   limit?: number
   search?: SearchTour | URLSearchParams
+  type?: string
+  status?: string
 }) {
   try {
     let sortStr = ''
+    const typeStr = type === 'none' ? '' : `&type=${type}`
+    const statusStr = status === 'none' ? '' : `&status=${status}`
 
     if (sort === 'latest') sortStr = 'sort=-createdAt'
     if (sort === 'oldest') sortStr = 'sort=createdAt'
@@ -26,15 +32,18 @@ const getTours = async function ({
     if (sort === 'price-low') sortStr = 'sort=price'
     if (sort === 'name-high') sortStr = 'sort=-name'
     if (sort === 'name-low') sortStr = 'sort=name'
+    // if (sort === 'none') sortStr = ''
 
     const searchOptions = new URLSearchParams(
       (search as URLSearchParams) || {},
     ).toString()
+    console.log(searchOptions)
 
-    let url = `${SERVER_BASE_URL}/api/v1/tours?${sortStr}&limit=${limit}&page=${page}`
+    let url = `${SERVER_BASE_URL}/api/v1/tours?${sortStr}${typeStr}${statusStr}&limit=${limit}&page=${page}`
     if (searchOptions)
-      url = `${SERVER_BASE_URL}/api/v1/tours?${sortStr}&limit=${limit}&page=${page}&${searchOptions}`
+      url = `${SERVER_BASE_URL}/api/v1/tours?${sortStr}${typeStr}${statusStr}&limit=${limit}&page=${page}&${searchOptions}`
     url = url.replace('?&', '?')
+    // console.log(url)
 
     // console.log(url)
     const res = await axios.get(url)

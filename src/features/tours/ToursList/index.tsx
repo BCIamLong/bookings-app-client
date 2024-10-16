@@ -14,9 +14,11 @@ export default function ToursList({ type, title }: { type?: 'full' | 'normal', t
   const [searchParams] = useSearchParams()
   const sort = searchParams.get('sort') || "none"
   const page = +searchParams.get('page')! || 1
+  const typeFilter = searchParams.get('type') || 'none'
+  const status = searchParams.get('status') || 'none'
 
   const { tours, isLoading, count } = useTours({
-    sort: sort as SortOptions, page
+    sort: sort as SortOptions, page, type: typeFilter, status
   })
   // const { tours, isLoading } = useTours({
   //   sort: 'none', page: 1, limit: 4
@@ -27,7 +29,7 @@ export default function ToursList({ type, title }: { type?: 'full' | 'normal', t
   if (type === 'normal')
     return <div className="p-12 flex flex-col gap-6 bg-stone-0 h-full">
       <ul className="grid grid-cols-3 gap-x-6 gap-y-6 mb-4 [&>li>div>.decorate>p]:text-[0.6rem] thin:max-sm:grid-cols-2">
-        {tours.map((tour: ITour) => <TourItem tour={tour} type="normal" />)}
+        {tours.map((tour: ITour) => <TourItem tour={tour} key={tour._id} type="normal" />)}
       </ul>
       <div className="mb-1 mt-auto">
 

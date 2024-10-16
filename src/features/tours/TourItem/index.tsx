@@ -9,7 +9,7 @@ export default function TourItem({ tour, type }: { tour: ITour, type?: 'normal' 
   const price = tour.price.toLocaleString()
 
   if (type === 'normal') return (
-    <li id={tour._id} className="">
+    <li className="">
       <Link to={`/tours/${tour._id}`}>
         <div className="cursor-pointer w-full hover:shadow-md hover:-translate-y-2 rounded-lg overflow-hidden bg-stone-50 shadow-sm transition-all duration-300">
           <img className="w-full h-[11rem]" src={tour.imageCover} alt="" />
@@ -39,7 +39,7 @@ export default function TourItem({ tour, type }: { tour: ITour, type?: 'normal' 
   )
 
   return (
-    <li id={tour._id} className="bg-stone-50 shadow-sm rounded-lg overflow-hidden h-full">
+    <li className="bg-stone-50 shadow-sm rounded-lg overflow-hidden h-full">
       <Link to={`/tours/${tour._id}`}>
         <div className="cursor-pointer h-full">
           <img className="w-full h-[12rem]" src={tour.imageCover} alt="" />
