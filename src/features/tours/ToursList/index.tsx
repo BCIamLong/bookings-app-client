@@ -16,9 +16,11 @@ export default function ToursList({ type, title }: { type?: 'full' | 'normal', t
   const page = +searchParams.get('page')! || 1
   const typeFilter = searchParams.get('type') || 'none'
   const status = searchParams.get('status') || 'none'
+  const date = searchParams.get('date') || 'none'
+  const difficulty = searchParams.get('difficulty') || 'none'
 
   const { tours, isLoading, count } = useTours({
-    sort: sort as SortOptions, page, type: typeFilter, status
+    sort: sort as SortOptions, page, type: typeFilter, status, date, difficulty
   })
   // const { tours, isLoading } = useTours({
   //   sort: 'none', page: 1, limit: 4

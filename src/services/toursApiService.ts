@@ -13,6 +13,8 @@ const getTours = async function ({
   search,
   type = 'none',
   status = 'none',
+  date = 'none',
+  difficulty = 'none',
 }: {
   sort?: SortOptions
   page?: number
@@ -20,11 +22,16 @@ const getTours = async function ({
   search?: SearchTour | URLSearchParams
   type?: string
   status?: string
+  date?: string
+  difficulty?: string
 }) {
   try {
     let sortStr = ''
     const typeStr = type === 'none' ? '' : `&type=${type}`
-    const statusStr = status === 'none' ? '' : `&status=${status}`
+    const difficultyStr =
+      difficulty === 'none' ? '' : `&difficulty=${difficulty}`
+    const dateStr = date === 'none' ? '' : `&date=${date}`
+    let statusStr = ''
 
     if (sort === 'latest') sortStr = 'sort=-createdAt'
     if (sort === 'oldest') sortStr = 'sort=createdAt'
@@ -34,16 +41,22 @@ const getTours = async function ({
     if (sort === 'name-low') sortStr = 'sort=name'
     // if (sort === 'none') sortStr = ''
 
+    if (status === 'popular') statusStr = '&sort=-ratingsQuantity'
+    if (status === 'trending')
+      statusStr = '&sort=-ratingsQuantity&sort=-ratingsAverage'
+    if (status === 'most-discount') statusStr = '&sort=-ratingsQuantity'
+
     const searchOptions = new URLSearchParams(
       (search as URLSearchParams) || {},
     ).toString()
     console.log(searchOptions)
 
-    let url = `${SERVER_BASE_URL}/api/v1/tours?${sortStr}${typeStr}${statusStr}&limit=${limit}&page=${page}`
+    let url = `${SERVER_BASE_URL}/api/v1/tours?${sortStr}${typeStr}${difficultyStr}${statusStr}${dateStr}&limit=${limit}&page=${page}`
     if (searchOptions)
-      url = `${SERVER_BASE_URL}/api/v1/tours?${sortStr}${typeStr}${statusStr}&limit=${limit}&page=${page}&${searchOptions}`
+      url = `${SERVER_BASE_URL}/api/v1/tours?${sortStr}${typeStr}${difficultyStr}${statusStr}${dateStr}&limit=${limit}&page=${page}&${searchOptions}`
     url = url.replace('?&', '?')
-    // console.log(url)
+    console.log(statusStr)
+    console.log(url)
 
     // console.log(url)
     const res = await axios.get(url)

@@ -12,18 +12,22 @@ export const useTours = function ({
   limit,
   type,
   status,
+  date,
+  difficulty,
 }: {
   sort: SortOptions
   page?: number
   limit?: number
   type?: string
   status?: string
+  date?: string
+  difficulty?: string
 }) {
   const [searchParams] = useSearchParams()
   const search = JSON.parse(searchParams.get('search') || `{}`)
 
   const queryClient = useQueryClient()
-  const options = { sort, page, limit, search, status, type }
+  const options = { sort, page, limit, search, status, type, date, difficulty }
   const { data, isLoading, error } = useQuery({
     // queryKey: [`tours${sort !== "none" ? `-sort-by-${sort}` : ""}`],
     queryKey: [`tours`, options],

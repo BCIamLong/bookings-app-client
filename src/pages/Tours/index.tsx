@@ -7,6 +7,7 @@ import ToursList from "@/features/tours/ToursList";
 import Input from "@/components/form/Input";
 import Button from "@/components/Button";
 import DateBox from "@/components/DateBox";
+import ButtonLink from "@/components/ButtonLink";
 
 export default function Tours() {
   const { t } = useTranslation()
@@ -28,7 +29,7 @@ export default function Tours() {
       </div>
       <div className="pb-24 bg-stone-0">
         <div className="">
-          <ul className="flex justify-around bg-stone-50 shadow-md px-6 py-3 w-[70%] thin:max-tiny:w-[90%] tiny:max-sm:w-[80%] mx-auto -translate-y-1/2 items-center thin:max-tiny:grid thin:max-tiny:grid-cols-2 thin:max-tiny:gap-6 ">
+          <ul className="flex justify-around items-center bg-stone-50 shadow-md px-6 py-3 w-[70%] thin:max-tiny:w-[90%] tiny:max-sm:w-[80%] mx-auto -translate-y-1/2 items-center thin:max-tiny:grid thin:max-tiny:grid-cols-2 thin:max-tiny:gap-6 ">
             <li className="text-stone-600 font-semibold flex gap-2">
               {/* <span>📅</span>
               <span>Date</span> */}
@@ -41,7 +42,7 @@ export default function Tours() {
               })}>
                 <Option type="type" value="none">
                   <div className="flex gap-2">
-                    <span>📅 </span>
+                    {/* <span>📅 </span> */}
                     <span> Type</span>
                   </div>
                 </Option>
@@ -52,19 +53,36 @@ export default function Tours() {
 
             </li>
             <li className="text-stone-600 font-semibold flex gap-2">
+              <Select id="sort" type="type" onChange={(e) => setSearchParams(params => {
+                params.set('difficulty', e.target.value)
+                return params
+              })}>
+                <Option type="type" value="none">
+                  <div className="flex gap-2">
+                    {/* <span>📅 </span> */}
+                    <span> Difficulty</span>
+                  </div>
+                </Option>
+                <Option type="type" value="easy">Easy</Option>
+                <Option type="type" value="medium">Medium</Option>
+                <Option type="type" value="difficult">Difficult</Option>
+              </Select>
+
+            </li>
+            <li className="text-stone-600 font-semibold flex gap-2">
               <Select id="sort" type="sort" onChange={(e) => setSearchParams(params => {
-                params.set('sort', e.target.value)
+                params.set('status', e.target.value)
                 return params
               })}>
                 <Option type="sort" value="none">
                   <div className="flex gap-2">
-                    <span>📅 </span>
+                    {/* <span>📅 </span> */}
                     <span> Status</span>
                   </div>
                 </Option>
-                <Option type="sort" value="latest">Trending</Option>
-                <Option type="sort" value="name-low">Popular</Option>
-                <Option type="sort" value="oldest">Discount</Option>
+                <Option type="status" value="trending">Trending</Option>
+                <Option type="status" value="popular">Popular</Option>
+                <Option type="status" value="most-discount">Discount</Option>
               </Select>
             </li>
             <li>
@@ -86,6 +104,10 @@ export default function Tours() {
         <div className="grid grid-cols-[1fr_3fr] gap-x-4 px-12  thin:max-tiny:grid-cols-1 items-start">
           <div className="bg-stone-50 px-5 py-4  shadow-md h-[full]">
             <div className="text-center [&>h1]:justify-center flex flex-col gap-3">
+              <div className="pt-6 pb-4 px-3">
+                <Button type="secondary" onClick={() => window.location.assign('/tours')}>Reset filter</Button>
+              </div>
+              <hr className="mb-2" />
               <Heading type="secondary">Plan Your Trip</Heading>
               <p className="text-stone-500 text-xs">Ex optio sequi et quos praesentium in nostrum labore nam rerum iusto aut magni nesciunt? Quo quidem neque iste expedita est dolo.</p>
             </div>
