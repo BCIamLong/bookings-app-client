@@ -1,6 +1,7 @@
 // import { motion } from 'framer-motion'
 import { useDarkModeContext } from "@/context/DarkModeContext";
-import SearchBox from "../../features/cabins/SearchBox";
+import SearchBox from "@/features/tours/SearchBox";
+// import SearchBox from "../../features/cabins/SearchBox";
 
 export default function Hero() {
   const { isDarkMode } = useDarkModeContext()!
@@ -15,6 +16,7 @@ export default function Hero() {
         alt="Booking app banner"
       />
       {/* <div className="bg-hero h-lvh bg-cover bg-center bg-no-repeat"></div> */}
+      {/* <SearchBox /> */}
       <SearchBox />
       {/* <motion.h1 className='absolute top-[30%] left-[30%] text-brand-600 font-bold' initial={{ display: 'none', fontSize: '1rem' }} animate={{
         display: 'block', fontSize: '3rem',

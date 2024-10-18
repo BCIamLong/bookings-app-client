@@ -32,6 +32,10 @@ export default function Input({
     style =
       baseStyle +
       `w-full outline-none focus:border-b-2 focus:border-stone-600 border-b-2 border-stone-0 transition-all duration-[600ms] ease-in-out bg-stone-0`;
+  if (variant === "search1")
+    style =
+      baseStyle +
+      `w-full outline-none focus:border-b-2 focus:border-stone-600 border-b-2 border-stone-0 transition-all duration-[600ms] ease-in-out bg-stone-0 py-1`;
   if (variant === "login")
     style =
       baseStyle +

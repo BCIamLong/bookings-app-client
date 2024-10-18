@@ -19,7 +19,8 @@ export default function FormItem({
   const baseStyle = ``;
   const errorStyle = " [&>input]:border-red-500 [&>input]:border-2 [&>input]:outline-none";
   let style;
-  if (type === "search") style = baseStyle + `w-full px-2`;
+  if (type === "search") style = baseStyle + `w-full px-2 flex flex-col gap-1 border-r-[1.5px] thin:max-tiny:border-[1.5px]`;
+  // if (type === "search1") style = baseStyle + `w-full px-2 flex flex-col gap-1 border-stone-300 border-[1.5px]`;
   if (type === "login") style = baseStyle + `flex flex-col gap-1`;
   if (type === 'profile')
     style = baseStyle + `flex flex-col gap-2 [&>input]:border-[1.5px]`;

@@ -104,7 +104,7 @@ export default function Tours() {
         <div className="grid grid-cols-[1fr_3fr] gap-x-4 px-12  thin:max-tiny:grid-cols-1 items-start">
           <div className="bg-stone-50 px-5 py-4  shadow-md h-[full]">
             <div className="text-center [&>h1]:justify-center flex flex-col gap-3">
-              <div className="pt-6 pb-4 px-3">
+              <div className="pt-6 pb-4 px-3 flex justify-center [&>button]:w-[80%]">
                 <Button type="secondary" onClick={() => window.location.assign('/tours')}>Reset filter</Button>
               </div>
               <hr className="mb-2" />
@@ -112,9 +112,9 @@ export default function Tours() {
               <p className="text-stone-500 text-xs">Ex optio sequi et quos praesentium in nostrum labore nam rerum iusto aut magni nesciunt? Quo quidem neque iste expedita est dolo.</p>
             </div>
             <div className="px-3 mt-6 flex flex-col gap-3">
+              <Input variant="login" placeholder="Tour name" type="text" id="name" />
               <Input variant="login" placeholder="Where to?" type="text" id="where" />
-              <Input variant="login" placeholder="When to?" type="text" id="where" />
-              <Input variant="login" placeholder="Date?" type="text" id="where" />
+              <Input variant="login" placeholder="Date?" type="text" id="date" />
             </div>
             <div className="mt-4 px-3 flex flex-col gap-2">
               <Heading type="heading-4">Filter by price</Heading>
