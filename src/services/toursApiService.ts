@@ -46,6 +46,7 @@ const getTours = async function ({
       statusStr = '&sort=-ratingsQuantity&sort=-ratingsAverage'
     if (status === 'most-discount') statusStr = '&sort=-ratingsQuantity'
 
+    console.log(search)
     const searchOptions = new URLSearchParams(
       (search as URLSearchParams) || {},
     ).toString()

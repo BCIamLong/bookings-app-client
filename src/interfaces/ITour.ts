@@ -9,6 +9,7 @@ export interface SearchTour {
   createdAt?: Date
   where?: string
   when?: string
+  date?: string
 }
 
 interface StartDate {
