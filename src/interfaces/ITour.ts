@@ -10,6 +10,8 @@ export interface SearchTour {
   where?: string
   when?: string
   date?: string
+  nameLike?: string
+  priceRange?: number
 }
 
 interface StartDate {

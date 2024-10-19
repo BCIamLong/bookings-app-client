@@ -24,6 +24,10 @@ export default function Form({ type, onSubmit, children }: FormProps) {
     style =
       baseStyle +
       `grid ${i18n.language === 'vi-VN' ? 'grid-cols-[2fr_2fr_2fr_1fr]' : 'grid-cols-[2.5fr_2.5fr_2.5fr_1.5fr]'} gap-3 justify-center rounded-full bg-stone-0 px-6 py-3 min-h-[5.7rem] thin:max-tiny:grid-cols-[2fr_2fr] thin:max-tiny:rounded-lg`;
+  if (type === "search2")
+    style =
+      baseStyle +
+      `flex flex-col gap-3 justify-center rounded-full bg-stone-0 px-6 py-3`;
   if (type === 'profile')
     style =
       baseStyle +

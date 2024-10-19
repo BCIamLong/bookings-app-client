@@ -10,8 +10,9 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import DatePicker from "react-datepicker";
 import { FormEvent, useState } from "react";
+import Heading from "@/components/Heading";
 
-export default function SearchForm() {
+export default function SearchForm({ variant = "row" }: { variant: 'col' | 'row' }) {
   const { formState, handleSubmit, register, reset } = useForm<SearchTour>()
   const { errors } = formState
   const navigate = useNavigate()
@@ -19,6 +20,8 @@ export default function SearchForm() {
   const [whenDate, setWhenDate] = useState('')
   const [where, setWhere] = useState('')
   const [type, setType] = useState('')
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState(0)
 
 
   // const onSubmit: SubmitHandler<SearchTour> = function (data) {
@@ -36,16 +39,55 @@ export default function SearchForm() {
   //   // reset()
   // }
   const onSubmit = function (e: FormEvent) {
+    console.log('ok')
     e.preventDefault()
-    if (!where && !whenDate && !type) return navigate('/tours')
+    if ((!where && !whenDate && !type && (!price && price !== 0) && !name)) return navigate('/tours')
     const options = {} as SearchTour;
     if (where) options.where = where
     if (whenDate) options.date = whenDate
     if (type) options.type = type
+    if (price) options.priceRange = price
+    if (name) options.nameLike = name
+
     // console.log(encodeURIComponent(JSON.stringify(options)))
 
     navigate(`/tours?search=${encodeURIComponent(JSON.stringify(options))}`)
   }
+  if (variant === 'col') return <>
+    <form action="" onSubmit={onSubmit}>
+      <div className="px-3 mt-6 flex flex-col gap-3">
+        <input className="w-full p-2 rounded-md border-stone-0 outline-none text-stone-600 border-2 bg-stone-0" placeholder="Tour name" type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+        <input className="w-full p-2 rounded-md border-stone-0 outline-none text-stone-600 border-2 bg-stone-0" placeholder="Where to?" type="text" id="where" value={where} onChange={(e) => setWhere(e.target.value)} />
+        <DatePicker className="px-0 " customInput={<div className="flex gap-2 w-full items-center justify-start py-1 px-2 ">
+          <span className="cursor-pointer">
+            <HiCalendarDays className="text-stone-600 text-2xl" />
+          </span>
+          <input id="when" placeholder={'Date'} className="w-full bg-stone-0 py-2 text-stone-600" type="text" value={!whenDate ? '' : whenDate} disabled />
+        </div>} selected={new Date()} onChange={(date) => {
+          const dateStr = date!.toLocaleDateString('en-US', { month: 'long', year: 'numeric', day: '2-digit' })
+          setWhenDate(() => dateStr)
+        }}
+        />
+      </div>
+      <div className="mt-4 px-3 flex flex-col gap-2">
+        <Heading type="heading-4">Filter by price</Heading>
+        <div>
+          <input className="w-full" type="range" defaultValue={0} step={500} min={0} max={10000} name="" id=""
+            onChange={(e) => setPrice(+e.target.value)
+            } />
+          <p className="text-sm text-stone-500">Price:
+            <span> 0$</span>
+            <span> - </span>
+            <span>{price}$</span>
+          </p>
+        </div>
+      </div>
+      <div className="mt-6 flex justify-center">
+        <Button type="brand">Search now</Button>
+      </div>
+    </form>
+  </>
+
 
   return (
     <Form type="search1" onSubmit={onSubmit}>

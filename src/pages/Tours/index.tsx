@@ -8,6 +8,7 @@ import Input from "@/components/form/Input";
 import Button from "@/components/Button";
 import DateBox from "@/components/DateBox";
 import ButtonLink from "@/components/ButtonLink";
+import SearchForm from "@/features/tours/SearchForm";
 
 export default function Tours() {
   const { t } = useTranslation()
@@ -111,25 +112,7 @@ export default function Tours() {
               <Heading type="secondary">Plan Your Trip</Heading>
               <p className="text-stone-500 text-xs">Ex optio sequi et quos praesentium in nostrum labore nam rerum iusto aut magni nesciunt? Quo quidem neque iste expedita est dolo.</p>
             </div>
-            <div className="px-3 mt-6 flex flex-col gap-3">
-              <Input variant="login" placeholder="Tour name" type="text" id="name" />
-              <Input variant="login" placeholder="Where to?" type="text" id="where" />
-              <Input variant="login" placeholder="Date?" type="text" id="date" />
-            </div>
-            <div className="mt-4 px-3 flex flex-col gap-2">
-              <Heading type="heading-4">Filter by price</Heading>
-              <div>
-                <input className="w-full" type="range" name="" id="" />
-                <p className="text-sm text-stone-500">Price:
-                  <span>12$</span>
-                  <span> - </span>
-                  <span>200$</span>
-                </p>
-              </div>
-            </div>
-            <div className="mt-6 flex justify-center">
-              <Button type="brand">Search now</Button>
-            </div>
+            <SearchForm variant="col" />
             <div className="flex justify-center mt-12">
               <img className="" src="https://images.pexels.com/photos/3225528/pexels-photo-3225528.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
             </div>
