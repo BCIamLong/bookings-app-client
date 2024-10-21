@@ -49,16 +49,24 @@ const rectangle = [
 
 function LocationMarker({ locations }: { locations: Location[] }) {
   // const [bounds, setBounds] = useState<LatLngBoundsExpression>([])
-  const [bounds, setBounds] = useState<LatLngBoundsExpression>(bounds1 as LatLngBoundsExpression)
+  console.log(locations)
+  const coordinates = locations?.map((loc) => [loc.coordinates[1], loc.coordinates[0]])
+  console.log(coordinates)
+  const [bounds, setBounds] = useState<LatLngBoundsExpression>(coordinates as LatLngBoundsExpression)
   const map = useMapEvents({
+    zoom() {
+      if (!bounds.length) return
+      setBounds([])
+    },
     // click(e) {
     //   setBounds(bounds1 as LatLngBoundsExpression)
     // },
     moveend(e) {
-      if (!bounds) return
+      if (!bounds.length) return
       // map.flyTo(e.latlng, map.getZoom())
-      map.flyToBounds(bounds as LatLngBoundsExpression)
+      map.flyToBounds(bounds as LatLngBoundsExpression, { maxZoom: 8.5 })
     },
+
   })
   function openPopup(e: PopupEvent) {
     e.target.openPopup();
@@ -66,11 +74,12 @@ function LocationMarker({ locations }: { locations: Location[] }) {
 
   return (
     <>
-      {bounds.map((el, ind) => <Marker eventHandlers={{ add: openPopup }} position={el as LatLngExpression} icon={customLightIcon}>
+      {locations.map((loc, ind) => <Marker eventHandlers={{ add: openPopup }} position={[loc.coordinates[1], loc.coordinates[0]] as LatLngExpression} icon={customLightIcon}>
         <Popup closeButton={false} autoClose={false} closeOnClick={false}>
-          Day {ind + 1}: Content
+          Day {ind + 1}: {loc.address}
         </Popup>
-      </Marker>)}
+      </Marker >)
+      }
     </>
   )
 
@@ -81,7 +90,7 @@ function LocationMarker({ locations }: { locations: Location[] }) {
 export default function ToursMap({ locations }: { locations: Location[] }) {
   const { isDarkMode } = useDarkModeContext()!
   const tileLayerUrl = !isDarkMode ? `https://api.maptiler.com/maps/bright-v2/{z}/{x}/{y}.png?key=${MAP_API_KEY}` : `https://api.maptiler.com/maps/ch-swisstopo-lbm-dark/{z}/{x}/{y}.png?key=${MAP_API_KEY}`;
-  const coordinates = locations.map(loc => loc.coordinates)
+  const coordinates = locations?.map((loc) => [loc.coordinates[1], loc.coordinates[0]])
 
   // function openPopup(e: PopupEvent) {
   //   e.target.openPopup();
@@ -89,7 +98,7 @@ export default function ToursMap({ locations }: { locations: Location[] }) {
 
   return (
     <div className='[&>.leaflet-container]:h-[30rem] w-[100%] relative rounded-lg overflow-hidden z-30 col-span-1 thin:max-sm:col-span-2'>
-      <MapContainer center={[16.082871, 108.147265]} zoom={20} scrollWheelZoom={true} style={{ height: '100vh', width: '100%' }}>
+      <MapContainer center={coordinates[0]} zoom={8} scrollWheelZoom={true} style={{ height: '100vh', width: '100%' }}>
         {/* <MapContainer bounds={bounds as LatLngBoundsExpression} zoom={20} scrollWheelZoom={true} style={{ height: '100vh', width: '100%' }}> */}
         <TileLayer
           attribution='&copy; <a href="https://www.maptiler.com/copyright/" target="_blank">MapTiler</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
@@ -103,7 +112,7 @@ export default function ToursMap({ locations }: { locations: Location[] }) {
           </Popup>
         </Marker>)} */}
         {/* <Rectangle bounds={rectangle as LatLngBoundsExpression} pathOptions={{ color: 'black' }} /> */}
-        <Polygon pathOptions={{ color: 'lime' }} positions={rectangle as LatLngExpression[]} />
+        <Polygon pathOptions={{ color: 'lime' }} positions={coordinates as LatLngExpression[]} />
         <LocationMarker locations={locations} />
       </MapContainer >
     </div >

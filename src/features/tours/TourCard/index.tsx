@@ -19,7 +19,7 @@ export default function TourCard({ tour }: { tour: ITour }) {
         </p>
         <p className="flex gap-3 justify-between text-lg border-b-[1.5px] items-center">
           <span className="text-stone-500 font-semibold">Days</span>
-          <input className="border-stone-300 border-[1.5px] rounded-md w-[40%] bg-stone-0 text-center py-1 text-stone-700 text-lg font-semibold" type="number" defaultValue={tour.startDates.length} min={1} disabled={true} />
+          <input className="border-stone-300 border-[1.5px] rounded-md w-[40%] bg-stone-0 text-center py-1 text-stone-700 text-lg font-semibold" type="number" defaultValue={tour.startDates?.length} min={1} disabled={true} />
         </p>
         <p className="flex gap-3 justify-between text-lg border-b-[1.5px] items-center">
           <span className="text-stone-500 font-semibold">Group Size</span>

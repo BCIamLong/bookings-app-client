@@ -58,6 +58,9 @@ export default function SearchForm({ variant = "row" }: { variant: 'col' | 'row'
     if (price) options.priceRange = price
     if (name) options.nameLike = name
 
+    // ! one problem here is when we search in the search form with col and it will assign and reload page then we will have the search string still exist in the form but if we search again it will lost because we don't change it state yet therefore it will be empty string and therefore it doesn't get the query string data so that's it
+    // * we will fix it later
+
     // console.log(encodeURIComponent(JSON.stringify(options)))
 
     console.log(options)

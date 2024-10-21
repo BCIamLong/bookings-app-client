@@ -12,6 +12,7 @@ import { useTour } from "../useTour";
 import { ITour } from "@/interfaces";
 import TourCard from "../TourCard";
 import ToursMap from "../ToursMap";
+import { LatLngExpression } from "leaflet";
 
 export default function TourDetail() {
   const { t } = useTranslation()
@@ -20,6 +21,8 @@ export default function TourDetail() {
   // const tourImage = image?.startsWith('tour-') ? `/imgs/tours/${image}` : image
   const tourImage = imageCover
   const classStyle = `rounded-md overflow-hidden h-[98%]`
+
+
   if (isLoading) return <Spinner size="normal" />
 
   return (
@@ -47,16 +50,16 @@ export default function TourDetail() {
               <img className="h-[30rem] w-full" src={tourImage} alt={`${name} tour`} />
             </div>
             <div className={classStyle}>
-              <img src={tour.images[0]} alt="" className="h-[15rem] w-full" />
+              <img src={tour?.images[0]} alt="" className="h-[15rem] w-full" />
             </div>
             <div className={classStyle}>
-              <img src={tour.images[1]} alt="" className="h-[15rem] w-full" />
+              <img src={tour?.images[1]} alt="" className="h-[15rem] w-full" />
             </div>
             <div className={classStyle}>
-              <img src={tour.images[2]} alt="" className="h-[15rem] w-full" />
+              <img src={tour?.images[2]} alt="" className="h-[15rem] w-full" />
             </div>
             <div className={classStyle}>
-              <img src={tour.images[0]} alt="" className="h-[15rem] w-full" />
+              <img src={tour?.images[0]} alt="" className="h-[15rem] w-full" />
             </div>
           </div>
           <div className="grid grid-cols-[1.5fr_1fr] thin:max-tiny:flex thin:max-tiny:flex-col text-stone-700 p-6 gap-12 sm:max-md:gap-1">
@@ -64,7 +67,7 @@ export default function TourDetail() {
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-xl text-brand-600 font-bold leading-10">{name}</p>
-                  <p className="text-sm text-stone-500">{tour.startLocation.address}</p>
+                  <p className="text-sm text-stone-500">{tour?.startLocation.address}</p>
                 </div>
                 <div className="flex gap-2 items-center">
                   <Bookmark />
@@ -91,7 +94,7 @@ export default function TourDetail() {
               </div>
               <div className="flex flex-col gap-3 text-stone-500">
                 <p className="text-xl text-brand-600 font-bold leading-10">Tour description</p>
-                <p className="">{tour.description}</p>
+                <p className="">{tour?.description}</p>
               </div>
               <div>
                 <p className="text-xl text-brand-600 font-bold leading-10">Quick Facts</p>
@@ -101,28 +104,28 @@ export default function TourDetail() {
                       <GiKnifeFork className="text-brand-600" />
                       <p>Next Date</p>
                     </div>
-                    <p className="text-[1rem] text-stone-500">{new Date(tour.startDates[0].date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</p>
+                    <p className="text-[1rem] text-stone-500">{new Date(tour?.startDates[0].date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</p>
                   </div>
                   <div className="flex gap-4 items-center">
                     <div className="flex items-center gap-3 uppercase font-semibold text-lg">
                       <GiKnifeFork className="text-brand-600" />
                       <p>Difficult</p>
                     </div>
-                    <p className="text-[1rem] text-stone-500">{tour.difficulty}</p>
+                    <p className="text-[1rem] text-stone-500">{tour?.difficulty}</p>
                   </div>
                   <div className="flex gap-4 items-center">
                     <div className="flex items-center gap-3 uppercase font-semibold text-lg">
                       <GiKnifeFork className="text-brand-600" />
                       <p>Participants</p>
                     </div>
-                    <p className="text-[1rem] text-stone-500">{tour.maxGroupSize}</p>
+                    <p className="text-[1rem] text-stone-500">{tour?.maxGroupSize}</p>
                   </div>
                   <div className="flex gap-4 items-center">
                     <div className="flex items-center gap-3 uppercase font-semibold text-lg">
                       <GiKnifeFork className="text-brand-600" />
                       <p>Rating</p>
                     </div>
-                    <p className="text-[1rem] text-stone-500">{tour.ratingsAverage}</p>
+                    <p className="text-[1rem] text-stone-500">{tour?.ratingsAverage}</p>
                   </div>
                 </div>
               </div>
@@ -151,10 +154,10 @@ export default function TourDetail() {
             <div className="flex justify-center thin:max-tiny:justify-start">
               <div className="xl:w-[60%] ml-12 lg:w-[70%] md:w-[20rem] md:max-lg:pr-12 sm:w-[18rem] sm:max-md:pr-8 thin:max-sm:[24rem] thin:max-sm:ml-0 thin:max-sm:pr-0">
                 {/* <CabinCard cabin={cabin as ICabin} /> */}
-                <TourCard tour={tour} />
+                <TourCard tour={tour || {}} />
               </div>
             </div>
-            <ToursMap locations={tour.locations} />
+            <ToursMap locations={tour.locations || []} />
           </div>
         </div>
       </div>

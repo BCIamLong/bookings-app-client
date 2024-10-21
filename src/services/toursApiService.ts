@@ -76,7 +76,8 @@ const getTours = async function ({
 const getTour = async function (id: string) {
   try {
     const res = await axios.get(`${SERVER_BASE_URL}/api/v1/tours/${id}`, {})
-    // console.log(res)
+
+    console.log(res)
     return res?.data?.data?.tour
   } catch (err) {
     // console.log(err)
