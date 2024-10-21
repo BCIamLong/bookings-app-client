@@ -28,6 +28,9 @@ const getTours = async function ({
   try {
     let sortStr = ''
     const typeStr = type === 'none' ? '' : `&type=${type}`
+    if (type && (search as SearchTour)?.type)
+      delete (search as SearchTour)['type']
+
     const difficultyStr =
       difficulty === 'none' ? '' : `&difficulty=${difficulty}`
     const dateStr = date === 'none' ? '' : `&date=${date}`

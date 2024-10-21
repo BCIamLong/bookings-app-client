@@ -14,6 +14,8 @@ export default function Tours() {
   const { t } = useTranslation()
   const [searchParams, setSearchParams] = useSearchParams()
   if (!searchParams.get('sort')) searchParams.set('sort', 'none')
+  const searchOb = JSON.parse(searchParams.get('search') || `{}`)
+  const { type: typeStr } = searchOb
   // if (!searchParams.get('sort')) searchParams.set('sort', 'none')
 
   // if (!searchParams.get('sort')) searchParams.set('sort', 'name-low')
@@ -30,14 +32,14 @@ export default function Tours() {
       </div>
       <div className="pb-24 bg-stone-0">
         <div className="">
-          <ul className="flex justify-around items-center bg-stone-50 shadow-md px-6 py-3 w-[70%] thin:max-tiny:w-[90%] tiny:max-sm:w-[80%] mx-auto -translate-y-1/2 items-center thin:max-tiny:grid thin:max-tiny:grid-cols-2 thin:max-tiny:gap-6 ">
+          <ul className="flex justify-around items-center bg-stone-50 shadow-md px-6 py-3 w-[70%] thin:max-tiny:w-[90%] tiny:max-sm:w-[80%] mx-auto -translate-y-1/2 thin:max-tiny:grid thin:max-tiny:grid-cols-2 thin:max-tiny:gap-6 ">
             <li className="text-stone-600 font-semibold flex gap-2">
               {/* <span>📅</span>
               <span>Date</span> */}
               <DateBox />
             </li>
             <li className="text-stone-600 font-semibold flex gap-2">
-              <Select id="sort" type="type" onChange={(e) => setSearchParams(params => {
+              <Select id="sort" type="type" defaultValue={typeStr || 'none'} onChange={(e) => setSearchParams(params => {
                 params.set('type', e.target.value)
                 return params
               })}>

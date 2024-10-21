@@ -52,5 +52,5 @@ export const useTours = function ({
     })
   }
 
-  return { tours, isLoading, count, error }
+  return { tours, isLoading, count, search, error }
 }
