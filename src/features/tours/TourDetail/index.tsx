@@ -13,6 +13,7 @@ import { ITour } from "@/interfaces";
 import TourCard from "../TourCard";
 import ToursMap from "../ToursMap";
 import { LatLngExpression } from "leaflet";
+import TourCardV2 from "../TourCardV2";
 
 export default function TourDetail() {
   const { t } = useTranslation()
@@ -154,10 +155,12 @@ export default function TourDetail() {
             <div className="flex justify-center thin:max-tiny:justify-start">
               <div className="xl:w-[60%] ml-12 lg:w-[70%] md:w-[20rem] md:max-lg:pr-12 sm:w-[18rem] sm:max-md:pr-8 thin:max-sm:[24rem] thin:max-sm:ml-0 thin:max-sm:pr-0">
                 {/* <CabinCard cabin={cabin as ICabin} /> */}
-                <TourCard tour={tour || {}} />
+                <TourCardV2 tour={tour} />
+                {/* <TourCardV2 tour={tour || {}} /> 
+                // ! notice this can create problem when the tour is loading it will not have data yet therefore it will take the {} and because the tour props change then the component will render again and now the tour will take the id undefined and everything undefined which will create the error so we shouldn't never do it like this when we pass prop we can do it when we handle inside the component function*/}
               </div>
             </div>
-            <ToursMap locations={tour.locations || []} />
+            <ToursMap locations={tour?.locations || []} />
           </div>
         </div>
       </div>

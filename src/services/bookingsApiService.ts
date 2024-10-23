@@ -18,6 +18,8 @@ const getBookings = async function ({
   try {
     // const token = Cookies.get('access-token')
     let url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookings`
+    if (cabinId?.includes('tour'))
+      url = `${SERVER_BASE_URL}/api/v1/tours/${cabinId}/bookings`
     if (typeof status === 'string') url = url + `?status=${status}`
     if (typeof status === 'object')
       url = url + `?status[${status.operation}]=${status.value}`
@@ -46,7 +48,12 @@ const getUserBookings = async function ({
 }) {
   // const token = Cookies.get('access-token')
   let url = `${SERVER_BASE_URL}/api/v1/bookings/me`
-  if (cabinId) url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookings/me`
+  if (cabinId) {
+    if (cabinId.includes('cabin'))
+      url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookings/me`
+
+    url = `${SERVER_BASE_URL}/api/v1/tours/${cabinId}/bookings/me`
+  }
   const { status, cabin } = options
 
   if (status && typeof status === 'string')
@@ -54,8 +61,12 @@ const getUserBookings = async function ({
   if (status && typeof status === 'object' && !cabin)
     url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status[${status.operation}]=${status.value}`
   // console.log(url)
-  if (status && typeof status === 'object' && cabin)
-    url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status[${status.operation}]=${status.value}&&cabinId=${cabinId}`
+  if (status && typeof status === 'object' && cabin) {
+    if (cabinId?.includes('cabin'))
+      url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status[${status.operation}]=${status.value}&&cabinId=${cabinId}`
+
+    url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status[${status.operation}]=${status.value}&&tourId=${cabinId}`
+  }
   try {
     const res = await axios.get(url, {
       headers: {
@@ -117,6 +128,40 @@ const deleteUserBooking = async function (id: string) {
 }
 
 // * NEW VERSION OF STRIPE: https://docs.stripe.com/checkout/quickstart
+const bookTour = async function (data: {
+  cabinId: string
+  regularPrice: number
+  name: string
+  description: string
+  image: string
+  startDate: Date
+  endDate: Date
+  numGuests: number
+  numNights: number
+  locale?: string
+}) {
+  try {
+    // const token = Cookies.get('access-token')
+    const res = await axios.post(
+      `${SERVER_BASE_URL}/api/v1/bookings/checkout-session`,
+      data,
+      {
+        headers: {
+          // Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          // Origin: 'http://localhost:3009',
+        },
+      },
+    )
+    // console.log(res)
+    return res?.data?.redirectUrl
+  } catch (err) {
+    // console.log(err)
+  }
+}
+
+// * NEW VERSION OF STRIPE: https://docs.stripe.com/checkout/quickstart
 const bookCabin = async function (data: {
   cabinId: string
   regularPrice: number
@@ -130,6 +175,7 @@ const bookCabin = async function (data: {
   locale?: string
 }) {
   try {
+    // console.log(data)
     // const token = Cookies.get('access-token')
     const res = await axios.post(
       `${SERVER_BASE_URL}/api/v1/bookings/checkout-session`,
@@ -178,4 +224,5 @@ export {
   getUserBookings,
   deleteUserBooking,
   getBookings,
+  bookTour,
 }

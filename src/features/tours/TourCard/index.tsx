@@ -1,7 +1,20 @@
 import Button from "@/components/Button";
+import { useBookTour } from "@/features/bookings/useBookTour";
 import { ITour } from "@/interfaces";
+import { useTranslation } from "react-i18next";
 
 export default function TourCard({ tour }: { tour: ITour }) {
+  const { t, i18n } = useTranslation()
+  const locale = i18n.language.split('-')[0]
+  const { _id: tourId, name, price, startDates, description, imageCover, maxGroupSize, duration } = tour
+  const { isBooking, bookTour } = useBookTour()
+
+
+  const handleClick = async function () {
+
+    bookTour({ cabinId: tourId, cabinPrice: 0, regularPrice: price, name, description, image: imageCover, endDate: startDates[startDates.length - 1].date, startDate: startDates[0].date, numGuests: maxGroupSize, numNights: duration, locale })
+
+  }
   return (
     <div>
       <div className="px-6 bg-stone-50 pt-6 pb-8 flex flex-col gap-6 rounded-lg shadow-sm">
