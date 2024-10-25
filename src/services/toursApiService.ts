@@ -85,4 +85,17 @@ const getTour = async function (id: string) {
   }
 }
 
-export { getTours, getTour }
+const getToursAvailableToPost = async function () {
+  try {
+    // 1 fetch the bookings from the user
+    // 2 attach the tour id from all bookings to tourId array
+    // 3
+    const res = await axios.get(`${SERVER_BASE_URL}/api/v1/tours/tours-to-post`)
+
+    return res.data.tours
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export { getTours, getTour, getToursAvailableToPost }
