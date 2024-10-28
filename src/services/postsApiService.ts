@@ -1,5 +1,5 @@
 import { appConfig } from '@/config'
-import { SearchPost } from '@/interfaces'
+import { IPostInput, SearchPost } from '@/interfaces'
 import { SortOptions } from '@/interfaces/types'
 import axios from 'axios'
 
@@ -58,4 +58,29 @@ const getPost = async function (id: string) {
 
 const createPost = async function () {}
 
-export { getPost, createPost, getPosts }
+const updatePost = async function ({
+  id,
+  data,
+}: {
+  id: string
+  data: Partial<IPostInput>
+}) {
+  try {
+    const res = await axios.patch(
+      `${SERVER_BASE_URL}/api/v1/posts/${id}`,
+      data,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    // console.log(res)
+    return res?.data?.data?.post
+  } catch (err) {
+    // console.log(err)
+    throw err
+  }
+}
+
+export { getPost, createPost, getPosts, updatePost }

@@ -58,6 +58,9 @@ export default function Button({ type, children, onClick, disabled, size, reset 
   if (type === 'icon')
     style = baseStyle + `text-stone-700 text-xl p-2 hover:bg-stone-200`;
 
+  if (type === 'icon-2')
+    style = baseStyle + `text-stone-500 text-xl p-2 px-4 hover:bg-stone-200 rounded-full`;
+
   if (type === 'primary')
     style = baseStyle + `text-stone-100 text-lg font-semibold py-2 px-4 hover:bg-stone-600 bg-stone-700 rounded-lg border-2 capitalize border-stone-700`;
 

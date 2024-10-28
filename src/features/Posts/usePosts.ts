@@ -20,7 +20,7 @@ export const usePosts = function ({
   const options = { sort, page, search }
   const { data, isLoading, error } = useQuery({
     // queryKey: [`cabins${sort !== "none" ? `-sort-by-${sort}` : ""}`],
-    queryKey: [`cabins`, options],
+    queryKey: [`posts`, options],
     queryFn: () => getPosts(options),
   })
   const { posts, count } = data || {}
