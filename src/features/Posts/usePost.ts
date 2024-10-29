@@ -6,7 +6,7 @@ export const usePost = function () {
   const { id } = useParams()
 
   const {
-    data: cabin,
+    data: post,
     isLoading,
     error,
   } = useQuery({
@@ -14,5 +14,5 @@ export const usePost = function () {
     queryFn: () => getPost(id!),
   })
 
-  return { cabin, isLoading, error }
+  return { post, isLoading, error }
 }

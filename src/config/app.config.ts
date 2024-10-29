@@ -15,7 +15,7 @@ export default {
   CLIENT_BASE_UTL:
     import.meta.env.MODE === 'production'
       ? 'https://bookings-app-client.vercel.app'
-      : 'http://localhost:5137',
+      : 'http://localhost:5173',
   PAGE_LIMIT: 6,
   MAP_API_KEY: 'IigiqXGj105kiRYHhgiW',
 }

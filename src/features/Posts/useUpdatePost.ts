@@ -26,7 +26,7 @@ export const useUpdatePost = function ({ id }: { id?: string }) {
     onSuccess: () => {
       // toast.success('Update post successfully')
       queryClient.invalidateQueries({ queryKey: ['posts'] })
-      // queryClient.invalidateQueries({ queryKey: ['post'] })
+      queryClient.invalidateQueries({ queryKey: ['post'] })
     },
     onError: (err: AxiosError<ErrorResponse>) => {
       toast.error(err?.response?.data?.message || err.message)
