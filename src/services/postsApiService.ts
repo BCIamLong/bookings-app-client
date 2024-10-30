@@ -84,7 +84,7 @@ const updatePost = async function ({
       data,
       {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
       },
     )
@@ -96,4 +96,15 @@ const updatePost = async function ({
   }
 }
 
-export { getPost, createPost, getPosts, updatePost }
+const deletePost = async function ({ id }: { id: string }) {
+  try {
+    await axios.delete(`${SERVER_BASE_URL}/api/v1/posts/${id}`)
+    // console.log(res)
+    return null
+  } catch (err) {
+    // console.log(err)
+    throw err
+  }
+}
+
+export { getPost, createPost, getPosts, updatePost, deletePost }

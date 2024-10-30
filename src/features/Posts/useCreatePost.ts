@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios'
 import { toast } from 'react-toastify'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { IPostInput } from '../../interfaces'
+// import { IPostInput } from '../../interfaces'
 import { createPost as createPostService } from '@/services/postsApiService'
 import { useNavigate } from 'react-router-dom'
 // import { useNavigate } from "react-router-dom";
