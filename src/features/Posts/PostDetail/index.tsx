@@ -165,7 +165,7 @@ export default function PostDetail() {
         <div className="flex gap-3 items-center">
           <img className="w-12 rounded-full" src={avatar} alt="" />
           <p className="text-stone-700 font-semibold">{fullName}</p>
-          <p className="text-stone-500 text-sm">at {postAtStr} ago</p>
+          <p className="text-stone-500 text-sm">at {postAtStr} {postAtStr === 'now' ? '' : 'ago'}</p>
         </div>
         <div className={`${currentUserId !== guestId ? 'hidden' : ''}`}>
           <Modal>
@@ -191,7 +191,7 @@ export default function PostDetail() {
       </div>
       <div className="mt-6 w-full">
         {/* <Button type="icon-2">-</Button> */}
-        <div className={`flex w-full overflow-x-scroll ${!images.length ? 'no-scrollbar' : ''}`}>
+        <div className={`flex w-full overflow-x-scroll ${!images.length || images.length === 1 ? 'no-scrollbar' : ''}`}>
           {images.map((image: string) => <img className="w-full" src={image} alt="" />)}
           {/* <img className="w-full" src={images[0]} alt="" /> */}
         </div>
@@ -270,7 +270,7 @@ export default function PostDetail() {
                     <img className="w-8 rounded-full" src={avatarImg} alt="" />
                     <p className="text-sm font-semibold text-stone-600">{fullName}</p>
                   </div>
-                  <p className="text-xs text-stone-600 font-semibold">at {commentAtStr} ago</p>
+                  <p className="text-xs text-stone-600 font-semibold">at {commentAtStr} {commentAtStr === 'now' ? '' : 'ago'}</p>
                 </div>
                 <p className="text-sm text-stone-700">{content}</p>
                 <div className="flex gap-3 text-sm text-stone-600 font-semibold items-center">

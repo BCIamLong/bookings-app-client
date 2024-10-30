@@ -56,7 +56,20 @@ const getPost = async function (id: string) {
   }
 }
 
-const createPost = async function () {}
+const createPost = async function ({ data }: { data: FormData }) {
+  try {
+    const res = await axios.post(`${SERVER_BASE_URL}/api/v1/posts`, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    // console.log(res)
+    return res?.data?.data?.post
+  } catch (err) {
+    // console.log(err)
+    throw err
+  }
+}
 
 const updatePost = async function ({
   id,

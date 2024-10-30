@@ -92,7 +92,7 @@ const getToursAvailableToPost = async function () {
     // 3
     const res = await axios.get(`${SERVER_BASE_URL}/api/v1/tours/tours-to-post`)
 
-    return res.data.tours
+    return res.data.data.tours
   } catch (err) {
     console.log(err)
   }

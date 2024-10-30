@@ -43,6 +43,7 @@ export default function PostsItem({ post }: { post: IPost }) {
   const { fullName, id: guestId, avatar } = userId as unknown as { id: string, fullName: string, avatar: string }
 
   const { updatePost, isUpdating } = useUpdatePost({ id: postId })
+  const postAtStr = getDifferentTime(new Date(createdAt), new Date())
 
   const handleClickLike = function () {
 
@@ -100,7 +101,7 @@ export default function PostsItem({ post }: { post: IPost }) {
           <div className="flex gap-3 items-center">
             <img className="w-12 rounded-full" src={avatar} alt="" />
             <p className="text-stone-700 font-semibold">{fullName}</p>
-            <p className="text-stone-500 text-sm">at {getDifferentTime(new Date(createdAt), new Date())} ago</p>
+            <p className="text-stone-500 text-sm">at {postAtStr} {postAtStr === 'now' ? '' : 'ago'}</p>
           </div>
           {/* </Link> */}
           <div className={`${currentUserId !== guestId ? 'hidden' : ''}`}>
@@ -127,7 +128,7 @@ export default function PostsItem({ post }: { post: IPost }) {
           <p className="text-stone-600 text-sm">{description}</p>
         </div>
         <div className="mt-6 px-16 relative">
-          <div className=''>
+          <div className='no-scrollbar'>
             {/* {images.map((image, ind) => <img key={ind} className="w-full" src={image} alt="" />)} */}
             <img className="w-full" src={images[0]} alt="" />
             {/* <img className="w-full" src="https://images.pexels.com/photos/386000/pexels-photo-386000.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" /> */}

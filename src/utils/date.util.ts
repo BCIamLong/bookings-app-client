@@ -16,6 +16,7 @@ const getDifferentTime = function (firstDate: Date, secondDate: Date) {
 
   const postAtStr =
     (seconds === 0 && 'now') ||
+    (seconds > 0 && seconds <= 60 && `${seconds} seconds`) ||
     (seconds > 60 && minutes <= 60 && `${minutes} minutes`) ||
     (minutes > 60 && hours <= 24 && `${hours} hours`) ||
     (hours > 24 && days <= 30 && `${days} days`) ||
