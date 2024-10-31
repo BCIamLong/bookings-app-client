@@ -10,10 +10,12 @@ const getPosts = async function ({
   sort = 'none',
   page = 1,
   search,
+  bookmarkFor = '',
 }: {
   sort?: SortOptions
   page?: number
   search?: SearchPost | URLSearchParams
+  bookmarkFor?: string
 }) {
   try {
     let sortStr = ''
@@ -33,6 +35,8 @@ const getPosts = async function ({
     if (searchOptions)
       url = `${SERVER_BASE_URL}/api/v1/posts?${sortStr}&limit=${PAGE_LIMIT}&page=${page}&${searchOptions}`
     url = url.replace('?&', '?')
+    if (bookmarkFor)
+      url = `${SERVER_BASE_URL}/api/v1/posts?${sortStr}&limit=${PAGE_LIMIT}&page=${page}&bookmarkFor=${bookmarkFor}`
 
     // console.log(url)
     const res = await axios.get(url)
@@ -79,15 +83,18 @@ const updatePost = async function ({
   data: Partial<IPostInput>
 }) {
   try {
-    const res = await axios.patch(
-      `${SERVER_BASE_URL}/api/v1/posts/${id}`,
-      data,
-      {
+    let query = axios.patch(`${SERVER_BASE_URL}/api/v1/posts/${id}`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    if (data?.images?.length)
+      query = axios.patch(`${SERVER_BASE_URL}/api/v1/posts/${id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
-      },
-    )
+      })
+    const res = await query
     // console.log(res)
     return res?.data?.data?.post
   } catch (err) {
