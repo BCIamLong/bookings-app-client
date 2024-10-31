@@ -14,6 +14,7 @@ import { appConfig } from "@/config";
 import { useNavigate } from "react-router-dom";
 import { differenceInDays, differenceInHours, differenceInMinutes, differenceInMonths, differenceInSeconds, format } from "date-fns";
 import { dateUtil } from "@/utils";
+import Heading from "@/components/Heading";
 
 const { CLIENT_BASE_UTL } = appConfig
 const { getDifferentTime } = dateUtil
@@ -187,7 +188,8 @@ export default function PostDetail() {
           </Modal>
         </div>
       </div>
-      <div className="mt-2">
+      <div className="mt-2 flex flex-col gap-3 px-0">
+        <Heading type='heading-4'>{title}</Heading>
         <p className="text-stone-600 text-sm">{description}</p>
       </div>
       <div className="mt-6 w-full">

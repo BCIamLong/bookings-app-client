@@ -11,11 +11,13 @@ const getPosts = async function ({
   page = 1,
   search,
   bookmarkFor = '',
+  searchStr = '',
 }: {
   sort?: SortOptions
   page?: number
   search?: SearchPost | URLSearchParams
   bookmarkFor?: string
+  searchStr?: string
 }) {
   try {
     let sortStr = ''
@@ -26,6 +28,11 @@ const getPosts = async function ({
     if (sort === 'price-low') sortStr = 'sort=regularPrice'
     if (sort === 'name-high') sortStr = 'sort=-name'
     if (sort === 'name-low') sortStr = 'sort=name'
+    if (sort === 'popular')
+      sortStr = `sort=${JSON.stringify({ likes: -1, comments: -1, bookmarks: -1 })}`
+    if (sort === 'trending')
+      sortStr = `sort=${JSON.stringify({ likes: -1, createdAt: -1 })}`
+    if (sort === 'most-likes') sortStr = `sort=${JSON.stringify({ likes: -1 })}`
 
     const searchOptions = new URLSearchParams(
       (search as URLSearchParams) || {},
@@ -37,6 +44,8 @@ const getPosts = async function ({
     url = url.replace('?&', '?')
     if (bookmarkFor)
       url = `${SERVER_BASE_URL}/api/v1/posts?${sortStr}&limit=${PAGE_LIMIT}&page=${page}&bookmarkFor=${bookmarkFor}`
+    if (searchStr && searchStr.length >= 3)
+      url = `${SERVER_BASE_URL}/api/v1/posts?${sortStr}&limit=${PAGE_LIMIT}&page=${page}&search=${searchStr}`
 
     // console.log(url)
     const res = await axios.get(url)

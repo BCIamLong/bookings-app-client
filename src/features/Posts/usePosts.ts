@@ -10,16 +10,18 @@ export const usePosts = function ({
   sort = 'none',
   page = 1,
   bookmarkFor = '',
+  searchStr = '',
 }: {
   sort: SortOptions
   page?: number
   bookmarkFor?: string
+  searchStr?: string
 }) {
   const [searchParams] = useSearchParams()
   const search = JSON.parse(searchParams.get('search') || `{}`)
 
   const queryClient = useQueryClient()
-  const options = { sort, page, search, bookmarkFor }
+  const options = { sort, page, search, bookmarkFor, searchStr }
   const { data, isLoading, error } = useQuery({
     // queryKey: [`cabins${sort !== "none" ? `-sort-by-${sort}` : ""}`],
     queryKey: [`posts`, options],
