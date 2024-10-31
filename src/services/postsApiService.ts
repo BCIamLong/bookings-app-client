@@ -29,7 +29,7 @@ const getPosts = async function ({
     if (sort === 'name-high') sortStr = 'sort=-name'
     if (sort === 'name-low') sortStr = 'sort=name'
     if (sort === 'popular')
-      sortStr = `sort=${JSON.stringify({ likes: -1, comments: -1, bookmarks: -1 })}`
+      sortStr = `sort=${JSON.stringify({ likes: -1 })}&&sort=${JSON.stringify({ comments: -1 })}&&sort=${JSON.stringify({ bookmarks: -1 })}`
     if (sort === 'trending')
       sortStr = `sort=${JSON.stringify({ likes: -1, createdAt: -1 })}`
     if (sort === 'most-likes') sortStr = `sort=${JSON.stringify({ likes: -1 })}`

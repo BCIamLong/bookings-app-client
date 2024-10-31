@@ -7,11 +7,13 @@ import Button from "@/components/Button";
 import Empty from "@/components/Empty";
 import { IPost, IUser } from "@/interfaces";
 import { Link, useSearchParams } from "react-router-dom";
+import { SortOptions } from "@/interfaces/types";
 
 export default function ExplorePosts() {
   const [search, setSearch] = useState('')
-  const { posts, isLoading } = usePosts({ sort: 'none', searchStr: search })
   const [searchParams, setSearchParams] = useSearchParams()
+  const sort = searchParams.get('sort') || 'none'
+  const { posts, isLoading } = usePosts({ sort: sort as SortOptions, searchStr: search })
   const [filteredId, setFilteredId] = useState('')
 
   const handleClickSearch = function () {
