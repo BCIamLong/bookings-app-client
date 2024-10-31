@@ -1,10 +1,25 @@
 import Heading from "@/components/Heading";
-import { HiHeart, HiOutlineHeart } from "react-icons/hi2";
+import { useState } from "react";
+import { HiHeart, HiMagnifyingGlass, HiMagnifyingGlassCircle, HiOutlineHeart } from "react-icons/hi2";
+import { usePosts } from "../usePosts";
+import Spinner from "@/components/Spinner";
+import Button from "@/components/Button";
 
 export default function ExplorePosts() {
+  const [search, setSearch] = useState('')
+  const { posts, isLoading } = usePosts({ sort: 'none' })
+
+
+  const handleClickSearch = function () { }
+
+  if (isLoading) return <Spinner size="big" />
+
   return (
     <>
-      <input className="px-3 py-2 bg-stone-0 mb-6 rounded-full w-full outline-none border-brand-300 focus:border-brand-600 border-[1.5px] text-stone-600" placeholder="Search posts..." type="text" />
+      <div className="relative flex items-center">
+        <input className="px-3 py-2 bg-stone-0 mb-6 rounded-full w-full outline-none border-brand-300 focus:border-brand-600 border-[1.5px] text-stone-600" placeholder="Search posts..." type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
+        <Button type="icon-search" onClick={handleClickSearch}><HiMagnifyingGlass /></Button>
+      </div>
       <div>
         <ul className="flex gap-3">
           {/* this is for active tab

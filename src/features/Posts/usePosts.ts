@@ -9,15 +9,17 @@ const { PAGE_LIMIT } = appConfig
 export const usePosts = function ({
   sort = 'none',
   page = 1,
+  bookmarkFor = '',
 }: {
   sort: SortOptions
   page?: number
+  bookmarkFor?: string
 }) {
   const [searchParams] = useSearchParams()
   const search = JSON.parse(searchParams.get('search') || `{}`)
 
   const queryClient = useQueryClient()
-  const options = { sort, page, search }
+  const options = { sort, page, search, bookmarkFor }
   const { data, isLoading, error } = useQuery({
     // queryKey: [`cabins${sort !== "none" ? `-sort-by-${sort}` : ""}`],
     queryKey: [`posts`, options],

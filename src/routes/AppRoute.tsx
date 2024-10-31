@@ -114,7 +114,8 @@ export default function AppRoute() {
           </Route>
           <Route element={<AppLayout />}>
             <Route path="posts" element={<PostsLayout />} >
-              <Route index element={<PostsList />} />
+              {/* <Route index element={<PostsList />} /> */}
+              <Route path="home" element={<PostsList />} />
               <Route path="create" element={<CreatePost />} />
               <Route path=":id/edit" element={<EditPost />} />
               <Route path=":id" element={<PostDetail />} />

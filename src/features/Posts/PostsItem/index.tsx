@@ -2,7 +2,7 @@ import Button from '@/components/Button'
 import Heading from '@/components/Heading'
 import Modal from '@/components/Modal'
 import Popup from '@/components/Popup'
-import { Bookmark, IPost, Like } from '@/interfaces'
+import { Bookmark, IPost, IPostInput, Like } from '@/interfaces'
 import { HiBookmark, HiChevronRight, HiHeart, HiMiniEllipsisHorizontal, HiOutlineBookmark, HiOutlineChatBubbleOvalLeft, HiOutlineHeart, HiOutlineShare } from 'react-icons/hi2'
 import { Link, useNavigate } from 'react-router-dom'
 import { useUpdatePost } from '../useUpdatePost'
@@ -25,19 +25,19 @@ export default function PostsItem({ post }: { post: IPost }) {
   const { likes, bookmarks, shares, comments, title, description, images, tourId, userId, _id: postId, createdAt } = post || {}
   const { deletePost, isDeleting } = useDeletePost({ id: postId })
   // console.log(images)
-  const { user: { _id: currentUserId }, isLoading } = useUserSession()
-
+  const { user, isLoading } = useUserSession()
+  const { _id: currentUserId } = user || {}
   const numLikes = likes.length
   const numComments = comments.length
   const numBookmarks = bookmarks.length
 
   const isLiked = likes?.find(l => {
-    const { _id } = l.userId as unknown as { _id: string, name: string }
+    const { _id } = l.userId as unknown as { _id: string, name: string } || {}
     // console.log(_id, user._id)
     return _id === currentUserId
   })
   const isBookmarked = bookmarks?.find(b => {
-    const { _id } = b.userId as unknown as { _id: string, name: string }
+    const { _id } = b.userId as unknown as { _id: string, name: string } || {}
     // console.log(_id, user._id)
     return _id === currentUserId
   })
@@ -60,6 +60,11 @@ export default function PostsItem({ post }: { post: IPost }) {
 
     if (!isLiked)
       newData = [...likes, { userId: currentUserId, likeAt: new Date() }]
+
+    // const data = !newData.length ? [] : newData
+
+    // const formData = new FormData()
+    // formData.append('likes', JSON.stringify(data))
 
     updatePost({ likes: newData })
   }

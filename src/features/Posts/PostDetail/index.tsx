@@ -31,7 +31,7 @@ export default function PostDetail() {
 
   const { updatePost, isUpdating } = useUpdatePost({ id: postId })
 
-  const { fullName, id: guestId, avatar } = userId as unknown as { id: string, fullName: string, avatar: string } || {}
+  const { fullName, _id: guestId, avatar } = userId as unknown as { id: string, fullName: string, avatar: string } || {}
   const { name, id } = tourId as unknown as { id: string, name: string } || {}
 
   const numLikes = likes?.length
@@ -179,7 +179,8 @@ export default function PostDetail() {
                 <ul className='flex flex-col gap-2'>
                   <li className='py-2 text-center text-stone-600 font-semibold border-y-[1.5px]'>Edit</li>
                   <li className='py-2 text-red-600 text-center text-stone-600 font-semibold border-y-[1.5px]'>Delete</li>
-                  <li className='py-2  text-red-600 text-center text-stone-600 font-semibold border-y-[1.5px]'>Report</li>
+                  {currentUserId !== guestId &&
+                    <li className='py-2  text-red-600 text-center text-stone-600 font-semibold border-y-[1.5px]'>Report</li>}
                 </ul>
               </Popup>
             </Modal.Window>

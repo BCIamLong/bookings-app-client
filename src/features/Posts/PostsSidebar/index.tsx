@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom'
 export default function PostsSidebar() {
   return (
     <div className="h-screen thin:max-tiny:h-auto">
-      <ul className="[&>li>.active]:text-brand-600 [&>li>.active]:bg-stone-50 bg-stone-0 flex flex-col gap-3 h-full border-r-2 border-stone-50 shadow-sm overflow-hidden thin:max-tiny:flex-row">
-        <li >
-          <NavLink to=''>
+      <ul className="[&>li>.active]:text-brand-600 [&>li>.active]:bg-stone-50 bg-stone-0 flex flex-col gap-3 h-full border-r-2 border-stone-50 shadow-sm overflow-hidden thin:max-tiny:flex-row [&>li>.active>div]:bg-brand-200 [&>li>.active>div]:text-brand-600">
+        <li>
+          <NavLink to='home'>
             <div className="[&>.icon]:hover:text-brand-600 transition-all duration-300 hover:bg-stone-50 items-center gap-3 cursor-pointer flex px-6 py-3 capitalize bg-stone-0 text-stone-600 font-semibold text-lg">
               <span className="icon text-2xl transition-all duration-300">
                 <HiOutlineHome />
