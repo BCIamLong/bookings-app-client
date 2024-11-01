@@ -21,8 +21,13 @@ export const useUpdatePost = function ({ id }: { id?: string }) {
     error,
     mutate: updatePost,
   } = useMutation({
-    mutationFn: (data: Partial<IPostInput>) =>
-      updatePostService({ id: postId, data }),
+    mutationFn: ({
+      data,
+      basedComments = false,
+    }: {
+      data: Partial<IPostInput>
+      basedComments?: boolean
+    }) => updatePostService({ id: postId, data, basedComments }),
     onSuccess: () => {
       // toast.success('Update post successfully')
       queryClient.invalidateQueries({ queryKey: ['posts'] })

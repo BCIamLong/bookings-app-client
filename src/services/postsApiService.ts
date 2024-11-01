@@ -87,22 +87,39 @@ const createPost = async function ({ data }: { data: FormData }) {
 const updatePost = async function ({
   id,
   data,
+  basedComments = false,
 }: {
   id: string
   data: Partial<IPostInput>
+  basedComments?: boolean
 }) {
   try {
+    if (!basedComments && data.commentId) return
+    // console.log(data)
     let query = axios.patch(`${SERVER_BASE_URL}/api/v1/posts/${id}`, data, {
       headers: {
         'Content-Type': 'application/json',
       },
     })
+
+    if (basedComments)
+      query = axios.patch(
+        `${SERVER_BASE_URL}/api/v1/posts/${id}/comments/${data.commentId}`,
+        { likes: data.likes },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+
     if (data?.images?.length)
       query = axios.patch(`${SERVER_BASE_URL}/api/v1/posts/${id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       })
+    // console.log(basedComments)
     const res = await query
     // console.log(res)
     return res?.data?.data?.post

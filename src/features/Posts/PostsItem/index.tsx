@@ -2,7 +2,7 @@ import Button from '@/components/Button'
 import Heading from '@/components/Heading'
 import Modal from '@/components/Modal'
 import Popup from '@/components/Popup'
-import { Bookmark, IPost, IPostInput, Like } from '@/interfaces'
+import { Bookmark, IPost, Like } from '@/interfaces'
 import { HiBookmark, HiChevronRight, HiHeart, HiMiniEllipsisHorizontal, HiOutlineBookmark, HiOutlineChatBubbleOvalLeft, HiOutlineHeart, HiOutlineShare } from 'react-icons/hi2'
 import { Link, useNavigate } from 'react-router-dom'
 import { useUpdatePost } from '../useUpdatePost'
@@ -66,7 +66,7 @@ export default function PostsItem({ post }: { post: IPost }) {
     // const formData = new FormData()
     // formData.append('likes', JSON.stringify(data))
 
-    updatePost({ likes: newData })
+    updatePost({ data: { likes: newData } })
   }
 
   const handleClickBookmark = function () {
@@ -84,7 +84,7 @@ export default function PostsItem({ post }: { post: IPost }) {
 
     // console.log('ok', newData)
 
-    updatePost({ bookmarks: newData })
+    updatePost({ data: { bookmarks: newData } })
   }
 
   const handleDeletePost = function () {
@@ -101,7 +101,7 @@ export default function PostsItem({ post }: { post: IPost }) {
     // I prefer to not show the whole text area selected.
     // navigate(`/posts/${postId}`)
     toast.success('Copied to clipboard')
-    updatePost({ shares: shares + 1 })
+    updatePost({ data: { shares: shares + 1 } })
   };
 
 

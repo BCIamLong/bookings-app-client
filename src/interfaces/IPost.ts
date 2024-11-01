@@ -11,6 +11,7 @@ export interface Like {
 }
 
 export interface Comment {
+  _id: string
   id: string
   userId: string
   content: string
@@ -33,6 +34,7 @@ export interface IPostInput {
   shares: number
   bookmarks: Bookmark[]
   images: string[]
+  commentId?: string
 }
 
 export default interface IPost {

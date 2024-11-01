@@ -7,7 +7,7 @@ import { usePost } from "../usePost";
 import Spinner from "@/components/Spinner";
 import { useUserSession } from "@/features/auth/useUserSession";
 import { useUpdatePost } from "../useUpdatePost";
-import { Bookmark, Comment, IUser, Like } from "@/interfaces";
+import { Bookmark, Comment, IPostInput, IUser, Like } from "@/interfaces";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { appConfig } from "@/config";
@@ -92,7 +92,7 @@ export default function PostDetail() {
     if (!isLiked)
       newData = [...likes, { userId: currentUserId, likeAt: new Date() }]
 
-    updatePost({ likes: newData })
+    updatePost({ data: { likes: newData } })
   }
 
   const handleClickBookmark = function () {
@@ -110,7 +110,7 @@ export default function PostDetail() {
 
     // console.log('ok', newData)
 
-    updatePost({ bookmarks: newData })
+    updatePost({ data: { bookmarks: newData } })
   }
 
   const handleClickComment = function () {
@@ -133,7 +133,7 @@ export default function PostDetail() {
 
     // console.log('ok', newData)
 
-    updatePost({ comments: newData })
+    updatePost({ data: { comments: newData } })
     setComment('')
   }
 
@@ -144,7 +144,7 @@ export default function PostDetail() {
       return _id !== currentUserId
     })
 
-    updatePost({ comments: newData })
+    updatePost({ data: { comments: newData } })
     navigate(0)
   }
 
@@ -155,8 +155,15 @@ export default function PostDetail() {
     // I prefer to not show the whole text area selected.
     // navigate(0)
     toast.success('Copied to clipboard')
-    updatePost({ shares: shares + 1 })
+    updatePost({ data: { shares: shares + 1 } })
   };
+  const handleClickLikeComment = function (userId: string, commentId: string, likes: Like[], isCommentLiked: boolean) {
+    let newData
+    if (isCommentLiked) newData = likes?.filter(l => l.userId !== userId)
+    else newData = [...likes, { userId, likeAt: new Date() }]
+    // console.log('ok ok ok')
+    updatePost({ data: { likes: newData, commentId } as unknown as Partial<IPostInput>, basedComments: true })
+  }
 
   if (isLoadingPost || isLoadingUser) return <Spinner size="big" />
 
@@ -261,10 +268,12 @@ export default function PostDetail() {
         <ul>
           {finalComments.map((com: Comment, ind: number) => {
 
-            const { userId, likes, content, commentAt } = com || {}
-            const { fullName, avatar } = userId as unknown as IUser || {}
+            const { userId, likes, content, commentAt, _id: commentId } = com || {}
+            const { fullName, avatar, _id: userIdStr } = userId as unknown as IUser || {}
             const avatarImg = avatar?.includes('default-avatar') ? '/default-avatar.jpg' : avatar
             const commentAtStr = getDifferentTime(new Date(commentAt), new Date())
+            const isCommentLiked = likes?.find((l) => l.userId === userIdStr)
+            console.log(Boolean(isCommentLiked))
 
             return <li key={ind}>
               <div className="flex flex-col gap-2 py-3 px-3">
@@ -276,8 +285,8 @@ export default function PostDetail() {
                   <p className="text-xs text-stone-600 font-semibold">at {commentAtStr} {commentAtStr === 'now' ? '' : 'ago'}</p>
                 </div>
                 <p className="text-sm text-stone-700">{content}</p>
-                <div className="flex gap-3 text-sm text-stone-600 font-semibold items-center">
-                  <p>{likes?.length} like</p>
+                <div className={`flex gap-3 text-sm text-stone-600 font-semibold items-center ${isCommentLiked ? '[&>p>button]:text-brand-600 [&>p]:text-brand-600' : ''}`}>
+                  <p>{likes?.length} <Button type="" onClick={() => handleClickLikeComment(userIdStr, commentId, likes, Boolean(isCommentLiked))}>like</Button></p>
                   {/* <p>Reply</p> */}
                   {ind == 0 && <Modal>
                     <Modal.Open openName="comment-option">
@@ -288,7 +297,7 @@ export default function PostDetail() {
                     <Modal.Window name="comment-option">
                       <Popup title='Choose an action' isLoading={false} btnContent="" onHandle={() => 1} >
                         <ul className='flex flex-col gap-2'>
-                          <li className='py-2 text-center text-stone-600 font-semibold border-y-[1.5px]'>Edit</li>
+                          {/* <li className='py-2 text-center text-stone-600 font-semibold border-y-[1.5px]'>Edit</li> */}
                           <li className=''>
                             <Button type="popup-delete" onClick={handleDeleteComment}>Delete</Button>
                           </li>
