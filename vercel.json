@@ -19,8 +19,9 @@
   ],
   "git": {
     "deploymentEnabled": {
-      "tour-booking": false,
-      "another": false
+      "tour-booking": true,
+      "another": false,
+      "master": false
     }
   }
 }
