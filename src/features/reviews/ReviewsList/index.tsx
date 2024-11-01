@@ -31,7 +31,7 @@ export default function ReviewsList({ isReviewsOfUser }: { isReviewsOfUser?: boo
       {reviews?.map((review: IReview, i: number) => {
         if (i === 4) return
         const { name, _id } = review.cabin as ICabin || {}
-        return isReviewsOfUser ? <Link key={review._id} to={`/cabins/${_id}`} className="h-[7.5rem] [&>li]:h-full">
+        return isReviewsOfUser ? <Link key={review._id} to={`/tours/${_id}`} className="h-[7.5rem] [&>li]:h-full">
           <p className="p-2 bg-stone-100 text-xs uppercase font-semibold text-stone-500">{name} </p>
           <ReviewItem key={review._id} item={review} />
         </Link> :

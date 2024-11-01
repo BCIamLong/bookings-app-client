@@ -44,12 +44,14 @@ export default function AddReview() {
 
   const handleDeleteClick = function () {
     deleteReview(reviewId)
+    setReview('')
   }
 
   const handleEditClick = function () {
     editReview({ id: reviewId, data: { rating: star, review } }, {
       onSuccess: () => {
         setIsEdit(false)
+        setReview('')
       }
     })
   }

@@ -11,6 +11,7 @@ export default function BookingCard({ isModal = false }: { isModal?: boolean }) 
   const { booking, isLoading: isBookingLoading } = useUserBooking()
   const { user, isLoading: isUserLoading } = useUserSession()
   const { startDate, endDate, numNights, numGuests, cabinPrice, totalPrice, extrasPrice, createdAt, cabinId } = booking as IBooking || {}
+  console.log(booking)
   const { name: cabinName, _id, discount } = cabinId as ICabin || {}
   const { name, fullName } = user || {}
   const classStyle = `flex justify-between items-center [&>span:first-child]:text-stone-500 [&>span:nth-child(2)]:text-brand-600 [&>span:nth-child(2)]:font-semibold`
@@ -22,7 +23,7 @@ export default function BookingCard({ isModal = false }: { isModal?: boolean }) 
   return (
     <div className={`p-8 shadow-md shadow-brand-300 rounded-md text-stone-700 w-full ${style}`}>
       <div className="border-b-[1.5px] pb-3">
-        <Link to={`/cabins/${_id}`}> <Heading type="tertiary">{cabinName}</Heading></Link>
+        <Link to={`/tours/${_id}`}> <Heading type="tertiary">{cabinName}</Heading></Link>
       </div>
       <ul className="flex flex-col gap-3 mt-3">
         <li className={classStyle}>
@@ -36,10 +37,10 @@ export default function BookingCard({ isModal = false }: { isModal?: boolean }) 
         </li>
         <li className={classStyle}><span>Payment method:</span> <span>Credit Card (Visa)</span></li>
         <li className={classStyle}><span>Sender name:</span> <span>{fullName || name}</span></li>
-        <li className={classStyle}><span>Amount of cabin:</span> <span>${cabinPrice}</span></li>
+        <li className={classStyle}><span>Amount of tour:</span> <span>${cabinPrice}</span></li>
         <li className={classStyle}><span>Other fee:</span> <span>${extrasPrice}</span></li>
-        <li className={classStyle}><span>Total amount:</span> <span>${cabinPrice * numNights * numGuests}</span></li>
-        <li className={classStyle}><span>Discount:</span> <span>{discount}%</span></li>
+        <li className={classStyle}><span>Total amount:</span> <span>${totalPrice}</span></li>
+        <li className={classStyle}><span>Discount:</span> <span>{discount || 0}%</span></li>
         <li className={classStyle}><span>Final amount:</span> <span>${totalPrice}</span></li>
       </ul>
     </div>
