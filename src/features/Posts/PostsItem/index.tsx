@@ -95,15 +95,21 @@ export default function PostsItem({ post }: { post: IPost }) {
 
 
   const copyToClipboard = function () {
+    if (!user) return toast.error('Please login to perform this action!')
     // document.execCommand(`${CLIENT_BASE_UTL}/posts/${postId}`);
     navigator.clipboard.writeText(`${CLIENT_BASE_UTL}/posts/${postId}`)
     // This is just personal preference.
     // I prefer to not show the whole text area selected.
     // navigate(`/posts/${postId}`)
-    toast.success('Copied to clipboard')
-    updatePost({ data: { shares: shares + 1 } })
+    // toast.success('Copied to clipboard')
+    updatePost({ data: { shares: shares + 1 } }, {
+      onSuccess: () => toast.success('Copied to clipboard')
+    })
   };
 
+  const handleClickReport = function () {
+    if (!user) return toast.error('Please login to perform this action!')
+  }
 
   if (isLoading) return <Spinner size='big' />
 
@@ -119,7 +125,7 @@ export default function PostsItem({ post }: { post: IPost }) {
               <p className="text-stone-500 text-sm">at {postAtStr} {postAtStr === 'now' ? '' : 'ago'}</p>
             </div>
             {/* </Link> */}
-            <div className={`z-30 ${currentUserId !== guestId ? 'hidden' : ''}`}>
+            <div className={`z-30 ${currentUserId !== guestId ? '' : ''}`}>
               <Modal.Open openName="disable-2fa">
                 <Button type="icon-1" size="small">
                   <HiMiniEllipsisHorizontal className="text-stone-600 text-2xl" />
@@ -148,19 +154,22 @@ export default function PostsItem({ post }: { post: IPost }) {
         <Modal.Window name="disable-2fa">
           <Popup title='Choose an action' isLoading={false} btnContent="" onHandle={() => 1} >
             <ul className='flex flex-col gap-2'>
-              <li>
-                <ButtonLink href={`/posts/${postId}/edit`} type='popup-normal'>
-                  Edit
-                </ButtonLink>
-              </li>
-              <li className=''>
-                <Button type='popup-delete' onClick={handleDeletePost}>
-                  {isDeleting ? <Spinner size='small' /> :
-                    'Delete'}
-                </Button>
-              </li>
+              {currentUserId === guestId && <>
+                <li>
+                  <ButtonLink href={`/posts/${postId}/edit`} type='popup-normal'>
+                    Edit
+                  </ButtonLink>
+                </li>
+                <li className=''>
+                  <Button type='popup-delete' onClick={handleDeletePost}>
+                    {isDeleting ? <Spinner size='small' /> :
+                      'Delete'}
+                  </Button>
+                </li></>}
               {currentUserId !== guestId &&
-                <li className='py-2  text-red-600 text-center text-stone-600 font-semibold border-y-[1.5px]'>Report</li>}
+                <li className='py-2  text-red-600 text-center text-stone-600 font-semibold border-y-[1.5px]'>   <Button type='popup-normal' onClick={handleClickReport}>
+                  Report
+                </Button></li>}
             </ul>
           </Popup>
         </Modal.Window>

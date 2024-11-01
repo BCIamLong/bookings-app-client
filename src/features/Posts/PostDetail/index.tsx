@@ -11,10 +11,12 @@ import { Bookmark, Comment, IPostInput, IUser, Like } from "@/interfaces";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { appConfig } from "@/config";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { differenceInDays, differenceInHours, differenceInMinutes, differenceInMonths, differenceInSeconds, format } from "date-fns";
 import { dateUtil } from "@/utils";
 import Heading from "@/components/Heading";
+import ButtonLink from "@/components/ButtonLink";
+import { useDeletePost } from "../useDeletePost";
 
 const { CLIENT_BASE_UTL } = appConfig
 const { getDifferentTime } = dateUtil
@@ -30,9 +32,10 @@ export default function PostDetail() {
 
   const { likes, bookmarks, shares, comments, title, description, images, tourId, userId, _id: postId, createdAt } = post || {}
 
+  const { deletePost, isDeleting } = useDeletePost({ id: postId })
   const { updatePost, isUpdating } = useUpdatePost({ id: postId })
 
-  const { fullName, _id: guestId, avatar } = userId as unknown as { id: string, fullName: string, avatar: string } || {}
+  const { fullName, _id: guestId, avatar } = userId as unknown as { _id: string, fullName: string, avatar: string } || {}
   const { name, id } = tourId as unknown as { id: string, name: string } || {}
 
   const numLikes = likes?.length
@@ -114,6 +117,7 @@ export default function PostDetail() {
   }
 
   const handleClickComment = function () {
+    // console.log('ok comment')
     if (!comment) return
     if (isCommented) {
       setComment('')
@@ -138,6 +142,7 @@ export default function PostDetail() {
   }
 
   const handleDeleteComment = function () {
+    if (!user) return toast.error('Please login to perform this action!')
     const newData = comments.filter((c: Comment) => {
       const { _id } = c.userId as unknown as { _id: string, name: string }
 
@@ -149,6 +154,7 @@ export default function PostDetail() {
   }
 
   const copyToClipboard = function () {
+    if (!user) return toast.error('Please login to perform this action!')
     // document.execCommand(`${CLIENT_BASE_UTL}/posts/${postId}`);
     navigator.clipboard.writeText(`${CLIENT_BASE_UTL}/posts/${postId}`)
     // This is just personal preference.
@@ -158,11 +164,22 @@ export default function PostDetail() {
     updatePost({ data: { shares: shares + 1 } })
   };
   const handleClickLikeComment = function (userId: string, commentId: string, likes: Like[], isCommentLiked: boolean) {
+    if (!user) return toast.error('Please login to perform this action!')
     let newData
     if (isCommentLiked) newData = likes?.filter(l => l.userId !== userId)
     else newData = [...likes, { userId, likeAt: new Date() }]
     // console.log('ok ok ok')
     updatePost({ data: { likes: newData, commentId } as unknown as Partial<IPostInput>, basedComments: true })
+  }
+
+  const handleDeletePost = function () {
+    const isWantToDelete = confirm('Are you sure to delete this post')
+    if (!isWantToDelete) return
+    deletePost()
+  }
+
+  const handleClickReport = function () {
+    if (!user) return toast.error('Please login to perform this action!')
   }
 
   if (isLoadingPost || isLoadingUser) return <Spinner size="big" />
@@ -175,7 +192,12 @@ export default function PostDetail() {
           <p className="text-stone-700 font-semibold">{fullName}</p>
           <p className="text-stone-500 text-sm">at {postAtStr} {postAtStr === 'now' ? '' : 'ago'}</p>
         </div>
-        <div className={`${currentUserId !== guestId ? 'hidden' : ''}`}>
+        {/* 
+        1, user doesn't login: display the report but when user click it will show please login
+        2, user login but not the post of the user: display the report
+        3, user login and also see the post of the user: display delete, update, report
+        */}
+        <div className={`${currentUserId !== guestId ? '' : ''}`}>
           <Modal>
             <Modal.Open openName="disable-2fa">
               <Button type="icon-1" size="small">
@@ -185,10 +207,22 @@ export default function PostDetail() {
             <Modal.Window name="disable-2fa">
               <Popup title='Choose an action' isLoading={false} btnContent="" onHandle={() => 1} >
                 <ul className='flex flex-col gap-2'>
-                  <li className='py-2 text-center text-stone-600 font-semibold border-y-[1.5px]'>Edit</li>
-                  <li className='py-2 text-red-600 text-center text-stone-600 font-semibold border-y-[1.5px]'>Delete</li>
+                  {currentUserId === guestId && <>
+                    <li>
+                      <ButtonLink href={`/posts/${postId}/edit`} type='popup-normal'>
+                        Edit
+                      </ButtonLink>
+                    </li>
+                    <li className=''>
+                      <Button type='popup-delete' onClick={handleDeletePost}>
+                        {isDeleting ? <Spinner size='small' /> :
+                          'Delete'}
+                      </Button>
+                    </li></>}
                   {currentUserId !== guestId &&
-                    <li className='py-2  text-red-600 text-center text-stone-600 font-semibold border-y-[1.5px]'>Report</li>}
+                    <li className='py-2  text-red-600 text-center text-stone-600 font-semibold border-y-[1.5px]'>   <Button type='popup-normal' onClick={handleClickReport}>
+                      Report
+                    </Button></li>}
                 </ul>
               </Popup>
             </Modal.Window>
@@ -207,10 +241,12 @@ export default function PostDetail() {
         </div>
         {/* <img className="w-full" src={images[0]} alt="" /> */}
       </div>
-      <div className="flex justify-between items-center text-stone-50 px-3 py-1 bg-brand-400">
-        <p className="">{name}</p>
-        <HiChevronRight />
-      </div>
+      <Link to={`/tours/${id}`}>
+        <div className="flex justify-between items-center text-stone-50 px-3 py-1 bg-brand-400">
+          <p className="">{name}</p>
+          <HiChevronRight />
+        </div>
+      </Link>
       <ul className="flex justify-around py-4 text-xl text-stone-500">
         <li className="flex gap-2 items-center">
           <Button type='icon-2' onClick={handleClickLike}>
@@ -257,8 +293,8 @@ export default function PostDetail() {
       </ul>
       <div className={`flex items-center border-t-[1.5px] border-stone-100 py-2 ${isCommented ? '' : ''}`}>
 
-        <input id="add-comment" value={comment} onChange={(e) => setComment(e.target.value)} className="w-full bg-stone-0 focus:outline-none text-stone-700" type="text" placeholder="Add a comment" />
-        <Button type="icon-2" onClick={handleClickComment}>
+        <input id="add-comment" value={comment} disabled={Boolean(!user)} onChange={(e) => setComment(e.target.value)} className="w-full bg-stone-0 focus:outline-none text-stone-700" type="text" placeholder={`${!user ? 'Please login to comment' : 'Add a comment'}`} />
+        <Button type="icon-2" onClick={handleClickComment} disabled={Boolean(!user)}>
           <div className="py-2 px-3 [&>.icon]:hover:text-brand-600 cursor-pointer">
             <LuSendHorizonal className="icon transition-all duration-300 text-xl text-stone-600" />
           </div>

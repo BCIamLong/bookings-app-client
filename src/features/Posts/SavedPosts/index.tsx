@@ -13,6 +13,7 @@ export default function SavedPosts() {
 
   if (isLoadingUser || isLoadingPosts) return <Spinner size="big" />
 
+  // if (!user) return null
   if (!posts?.length) return <Empty>You don't bookmark any posts yet</Empty>
 
   return (

@@ -116,10 +116,14 @@ export default function AppRoute() {
             <Route path="posts" element={<PostsLayout />} >
               {/* <Route index element={<PostsList />} /> */}
               <Route path="home" element={<PostsList />} />
-              <Route path="create" element={<CreatePost />} />
+              {/* <Route path="create" element={<CreatePost />} /> */}
               <Route path=":id/edit" element={<EditPost />} />
               <Route path=":id" element={<PostDetail />} />
               <Route path="explore" element={<ExplorePosts />} />
+              {/* <Route path="saved" element={<SavedPosts />} /> */}
+            </Route>
+            <Route path="posts" element={<ProtectedRoute><PostsLayout /></ProtectedRoute>} >
+              <Route path="create" element={<CreatePost />} />
               <Route path="saved" element={<SavedPosts />} />
             </Route>
             {/* <Route path="/posts" element={<Posts />} /> */}
