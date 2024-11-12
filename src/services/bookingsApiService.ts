@@ -49,10 +49,12 @@ const getUserBookings = async function ({
   // const token = Cookies.get('access-token')
   let url = `${SERVER_BASE_URL}/api/v1/bookings/me`
   if (cabinId) {
-    if (cabinId.includes('cabin'))
-      url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookings/me`
+    if (cabinId.includes('tour'))
+      url = `${SERVER_BASE_URL}/api/v1/tours/${cabinId}/bookings/me`
+    // url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookings/me`
 
     url = `${SERVER_BASE_URL}/api/v1/tours/${cabinId}/bookings/me`
+    // url = `${SERVER_BASE_URL}/api/v1/tours/${cabinId}/bookings/me`
   }
   const { status, cabin } = options
 
@@ -65,7 +67,8 @@ const getUserBookings = async function ({
     if (cabinId?.includes('cabin'))
       url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status[${status.operation}]=${status.value}&&cabinId=${cabinId}`
 
-    url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status[${status.operation}]=${status.value}&&tourId=${cabinId}`
+    url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status[${status.operation}]=${status.value}&&cabinId=${cabinId}`
+    // url = `${SERVER_BASE_URL}/api/v1/auth/me/bookings?status[${status.operation}]=${status.value}&&tourId=${cabinId}`
   }
   try {
     const res = await axios.get(url, {

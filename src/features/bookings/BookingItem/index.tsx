@@ -7,7 +7,7 @@ import { IBooking, ICabin } from "../../../interfaces";
 export default function BookingItem({ booking }: { booking: IBooking }) {
 
   const { totalPrice, createdAt, cabinId } = booking
-  const { name } = cabinId as ICabin
+  const { name } = cabinId as ICabin || {}
 
   return <li className="py-3 px-6 rounded-md bg-stone-100 flex justify-between items-center">
     <div className="flex flex-col items-start">

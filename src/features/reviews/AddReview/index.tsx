@@ -28,7 +28,7 @@ export default function AddReview() {
   const [review, setReview] = useState('')
   const [isEdit, setIsEdit] = useState(false)
   const { count, isLoading: isLoadingBookings } = useUserBookings()
-
+  // console.log(reviews)
   const { avatar } = user || {}
   const avatarFormat = avatar === 'default-avatar.jpg' ? '/default-avatar.jpg' : avatar
 

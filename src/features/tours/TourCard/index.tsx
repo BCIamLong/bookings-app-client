@@ -10,9 +10,9 @@ export default function TourCard({ tour }: { tour: ITour }) {
   const { isBooking, bookTour } = useBookTour()
 
 
+  console.log('okk price', price)
   const handleClick = async function () {
-
-    bookTour({ cabinId: tourId, cabinPrice: 0, regularPrice: price, name, description, image: imageCover, endDate: startDates[startDates.length - 1].date, startDate: startDates[0].date, numGuests: maxGroupSize, numNights: duration, locale })
+    bookTour({ cabinId: tourId, cabinPrice: price, regularPrice: price, name, description, image: imageCover, endDate: startDates[startDates.length - 1].date, startDate: startDates[0].date, numGuests: maxGroupSize, numNights: duration, locale })
 
   }
   return (

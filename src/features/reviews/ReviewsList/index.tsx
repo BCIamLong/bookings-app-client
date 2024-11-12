@@ -39,7 +39,7 @@ export default function ReviewsList({ isReviewsOfUser }: { isReviewsOfUser?: boo
       })}
       {/* {reviews?.map((review: IReview) => <ReviewItem key={review._id} item={review} />)} */}
 
-      {!reviewsLength && <Empty>{t('reviews.empty.cabins')}</Empty>}
+      {!reviewsLength && <Empty>{`This tour doesn't have any review yet`}</Empty>}
       {reviewsLength > 4 &&
         <Modal>
           <Modal.Open openName="user-reviews">

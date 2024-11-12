@@ -21,9 +21,11 @@ const getReviews = async function ({
   sort?: SortReviewOption
 }) {
   try {
-    let url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews`
+    let url = `${SERVER_BASE_URL}/api/v1/tours/${cabinId}/reviews`
+    // let url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews`
     if (userId && !isReviewsOfUser)
-      url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews?user=${userId}`
+      url = `${SERVER_BASE_URL}/api/v1/tours/${cabinId}/reviews?user=${userId}`
+    // url = `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews?user=${userId}`
     if (isReviewsOfUser) url = `${SERVER_BASE_URL}/api/v1/auth/me/reviews`
 
     const query = new URLSearchParams()
@@ -56,7 +58,8 @@ const addReview = async function (data: ReviewInput, cabinId: string) {
   try {
     // const token = Cookies.get('access-token')
     const res = await axios.post(
-      `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews`,
+      `${SERVER_BASE_URL}/api/v1/tours/${cabinId}/reviews`,
+      // `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/reviews`,
       data,
       {
         headers: {

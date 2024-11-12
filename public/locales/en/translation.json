@@ -390,8 +390,8 @@
         "login": "Login to book"
       },
       "notifies": {
-        "cabin-booked": "This cabin is booked",
-        "your-booked": "You already have booked another cabin"
+        "cabin-booked": "This tour is booked",
+        "your-booked": "You already have booked another tour"
       }
     },
     "links": {
