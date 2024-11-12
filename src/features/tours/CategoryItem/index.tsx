@@ -1,14 +1,22 @@
+import { appConfig } from "@/config";
+import { Link } from "react-router-dom";
 
-export default function CategoryItem({ title, numTours }: { title: string, numTours: number }) {
+const { DIFFICULTY, CLIENT_BASE_UTL } = appConfig
+
+export default function CategoryItem({ title, numTours, image }: { title: string, numTours: number, image: string }) {
+  let link = `${CLIENT_BASE_UTL}/tours?type=${title}`
+  if (DIFFICULTY.flat().includes(title)) link = `${CLIENT_BASE_UTL}/tours?difficulty=${title}`
   return (
-    <li className="bg-stone-50 rounded-md hover:shadow-md transition-all duration-300 shadow-sm">
-      <div className="flex flex-col gap-3 cursor-pointer mb-3">
-        <img className="w-52 rounded-md rounded-b-none" src="https://images.pexels.com/photos/1004584/pexels-photo-1004584.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
-        <div>
-          <p className="font-semibold text-stone-700">{title}</p>
-          <p className="text-sm text-stone-500">{numTours} tours</p>
+    <Link to={link}>
+      <li className="bg-stone-50 rounded-md hover:shadow-md transition-all duration-300 shadow-sm">
+        <div className="flex flex-col gap-3 cursor-pointer mb-3">
+          <img className="w-52 h-40 object-cover rounded-md rounded-b-none" src={image} alt="" />
+          <div className="pb-1 px-1">
+            <p className="font-semibold text-stone-700 capitalize">{title}</p>
+            {/* <p className="text-sm text-stone-500">{numTours} tours</p> */}
+          </div>
         </div>
-      </div>
-    </li>
+      </li>
+    </Link>
   )
 }

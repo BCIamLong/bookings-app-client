@@ -8,10 +8,12 @@ import Spinner from "@/components/Spinner";
 import { useSearchParams } from "react-router-dom";
 import { SortOptions } from "@/interfaces/types";
 import Empty from "@/components/Empty";
+import { appConfig } from "@/config";
 
+const { CLIENT_BASE_UTL } = appConfig
 // * we will prepare tours data like for trending tours and best tours....
 // export default function ToursList({tours}:{tours: Tour[]}) {
-export default function ToursList({ type, title }: { type?: 'full' | 'normal', title: string }) {
+export default function ToursList({ type, title, statusType = 'trending' }: { type?: 'full' | 'normal', title: string, statusType?: string }) {
   const [searchParams] = useSearchParams()
   const sort = searchParams.get('sort') || "none"
   const page = +searchParams.get('page')! || 1
@@ -45,7 +47,7 @@ export default function ToursList({ type, title }: { type?: 'full' | 'normal', t
     <div className="p-12 flex flex-col gap-6 bg-stone-0">
       <div className="flex justify-between items-center">
         <Heading type="secondary">{title}</Heading>
-        <ButtonLink type="simple1" href="#">See more &#8594;</ButtonLink>
+        <ButtonLink type="simple1" href={`${CLIENT_BASE_UTL}/tours?status=${statusType}`}>See more &#8594;</ButtonLink>
       </div>
       <ul className="grid grid-cols-4 gap-6 thin:max-sm:grid thin:max-sm:grid-cols-2 [&>li]:shadow-md">
         {tours.map((tour: ITour, i: number) => i < 4 ? <TourItem key={tour._id} tour={tour} /> : null)}

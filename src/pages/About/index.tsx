@@ -56,18 +56,18 @@ export default function About() {
       <div className='grid grid-cols-3 thin:max-sm:grid-cols-2 shadow-md border-1 border border-stone-100 mt-12'>
         <img src="https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
         <div className='px-6 text-center thin:max-tiny:gap-4 [&>h1]:justify-center flex flex-col gap-6 items-center justify-center'>
-          <Heading type='secondary'>Our story</Heading>
-          <p className='text-sm text-stone-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, aspernatur! Officia blanditiis ipsam laborum impedit excepturi iste tenetur? Suscipit ipsum nisi accusantium eligendi error officiis consequuntur provident odit fugit dignissimos.</p>
+          <Heading type='secondary'>Our Story</Heading>
+          <p className='text-sm text-stone-500'>Founded in 2024, Tour Booking website began with a simple mission: to make travel accessible, enjoyable, and memorable for everyone. Our founders, [Founder's Name] and [Co-Founder's Name], were avid travelers who believed that the best way to explore the world is through authentic and immersive experiences. With this vision, they set out to create a tour company that offers more than just sightseeing.</p>
         </div>
-        <img className='thin:max-sm:col-start-2' src="https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+        <img className='thin:max-sm:col-start-2' src="https://images.pexels.com/photos/158398/niagara-falls-waterfall-horseshoe-158398.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
         <div className='thin:max-tiny:gap-4 thin:max-sm:row-start-2 thin:max-sm:row-end-3  px-6 text-center [&>h1]:justify-center flex flex-col gap-6 items-center justify-center'>
-          <Heading type='secondary'>Our story</Heading>
-          <p className='text-sm text-stone-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, aspernatur! Officia blanditiis ipsam laborum impedit excepturi iste tenetur? Suscipit ipsum nisi accusantium eligendi error officiis consequuntur provident odit fugit dignissimos.</p>
+          <Heading type='secondary'>Our Mission</Heading>
+          <p className='text-sm text-stone-500'>At Tour Booking website, our mission is to provide exceptional travel experiences that inspire and enrich our customers' lives. We strive to offer tours that are not only enjoyable but also educational and culturally enriching. We believe in responsible tourism and are committed to promoting sustainable travel practices that benefit both our customers and the communities we visit.</p>
         </div>
-        <img className='' src="https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+        <img className='' src="https://images.pexels.com/photos/2407070/pexels-photo-2407070.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
         <div className='thin:max-tiny:gap-4 px-6 text-center [&>h1]:justify-center flex flex-col gap-6 items-center justify-center'>
-          <Heading type='secondary'>Our story</Heading>
-          <p className='text-sm text-stone-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, aspernatur! Officia blanditiis ipsam laborum impedit excepturi iste tenetur? Suscipit ipsum nisi accusantium eligendi error officiis consequuntur provident odit fugit dignissimos.</p>
+          <Heading type='secondary'>Why Choose Us?</Heading>
+          <p className='text-sm text-stone-500'>At Tour Booking website, we offer personalized tours tailored to your interests and preferences, ensuring every traveler has a unique experience. Our expert guides are passionate about sharing their local insights, making your journey unforgettable. We prioritize customer satisfaction and go above and beyond to ensure every aspect of your trip is perfect. Additionally, we are committed to sustainable travel practices that protect the environment and support local communities.</p>
         </div>
 
       </div>

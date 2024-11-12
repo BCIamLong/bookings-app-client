@@ -87,7 +87,7 @@ export default function Homepage() {
       <ToursList title="Our trending tours" />
       <Services />
       <Instructions />
-      <ToursList title="Our best tours" />
+      <ToursList title="Our best tours" statusType="popular" />
       <PostsHome />
       {/* <LatestCabinsList />
       <div className="px-6 bg-stone-0">
