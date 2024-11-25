@@ -31,7 +31,8 @@ const getBookmark = async function (cabinId: string) {
   // console.log(cabinId)
   try {
     const res = await axios.get(
-      `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookmarks`,
+      `${SERVER_BASE_URL}/api/v1/tours/${cabinId}/bookmarks?for=user`,
+      // `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookmarks`,
       {
         headers: {
           // Authorization: `Bearer ${token}`,
@@ -52,7 +53,8 @@ const addBookmark = async function (cabinId: string, data: { link: string }) {
   try {
     // const token = Cookies.get('access-token')
     const res = await axios.post(
-      `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookmarks`,
+      `${SERVER_BASE_URL}/api/v1/tours/${cabinId}/bookmarks`,
+      // `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookmarks`,
       data,
       {
         headers: {

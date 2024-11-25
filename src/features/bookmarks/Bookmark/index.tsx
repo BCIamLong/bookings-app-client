@@ -9,7 +9,7 @@ export default function Bookmark() {
   const { bookmark, isLoading } = useBookmark()
   const { addBookmark, isBookmarking } = useAddBookmark()
   const { deleteBookmark, isDeleting } = useDeleteBookmark()
-
+  // console.log(bookmark)
   const { _id: bookmarkId } = bookmark || {}
 
 

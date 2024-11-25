@@ -10,7 +10,8 @@ const { CLIENT_BASE_UTL } = appConfig
 
 export const useAddBookmark = function () {
   const { id: cabinId } = useParams() || {}
-  const link = `${CLIENT_BASE_UTL}/cabins/${cabinId}`
+  // const link = `${CLIENT_BASE_UTL}/cabins/${cabinId}`
+  const link = `${CLIENT_BASE_UTL}/tours/${cabinId}`
   const queryClient = useQueryClient()
 
   const {
