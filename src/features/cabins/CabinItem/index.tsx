@@ -16,7 +16,7 @@ export default function CabinItem({
 }) {
   const { t } = useTranslation()
   const { image, _id } = cabin
-  const cabinImage = image.startsWith('cabin-') ? `imgs/cabins/${image}` : image
+  const cabinImage = image?.startsWith('cabin-') ? `imgs/cabins/${image}` : image
 
   if (type === "n-lines")
     return (
