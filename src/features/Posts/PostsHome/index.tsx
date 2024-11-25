@@ -40,23 +40,23 @@ export default function PostsHome() {
         <div className="relative cursor-pointer hover:-translate-y-1 transition-all duration-300">
           <div className="absolute bottom-8 left-0 p-3 z-20 flex flex-col gap-2 thin:max-sm:bottom-4">
             <div className="flex gap-2 items-center">
-              <img className="rounded-full w-12" src="imgs/users/user-6.jpg" alt="" />
-              <p className="text-white font-semibold">Alex Anser</p>
+              <img className="rounded-full w-12" src={avatar2} alt="" />
+              <p className="text-white font-semibold">{fullName2}</p>
             </div>
-            <p className="text-white">Lorem ipsum dolor sit amet consectetur.</p>
+            <p className="text-white w-[100%]">{description2.slice(0, 57)}</p>
           </div>
-          <img className="w-[27rem] h-[14rem] rounded-lg z-10 brightness-50 thin:max-sm:w-full thin:max-sm:object-cover thin:max-sm:h-auto" src="https://images.pexels.com/photos/2087391/pexels-photo-2087391.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+          <img className="w-[27rem] h-[14rem] rounded-lg z-10 brightness-50 thin:max-sm:w-full thin:max-sm:object-cover thin:max-sm:h-auto" src={images2[0]} alt="" />
         </div>
         <div className="relative">
           <div className="w-[100%] h-[78%] thin:max-sm:h-[90%] [&>img]:hover:brightness-75 cursor-pointer">
             <div className="absolute bottom-10 thin:max-sm:bottom-4 left-0 p-3 z-20 flex flex-col gap-2">
               <div className="flex gap-2 items-center">
-                <img className="rounded-full w-12" src="imgs/users/user-6.jpg" alt="" />
-                <p className="text-white font-semibold">Alex Anser</p>
+                <img className="rounded-full w-12" src={avatar3} alt="" />
+                <p className="text-white font-semibold">{fullName3}</p>
               </div>
-              <p className="text-white ">Lorem ipsum dolor sit amet consectetur.</p>
+              <p className="text-white w-[90%]">{description3.slice(0, 90)}</p>
             </div>
-            <img className="w-[27rem] h-[16rem] transition-all duration-500 thin:max-sm:w-full thin:max-sm:object-cover thin:max-sm:h-auto rounded-lg z-10 brightness-50" src="https://images.pexels.com/photos/2087391/pexels-photo-2087391.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+            <img className="w-[27rem] h-[16rem] transition-all duration-500 thin:max-sm:w-full thin:max-sm:object-cover thin:max-sm:h-auto rounded-lg z-10 brightness-50" src={images3[0]} alt="" />
           </div>
         </div>
       </div>

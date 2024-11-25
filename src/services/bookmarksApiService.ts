@@ -33,12 +33,12 @@ const getBookmark = async function (cabinId: string) {
     const res = await axios.get(
       `${SERVER_BASE_URL}/api/v1/tours/${cabinId}/bookmarks?for=user`,
       // `${SERVER_BASE_URL}/api/v1/cabins/${cabinId}/bookmarks`,
-      {
-        headers: {
-          // Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      },
+      // {
+      //   headers: {
+      //     // Authorization: `Bearer ${token}`,
+      //     'Content-Type': 'application/json',
+      //   },
+      // },
     )
     // console.log(res)
 
