@@ -6,12 +6,13 @@ import { IBooking, ICabin } from "../../../interfaces";
 import { useUserSession } from "../../auth/useUserSession";
 import Button from "../../../components/Button";
 import { useDeleteUserBooking } from "../useDeleteUserBooking";
+import { Link } from "react-router-dom";
 
 export default function BookingCardProfile({ booking, onCloseModal }: { booking: IBooking, onCloseModal?: () => void }) {
   const { user, isLoading: isUserLoading } = useUserSession()
   const { deleteUserBooking, isDeleting } = useDeleteUserBooking()
   const { _id, startDate, endDate, numNights, numGuests, cabinPrice, totalPrice, extrasPrice, createdAt, cabinId } = booking as IBooking || {}
-  const { name: cabinName, discount } = cabinId as ICabin || {}
+  const { name: cabinName, discount, _id: tourId } = cabinId as ICabin || {}
   const { name, fullName } = user || {}
   const classStyle = `flex justify-between items-center [&>span:first-child]:text-stone-500 [&>span:nth-child(2)]:text-brand-600 [&>span:nth-child(2)]:font-semibold`
 
@@ -29,7 +30,9 @@ export default function BookingCardProfile({ booking, onCloseModal }: { booking:
   return (
     <div className={`p-8 shadow-md shadow-brand-300 rounded-md text-stone-700 bg-brand-200 w-[30rem]`}>
       <div className="border-b-[1.5px] border-stone-300 pb-4">
-        <Heading type="tertiary">{cabinName}</Heading>
+        <Link to={`/tours/${tourId}`}>
+          <Heading type="tertiary">{cabinName}</Heading>
+        </Link>
       </div>
       <ul className="flex flex-col gap-3 mt-4">
         <li className={classStyle}>
