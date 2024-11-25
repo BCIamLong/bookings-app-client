@@ -32,7 +32,7 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
   const [guests, setGuests] = useState(1)
   // const [days, setDays] = useState(3)
   const [startDate, setStartDate] = useState(0)
-  const startDates = startDatesTmp.filter(date => new Date(date.date) > new Date()).sort((a: StartDate, b: StartDate) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  const startDates = startDatesTmp?.filter(date => new Date(date.date) > new Date()).sort((a: StartDate, b: StartDate) => new Date(a.date).getTime() - new Date(b.date).getTime())
   console.log(startDates[1])
 
 
@@ -47,18 +47,21 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
   const participantsVal = startDates.reduce((acc, date, ind) => startDate === ind ? acc + date.participants : acc, 0)
 
   const isSlotFulled = !(maxGroupSize - participantsVal)
+  // console.log(imageCover)
 
   const handleClick = async function (e: FormEvent) {
     e.preventDefault()
     if (!guests) return
-
     bookTour({ cabinId: tourId, cabinPrice: price, regularPrice: price + (discountPrice * price), name, description, image: imageCover, endDate: new Date(endDate), startDate: startDateVal, numGuests: guests, numNights: duration, locale })
 
   }
   // if (isLoading || isLoadingUser || isLoadingBookings) return <Spinner size="normal" />
   // console.log(count, isCabinBooked, isCabinBooked, isNotAllowUserBook, isSlotFulled)
   // console.log(!isSlotFulled)
-  const isAllowGuestToBook = (isCabinBooked && !isSlotFulled) && !count
+  console.log(isCabinBooked)
+  const isTourBooked = type !== 'group' ? !isCabinBooked : !isCabinBooked || !isSlotFulled
+
+  const isAllowGuestToBook = (isTourBooked && !isSlotFulled) && !count
 
   return (
     <div className={`relative min-h-24 bg-stone-0 text-stone-700 shadow-md thin:max-sm:px-6 thin:max-sm:w-[17.4rem] shadow-stone-300 px-4 py-6 ${(count && isCabinBooked) || isCabinBooked || isNotAllowUserBook ? ' bg-stone-200' : ''}`}>
@@ -81,7 +84,7 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
             <Label type="search" labelFor="guests">Duration</Label>
             <p className="text-stone-500 font-semibold">{duration}</p>
           </p>
-          <div className={`pb-6 pt-6 flex flex-col gap-6 ${(count && isCabinBooked && isSlotFulled) || isCabinBooked && isSlotFulled || isNotAllowUserBook ? 'blur-sm' : ''}`}>
+          <div className={`pb-6 pt-6 flex flex-col gap-6 ${((count && isCabinBooked && isSlotFulled) || isCabinBooked && isSlotFulled || isNotAllowUserBook) && user ? 'blur-sm' : ''}`}>
             <div className="flex flex-col gap-3">
               <Label type="search" labelFor="guests">Start Dates</Label>
               <Select type="sort" id="dates" defaultValue='3' onChange={(e) => setStartDate(+e.target.value)} disabled={((Boolean(count) && isCabinBooked) || Boolean(isCabinBooked) || isNotAllowUserBook) && isSlotFulled}>
@@ -118,7 +121,7 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
 
           {
             (isSlotFulled && type === 'group') ? null :
-              isNotAllowUserBook && !count ? <div className=""><Button size="small" type="primary">{t('cabin.card.notifies.your-booked')}</Button></div> :
+              isNotAllowUserBook && !count && user ? <div className=""><Button size="small" type="primary">{t('cabin.card.notifies.your-booked')}</Button></div> :
                 <>
                   {/* *** */}
                   {Boolean(isCabinBooked) && !count && isSlotFulled && <div className=""><Button size="small" type="primary">
@@ -126,11 +129,13 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
                     This tour is full slot
                   </Button></div>}
 
-                  {Boolean(isCabinBooked) && Boolean(count) && !(type === 'group' && participantsVal > 0) && <div className="w-[62%]">
-                    <ButtonLink href='/profile/bookings' type="primary" size="small">
-                      {t('cabin.card.btn.see')}
-                    </ButtonLink>
-                  </div>}
+                  {Boolean(isCabinBooked) && Boolean(count)
+                    // && !(type === 'group' && participantsVal > 0) 
+                    && <div className="w-[62%]">
+                      <ButtonLink href='/profile/bookings' type="primary" size="small">
+                        {t('cabin.card.btn.see')}
+                      </ButtonLink>
+                    </div>}
 
                   {
                     (!user ?
@@ -143,16 +148,16 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
                       //! count is check the tour is booked by this user? (not checkout)
                       // ! isCabinBooked is check the tour has any bookings (not checkout) or not
                       // (((isCabinBooked && !isSlotFulled) && !count))
-                      (isAllowGuestToBook)
-                      // || ((isCabinBooked && !isSlotFulled) && Boolean(count))) //* this is not necessary
-                      &&
-                      <Button type="primary" size="small" onClick={handleClick}>
-                        {isBooking ?
-                          <Spinner size="small" />
-                          :
-                          `${t('cabin.card.btn.default')}`
-                        }
-                      </Button>
+                      (isAllowGuestToBook) ?
+                        // || ((isCabinBooked && !isSlotFulled) && Boolean(count))) //* this is not necessary
+
+                        <Button type="primary" size="small" onClick={handleClick}>
+                          {isBooking ?
+                            <Spinner size="small" />
+                            :
+                            `${t('cabin.card.btn.default')}`
+                          }
+                        </Button> : null
                     )
                   }
                 </>

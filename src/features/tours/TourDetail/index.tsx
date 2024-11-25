@@ -18,9 +18,10 @@ import TourCardV2 from "../TourCardV2";
 export default function TourDetail() {
   const { t } = useTranslation()
   const { tour, isLoading }: { tour: ITour, isLoading: boolean } = useTour()
-  const { name, imageCover } = tour || {}
+  const { name, imageCover, images } = tour || {}
+  const [image1, image2, image3] = images || []
   // const tourImage = image?.startsWith('tour-') ? `/imgs/tours/${image}` : image
-  const tourImage = imageCover
+  const tourImage = imageCover?.startsWith('tour-') ? `/${imageCover}` : imageCover
   const classStyle = `rounded-md overflow-hidden h-[98%]`
 
 
@@ -51,16 +52,16 @@ export default function TourDetail() {
               <img className="h-[30rem] w-full" src={tourImage} alt={`${name} tour`} />
             </div>
             <div className={classStyle}>
-              <img src={tour?.images[0]} alt="" className="h-[15rem] w-full" />
+              <img src={image1?.startsWith('tour-') ? `/${image1}` : image1} alt="" className="h-[15rem] w-full" />
             </div>
             <div className={classStyle}>
-              <img src={tour?.images[1]} alt="" className="h-[15rem] w-full" />
+              <img src={image2?.startsWith('tour-') ? `/${image2}` : image2} alt="" className="h-[15rem] w-full" />
             </div>
             <div className={classStyle}>
-              <img src={tour?.images[2]} alt="" className="h-[15rem] w-full" />
+              <img src={image3?.startsWith('tour-') ? `/${image3}` : image3} alt="" className="h-[15rem] w-full" />
             </div>
             <div className={classStyle}>
-              <img src={tour?.images[0]} alt="" className="h-[15rem] w-full" />
+              <img src={image1?.startsWith('tour-') ? `/${image1}` : image1} alt="" className="h-[15rem] w-full" />
             </div>
           </div>
           <div className="grid grid-cols-[1.5fr_1fr] thin:max-tiny:flex thin:max-tiny:flex-col text-stone-700 p-6 gap-12 sm:max-md:gap-1">
