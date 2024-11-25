@@ -37,6 +37,7 @@ export default function PostDetail() {
 
   const { fullName, _id: guestId, avatar } = userId as unknown as { _id: string, fullName: string, avatar: string } || {}
   const { name, id } = tourId as unknown as { id: string, name: string } || {}
+  const avatarStr = avatar?.includes('default') ? `/${avatar}` : avatar
 
   const numLikes = likes?.length
   const numComments = comments?.length
@@ -48,7 +49,13 @@ export default function PostDetail() {
   const days = -differenceInDays(postAtDate, new Date())
   const months = -differenceInMonths(postAtDate, new Date())
 
-  const postAtStr = (seconds === 0 && 'now') || (seconds > 60 && minutes <= 60 && `${minutes} minutes`) || (minutes > 60 && hours <= 24 && `${hours} hours`) || (hours > 24 && days <= 30 && `${days} days`) || (days > 30 && months <= 12 && `${months} months`) || months > 12 && format(postAtDate, 'MM/dd/yyyy')
+  const postAtStr = (seconds === 0 && 'now') ||
+    (seconds > 0 && seconds <= 60 && `${seconds} seconds`) ||
+    (seconds > 60 && minutes <= 60 && `${minutes} minutes`) ||
+    (minutes > 60 && hours <= 24 && `${hours} hours`) ||
+    (hours > 24 && days <= 30 && `${days} days`) ||
+    (days > 30 && months <= 12 && `${months} months`) ||
+    (months > 12 && format(postAtDate, 'MM/dd/yyyy'))
   // console.log(postAtStr)
 
   const comments1 = comments?.filter((c: Comment) => {
@@ -188,7 +195,7 @@ export default function PostDetail() {
     <div className="px-6 py-6 flex flex-col border-b-2 border-stone-50 shadow-sm overflow-scroll h-[100vh] no-scrollbar">
       <div className="flex justify-between items-center">
         <div className="flex gap-3 items-center">
-          <img className="w-12 rounded-full" src={avatar} alt="" />
+          <img className="w-12 rounded-full" src={avatarStr} alt="" />
           <p className="text-stone-700 font-semibold">{fullName}</p>
           <p className="text-stone-500 text-sm">at {postAtStr} {postAtStr === 'now' ? '' : 'ago'}</p>
         </div>

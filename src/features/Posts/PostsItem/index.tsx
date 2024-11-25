@@ -42,8 +42,9 @@ export default function PostsItem({ post }: { post: IPost }) {
     return _id === currentUserId
   })
 
-  const { name, id } = tourId as unknown as { id: string, name: string }
+  const { name, id } = tourId as unknown as { id: string, name: string } || {}
   const { fullName, _id: guestId, avatar } = userId as unknown as { _id: string, fullName: string, avatar: string }
+  const avatarStr = avatar?.includes('default') ? `/${avatar}` : avatar
 
   const { updatePost, isUpdating } = useUpdatePost({ id: postId })
   const postAtStr = getDifferentTime(new Date(createdAt), new Date())
@@ -120,7 +121,7 @@ export default function PostsItem({ post }: { post: IPost }) {
           <div className="flex justify-between items-center px-16">
             {/* <Link to={`/users/`}> */}
             <div className="flex gap-3 items-center">
-              <img className="w-12 rounded-full" src={avatar} alt="" />
+              <img className="w-12 rounded-full" src={avatarStr} alt="" />
               <p className="text-stone-700 font-semibold">{fullName}</p>
               <p className="text-stone-500 text-sm">at {postAtStr} {postAtStr === 'now' ? '' : 'ago'}</p>
             </div>
