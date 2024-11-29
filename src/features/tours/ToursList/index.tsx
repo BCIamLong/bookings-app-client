@@ -17,7 +17,7 @@ const { PAGE_LIMIT } = appConfig
 const { CLIENT_BASE_UTL } = appConfig
 // * we will prepare tours data like for trending tours and best tours....
 // export default function ToursList({tours}:{tours: Tour[]}) {
-export default function ToursList({ type, title, statusType = 'trending' }: { type?: 'full' | 'normal', title: string, statusType?: string }) {
+export default function ToursList({ type, title, statusType = 'trending' }: { type?: 'full' | 'normal' | 'recommend', title: string, statusType?: string }) {
   const [searchParams] = useSearchParams()
   const sort = searchParams.get('sort') || "none"
   const page = +searchParams.get('page')! || 1
@@ -34,6 +34,7 @@ export default function ToursList({ type, title, statusType = 'trending' }: { ty
 
   let final_tours = []
   const recommendationsByPage = recommendations?.slice((page - 1) * PAGE_LIMIT, PAGE_LIMIT * page)
+  const recommendationsByPageCore = [...(recommendationsByPage || [])]
   const remove_tours = []
 
   const recommendationIds = recommendations?.map((rec) => rec._id)
@@ -73,13 +74,26 @@ export default function ToursList({ type, title, statusType = 'trending' }: { ty
           tours?.map((tour: ITour) => <TourItem tour={tour} key={tour._id} type="normal" />) :
           recommendations?.map((tour: ITour) => <TourItem tour={tour} key={tour._id} type="normal" />)} */}
         {/* {tours?.map((tour: ITour) => <TourItem tour={tour} key={tour._id} type="normal" />)} */}
-        {final_tours?.map((tour: ITour) => <TourItem tour={tour} key={tour._id} type="normal" />)}
+        {status === 'recommend' ? recommendationsByPageCore?.map((tour: ITour) => <TourItem tour={tour} key={tour._id} type="normal" />) :
+          final_tours?.map((tour: ITour) => <TourItem tour={tour} key={tour._id} type="normal" />)}
       </ul>
       <div className="mb-1 mt-auto">
-
-        <Pagination count={count} />
+        <Pagination count={status === 'recommend' ? recommendationsByPageCore?.length : count} />
       </div>
     </div>
+
+  if (type === 'recommend') return <>{
+    recommendationsByPageCore?.length && <div className="p-12 flex flex-col gap-6 bg-stone-0">
+      <div className="flex justify-between items-center">
+        <Heading type="secondary">{title}</Heading>
+        <ButtonLink type="simple1" href={`${CLIENT_BASE_UTL}/tours?status=${statusType}`}>See more &#8594;</ButtonLink>
+      </div>
+      <ul className="grid grid-cols-4 gap-6 thin:max-sm:grid thin:max-sm:grid-cols-2 [&>li]:shadow-md">
+        {recommendationsByPageCore?.map((tour: ITour, i: number) => i < 4 ? <TourItem key={tour._id} tour={tour} /> : null)}
+      </ul>
+    </div>
+  }</>
+
 
   return (
     <div className="p-12 flex flex-col gap-6 bg-stone-0">

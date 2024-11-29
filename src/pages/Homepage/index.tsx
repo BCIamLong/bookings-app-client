@@ -83,6 +83,7 @@ export default function Homepage() {
   return (
     <div>
       <Hero />
+      <ToursList title="Recommend tours" type="recommend" statusType="recommend" />
       <CategoriesList />
       <ToursList title="Our trending tours" />
       <Services />
