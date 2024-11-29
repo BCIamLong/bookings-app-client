@@ -7,6 +7,7 @@ axios.defaults.withCredentials = true
 const { SERVER_BASE_URL, PAGE_LIMIT } = appConfig
 
 const getPosts = async function ({
+  random = false,
   sort = 'none',
   page = 1,
   search,
@@ -18,6 +19,7 @@ const getPosts = async function ({
   search?: SearchPost | URLSearchParams
   bookmarkFor?: string
   searchStr?: string
+  random?: boolean
 }) {
   try {
     let sortStr = ''
@@ -48,6 +50,8 @@ const getPosts = async function ({
       url = `${SERVER_BASE_URL}/api/v1/posts?${sortStr}&limit=${PAGE_LIMIT}&page=${page}&search=${searchStr}`
 
     // console.log(url)
+    if (random) url = `${SERVER_BASE_URL}/api/v1/posts/random?num=99`
+
     const res = await axios.get(url)
 
     // console.log(res)

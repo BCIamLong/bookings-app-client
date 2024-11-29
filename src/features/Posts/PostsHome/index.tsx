@@ -10,9 +10,9 @@ export default function PostsHome() {
   const { _id: post1Id, images: images1, title: title1, userId: user1, description: description1 } = posts?.[0] as IPost || {}
   const { images: images2, title: title2, userId: user2, description: description2 } = posts?.[1] as IPost || {}
   const { images: images3, userId: user3, description: description3 } = posts?.[2] as IPost || {}
-  const { avatar: avatar1, fullName: fullName1 } = user1 as IUser || {}
-  const { avatar: avatar2, fullName: fullName2 } = user2 as IUser || {}
-  const { avatar: avatar3, fullName: fullName3 } = user3 as IUser || {}
+  const { avatar: avatar1, fullName: fullName1 } = user1 as unknown as IUser || {}
+  const { avatar: avatar2, fullName: fullName2 } = user2 as unknown as IUser || {}
+  const { avatar: avatar3, fullName: fullName3 } = user3 as unknown as IUser || {}
 
   if (isLoading) <Spinner size="normal" />
 
@@ -43,9 +43,9 @@ export default function PostsHome() {
               <img className="rounded-full w-12" src={avatar2} alt="" />
               <p className="text-white font-semibold">{fullName2}</p>
             </div>
-            <p className="text-white w-[100%]">{description2.slice(0, 57)}</p>
+            <p className="text-white w-[100%]">{description2?.slice(0, 57)}</p>
           </div>
-          <img className="w-[27rem] h-[14rem] rounded-lg z-10 brightness-50 thin:max-sm:w-full thin:max-sm:object-cover thin:max-sm:h-auto" src={images2[0]} alt="" />
+          <img className="w-[27rem] h-[14rem] rounded-lg z-10 brightness-50 thin:max-sm:w-full thin:max-sm:object-cover thin:max-sm:h-auto" src={images2?.[0]} alt="" />
         </div>
         <div className="relative">
           <div className="w-[100%] h-[78%] thin:max-sm:h-[90%] [&>img]:hover:brightness-75 cursor-pointer">
@@ -54,9 +54,9 @@ export default function PostsHome() {
                 <img className="rounded-full w-12" src={avatar3} alt="" />
                 <p className="text-white font-semibold">{fullName3}</p>
               </div>
-              <p className="text-white w-[90%]">{description3.slice(0, 90)}</p>
+              <p className="text-white w-[90%]">{description3?.slice(0, 90)}</p>
             </div>
-            <img className="w-[27rem] h-[16rem] transition-all duration-500 thin:max-sm:w-full thin:max-sm:object-cover thin:max-sm:h-auto rounded-lg z-10 brightness-50" src={images3[0]} alt="" />
+            <img className="w-[27rem] h-[16rem] transition-all duration-500 thin:max-sm:w-full thin:max-sm:object-cover thin:max-sm:h-auto rounded-lg z-10 brightness-50" src={images3?.[0]} alt="" />
           </div>
         </div>
       </div>

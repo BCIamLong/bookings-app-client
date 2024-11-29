@@ -22,7 +22,10 @@ const { getDifferentTime } = dateUtil
 
 export default function PostsItem({ post }: { post: IPost }) {
   const navigate = useNavigate()
-  const { likes, bookmarks, shares, comments, title, description, images, tourId, userId, _id: postId, createdAt } = post || {}
+  const { likes, bookmarks, shares, comments, title, description, images, userId, tourId, _id: postId, createdAt } = post || {}
+  // const { likes, bookmarks, shares, comments, title, description, images, tours, users, _id: postId, createdAt } = post || {}
+  // const userId = users?.[0] || {}
+  // const tourId = tours?.[0] || {}
   const { deletePost, isDeleting } = useDeletePost({ id: postId })
   // console.log(images)
   const { user, isLoading } = useUserSession()

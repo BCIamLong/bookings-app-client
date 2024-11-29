@@ -7,6 +7,7 @@ import { getPosts } from '@/services/postsApiService'
 const { PAGE_LIMIT } = appConfig
 
 export const usePosts = function ({
+  random = false,
   sort = 'none',
   page = 1,
   bookmarkFor = '',
@@ -16,12 +17,13 @@ export const usePosts = function ({
   page?: number
   bookmarkFor?: string
   searchStr?: string
+  random?: boolean
 }) {
   const [searchParams] = useSearchParams()
   const search = JSON.parse(searchParams.get('search') || `{}`)
 
   const queryClient = useQueryClient()
-  const options = { sort, page, search, bookmarkFor, searchStr }
+  const options = { sort, page, search, bookmarkFor, searchStr, random }
   const { data, isLoading, error } = useQuery({
     // queryKey: [`cabins${sort !== "none" ? `-sort-by-${sort}` : ""}`],
     queryKey: [`posts`, options],

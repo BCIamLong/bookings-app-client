@@ -1,3 +1,6 @@
+import { ITour } from './ITour'
+import IUser from './IUser'
+
 export interface SearchPost {
   tourId: string
   userId: string
@@ -50,4 +53,6 @@ export default interface IPost {
   images: string[]
   createdAt: Date
   updatedAt: Date
+  users?: IUser[]
+  tours?: ITour[]
 }
