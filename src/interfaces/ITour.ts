@@ -52,4 +52,6 @@ export interface ITour {
   vip: boolean
   startLocation: StartLocation
   locations: Location[]
+
+  startDates_dates?: string[]
 }

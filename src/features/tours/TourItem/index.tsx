@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 
 export default function TourItem({ tour, type }: { tour: ITour, type?: 'normal' }) {
 
-  const tourDate = new Date(tour?.startDates?.[0]?.date).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' })
+  const dateVal = tour?.startDates?.[0]?.date || tour?.startDates_dates?.[0]
+
+  const tourDate = new Date(dateVal).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' })
+  // console.log(tourDate)
   const description = tour?.description?.split(' ').slice(0, 10).join(' ') + '...'
   const price = tour?.price?.toLocaleString()
 
