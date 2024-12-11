@@ -44,22 +44,24 @@ export default function ToursList({ type, title, statusType = 'trending' }: { ty
   })
   console.log(recommendationsByPage)
   tours?.forEach((tour, ind) => {
-    if (recommendationIds.includes(tour._id)) {
+    if (recommendationIds?.includes(tour._id)) {
       // delete tours[ind]
       return
     }
 
-    if (recommendationsByPage.length >= PAGE_LIMIT) {
+    if (recommendationsByPage?.length >= PAGE_LIMIT) {
       remove_tours.push(tour)
 
       return
     }
 
-    recommendationsByPage.push(tour)
+    recommendationsByPage?.push(tour)
   })
 
   // console.log('============', remove_tours)
   final_tours = recommendationsByPage?.length >= 6 ? recommendationsByPage : [...(recommendationsByPage || []), ...(remove_tours || [])]
+
+  if (!recommendations?.length) final_tours = tours
   // const { tours, isLoading } = useTours({
   //   sort: 'none', page: 1, limit: 4
   // })
@@ -83,7 +85,7 @@ export default function ToursList({ type, title, statusType = 'trending' }: { ty
     </div>
 
   if (type === 'recommend') return <>{
-    recommendationsByPageCore?.length && <div className="p-12 flex flex-col gap-6 bg-stone-0">
+    Boolean(recommendationsByPageCore?.length) && <div className="p-12 flex flex-col gap-6 bg-stone-0">
       <div className="flex justify-between items-center">
         <Heading type="secondary">{title}</Heading>
         <ButtonLink type="simple1" href={`${CLIENT_BASE_UTL}/tours?status=${statusType}`}>See more &#8594;</ButtonLink>

@@ -86,6 +86,7 @@ export default function Tours() {
                 <Option type="status" value="trending">Trending</Option>
                 <Option type="status" value="popular">Popular</Option>
                 <Option type="status" value="most-discount">Discount</Option>
+                <Option type="status" value="recommend">Recommend</Option>
               </Select>
             </li>
             <li>

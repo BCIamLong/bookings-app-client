@@ -47,7 +47,7 @@ const rectangle = [
 
 ]
 
-function LocationMarker({ locations }: { locations: Location[] }) {
+function LocationMarker({ duration, locations }: { duration?: number, locations: Location[] }) {
   // const [bounds, setBounds] = useState<LatLngBoundsExpression>([])
   console.log(locations)
   const coordinates = locations?.map((loc) => [loc.coordinates[1], loc.coordinates[0]])
@@ -62,7 +62,7 @@ function LocationMarker({ locations }: { locations: Location[] }) {
     //   setBounds(bounds1 as LatLngBoundsExpression)
     // },
     moveend(e) {
-      if (!bounds.length) return
+      if (!bounds?.length) return
       // map.flyTo(e.latlng, map.getZoom())
       map.flyToBounds(bounds as LatLngBoundsExpression, { maxZoom: 8.5 })
     },
@@ -74,11 +74,27 @@ function LocationMarker({ locations }: { locations: Location[] }) {
 
   return (
     <>
-      {locations.map((loc, ind) => <Marker eventHandlers={{ add: openPopup }} position={[loc.coordinates[1], loc.coordinates[0]] as LatLngExpression} icon={customLightIcon}>
-        <Popup closeButton={false} autoClose={false} closeOnClick={false}>
-          Day {ind + 1}: {loc.address}
-        </Popup>
-      </Marker >)
+      {locations.map((loc, ind) => {
+        // console.log(loc)
+        const { description } = loc || {}
+        const curDay = loc?.day
+        let nextDay;
+        nextDay = locations[ind + 1]?.day - 1
+        if (!locations[ind + 1]?.day && duration > curDay) nextDay = duration
+        if (!locations[ind + 1]?.day && duration === curDay) nextDay = curDay
+
+        const titleDay = curDay === nextDay ? `Day ${curDay}` : `Day ${curDay} - Day ${nextDay}`
+
+        return <Marker eventHandlers={{ add: openPopup }} position={[loc.coordinates[1], loc.coordinates[0]] as LatLngExpression} icon={customLightIcon}>
+          <Popup closeButton={false} autoClose={false} closeOnClick={false}>
+            {/* Day {ind + 1}: {loc.address} */}
+            <p className="text-center  font-semibold text-stone-600 text-xs">
+              <span className="uppercase text-[0.7rem]">{titleDay}: </span>
+              <span className="capitalize">{description}</span>
+            </p>
+          </Popup>
+        </Marker >
+      })
       }
     </>
   )
@@ -87,7 +103,7 @@ function LocationMarker({ locations }: { locations: Location[] }) {
 
 
 
-export default function ToursMap({ locations }: { locations: Location[] }) {
+export default function ToursMap({ duration, locations }: { duration?: number, locations: Location[] }) {
   const { isDarkMode } = useDarkModeContext()!
   const tileLayerUrl = !isDarkMode ? `https://api.maptiler.com/maps/bright-v2/{z}/{x}/{y}.png?key=${MAP_API_KEY}` : `https://api.maptiler.com/maps/ch-swisstopo-lbm-dark/{z}/{x}/{y}.png?key=${MAP_API_KEY}`;
   const coordinates = locations?.map((loc) => [loc.coordinates[1], loc.coordinates[0]])
@@ -113,7 +129,7 @@ export default function ToursMap({ locations }: { locations: Location[] }) {
         </Marker>)} */}
         {/* <Rectangle bounds={rectangle as LatLngBoundsExpression} pathOptions={{ color: 'black' }} /> */}
         <Polygon pathOptions={{ color: 'lime' }} positions={coordinates as LatLngExpression[]} />
-        <LocationMarker locations={locations} />
+        <LocationMarker locations={locations} duration={duration} />
       </MapContainer >
     </div >
   )

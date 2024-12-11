@@ -18,7 +18,7 @@ import TourCardV2 from "../TourCardV2";
 export default function TourDetail() {
   const { t } = useTranslation()
   const { tour, isLoading }: { tour: ITour, isLoading: boolean } = useTour()
-  const { name, imageCover, images } = tour || {}
+  const { name, imageCover, images, duration } = tour || {}
   const [image1, image2, image3] = images || []
   // const tourImage = image?.startsWith('tour-') ? `/imgs/tours/${image}` : image
   const tourImage = imageCover?.startsWith('tour-') ? `/${imageCover}` : imageCover
@@ -113,7 +113,7 @@ export default function TourDetail() {
                       <GiKnifeFork className="text-brand-600" />
                       <p>Difficult</p>
                     </div>
-                    <p className="text-[1rem] text-stone-500">{tour?.difficulty}</p>
+                    <p className="text-[1rem] text-stone-500 capitalize">{tour?.difficulty}</p>
                   </div>
                   <div className="flex gap-4 items-center">
                     <div className="flex items-center gap-3 uppercase font-semibold text-lg">
@@ -161,7 +161,7 @@ export default function TourDetail() {
                 // ! notice this can create problem when the tour is loading it will not have data yet therefore it will take the {} and because the tour props change then the component will render again and now the tour will take the id undefined and everything undefined which will create the error so we shouldn't never do it like this when we pass prop we can do it when we handle inside the component function*/}
               </div>
             </div>
-            <ToursMap locations={tour?.locations || []} />
+            <ToursMap duration={duration} locations={tour?.locations || []} />
           </div>
         </div>
       </div>
