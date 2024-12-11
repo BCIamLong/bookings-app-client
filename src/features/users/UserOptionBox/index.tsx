@@ -10,7 +10,7 @@ export default function UserOptionBox() {
   const { avatar } = user || {}
   const { t } = useTranslation()
 
-  const avatarImg = avatar === 'default-avatar.jpg' ? "/default-avatar.jpg" : avatar
+  const avatarImg = !avatar?.includes('https') ? `/${avatar}` : avatar
 
   if (isLoading) return <Spinner size="small" />;
 
