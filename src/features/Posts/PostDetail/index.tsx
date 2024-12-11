@@ -37,7 +37,8 @@ export default function PostDetail() {
 
   const { fullName, _id: guestId, avatar } = userId as unknown as { _id: string, fullName: string, avatar: string } || {}
   const { name, id } = tourId as unknown as { id: string, name: string } || {}
-  const avatarStr = avatar?.includes('default') ? `/${avatar}` : avatar
+  // const avatarStr = avatar?.includes('default') ? `/${avatar}` : avatar
+  const avatarStr = !avatar?.includes('https') ? `/${avatar}` : avatar
 
   const numLikes = likes?.length
   const numComments = comments?.length

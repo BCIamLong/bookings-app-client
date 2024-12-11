@@ -47,10 +47,12 @@ export default function PostsItem({ post }: { post: IPost }) {
 
   const { name, id } = tourId as unknown as { id: string, name: string } || {}
   const { fullName, _id: guestId, avatar } = userId as unknown as { _id: string, fullName: string, avatar: string }
-  const avatarStr = avatar?.includes('default') ? `/${avatar}` : avatar
+  // const avatarStr = avatar?.includes('default') ? `/${avatar}` : avatar
+  const avatarStr = !avatar?.includes('https') ? `/${avatar}` : avatar
 
   const { updatePost, isUpdating } = useUpdatePost({ id: postId })
   const postAtStr = getDifferentTime(new Date(createdAt), new Date())
+  const postImgStr = !images?.[0]?.includes('https') ? `/${images[0]}` : images[0]
   // console.log(currentUserId, guestId, currentUserId !== guestId)
   const handleClickLike = function () {
 
@@ -144,7 +146,7 @@ export default function PostsItem({ post }: { post: IPost }) {
           <div className="mt-6 px-16 relative">
             <div className='no-scrollbar'>
               {/* {images.map((image, ind) => <img key={ind} className="w-full" src={image} alt="" />)} */}
-              <img className="w-full" src={images[0]} alt="" />
+              <img className="w-full" src={postImgStr} alt="" />
               {/* <img className="w-full" src="https://images.pexels.com/photos/386000/pexels-photo-386000.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" /> */}
             </div>
             <Link to={`/tours/${id}`} className='absolute left-1/2 bottom-0 -translate-x-1/2 w-full px-16'>
