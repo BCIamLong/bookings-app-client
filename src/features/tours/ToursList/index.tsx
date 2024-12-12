@@ -11,6 +11,7 @@ import Empty from "@/components/Empty";
 import { appConfig } from "@/config";
 import { useRecommendTours } from "../useRecommendTours";
 import { useUserSession } from "@/features/auth/useUserSession";
+import { useState } from "react";
 
 const { PAGE_LIMIT } = appConfig
 
@@ -30,36 +31,24 @@ export default function ToursList({ type, title, statusType = 'trending' }: { ty
 
   const { _id: userId } = user || {}
 
-  const { recommendations, isLoading: isLoadingRecommendations } = useRecommendTours({ userId: userId || 'guest-8dd3c11c-1df4-4f0b-b26d-9d96d80bc28a' })
-
+  const { recommendations, recommendations_core, isLoading: isLoadingRecommendations } = useRecommendTours({ userId: userId || 'guest-8dd3c11c-1df4-4f0b-b26d-9d96d80bc28a' })
   let final_tours = []
-  const recommendationsByPage = recommendations?.slice((page - 1) * PAGE_LIMIT, PAGE_LIMIT * page)
-  const recommendationsByPageCore = [...(recommendationsByPage || [])]
-  const remove_tours = []
 
-  const recommendationIds = recommendations?.map((rec) => rec._id)
+  // const remove_tours = []
+
 
   const { tours, isLoading, count } = useTours({
     sort: sort as SortOptions, page, type: typeFilter, status, date, difficulty
   })
-  console.log(recommendationsByPage)
-  tours?.forEach((tour, ind) => {
-    if (recommendationIds?.includes(tour._id)) {
-      // delete tours[ind]
-      return
-    }
 
-    if (recommendationsByPage?.length >= PAGE_LIMIT) {
-      remove_tours.push(tour)
+  const recommendationsByPage = recommendations?.slice((page - 1) * PAGE_LIMIT, PAGE_LIMIT * page)
+  const recommendationsByPageCore = recommendations_core?.slice((page - 1) * PAGE_LIMIT, PAGE_LIMIT * page)
 
-      return
-    }
 
-    recommendationsByPage?.push(tour)
-  })
+
 
   // console.log('============', remove_tours)
-  final_tours = recommendationsByPage?.length >= 6 ? recommendationsByPage : [...(recommendationsByPage || []), ...(remove_tours || [])]
+  final_tours = recommendationsByPage
 
   if (!recommendations?.length) final_tours = tours
   // const { tours, isLoading } = useTours({
@@ -80,7 +69,7 @@ export default function ToursList({ type, title, statusType = 'trending' }: { ty
           final_tours?.map((tour: ITour) => <TourItem tour={tour} key={tour._id} type="normal" />)}
       </ul>
       <div className="mb-1 mt-auto">
-        <Pagination count={status === 'recommend' ? recommendationsByPageCore?.length : count} />
+        <Pagination count={status === 'recommend' ? recommendations_core?.length : count} />
       </div>
     </div>
 

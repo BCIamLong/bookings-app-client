@@ -8,13 +8,19 @@ export const useRecommendTours = function ({ userId }: { userId: string }) {
   // const { _id: userId } = user || {}
 
   const {
-    data: recommendations,
+    data,
     isLoading: isLoadingTours,
     error,
   } = useQuery({
     queryKey: ['recommend-tours', userId],
     queryFn: () => getRecommendTours(userId!),
   })
+  const { recommendations, recommendations_core } = data || {}
 
-  return { recommendations, isLoading: isLoadingTours, error }
+  return {
+    recommendations,
+    recommendations_core,
+    isLoading: isLoadingTours,
+    error,
+  }
 }

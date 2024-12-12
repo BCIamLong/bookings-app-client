@@ -17,7 +17,11 @@ export const getRecommendTours = async function (id: string) {
     )
 
     // console.log(res)
-    return res?.data?.recommendations || null
+    const result = {
+      recommendations: res?.data?.recommendations,
+      recommendations_core: res?.data?.recommendations_core,
+    }
+    return result || null
   } catch (err) {
     // console.log(err)
     throw err

@@ -24,6 +24,7 @@ export default function Pagination({ count }: { count: number }) {
     if (previousPage <= 0) return
     searchParams.set('page', String(previousPage))
     setSearchParams(searchParams)
+    // setRemove_tours([])
   }
 
   const handleClick = function (page: number) {
