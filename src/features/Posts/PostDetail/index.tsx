@@ -314,7 +314,8 @@ export default function PostDetail() {
 
             const { userId, likes, content, commentAt, _id: commentId } = com || {}
             const { fullName, avatar, _id: userIdStr } = userId as unknown as IUser || {}
-            const avatarImg = avatar?.includes('default-avatar') ? '/default-avatar.jpg' : avatar
+            const avatarImg = !avatar?.includes('https') ? `/${avatar}` : avatar
+            // const avatarImg = avatar?.includes('default-avatar') ? '/default-avatar.jpg' : avatar
             const commentAtStr = getDifferentTime(new Date(commentAt), new Date())
             const isCommentLiked = likes?.find((l) => l.userId === userIdStr)
             console.log(Boolean(isCommentLiked))
