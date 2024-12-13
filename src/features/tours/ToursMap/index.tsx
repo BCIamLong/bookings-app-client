@@ -5,6 +5,8 @@ import { Icon, LatLngBoundsExpression, LatLngExpression, PopupEvent } from "leaf
 import { useDarkModeContext } from "@/context/DarkModeContext";
 import { appConfig } from "@/config";
 import { useState } from "react";
+import { Location } from "@/interfaces";
+
 
 const { MAP_API_KEY } = appConfig
 
@@ -22,14 +24,14 @@ const customDarkIcon = new Icon({
 
 })
 
-interface Location {
-  type: string
-  coordinates: LatLngExpression
-  address: string
-  day: number
-  _id?: string
-  id?: string
-}
+// interface Location {
+//   type: string
+//   coordinates: LatLngExpression
+//   address: string
+//   day: number
+//   _id?: string
+//   id?: string
+// }
 
 const bounds1 = [
   [16.068636, 108.118572],
@@ -49,20 +51,20 @@ const rectangle = [
 
 function LocationMarker({ duration, locations }: { duration?: number, locations: Location[] }) {
   // const [bounds, setBounds] = useState<LatLngBoundsExpression>([])
-  console.log(locations)
+  // console.log(locations)
   const coordinates = locations?.map((loc) => [loc.coordinates[1], loc.coordinates[0]])
-  console.log(coordinates)
+  // console.log(coordinates)
   const [bounds, setBounds] = useState<LatLngBoundsExpression>(coordinates as LatLngBoundsExpression)
   const map = useMapEvents({
     zoom() {
-      if (!bounds.length) return
+      if (!(bounds as unknown as number[]).length) return
       setBounds([])
     },
     // click(e) {
     //   setBounds(bounds1 as LatLngBoundsExpression)
     // },
     moveend(e) {
-      if (!bounds?.length) return
+      if (!(bounds as unknown as number[])?.length) return
       // map.flyTo(e.latlng, map.getZoom())
       map.flyToBounds(bounds as LatLngBoundsExpression, { maxZoom: 8.5 })
     },
@@ -114,7 +116,7 @@ export default function ToursMap({ duration, locations }: { duration?: number, l
 
   return (
     <div className='[&>.leaflet-container]:h-[30rem] w-[100%] relative rounded-lg overflow-hidden z-30 col-span-1 thin:max-sm:col-span-2'>
-      <MapContainer center={coordinates[0]} zoom={8} scrollWheelZoom={true} style={{ height: '100vh', width: '100%' }}>
+      <MapContainer center={coordinates[0] as unknown as LatLngExpression} zoom={8} scrollWheelZoom={true} style={{ height: '100vh', width: '100%' }}>
         {/* <MapContainer bounds={bounds as LatLngBoundsExpression} zoom={20} scrollWheelZoom={true} style={{ height: '100vh', width: '100%' }}> */}
         <TileLayer
           attribution='&copy; <a href="https://www.maptiler.com/copyright/" target="_blank">MapTiler</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'

@@ -1,3 +1,5 @@
+import { LatLngExpression } from 'leaflet'
+
 export interface SearchTour {
   name?: string
   duration?: number
@@ -22,12 +24,14 @@ export interface StartDate {
 
 interface StartLocation {
   type: string
-  coordinates: number[]
+  coordinates: number[] | LatLngExpression
   address: string
   description: string
 }
 
-interface Location extends StartLocation {
+export interface Location extends StartLocation {
+  _id?: string
+  id?: string
   day: number
 }
 

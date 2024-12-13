@@ -12,7 +12,7 @@ import DatePicker from "react-datepicker";
 import { FormEvent, useState } from "react";
 import Heading from "@/components/Heading";
 
-export default function SearchForm({ variant = "row" }: { variant: 'col' | 'row' }) {
+export default function SearchForm({ variant = "row" }: { variant?: 'col' | 'row' }) {
   const { formState, handleSubmit, register, reset } = useForm<SearchTour>()
   const [searchParams] = useSearchParams()
   const searchOb = JSON.parse(searchParams.get('search') || `{}`)

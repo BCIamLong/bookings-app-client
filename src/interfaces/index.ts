@@ -17,7 +17,7 @@ import {
 import IBooking, { BookCabin, UserBookingsOption } from './IBooking'
 import IReview, { ReviewInput } from './IReview'
 import IBookmark from './IBookmark'
-import { ITour, SearchTour } from './ITour'
+import { ITour, SearchTour, Location } from './ITour'
 import IPost, { SearchPost, IPostInput, Like, Bookmark, Comment } from './IPost'
 
 export type {
@@ -50,4 +50,5 @@ export type {
   Like,
   Bookmark,
   Comment,
+  Location,
 }
