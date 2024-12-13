@@ -14,7 +14,8 @@ export default {
         'https://tours-booking-api.onrender.com'
       : 'https://tours-booking-api.onrender.com',
   // 'http://localhost:3009',
-  SERVER_RECOMMEND_URL: 'http://127.0.0.1:3100',
+  SERVER_RECOMMEND_URL: 'https://tours-recommendation-system.onrender.com',
+  // SERVER_RECOMMEND_URL: 'http://127.0.0.1:3100',
   CLIENT_BASE_UTL:
     import.meta.env.MODE === 'production'
       ? 'https://bookings-app-client.vercel.app'
