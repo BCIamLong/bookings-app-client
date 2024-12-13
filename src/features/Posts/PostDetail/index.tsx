@@ -1,7 +1,7 @@
 import Button from "@/components/Button";
 import Modal from "@/components/Modal";
 import Popup from "@/components/Popup";
-import { HiBookmark, HiChevronRight, HiHeart, HiMiniEllipsisHorizontal, HiOutlineBookmark, HiOutlineChatBubbleOvalLeft, HiOutlineHeart, HiOutlineShare } from "react-icons/hi2";
+import { HiBookmark, HiChatBubbleOvalLeft, HiChevronRight, HiHeart, HiMiniEllipsisHorizontal, HiOutlineBookmark, HiOutlineChatBubbleOvalLeft, HiOutlineHeart, HiOutlineShare } from "react-icons/hi2";
 import { LuSendHorizonal } from "react-icons/lu";
 import { usePost } from "../usePost";
 import Spinner from "@/components/Spinner";
@@ -264,7 +264,9 @@ export default function PostDetail() {
           </Button>
         </li>
         <li className="flex gap-2 items-center">
-          <HiOutlineChatBubbleOvalLeft className="text-2xl" />
+          {isCommented ?
+            <HiChatBubbleOvalLeft className="text-2xl" /> :
+            <HiOutlineChatBubbleOvalLeft className="text-2xl" />}
           <span className="text-sm font-semibold">{numComments}</span>
         </li>
         <li className="flex gap-2 items-center">

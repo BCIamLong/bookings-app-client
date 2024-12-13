@@ -3,7 +3,7 @@ import Heading from '@/components/Heading'
 import Modal from '@/components/Modal'
 import Popup from '@/components/Popup'
 import { Bookmark, IPost, Like } from '@/interfaces'
-import { HiBookmark, HiChevronRight, HiHeart, HiMiniEllipsisHorizontal, HiOutlineBookmark, HiOutlineChatBubbleOvalLeft, HiOutlineHeart, HiOutlineShare } from 'react-icons/hi2'
+import { HiBookmark, HiChatBubbleOvalLeft, HiChevronRight, HiHeart, HiMiniEllipsisHorizontal, HiOutlineBookmark, HiOutlineChatBubbleOvalLeft, HiOutlineHeart, HiOutlineShare } from 'react-icons/hi2'
 import { Link, useNavigate } from 'react-router-dom'
 import { useUpdatePost } from '../useUpdatePost'
 import { useUserSession } from '@/features/auth/useUserSession'
@@ -33,6 +33,12 @@ export default function PostsItem({ post }: { post: IPost }) {
   const numLikes = likes.length
   const numComments = comments.length
   const numBookmarks = bookmarks.length
+
+  const isCommented = comments?.find(com => {
+    const { _id } = com.userId as unknown as { _id: string, name: string } || {}
+    // console.log(_id, user._id)
+    return _id === currentUserId
+  })
 
   const isLiked = likes?.find(l => {
     const { _id } = l.userId as unknown as { _id: string, name: string } || {}
@@ -190,7 +196,9 @@ export default function PostsItem({ post }: { post: IPost }) {
         </li>
         <li className="flex gap-2 items-center">
           <Button type='icon-2' onClick={() => navigate(`/posts/${postId}`)} >
-            <HiOutlineChatBubbleOvalLeft className="text-2xl" />
+            {isCommented ?
+              <HiChatBubbleOvalLeft className="text-2xl" /> :
+              <HiOutlineChatBubbleOvalLeft className="text-2xl" />}
             <span className="text-sm font-semibold">{numComments}</span>
           </Button>
         </li>
