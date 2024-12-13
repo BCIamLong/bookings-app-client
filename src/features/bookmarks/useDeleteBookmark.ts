@@ -20,7 +20,10 @@ export const useDeleteBookmark = function () {
       // queryClient.invalidateQueries({ queryKey: ['bookmark'] })
       queryClient.removeQueries({ queryKey: [`bookmark-me-${cabinId}`] })
       queryClient.invalidateQueries({ queryKey: ['bookmarks-me'] })
-      queryClient.removeQueries({ queryKey: ['recommend-tours'] })
+      queryClient.invalidateQueries({ queryKey: ['recommend-tours'] })
+      // queryClient.removeQueries({ queryKey: ['recommend-tours'] }) //! reviews action posts action also effect to recommend-tours query so we just use invalidateQueries to refresh not use remove to delete
+      // * we can use remove if we can find the way to see that if the user just do 1 action to emit event train recommends data
+      // * in the most case it is rare to happen right so just keep it like this
     },
     onError: (err: AxiosErrorConfig) => {
       toast.error(err?.response?.data?.message || err.message)
