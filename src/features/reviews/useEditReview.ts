@@ -18,6 +18,7 @@ export const useEditReview = function () {
       toast.success('Edit your review successful')
       queryClient.invalidateQueries({ queryKey: ['reviews'] })
       queryClient.invalidateQueries({ queryKey: ['tour'] })
+      queryClient.invalidateQueries({ queryKey: ['recommend-tours'] })
       // queryClient.invalidateQueries({ queryKey: ['cabin'] })
     },
     onError: (err: AxiosErrorConfig) => {

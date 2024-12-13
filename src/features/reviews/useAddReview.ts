@@ -25,6 +25,7 @@ export const useAddReview = function () {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['reviews'] })
       queryClient.invalidateQueries({ queryKey: ['tour'] })
+      queryClient.invalidateQueries({ queryKey: ['recommend-tours'] })
       // queryClient.invalidateQueries({ queryKey: ['cabin'] })
       toast.success('Your review is added')
     },

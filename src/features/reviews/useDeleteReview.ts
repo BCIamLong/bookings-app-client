@@ -16,6 +16,7 @@ export const useDeleteReview = function () {
       toast.success('Delete your review successful')
       queryClient.invalidateQueries({ queryKey: ['reviews'] })
       queryClient.invalidateQueries({ queryKey: ['tour'] })
+      queryClient.invalidateQueries({ queryKey: ['recommend-tours'] })
       // queryClient.invalidateQueries({ queryKey: ['cabin'] })
     },
     onError: (err: AxiosErrorConfig) => {
