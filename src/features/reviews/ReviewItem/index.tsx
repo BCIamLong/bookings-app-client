@@ -5,7 +5,8 @@ import { HiStar } from "react-icons/hi2";
 export default function ReviewItem({ item }: { item: IReview }) {
   const { createdAt, review, rating, user } = item
   const { avatar, fullName } = user as IUser || {}
-  const avatarFormat = avatar === 'default-avatar.jpg' ? '/default-avatar.jpg' : avatar
+  // const avatarFormat = avatar === 'default-avatar.jpg' ? '/default-avatar.jpg' : avatar
+  const avatarFormat = !avatar?.includes('https') ? `/${avatar}` : avatar
 
   return (
     <li className="flex flex-col gap-3 border-b-[1px] pb-6 border-stone-300 xl:h-48 lg:h-40 md:h-36 sm:h-36 h-28 tiny:h-32 overflow-y-hidden">

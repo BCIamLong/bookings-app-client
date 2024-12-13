@@ -30,7 +30,8 @@ export default function AddReview() {
   const { count, isLoading: isLoadingBookings } = useUserBookings()
   // console.log(reviews)
   const { avatar } = user || {}
-  const avatarFormat = avatar === 'default-avatar.jpg' ? '/default-avatar.jpg' : avatar
+  const avatarFormat = !avatar?.includes('https') ? `/${avatar}` : avatar
+  // const avatarFormat = avatar === 'default-avatar.jpg' ? '/default-avatar.jpg' : avatar
 
   const handleClick = function () {
     if (!star || !review) return toast.error('Please fill the required fields to submit review')
