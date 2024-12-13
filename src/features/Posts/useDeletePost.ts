@@ -25,6 +25,7 @@ export const useDeletePost = function ({ id }: { id?: string }) {
       toast.success('Delete post successfully')
       queryClient.invalidateQueries({ queryKey: ['posts'] })
       queryClient.invalidateQueries({ queryKey: ['tours-to-post'] })
+      queryClient.invalidateQueries({ queryKey: ['recommend-tours'] })
     },
     onError: (err: AxiosError<ErrorResponse>) => {
       toast.error(err?.response?.data?.message || err.message)
