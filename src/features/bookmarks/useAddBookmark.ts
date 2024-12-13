@@ -24,6 +24,7 @@ export const useAddBookmark = function () {
       toast.success('Your bookmark is added successful')
       queryClient.invalidateQueries({ queryKey: [`bookmark-me-${cabinId}`] })
       queryClient.invalidateQueries({ queryKey: ['bookmarks-me'] })
+      queryClient.invalidateQueries({ queryKey: ['recommend-tours'] })
     },
     onError: (err: AxiosErrorConfig) => {
       toast.error(err?.response?.data?.message || err.message)

@@ -16,10 +16,11 @@ export const useDeleteBookmark = function () {
   } = useMutation({
     mutationFn: (id: string) => deleteBookmarkService(id),
     onSuccess: () => {
+      toast.success('Delete your bookmark successful')
       // queryClient.invalidateQueries({ queryKey: ['bookmark'] })
       queryClient.removeQueries({ queryKey: [`bookmark-me-${cabinId}`] })
       queryClient.invalidateQueries({ queryKey: ['bookmarks-me'] })
-      toast.success('Delete your bookmark successful')
+      queryClient.removeQueries({ queryKey: ['recommend-tours'] })
     },
     onError: (err: AxiosErrorConfig) => {
       toast.error(err?.response?.data?.message || err.message)
