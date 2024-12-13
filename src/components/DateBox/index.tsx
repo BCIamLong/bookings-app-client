@@ -11,13 +11,13 @@ export default function DateBox() {
   const [searchParams, setSearchParams] = useSearchParams()
   if (!searchParams.get('date')) searchParams.set('date', 'none')
   return (
-    <DatePicker className="px-4 " customInput={<div className="flex gap-2 w-48 items-center">
+    <DatePicker selectsMultiple className="px-4 " customInput={<div className="flex gap-2 w-48 items-center">
       <span className="cursor-pointer">
         <HiCalendarDays className="text-stone-600 text-2xl" />
       </span>
       <input className="w-full" type="text" value={!startDate ? 'Date' : startDate} disabled />
     </div>} selected={!startDate ? new Date() : new Date(startDate)} onChange={(date) => {
-      const dateStr = date!.toLocaleDateString('en-US', { month: 'long', year: 'numeric', day: '2-digit' })
+      const dateStr = date?.[0]!.toLocaleDateString('en-US', { month: 'long', year: 'numeric', day: '2-digit' })
       setStartDate(dateStr)
       setSearchParams(params => {
         params.set('date', dateStr)

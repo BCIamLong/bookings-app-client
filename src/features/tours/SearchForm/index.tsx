@@ -80,13 +80,13 @@ export default function SearchForm({ variant = "row" }: { variant: 'col' | 'row'
           setWhereChange((whereChange) => whereChange + 1)
           setWhere(e.target.value)
         }} />
-        <DatePicker className="px-0 " customInput={<div className="flex gap-2 w-full items-center justify-start py-1 px-2 ">
+        <DatePicker selectsMultiple className="px-0 " customInput={<div className="flex gap-2 w-full items-center justify-start py-1 px-2 ">
           <span className="cursor-pointer">
             <HiCalendarDays className="text-stone-600 text-2xl" />
           </span>
           <input id="when" placeholder={'Date'} className="w-full bg-stone-0 py-2 text-stone-600" type="text" value={(!whenDate && dateChange <= 0) ? whenStr : whenDate} disabled />
-        </div>} selected={new Date()} onChange={(date) => {
-          const dateStr = date!.toLocaleDateString('en-US', { month: 'long', year: 'numeric', day: '2-digit' })
+        </div>} selected={!whenDate ? new Date() : new Date(whenDate)} onChange={(date) => {
+          const dateStr = date?.[0]!.toLocaleDateString('en-US', { month: 'long', year: 'numeric', day: '2-digit' })
           setDateChange((dateChange) => dateChange + 1)
           setWhenDate(() => dateStr)
         }}
@@ -122,13 +122,13 @@ export default function SearchForm({ variant = "row" }: { variant: 'col' | 'row'
       </FormItem>
 
       <FormItem type="search" label={'When?'} labelFor="when" errorMsg={errors.when?.message}>
-        <DatePicker className="px-0 " customInput={<div className="flex gap-2 w-40 items-center justify-start py-1">
+        <DatePicker selectsMultiple className="px-0 " customInput={<div className="flex gap-2 w-40 items-center justify-start py-1">
           <span className="cursor-pointer">
             <HiCalendarDays className="text-stone-600 text-2xl" />
           </span>
           <input id="when" placeholder={'When you are going?'} className="w-full bg-stone-0 " type="text" value={!whenDate ? '' : whenDate} disabled />
-        </div>} selected={new Date()} onChange={(date) => {
-          const dateStr = date!.toLocaleDateString('en-US', { month: 'long', year: 'numeric', day: '2-digit' })
+        </div>} selected={!whenDate ? new Date() : new Date(whenDate)} onChange={(date) => {
+          const dateStr = date?.[0]!.toLocaleDateString('en-US', { month: 'long', year: 'numeric', day: '2-digit' })
           setWhenDate(() => dateStr)
         }}
         />
