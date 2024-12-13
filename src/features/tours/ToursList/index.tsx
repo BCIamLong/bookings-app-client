@@ -26,12 +26,13 @@ export default function ToursList({ type, title, statusType = 'trending' }: { ty
   const status = searchParams.get('status') || 'none'
   const date = searchParams.get('date') || 'none'
   const difficulty = searchParams.get('difficulty') || 'none'
+  const search = searchParams.get('search') || 'none'
 
   const { user, isLoading: isLoadingUser } = useUserSession()
 
   const { _id: userId } = user || {}
 
-  const { recommendations, recommendations_core, isLoading: isLoadingRecommendations } = useRecommendTours({ userId: userId || 'guest-8dd3c11c-1df4-4f0b-b26d-9d96d80bc28a' })
+  const { recommendations, recommendations_core, isLoading: isLoadingRecommendations } = useRecommendTours({ userId: userId })
   let final_tours = []
 
   // const remove_tours = []
@@ -50,7 +51,11 @@ export default function ToursList({ type, title, statusType = 'trending' }: { ty
   // console.log('============', remove_tours)
   final_tours = recommendationsByPage
 
-  if (!recommendations?.length) final_tours = tours
+  if (!recommendations?.length || sort !== 'none' ||
+    typeFilter !== 'none' ||
+    (status !== 'none' && status !== 'recommend') ||
+    date !== 'none' ||
+    difficulty !== 'none' || search !== 'none') final_tours = tours
   // const { tours, isLoading } = useTours({
   //   sort: 'none', page: 1, limit: 4
   // })
