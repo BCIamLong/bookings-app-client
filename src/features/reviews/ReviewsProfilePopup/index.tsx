@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next"
 export default function ReviewProfilePopup({ isReviewsOfUser }: { isReviewsOfUser?: boolean }) {
   const { t, i18n } = useTranslation()
   const [searchParams, setSearchParams] = useSearchParams()
-  const filter = searchParams.get('filter') || 5
+  const filter = searchParams.get('filter') || 'none'
   const sort = searchParams.get('sort') || 'latest'
   const { reviews, isLoading: isLoadingReviewsPopup } = useReviews({ isReviewsOfUser, filter: filter as FilterReviewOption, sort: sort as SortReviewOption })
   let style = 'grid grid-cols-2 w-[70%] p-6 gap-x-12 gap-y-6 thin:max-sm:flex thin:max-md:flex-col thin:max-md:gap-8'
@@ -32,6 +32,7 @@ export default function ReviewProfilePopup({ isReviewsOfUser }: { isReviewsOfUse
             params.set('filter', e.target.value)
             return params
           })}>
+            <Option type="sort" value="none">Star</Option>
             <Option type="sort" value="5">{t('reviews.box.filter.stars.5')}</Option>
             <Option type="sort" value="4">{t('reviews.box.filter.stars.4')}</Option>
             <Option type="sort" value="3">{t('reviews.box.filter.stars.3')}</Option>

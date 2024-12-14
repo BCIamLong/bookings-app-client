@@ -24,12 +24,12 @@ export default function ReviewsList({ isReviewsOfUser }: { isReviewsOfUser?: boo
 
   if (isLoading || isLoadingUser) return <Spinner size="normal" />
 
-  if (!user) return <div className="p-6"><Empty>Login to see reviews</Empty></div>
+  // if (!user) return <div className="p-6"><Empty>Login to see reviews</Empty></div>
 
   return <>
     <ul className={style}>
       {reviews?.map((review: IReview, i: number) => {
-        if (i === 4) return
+        if (i >= 4) return
         const { name, _id } = review.cabin as ICabin || {}
         return isReviewsOfUser ? <Link key={review._id} to={`/tours/${_id}`} className="h-[7.5rem] [&>li]:h-full">
           <p className="p-2 bg-stone-100 text-xs uppercase font-semibold text-stone-500">{name} </p>
@@ -40,7 +40,8 @@ export default function ReviewsList({ isReviewsOfUser }: { isReviewsOfUser?: boo
       {/* {reviews?.map((review: IReview) => <ReviewItem key={review._id} item={review} />)} */}
 
       {!reviewsLength && <Empty>{`This tour doesn't have any review yet`}</Empty>}
-      {reviewsLength > 4 &&
+      {reviewsLength > 4 && !user && <div className="p-6"><Empty>Login to see more reviews</Empty></div>}
+      {reviewsLength > 4 && user &&
         <Modal>
           <Modal.Open openName="user-reviews">
             <div className="w-[70%]">

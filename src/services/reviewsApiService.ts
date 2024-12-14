@@ -29,7 +29,7 @@ const getReviews = async function ({
     if (isReviewsOfUser) url = `${SERVER_BASE_URL}/api/v1/auth/me/reviews`
 
     const query = new URLSearchParams()
-    if (filter) query.append('rating', String(filter))
+    if (filter && filter !== 'none') query.append('rating', String(filter))
     let sortQueryStr
     if (sort === 'latest') sortQueryStr = '-createdAt'
     if (sort === 'oldest') sortQueryStr = 'createdAt'
