@@ -1,3 +1,4 @@
+import { HiOutlineCheck, HiOutlineMagnifyingGlass, HiOutlineRocketLaunch } from "react-icons/hi2";
 import Heading from "../Heading";
 
 export default function Instructions() {
@@ -10,38 +11,41 @@ export default function Instructions() {
         <ul className="mt-8 flex flex-col gap-6">
           <li className="flex gap-4">
             <div className="flex items-center">
-              <div className="w-12 h-12 bg-orange-400 rounded-xl"></div>
+              <div className="w-12 h-12 bg-brand-400 rounded-xl flex items-center justify-center">
+                <HiOutlineMagnifyingGlass className="text-3xl text-brand-100 stroke-2" />
+              </div>
             </div>
             <div>
               <p className="text-stone-600 text-lg font-semibold">Choose Destination</p>
-              <p className="text-stone-600">Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Urna, tortor tempus. </p>
+              <p className="text-stone-600">Explore a world of wonders. From bustling cities to serene landscapes, we've got you covered. </p>
             </div>
           </li>
           <li className="flex gap-4">
             <div className="flex items-center">
-              <div className="w-12 h-12 bg-orange-400 rounded-xl"></div>
+              <div className="w-12 h-12 bg-brand-400 rounded-xl flex items-center justify-center">
+                <HiOutlineCheck className="text-3xl text-brand-100 stroke-2" />
+              </div>
             </div>
             <div>
               <p className="text-stone-600 text-lg font-semibold">Check Availability</p>
-              <p className="text-stone-600">Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Urna, tortor tempus. </p>
+              <p className="text-stone-600">Tailor your trip with our flexible booking options. Find the perfect dates and accommodations to suit your needs. </p>
             </div>
           </li>
           <li className="flex gap-4">
             <div className="flex items-center">
-              <div className="w-12 h-12 bg-orange-400 rounded-xl"></div>
+              <div className="w-12 h-12 bg-brand-400 rounded-xl flex items-center justify-center">
+                <HiOutlineRocketLaunch className="text-4xl text-brand-100 stroke-[1.5]" />
+              </div>
             </div>
             <div>
               <p className="text-stone-600 text-lg font-semibold">Let’s Go</p>
-              <p className="text-stone-600">Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Urna, tortor tempus. </p>
+              <p className="text-stone-600">Your dream vacation is just a click away. Embark on your adventure and create unforgettable memories.</p>
             </div>
           </li>
         </ul>
       </div>
       <div>
-        <img src="banner-1.png" alt="" />
+        <img className="rounded-full" src="tour-banner-1.png" alt="" />
       </div>
     </div>
   )
