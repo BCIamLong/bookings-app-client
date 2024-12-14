@@ -5,7 +5,8 @@ export default {
   // GOOGLE_OAUTH_REDIRECT_URL: "http://localhost:3009/api/session/oauth/google",
   GOOGLE_OAUTH_REDIRECT_URL:
     import.meta.env.MODE === 'production'
-      ? 'https://booking-api-ebe1.onrender.com/api/v1/auth/login/oauth/google'
+      ? // ? 'https://booking-api-ebe1.onrender.com/api/v1/auth/login/oauth/google'
+        'https://tours-booking-api.onrender.com/api/v1/auth/login/oauth/google'
       : 'http://localhost:3009/api/v1/auth/login/oauth/google',
   SERVER_BASE_URL:
     // 'https://booking-api-ebe1.onrender.com',
