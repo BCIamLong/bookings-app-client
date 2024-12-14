@@ -91,6 +91,7 @@ export default function PostDetail() {
 
 
   const handleClickLike = function () {
+    if (!user) return toast.error('Please login to perform this action!')
 
     let newData: Like[] = []
 
@@ -107,6 +108,7 @@ export default function PostDetail() {
   }
 
   const handleClickBookmark = function () {
+    if (!user) return toast.error('Please login to perform this action!')
 
     let newData: Bookmark[] = []
 
@@ -162,7 +164,7 @@ export default function PostDetail() {
   }
 
   const copyToClipboard = function () {
-    if (!user) return toast.error('Please login to perform this action!')
+    // if (!user) return toast.error('Please login to perform this action!')
     // document.execCommand(`${CLIENT_BASE_UTL}/posts/${postId}`);
     navigator.clipboard.writeText(`${CLIENT_BASE_UTL}/posts/${postId}`)
     // This is just personal preference.

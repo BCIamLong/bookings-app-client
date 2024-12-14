@@ -80,7 +80,7 @@ export default function ExplorePosts() {
             const { fullName, avatar } = userId as unknown as IUser || {}
             const avatarUser = avatar?.includes('default') ? `/${avatar}` : avatar
 
-            return <Link to={`/posts/${postId}`}><div className="relative cursor-pointer [&>div]:hover:visible [&>div]:hover:opacity-100 [&>img]:hover:brightness-75">
+            return <Link to={`/posts/${postId}`}><div className="relative cursor-pointer [&>div]:hover:visible [&>div]:hover:opacity-100 [&>img]:hover:brightness-75 h-full">
               <div className="z-20 invisible opacity-0 absolute flex bottom-0 left-0 w-full px-3 pb-2 items-center justify-between transition-all duration-300">
                 <div className="flex gap-3 items-center">
                   <img className="w-8 rounded-full" src={avatarUser} alt="" />
@@ -91,7 +91,7 @@ export default function ExplorePosts() {
                   <p className="text-xs text-stone-0">{likes?.length}</p>
                 </div>
               </div>
-              <img className="z-10 rounded-xl" src={images?.[0]} alt="" />
+              <img className="z-10 rounded-xl h-full object-cover" src={images?.[0]} alt="" />
             </div></Link>
           }
           )}

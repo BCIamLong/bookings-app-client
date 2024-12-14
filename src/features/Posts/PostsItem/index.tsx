@@ -61,6 +61,7 @@ export default function PostsItem({ post }: { post: IPost }) {
   const postImgStr = !images?.[0]?.includes('https') ? `/${images[0]}` : images[0]
   // console.log(currentUserId, guestId, currentUserId !== guestId)
   const handleClickLike = function () {
+    if (!user) return toast.error('Please login to perform this action!')
 
     let newData: Like[] = []
 
@@ -82,6 +83,7 @@ export default function PostsItem({ post }: { post: IPost }) {
   }
 
   const handleClickBookmark = function () {
+    if (!user) return toast.error('Please login to perform this action!')
 
     let newData: Bookmark[] = []
 
@@ -107,7 +109,7 @@ export default function PostsItem({ post }: { post: IPost }) {
 
 
   const copyToClipboard = function () {
-    if (!user) return toast.error('Please login to perform this action!')
+    // if (!user) return toast.error('Please login to perform this action!')
     // document.execCommand(`${CLIENT_BASE_UTL}/posts/${postId}`);
     navigator.clipboard.writeText(`${CLIENT_BASE_UTL}/posts/${postId}`)
     // This is just personal preference.
