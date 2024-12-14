@@ -2,7 +2,7 @@ import { HiOutlineBuildingOffice, HiOutlinePhone } from "react-icons/hi2";
 
 
 import Button from "../../../components/Button";
-import { ITour } from "../../../interfaces";
+import { IBooking, ITour } from "../../../interfaces";
 // import { useBookCabin } from "../../bookings/useBookCabin";
 import Spinner from "../../../components/Spinner";
 import { useUserBookings } from "@/features/bookings/useUserBookings";
@@ -26,15 +26,20 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
   const { count: isNotAllowUserBook, isLoading: isLoadingUserBookings } = useUserBookings({ status: { operation: 'ne', value: 'checked-out' } })
   const { isBooking, bookTour } = useBookTour()
   const { user, isLoading: isLoadingUser } = useUserSession()
-  const { count: isCabinBooked, isLoading: isLoadingBookings } = useBookings({ status: { operation: 'ne', value: 'checked-out' } })
+  const { count: isCabinBooked, isLoading: isLoadingBookings, bookings } = useBookings({ status: { operation: 'ne', value: 'checked-out' } })
 
   const { _id: tourId, price, name, description, imageCover, maxGroupSize, startDates: startDatesTmp, duration, type } = tour || {}
   const [guests, setGuests] = useState(1)
   // const [days, setDays] = useState(3)
   const [startDate, setStartDate] = useState(0)
   const startDates = startDatesTmp?.filter(date => new Date(date.date) > new Date()).sort((a: StartDate, b: StartDate) => new Date(a.date).getTime() - new Date(b.date).getTime())
-  console.log(startDates[1])
+  // console.log(startDates[1])
 
+  let isTourOfThisDateBooked;
+  bookings?.forEach((b: IBooking) => {
+    if (b.startDate === startDatesTmp[startDate]?.date) isTourOfThisDateBooked = true
+  })
+  // console.log('------', isTourOfThisDateBooked)
 
   // const price = regularPrice * days * guests
   const discountPrice = 0
@@ -62,7 +67,7 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
   const isTourBooked = type !== 'group' ? !isCabinBooked : !isCabinBooked || !isSlotFulled
 
   const isAllowGuestToBook = (isTourBooked && !isSlotFulled) && !count
-
+  // console.log('------', isNotAllowUserBook, !count, user)
   return (
     <div className={`relative min-h-24 bg-stone-0 text-stone-700 shadow-md thin:max-sm:px-6 thin:max-sm:w-[17.4rem] shadow-stone-300 px-4 py-6 ${(count && isCabinBooked) || isCabinBooked || isNotAllowUserBook ? ' bg-stone-200' : ''}`}>
       <div className="absolute top-[-2rem] left-0 text-xs uppercase text-brand-700 border-dashed border-brand-500 border-2 px-2 hover:bg-brand-200 transition-all duration-300">
@@ -84,7 +89,7 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
             <Label type="search" labelFor="guests">Duration</Label>
             <p className="text-stone-500 font-semibold">{duration}</p>
           </p>
-          <div className={`pb-6 pt-6 flex flex-col gap-6 ${((count && isCabinBooked && isSlotFulled) || isCabinBooked && isSlotFulled || isNotAllowUserBook) && user ? 'blur-sm' : ''}`}>
+          <div className={`pb-6 pt-6 flex flex-col gap-6 `}>
             <div className="flex flex-col gap-3">
               <Label type="search" labelFor="guests">Start Dates</Label>
               <Select type="sort" id="dates" defaultValue='3' onChange={(e) => setStartDate(+e.target.value)} disabled={((Boolean(count) && isCabinBooked) || Boolean(isCabinBooked) || isNotAllowUserBook) && isSlotFulled}>
@@ -124,9 +129,9 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
               isNotAllowUserBook && !count && user ? <div className=""><Button size="small" type="primary">{t('cabin.card.notifies.your-booked')}</Button></div> :
                 <>
                   {/* *** */}
-                  {Boolean(isCabinBooked) && !count && isSlotFulled && <div className=""><Button size="small" type="primary">
+                  {Boolean(isCabinBooked) && !count && (isSlotFulled || type !== 'group') && isTourOfThisDateBooked && <div className=""><Button size="small" type="primary">
                     {/* {t('cabin.card.notifies.cabin-booked')} */}
-                    This tour is full slot
+                    {type !== 'group' ? "This tour is already booked" : "This tour is full slot"}
                   </Button></div>}
 
                   {Boolean(isCabinBooked) && Boolean(count)
@@ -148,7 +153,7 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
                       //! count is check the tour is booked by this user? (not checkout)
                       // ! isCabinBooked is check the tour has any bookings (not checkout) or not
                       // (((isCabinBooked && !isSlotFulled) && !count))
-                      (isAllowGuestToBook) ?
+                      (isAllowGuestToBook || !isTourOfThisDateBooked) ?
                         // || ((isCabinBooked && !isSlotFulled) && Boolean(count))) //* this is not necessary
 
                         <Button type="primary" size="small" onClick={handleClick}>
