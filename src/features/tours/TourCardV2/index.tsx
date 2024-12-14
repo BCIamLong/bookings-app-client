@@ -81,18 +81,18 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
             <span> &rarr; $ {totalPrice} </span>
             <span>(-{0}%)</span>
           </p>
-          <p className="flex gap-3 justify-between px-0 pb-6 pt-3">
+          {/* <p className="flex gap-3 justify-between px-0 pb-6 pt-3">
             <Label type="search" labelFor="guests">Type</Label>
             <p className="text-stone-500 capitalize font-semibold">{type}</p>
           </p>
           <p className="flex gap-3 justify-between ">
             <Label type="search" labelFor="guests">Duration</Label>
             <p className="text-stone-500 font-semibold">{duration}</p>
-          </p>
+          </p> */}
           <div className={`pb-6 pt-6 flex flex-col gap-6 `}>
             <div className="flex flex-col gap-3">
               <Label type="search" labelFor="guests">Start Dates</Label>
-              <Select type="sort" id="dates" defaultValue='3' onChange={(e) => setStartDate(+e.target.value)} disabled={((Boolean(count) && isCabinBooked) || Boolean(isCabinBooked) || isNotAllowUserBook) && isSlotFulled}>
+              <Select type="sort" id="dates" defaultValue='3' onChange={(e) => setStartDate(+e.target.value)} disabled={false}>
                 {
                   startDates.map((date, ind) => new Date(date.date) > new Date() ? <Option key={ind} type="sort" value={`${ind}`}>{new Date(date.date).toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' })}</Option> : null)
                 }
@@ -110,17 +110,26 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
              * 3 for personal we just display the participants as 1 and dis play a message that like 'this tour has 1 slot rest'
             */}
             <div className="flex flex-col gap-3">
-              <Label type="search" labelFor="guests">Participants</Label>
+              <Label type="search" labelFor="guests">Current Participants</Label>
               <input id='guests' type="number" min={1} max={maxGroupSize} value={participantsVal}
                 className="py-2 px-8 text-stone-700 bg-stone-0 text-sm font-semibold border-[1.5px] rounded-md border-stone-300 focus:outline-none"
                 onChange={(e) => setGuests(+e.target.value)
-                } disabled={type === 'group' || type === 'personal' || (Boolean(count) && isCabinBooked) || Boolean(isCabinBooked) || isNotAllowUserBook} />
+                } disabled={true} />
             </div>
+            {!isSlotFulled && type === 'group' && <p>This tour has {maxGroupSize - participantsVal} slots available</p>}
+            <div className="flex flex-col gap-3">
+              <Label type="search" labelFor="guests">Participants</Label>
+              <input id='guests' type="number" min={1} max={maxGroupSize} value={guests}
+                className="py-2 px-8 text-stone-700 bg-stone-0 text-sm font-semibold border-[1.5px] rounded-md border-stone-300 focus:outline-none"
+                onChange={(e) => setGuests(+e.target.value)
+                } disabled={isTourOfThisDateBooked || type === 'group'} />
+            </div>
+            {type === 'group' && <p>You can only book for 1 participant</p>}
             {
               isSlotFulled ? type === 'group' ? 'Sorry, this tour is full slots' : null :
-                type === 'private' ?
-                  <p>You can edit the participants</p> :
-                  <p>This tour has {maxGroupSize - participantsVal} slots available</p>
+                type === 'private' &&
+                <p>You can edit the participants</p>
+
             }
           </div>
 
@@ -187,6 +196,6 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
           </div>
         </>
       }
-    </div>
+    </div >
   )
 }

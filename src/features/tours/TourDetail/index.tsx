@@ -1,4 +1,4 @@
-import { HiOutlineShare, HiChevronRight } from "react-icons/hi2"
+import { HiOutlineShare, HiChevronRight, HiOutlineDocumentText, HiOutlineClock, HiOutlineUserGroup, HiOutlineCheckBadge, HiOutlineCalendarDays, HiOutlineSparkles, HiOutlineUsers, HiOutlineStar } from "react-icons/hi2"
 import { IoBedOutline } from "react-icons/io5";
 import { GiKnifeFork } from "react-icons/gi";
 import Heading from "../../../components/Heading"
@@ -18,7 +18,7 @@ import TourCardV2 from "../TourCardV2";
 export default function TourDetail() {
   const { t } = useTranslation()
   const { tour, isLoading }: { tour: ITour, isLoading: boolean } = useTour()
-  const { name, imageCover, images, duration } = tour || {}
+  const { name, imageCover, images, duration, maxGroupSize } = tour || {}
   const [image1, image2, image3] = images || []
   // const tourImage = image?.startsWith('tour-') ? `/imgs/tours/${image}` : image
   const tourImage = imageCover?.startsWith('tour-') ? `/${imageCover}` : imageCover
@@ -77,22 +77,35 @@ export default function TourDetail() {
                 </div>
               </div>
               <div className="flex justify-between items-center gap-6 thin:max-sm:grid thin:max-sm:grid-cols-2">
-                <div className="min-w-36 min-h-36 rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
-                  <IoBedOutline className="text-4xl" />
-                  <p className="text-xs font-semibold">3 Bedrooms</p>
+                <div className="min-w-36 min-h-36 gap-1  rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
+                  <HiOutlineDocumentText className="text-4xl text-brand-600" />
+                  <p className="">
+                    <span className="uppercase text-sm font-semibold">Type: </span>
+                    <span className="text-sm">Private</span>
+                  </p>
                 </div>
-                <div className="min-w-36 min-h-36 rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
-                  <IoBedOutline className="text-4xl" />
-                  <p className="text-xs font-semibold">3 Bedrooms</p>
+                <div className="min-w-36 min-h-36 gap-1  rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
+                  <HiOutlineClock className="text-4xl text-brand-600" />
+                  <p className="">
+                    <span className="uppercase text-sm font-semibold">Duration: </span>
+                    <span className="text-sm">{duration} days</span>
+                  </p>
                 </div>
-                <div className="min-w-36 min-h-36 rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
-                  <IoBedOutline className="text-4xl" />
-                  <p className="text-xs font-semibold">3 Bedrooms</p>
+                <div className="min-w-36 min-h-36 gap-1  rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
+                  <HiOutlineUserGroup className="text-4xl text-brand-600" />
+                  <p className="">
+                    <span className="uppercase text-sm font-semibold">Group Size: </span>
+                    <span className="text-sm">{maxGroupSize}</span>
+                  </p>
                 </div>
-                <div className="min-w-36 min-h-36 rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
-                  <IoBedOutline className="text-4xl" />
-                  <p className="text-xs font-semibold">3 Bedrooms</p>
+                <div className="min-w-36 min-h-36 gap-1  rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">
+                  <HiOutlineCheckBadge className="text-4xl text-brand-600" />
+                  <p className="">
+                    <span className="uppercase text-sm font-semibold">Quality: </span>
+                    <span className="text-sm">Best</span>
+                  </p>
                 </div>
+
               </div>
               <div className="flex flex-col gap-3 text-stone-500">
                 <p className="text-xl text-brand-600 font-bold leading-10">Tour description</p>
@@ -103,28 +116,28 @@ export default function TourDetail() {
                 <div className="grid grid-cols-2 gap-4 py-3 w-[80%] text-sm text-stone-600 mt-3">
                   <div className="flex gap-4 items-center">
                     <div className="flex items-center gap-3 uppercase font-semibold text-lg">
-                      <GiKnifeFork className="text-brand-600" />
+                      <HiOutlineCalendarDays className="text-brand-600 text-2xl" />
                       <p>Next Date</p>
                     </div>
                     <p className="text-[1rem] text-stone-500">{new Date(tour?.startDates[0].date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</p>
                   </div>
                   <div className="flex gap-4 items-center">
                     <div className="flex items-center gap-3 uppercase font-semibold text-lg">
-                      <GiKnifeFork className="text-brand-600" />
-                      <p>Difficult</p>
+                      <HiOutlineSparkles className="text-brand-600 text-2xl" />
+                      <p>Difficulty</p>
                     </div>
                     <p className="text-[1rem] text-stone-500 capitalize">{tour?.difficulty}</p>
                   </div>
                   <div className="flex gap-4 items-center">
                     <div className="flex items-center gap-3 uppercase font-semibold text-lg">
-                      <GiKnifeFork className="text-brand-600" />
+                      <HiOutlineUsers className="text-brand-600 text-2xl" />
                       <p>Participants</p>
                     </div>
                     <p className="text-[1rem] text-stone-500">{tour?.maxGroupSize}</p>
                   </div>
                   <div className="flex gap-4 items-center">
                     <div className="flex items-center gap-3 uppercase font-semibold text-lg">
-                      <GiKnifeFork className="text-brand-600" />
+                      <HiOutlineStar className="text-brand-600 text-2xl" />
                       <p>Rating</p>
                     </div>
                     <p className="text-[1rem] text-stone-500">{tour?.ratingsAverage}</p>
