@@ -12,7 +12,7 @@ export default function ReviewHeading() {
 
   if (isLoading) return <Spinner size="normal" />
   return (
-    <div className="flex gap-2 font-semibold text-xl text-stone-700 p-6 mt-1">
+    <div className="flex gap-2 font-semibold text-xl text-brand-600 p-6 mt-1">
       <p className="flex items-center gap-1">
         {t('cabin.reviews.list.heading1')} <span><HiStar /></span> {ratingsAverage?.toFixed(1)}
       </p>

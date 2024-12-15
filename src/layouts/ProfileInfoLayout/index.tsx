@@ -20,7 +20,7 @@ export default function ProfileInfoLayout() {
       <div className="flex flex-col gap-4 text-stone-700 mt-3 ">
         <div className="flex gap-2 divide-x-[1.5px] divide-stone-300">
           <ButtonLink type="profile" href="reviews">
-            <span><HiStar className="text-xl" /></span>
+            <span><HiStar className="text-xl text-brand-600" /></span>
             <p className="flex gap-1">
               {/* <span>{reviewsCount}</span>
               <span>Reviews</span> */}
@@ -28,7 +28,7 @@ export default function ProfileInfoLayout() {
             </p>
           </ButtonLink>
           <ButtonLink type="profile" href="bookings">
-            <span><HiOutlineCalendarDays className="text-xl" /></span>
+            <span><HiOutlineCalendarDays className="text-xl text-brand-600" /></span>
             <p className="flex gap-1">
               {/* <span>{bookingsCount}</span>
               <span>Bookings</span> */}

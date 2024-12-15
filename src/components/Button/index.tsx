@@ -56,7 +56,7 @@ export default function Button({ type, children, onClick, disabled, size, reset 
     style = baseStyle + `text-brand-600 text-xl p-[0.84rem] hover:bg-brand-200 rounded-full`;
 
   if (type === 'icon')
-    style = baseStyle + `text-stone-700 text-xl p-2 hover:bg-stone-200`;
+    style = baseStyle + `text-brand-600 text-xl p-2 hover:bg-brand-200 rounded-lg`;
 
   if (type === 'icon-search')
     style = baseStyle + `text-brand-700 text-2xl p-2 hover:bg-brand-600 hover:text-brand-100 absolute top-[1px] right-[1px] px-4 py-2 rounded-full bg-brand-100 `;
@@ -67,7 +67,7 @@ export default function Button({ type, children, onClick, disabled, size, reset 
     style = baseStyle + `text-stone-500 text-xl p-2 px-2 hover:bg-brand-200 rounded-full hover:text-brand-600 `;
 
   if (type === 'primary')
-    style = baseStyle + `text-stone-100 text-lg font-semibold py-2 px-4 hover:bg-stone-600 bg-stone-700 rounded-lg border-2 capitalize border-stone-700`;
+    style = baseStyle + `text-brand-100 text-lg font-semibold py-2 px-4 hover:bg-brand-700 bg-brand-600 rounded-lg border-2 capitalize border-brand-600`;
 
   if (type === 'secondary')
     style = baseStyle + `text-brand-600 text-lg font-semibold py-2 px-4 hover:bg-brand-200 rounded-lg border-2 capitalize border-brand-300`;

@@ -45,7 +45,7 @@ export default function ButtonLink({
     style = baseStyle + `flex justify-center text-sm text-brand-700`;
 
   if (type === 'secondary')
-    style = baseStyle + `text-stone-700 text-lg font-semibold py-2 px-4 hover:bg-stone-200 rounded-lg border-2 capitalize border-stone-300`;
+    style = baseStyle + `text-brand-600 text-lg font-semibold py-2 px-4 hover:bg-brand-200 rounded-lg border-2 capitalize border-brand-300`;
 
   if (type === 'profile')
     style = baseStyle + `text-stone-700 text-lg font-semibold py-2 px-4 capitalize hover:underline `;

@@ -80,7 +80,7 @@ export default function ToursList({ type, title, statusType = 'trending' }: { ty
 
   if (type === 'recommend') return <>{
     Boolean(recommendationsByPageCore?.length) && <div className="p-12 flex flex-col gap-6 bg-stone-0">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center [&>h1]:text-brand-600">
         <Heading type="secondary">{title}</Heading>
         <ButtonLink type="simple1" href={`${CLIENT_BASE_UTL}/tours?status=${statusType}`}>See more &#8594;</ButtonLink>
       </div>

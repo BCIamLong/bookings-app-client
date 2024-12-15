@@ -10,7 +10,7 @@ export default function ProfileSidebar() {
   const { user, isLoading } = useUserSession()
   const { fullName, createdAt, enable2FA, avatar } = user || {}
 
-  const avatarStr = avatar?.includes('default') ? `/${avatar}` : avatar
+  const avatarStr = avatar?.includes('https') ? `/${avatar}` : avatar
 
   if (isLoading) return <Spinner size="normal" />
 
@@ -26,14 +26,14 @@ export default function ProfileSidebar() {
       <p className="text-lg font-semibold">{t('profile.infos.verify.heading')}</p>
       <p className="text-xs text-stone-400 leading-4">{t('profile.infos.verify.description')}</p>
     </div>
-    <div className="text-sm text-stone-400">
+    <div className="text-sm text-brand-600">
       <p className="flex gap-2 items-center">
-        <span><HiCheck /></span>
+        <span><HiCheck className="text-brand-600" /></span>
         <span>Email Confirmed</span>
       </p>
       {enable2FA &&
         <p className="flex gap-2 items-center leading-6">
-          <span><HiCheck /></span>
+          <span><HiCheck className="text-brand-600" /></span>
           <span>2FA Confirmed</span>
         </p>}
     </div>

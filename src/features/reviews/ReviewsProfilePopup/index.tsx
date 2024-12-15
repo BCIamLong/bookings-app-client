@@ -25,14 +25,14 @@ export default function ReviewProfilePopup({ isReviewsOfUser }: { isReviewsOfUse
 
   return (
     <div className={`bg-stone-100 ${heightDiv} thin:max-tiny:max-w-[36rem] p-6`}>
-      <div className="flex justify-between p-6 mt-2 items-center thin:max-sm:flex-col thin:max-sm:justify-start thin:max-sm:items-start thin:max-sm:gap-3">
+      <div className="flex justify-between p-6 mt-2 items-center thin:max-sm:flex-col thin:max-sm:justify-start thin:max-sm:items-start thin:max-sm:gap-3 [&>h1]:text-brand-600">
         {isReviewsOfUser ? <Heading type="heading-4">{t('reviews.box.heading')}</Heading> : <div className="[&>div]:p-[0px]"><ReviewHeading /></div>}
         <div className="flex gap-2">
           <Select id="filter-user-reviews" type="sort" onChange={(e) => setSearchParams(params => {
             params.set('filter', e.target.value)
             return params
           })}>
-            <Option type="sort" value="none">Star</Option>
+            <Option type="sort" value="none">All Stars</Option>
             <Option type="sort" value="5">{t('reviews.box.filter.stars.5')}</Option>
             <Option type="sort" value="4">{t('reviews.box.filter.stars.4')}</Option>
             <Option type="sort" value="3">{t('reviews.box.filter.stars.3')}</Option>

@@ -10,6 +10,7 @@ import { VerifyEnable2FAInput } from "../../../interfaces";
 import { useVerifyEnable2FA } from "../useVerifyEnable2FA";
 import Spinner from "../../../components/Spinner";
 import { HiXMark } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 
 export default function Enable2FAForm() {
   const { register, handleSubmit, formState } = useForm<VerifyEnable2FAInput>()
@@ -51,10 +52,17 @@ export default function Enable2FAForm() {
         />
       </FormItem>
       <Buttons>
-        <Button type="secondary" reset={true} size="medium">
+
+        <Link to={'/profile/setting/security'}>
+          <button className="flex items-center gap-2 duration-300 transition-all justify-center text-brand-600 text-lg font-semibold  hover:bg-brand-200 rounded-lg border-2 capitalize border-brand-300 py-2 px-4" type="button">
+            <span><HiXMark className="stroke-[1.5px]" />
+            </span><span>Cancel</span>
+          </button>
+        </Link>
+        {/* <Button type="secondary" reset={true} size="medium">
           <span><HiXMark className="stroke-[1.5px]" />
           </span><span>Cancel</span>
-        </Button>
+        </Button> */}
         <Button type="primary" size="medium">{isVerifying ? <Spinner size="small" /> : 'Save'}</Button>
       </Buttons>
     </Form>

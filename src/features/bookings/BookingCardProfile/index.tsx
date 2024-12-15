@@ -28,9 +28,9 @@ export default function BookingCardProfile({ booking, onCloseModal }: { booking:
   if (isUserLoading) return <Spinner size="normal" />
 
   return (
-    <div className={`p-8 shadow-md shadow-brand-300 rounded-md text-stone-700 bg-brand-200 w-[30rem]`}>
+    <div className={`p-8 shadow-md shadow-brand-300 rounded-md text-stone-700 bg-stone-0 w-[30rem]`}>
       <div className="border-b-[1.5px] border-stone-300 pb-4">
-        <Link to={`/tours/${tourId}`}>
+        <Link to={`/tours/${tourId}`} className="[&>h1]:text-brand-600">
           <Heading type="tertiary">{cabinName}</Heading>
         </Link>
       </div>
