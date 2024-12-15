@@ -10,14 +10,14 @@ export default function Hero() {
     <section className="relative max-h-screen bg-stone-0" id="hero">
       <img
         // className="outline-none thin:h-[50%] sm:h-[70%] md:max-lg:h-[80vh] lg:h-[90vh] xl:h-screen w-screen brightness-[60%] "
-        className="outline-none thin:h-[50%] sm:h-[70%] md:max-lg:h-[80vh] lg:h-[90vh] xl:h-screen w-screen brightness-[90%] "
+        className="outline-none thin:h-[50%] sm:h-[70%] md:max-lg:h-[80vh] lg:h-[90vh] xl:h-screen w-screen brightness-[100%] object-fill z-10"
         // src="/imgs/cabins/cabin-001.jpg"
-        src={!isDarkMode ? 'https://images.pexels.com/photos/7276577/pexels-photo-7276577.jpeg?auto=compress&w=2736&h=1824' : "https://images.pexels.com/photos/450062/pexels-photo-450062.jpeg?auto=compress&w=2736&h=1824"}
+        src={!isDarkMode ? '/banner-tour-5.jpg' : "https://img.freepik.com/free-vector/night-road-trip-by-car-travel-jeep-driving-highway-mountains-with-beautiful-seaview-landscape-full-moon-starry-sky_107791-5706.jpg?t=st=1734242959~exp=1734246559~hmac=856ab288755677f0d3d3b4f6121dd0bcdfb04db156db9fea4f584c05f59b3ab3&w=2000"}
         alt="Booking app banner"
       />
       {/* <div className="bg-hero h-lvh bg-cover bg-center bg-no-repeat"></div> */}
       {/* <SearchBox /> */}
-      <SearchBox />
+      <SearchBox isDarkMode={isDarkMode} />
       {/* <motion.h1 className='absolute top-[30%] left-[30%] text-brand-600 font-bold' initial={{ display: 'none', fontSize: '1rem' }} animate={{
         display: 'block', fontSize: '3rem',
         borderRadius: '3px',
