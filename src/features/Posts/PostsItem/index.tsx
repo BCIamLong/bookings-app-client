@@ -142,7 +142,7 @@ export default function PostsItem({ post }: { post: IPost }) {
             <div className={`z-30 ${currentUserId !== guestId ? '' : ''}`}>
               <Modal.Open openName="disable-2fa">
                 <Button type="icon-1" size="small">
-                  <HiMiniEllipsisHorizontal className="text-stone-600 text-2xl" />
+                  <HiMiniEllipsisHorizontal className="text-stone-600 text-2xl hover:text-brand-600" />
                 </Button>
               </Modal.Open>
             </div>
@@ -158,14 +158,14 @@ export default function PostsItem({ post }: { post: IPost }) {
               {/* <img className="w-full" src="https://images.pexels.com/photos/386000/pexels-photo-386000.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" /> */}
             </div>
             <Link to={`/tours/${id}`} className='absolute left-1/2 bottom-0 -translate-x-1/2 w-full px-16'>
-              <div className="flex justify-between items-center text-stone-50 px-3 py-1 bg-brand-400">
+              <div className="flex justify-between items-center text-brand-100 px-3 py-1 bg-brand-400">
                 <p className="">{name}</p>
                 <HiChevronRight />
               </div>
             </Link>
           </div>
         </Link>
-        <Modal.Window name="disable-2fa">
+        <Modal.Window name="disable-2fa" type='brand'>
           <Popup title='Choose an action' isLoading={false} btnContent="" onHandle={() => 1} >
             <ul className='flex flex-col gap-2'>
               {currentUserId === guestId && <>
@@ -188,10 +188,10 @@ export default function PostsItem({ post }: { post: IPost }) {
           </Popup>
         </Modal.Window>
       </Modal>
-      <ul className={`flex justify-around py-4 text-xl text-stone-500 ${isUpdating ? 'pointer-events-none blur-[0.5px]' : ''}`}>
+      <ul className={`flex justify-around py-4 px-3 text-xl text-stone-500 ${isUpdating ? 'pointer-events-none blur-[0.5px]' : ''}`}>
         <li className="flex gap-2 items-center">
           <Button type='icon-2' onClick={handleClickLike}>
-            {isLiked ? <HiHeart className="text-2xl" /> :
+            {isLiked ? <HiHeart className="text-2xl text-brand-600" /> :
               <HiOutlineHeart className="text-2xl" />}
             <span className="text-sm font-semibold">{numLikes}</span>
           </Button>
@@ -199,7 +199,7 @@ export default function PostsItem({ post }: { post: IPost }) {
         <li className="flex gap-2 items-center">
           <Button type='icon-2' onClick={() => navigate(`/posts/${postId}`)} >
             {isCommented ?
-              <HiChatBubbleOvalLeft className="text-2xl" /> :
+              <HiChatBubbleOvalLeft className="text-2xl text-brand-600" /> :
               <HiOutlineChatBubbleOvalLeft className="text-2xl" />}
             <span className="text-sm font-semibold">{numComments}</span>
           </Button>
@@ -207,20 +207,22 @@ export default function PostsItem({ post }: { post: IPost }) {
         <li className="flex gap-2 items-center">
           <Button type='icon-2' onClick={handleClickBookmark}>
             {isBookmarked ?
-              <HiBookmark className="text-2xl" /> :
+              <HiBookmark className="text-2xl text-brand-600" /> :
               <HiOutlineBookmark className="text-2xl" />}
             <span className="text-sm font-semibold">{numBookmarks}</span>
           </Button>
         </li>
-        <li className="flex gap-2 items-center">  <Button type='icon-2'>
+        <li className="flex gap-2 items-center">
           <Modal>
             <Modal.Open openName="disable-2fa">
-              <Button type="icon-3" size="small">
-                <HiOutlineShare className="text-2xl" />
-                <span className="text-sm font-semibold">{shares}</span>
+              <Button type="icon-2" size="small">
+                <div className='flex items-center justify-center gap-2 py-1'>
+                  <HiOutlineShare className="text-2xl" />
+                  <span className="text-sm font-semibold">{shares}</span>
+                </div>
               </Button>
             </Modal.Open>
-            <Modal.Window name="disable-2fa">
+            <Modal.Window name="disable-2fa" type='brand'>
               <Popup title='Choose an action' isLoading={false} btnContent="" onHandle={() => 1} >
                 <ul className='flex flex-col gap-2'>
                   <li>
@@ -232,7 +234,6 @@ export default function PostsItem({ post }: { post: IPost }) {
               </Popup>
             </Modal.Window>
           </Modal>
-        </Button>
         </li>
       </ul>
     </div >

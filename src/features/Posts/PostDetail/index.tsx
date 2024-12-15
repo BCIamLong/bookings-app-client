@@ -211,10 +211,10 @@ export default function PostDetail() {
           <Modal>
             <Modal.Open openName="disable-2fa">
               <Button type="icon-1" size="small">
-                <HiMiniEllipsisHorizontal className="text-stone-600 text-2xl" />
+                <HiMiniEllipsisHorizontal className="text-stone-600 text-2xl hover:text-brand-600" />
               </Button>
             </Modal.Open>
-            <Modal.Window name="disable-2fa">
+            <Modal.Window name="disable-2fa" type="brand">
               <Popup title='Choose an action' isLoading={false} btnContent="" onHandle={() => 1} >
                 <ul className='flex flex-col gap-2'>
                   {currentUserId === guestId && <>
@@ -260,47 +260,47 @@ export default function PostDetail() {
       <ul className="flex justify-around py-4 text-xl text-stone-500">
         <li className="flex gap-2 items-center">
           <Button type='icon-2' onClick={handleClickLike}>
-            {isLiked ? <HiHeart className="text-2xl" /> :
+            {isLiked ? <HiHeart className="text-2xl text-brand-600" /> :
               <HiOutlineHeart className="text-2xl" />}
             <span className="text-sm font-semibold">{numLikes}</span>
           </Button>
         </li>
         <li className="flex gap-2 items-center">
           {isCommented ?
-            <HiChatBubbleOvalLeft className="text-2xl" /> :
+            <HiChatBubbleOvalLeft className="text-2xl text-brand-600" /> :
             <HiOutlineChatBubbleOvalLeft className="text-2xl" />}
           <span className="text-sm font-semibold">{numComments}</span>
         </li>
         <li className="flex gap-2 items-center">
           <Button type='icon-2' onClick={handleClickBookmark}>
             {isBookmarked ?
-              <HiBookmark className="text-2xl" /> :
+              <HiBookmark className="text-2xl text-brand-600" /> :
               <HiOutlineBookmark className="text-2xl" />}
             <span className="text-sm font-semibold">{numBookmarks}</span>
           </Button>
         </li>
         <li className="flex gap-2 items-center">
-          <Button type='icon-2'>
-            <Modal>
-              <Modal.Open openName="disable-2fa">
-                <Button type="icon-3" size="small">
+          <Modal>
+            <Modal.Open openName="disable-2fa">
+              <Button type="icon-2" size="small">
+                <div className='flex items-center justify-center gap-2 py-1'>
                   <HiOutlineShare className="text-2xl" />
                   <span className="text-sm font-semibold">{shares}</span>
-                </Button>
-              </Modal.Open>
-              <Modal.Window name="disable-2fa">
-                <Popup title='Choose an action' isLoading={false} btnContent="" onHandle={() => 1} >
-                  <ul className='flex flex-col gap-2'>
-                    <li>
-                      <Button type='popup-normal' onClick={copyToClipboard}>
-                        Copy link
-                      </Button>
-                    </li>
-                  </ul>
-                </Popup>
-              </Modal.Window>
-            </Modal>
-          </Button>
+                </div>
+              </Button>
+            </Modal.Open>
+            <Modal.Window name="disable-2fa" type="brand">
+              <Popup title='Choose an action' isLoading={false} btnContent="" onHandle={() => 1} >
+                <ul className='flex flex-col gap-2'>
+                  <li>
+                    <Button type='popup-normal' onClick={copyToClipboard}>
+                      Copy link
+                    </Button>
+                  </li>
+                </ul>
+              </Popup>
+            </Modal.Window>
+          </Modal>
         </li>
       </ul>
       <div className={`flex items-center border-t-[1.5px] border-stone-100 py-2 ${isCommented ? '' : ''}`}>
@@ -308,7 +308,7 @@ export default function PostDetail() {
         <input id="add-comment" value={comment} disabled={Boolean(!user)} onChange={(e) => setComment(e.target.value)} className="w-full bg-stone-0 focus:outline-none text-stone-700" type="text" placeholder={`${!user ? 'Please login to comment' : 'Add a comment'}`} />
         <Button type="icon-2" onClick={handleClickComment} disabled={Boolean(!user)}>
           <div className="py-2 px-3 [&>.icon]:hover:text-brand-600 cursor-pointer">
-            <LuSendHorizonal className="icon transition-all duration-300 text-xl text-stone-600" />
+            <LuSendHorizonal className="icon transition-all duration-300 text-xl text-brand-600" />
           </div>
         </Button>
       </div>
@@ -343,7 +343,7 @@ export default function PostDetail() {
                         <HiMiniEllipsisHorizontal className="text-stone-600 text-2xl" />
                       </Button>
                     </Modal.Open>
-                    <Modal.Window name="comment-option">
+                    <Modal.Window name="comment-option" type="brand">
                       <Popup title='Choose an action' isLoading={false} btnContent="" onHandle={() => 1} >
                         <ul className='flex flex-col gap-2'>
                           {/* <li className='py-2 text-center text-stone-600 font-semibold border-y-[1.5px]'>Edit</li> */}
