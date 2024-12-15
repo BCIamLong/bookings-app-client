@@ -37,7 +37,7 @@ export default function ExplorePosts() {
         <ul className="flex gap-3">
           {/* this is for active tab
           <li className="py-1 px-3 bg-brand-400 border-[1.5px] border-brand-400 cursor-pointer rounded-full text-stone-0 text-sm font-semibold hover:bg-brand-500 transition-all duration-300">Popular</li> */}
-          <li className={`py-1 px-3 bg-stone-50 border-[1.5px] border-brand-400 cursor-pointer rounded-full text-stone-600 text-sm font-semibold hover:bg-stone-200 transition-all duration-300 ${filteredId === '1' ? 'bg-brand-300 [&>button]:text-brand-600 hover:bg-brand-300 pointer-events-none' : ''}`}>
+          <li className={`py-1 px-3 border-[1.5px] border-brand-400 cursor-pointer rounded-full text-stone-600 text-sm font-semibold hover:bg-stone-200 transition-all duration-300 ${filteredId === '1' ? 'bg-brand-200 [&>button]:text-brand-600 hover:bg-brand-300 pointer-events-none' : ''}`}>
             <Button type="" onClick={() => {
               setFilteredId('1')
               setSearchParams(params => {
@@ -46,7 +46,7 @@ export default function ExplorePosts() {
               })
             }}>Popular</Button>
           </li>
-          <li className={`py-1 px-3 bg-stone-50 border-[1.5px] border-brand-400 cursor-pointer rounded-full text-stone-600 text-sm font-semibold hover:bg-stone-200 transition-all duration-300 ${filteredId === '2' ? 'bg-brand-300 [&>button]:text-brand-600 hover:bg-brand-300 pointer-events-none' : ''}`}>
+          <li className={`py-1 px-3 border-[1.5px] border-brand-400 cursor-pointer rounded-full text-stone-600 text-sm font-semibold hover:bg-stone-200 transition-all duration-300 ${filteredId === '2' ? 'bg-brand-300 [&>button]:text-brand-600 hover:bg-brand-300 pointer-events-none' : ''}`}>
             <Button type="" onClick={() => {
               setFilteredId('2')
               setSearchParams(params => {
@@ -55,7 +55,7 @@ export default function ExplorePosts() {
               })
             }}>Trending</Button>
           </li>
-          <li className={`py-1 px-3 bg-stone-50 border-[1.5px] border-brand-400 cursor-pointer rounded-full text-stone-600 text-sm font-semibold hover:bg-stone-200 transition-all duration-300 ${filteredId === '3' ? 'bg-brand-300 [&>button]:text-brand-600 hover:bg-brand-300 pointer-events-none' : ''}`}>
+          <li className={`py-1 px-3 border-[1.5px] border-brand-400 cursor-pointer rounded-full text-stone-600 text-sm font-semibold hover:bg-stone-200 transition-all duration-300 ${filteredId === '3' ? 'bg-brand-300 [&>button]:text-brand-600 hover:bg-brand-300 pointer-events-none' : ''}`}>
             <Button type="" onClick={() => {
               setFilteredId('3')
               setSearchParams(params => {
@@ -63,7 +63,7 @@ export default function ExplorePosts() {
                 return params
               })
             }}>Newest</Button></li>
-          <li className={`py-1 px-3 bg-stone-50 border-[1.5px] border-brand-400 cursor-pointer rounded-full text-stone-600 text-sm font-semibold hover:bg-stone-200 transition-all duration-300 ${filteredId === '4' ? 'bg-brand-300 [&>button]:text-brand-600 hover:bg-brand-300 pointer-events-none' : ''}`}>
+          <li className={`py-1 px-3 border-[1.5px] border-brand-400 cursor-pointer rounded-full text-stone-600 text-sm font-semibold hover:bg-stone-200 transition-all duration-300 ${filteredId === '4' ? 'bg-brand-300 [&>button]:text-brand-600 hover:bg-brand-300 pointer-events-none' : ''}`}>
             <Button type="" onClick={() => {
               setFilteredId('4')
               setSearchParams(params => {
@@ -84,7 +84,7 @@ export default function ExplorePosts() {
               <div className="z-20 invisible opacity-0 absolute flex bottom-0 left-0 w-full px-3 pb-2 items-center justify-between transition-all duration-300">
                 <div className="flex gap-3 items-center">
                   <img className="w-8 rounded-full" src={avatarUser} alt="" />
-                  <p className="text-stone-50 text-sm font-semibold">{fullName}</p>
+                  <p className="text-brand-100 text-sm font-semibold">{fullName}</p>
                 </div>
                 <div className="flex gap-1 items-center">
                   <HiHeart className="text-xl text-red-500" />

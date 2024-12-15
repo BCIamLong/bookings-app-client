@@ -82,7 +82,7 @@ export default function CreatePost() {
             <LuImage className="text-6xl text-stone-500 rotate-[20deg] -mt-3" />
           </div>
           <p className="text-lg text-stone-600 font-semibold">Drag photo here</p>
-          <p className="text-sm text-stone-400">SVG, PNG, JPG</p>
+          <p className="text-xs text-stone-400 font-semibold">SVG, PNG, JPG</p>
           <div className="flex justify-center [&>input]:w-[80%]">
             <input id="image" className="file:duration-300 file:transition-all hover:file:cursor-pointer hover:file:bg-brand-700 file:border-none file:bg-brand-600 file:text-stone-100 file:px-3 file:py-2 file:rounded-lg file:font-semibold text-sm file:mr-3 text-stone-700 w-[24%] border-none thin:max-tiny:w-[35%] tiny:max-sm:w-[40%] sm:max-md:w-[33%] md:max-lg:w-[28%]" type="file" disabled={!isAllowToPost || isCreating} onChange={(e) => setImage(e.target.files[0])} />
             {/* <FileInput id="" variant="posts" disabled={!isAllowToPost} /> */}
