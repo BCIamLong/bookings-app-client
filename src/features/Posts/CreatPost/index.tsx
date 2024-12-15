@@ -68,7 +68,7 @@ export default function CreatePost() {
       </div>
       <div className={`[&>textarea]:w-full flex gap-3 flex-col ${isAllowToPost ? '' : ''}`}>
         <Heading type="heading-4">Title</Heading>
-        <input className="py-2 border-[1.5px] border-stone-300 rounded-lg focus:outline-stone-400 text-stone-600 px-3" type="text" disabled={!isAllowToPost || isCreating} value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input className="py-2 border-[1.5px] border-stone-300 rounded-lg bg-stone-0 focus:outline-stone-400 text-stone-600 px-3" type="text" disabled={!isAllowToPost || isCreating} value={title} onChange={(e) => setTitle(e.target.value)} />
       </div>
       <div className={`[&>textarea]:w-full flex gap-3 flex-col ${isAllowToPost ? '' : ''}`}>
         <Heading type="heading-4">Content</Heading>

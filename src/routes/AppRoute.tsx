@@ -27,6 +27,7 @@ import PostDetail from "@/features/Posts/PostDetail";
 import ExplorePosts from "@/features/Posts/ExplorePosts";
 import EditPost from "@/features/Posts/EditPost";
 import SavedPosts from "@/features/Posts/SavedPosts";
+import MyPosts from "@/features/Posts/MyPosts";
 
 // const Account = lazy(() => import("../features/auth/Account"))
 // const Security = lazy(() => import("../features/auth/Security"))
@@ -125,6 +126,7 @@ export default function AppRoute() {
             <Route path="posts" element={<ProtectedRoute><PostsLayout /></ProtectedRoute>} >
               <Route path="create" element={<CreatePost />} />
               <Route path="saved" element={<SavedPosts />} />
+              <Route path="my-posts" element={<MyPosts />} />
             </Route>
             {/* <Route path="/posts" element={<Posts />} /> */}
             <Route path="/tours" element={<Tours />} />

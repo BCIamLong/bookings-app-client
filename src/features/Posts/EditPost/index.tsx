@@ -57,7 +57,7 @@ export default function EditPost() {
       </div>
       <div className={`[&>textarea]:w-full flex gap-3 flex-col `}>
         <Heading type="heading-4">Title</Heading>
-        <input className="py-2 border-[1.5px] border-stone-300 rounded-lg focus:outline-stone-400 text-stone-600 px-3" type="text" disabled={isUpdating} value={title || postTitle} onChange={(e) => setTitle(e.target.value)} />
+        <input className="py-2 border-[1.5px] bg-stone-0 border-stone-300 rounded-lg focus:outline-stone-400 text-stone-600 px-3" type="text" disabled={isUpdating} value={title || postTitle} onChange={(e) => setTitle(e.target.value)} />
       </div>
       <div className="[&>textarea]:w-full flex gap-3 flex-col">
         <Heading type="heading-4">Content</Heading>
@@ -65,15 +65,18 @@ export default function EditPost() {
       </div>
       <div className="flex gap-3 flex-col">
         <Heading type="heading-4">Edit photos</Heading>
-        <div style={{ backgroundImage: `url(${images[0]})` }} className="bg-cover bg-center [&>input]:w-[30%] gap-3 border-[1.5px] border-stone-300 py-12 flex-col rounded-lg flex justify-center items-center">
-          <div className="flex">
-            <LuImage className="text-6xl text-stone-500  -rotate-6" />
-            <LuImage className="text-6xl text-stone-500 rotate-[20deg] -mt-3" />
+        <div style={{
+          backgroundImage: `url(${images[0]})`,
+        }} className="relative bg-cover object-cover bg-center[&>input]:w-[30%] gap-3 border-[1.5px] border-stone-300 py-12 flex-col rounded-lg flex justify-center items-center">
+          <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
+          <div className="flex z-10">
+            <LuImage className="text-6xl text-brand-100  -rotate-6" />
+            <LuImage className="text-6xl text-brand-100 rotate-[20deg] -mt-3" />
           </div>
-          <p className="text-lg text-stone-600 font-semibold">Drag photo here</p>
-          <p className="text-sm text-stone-400">SVG, PNG, JPG</p>
-          <div className="flex justify-center [&>input]:w-[80%]">
-            <input id="image" className="file:duration-300 file:transition-all hover:file:cursor-pointer hover:file:bg-brand-700 file:border-none file:bg-brand-600 file:text-stone-100 file:px-3 file:py-2 file:rounded-lg file:font-semibold text-sm file:mr-3 text-stone-700 w-[24%] border-none thin:max-tiny:w-[35%] tiny:max-sm:w-[40%] sm:max-md:w-[33%] md:max-lg:w-[28%]" type="file" disabled={isUpdating} onChange={(e) => setImage(e.target.files[0])} />
+          <p className="text-lg text-brand-200 font-semibold z-10">Drag photo here</p>
+          <p className="text-sm text-brand-300 z-10">SVG, PNG, JPG</p>
+          <div className="flex justify-center [&>input]:w-[80%] z-10">
+            <input id="image" className="file:duration-300 file:transition-all hover:file:cursor-pointer hover:file:bg-brand-700 file:border-none file:bg-brand-600 file:text-brand-100 file:px-3 file:py-2 file:rounded-lg file:font-semibold text-sm file:mr-3 w-[24%] border-none thin:max-tiny:w-[35%] tiny:max-sm:w-[40%] sm:max-md:w-[33%] md:max-lg:w-[28%] text-brand-100" type="file" disabled={isUpdating} onChange={(e) => setImage(e.target.files[0])} />
           </div>
         </div>
       </div>

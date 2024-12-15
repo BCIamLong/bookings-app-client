@@ -2,9 +2,9 @@ import { ITour } from './ITour'
 import IUser from './IUser'
 
 export interface SearchPost {
-  tourId: string
-  userId: string
-  title: string
+  tourId?: string
+  userId?: string
+  title?: string
 }
 
 export interface Like {

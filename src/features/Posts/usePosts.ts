@@ -3,6 +3,7 @@ import { SortOptions } from '../../interfaces/types'
 import { appConfig } from '../../config'
 import { useSearchParams } from 'react-router-dom'
 import { getPosts } from '@/services/postsApiService'
+import { SearchPost } from '@/interfaces'
 
 const { PAGE_LIMIT } = appConfig
 
@@ -12,18 +13,27 @@ export const usePosts = function ({
   page = 1,
   bookmarkFor = '',
   searchStr = '',
+  search,
 }: {
   sort: SortOptions
   page?: number
   bookmarkFor?: string
+  search?: SearchPost | URLSearchParams
   searchStr?: string
   random?: boolean
 }) {
   const [searchParams] = useSearchParams()
-  const search = JSON.parse(searchParams.get('search') || `{}`)
+  const searchQuery = JSON.parse(searchParams.get('search') || `{}`)
 
   const queryClient = useQueryClient()
-  const options = { sort, page, search, bookmarkFor, searchStr, random }
+  const options = {
+    sort,
+    page,
+    search: search || searchQuery,
+    bookmarkFor,
+    searchStr,
+    random,
+  }
   const { data, isLoading, error } = useQuery({
     // queryKey: [`cabins${sort !== "none" ? `-sort-by-${sort}` : ""}`],
     queryKey: [`posts`, options],
