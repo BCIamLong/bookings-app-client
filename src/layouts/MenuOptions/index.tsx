@@ -19,7 +19,7 @@ export default function MenuOptions() {
       <div className="[&>.div2]:tiny:hover:visible [&>.div2]:tiny:hover:opacity-100 [&>.div1]:thin:max-tiny:hover:visible [&>.div1]:thin:max-tiny:hover:opacity-100 relative">
         {/* <div className="[&>.div2]:tiny:hover:flex [&>.div1]:thin:max-tiny:hover:flex relative"> */}
         <Button type="icon">
-          <HiBars3 className="stroke-1 px-0.5 text-3xl text-stone-600" />
+          <HiBars3 className="stroke-1 px-0.5 text-3xl text-brand-600" />
         </Button>
         <div className="div1 transition-all flex opacity-0 ease-in-out duration-300 invisible absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md flex-col gap-3 ">
           {/* <div className="div1 absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md hidden flex-col gap-3 "> */}

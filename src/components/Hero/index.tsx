@@ -12,7 +12,7 @@ export default function Hero() {
         // className="outline-none thin:h-[50%] sm:h-[70%] md:max-lg:h-[80vh] lg:h-[90vh] xl:h-screen w-screen brightness-[60%] "
         className="outline-none thin:h-[50%] sm:h-[70%] md:max-lg:h-[80vh] lg:h-[90vh] xl:h-screen w-screen brightness-[90%] "
         // src="/imgs/cabins/cabin-001.jpg"
-        src={!isDarkMode ? 'https://images.pexels.com/photos/7276577/pexels-photo-7276577.jpeg?auto=compress&cs=tinysrgb&w=600' : "https://images.pexels.com/photos/450062/pexels-photo-450062.jpeg?auto=compress&cs=tinysrgb&w=600"}
+        src={!isDarkMode ? 'https://images.pexels.com/photos/7276577/pexels-photo-7276577.jpeg?auto=compress&w=2736&h=1824' : "https://images.pexels.com/photos/450062/pexels-photo-450062.jpeg?auto=compress&w=2736&h=1824"}
         alt="Booking app banner"
       />
       {/* <div className="bg-hero h-lvh bg-cover bg-center bg-no-repeat"></div> */}

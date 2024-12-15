@@ -20,7 +20,7 @@ export default function Button({ type, children, onClick, disabled, size, reset 
   if (type === "footer")
     style =
       baseStyle +
-      `px-4 py-2 text-stone-600 text-xs font-semibold bg-stone-200 rounded-sm flex items-center gap-2`;
+      `px-4 py-2 text-stone-600 text-xs font-semibold bg-stone-100 hover:bg-stone-200 rounded-sm flex items-center gap-2`;
   if (type === "nav-search")
     style =
       baseStyle +
@@ -28,7 +28,7 @@ export default function Button({ type, children, onClick, disabled, size, reset 
   if (type === "search")
     style =
       baseStyle +
-      `flex items-center justify-center rounded-full border-none bg-stone-700`;
+      `flex items-center justify-center rounded-full border-none bg-brand-600 hover:bg-brand-700`;
   if (type === "nav-header")
     style =
       baseStyle +
@@ -45,15 +45,15 @@ export default function Button({ type, children, onClick, disabled, size, reset 
   if (type === "discover-light")
     style =
       baseStyle +
-      `text-stone-700 font-semibold text-sm pr-3 py-1 border-b-2 border-white hover:border-b-2 hover:border-stone-700`;
+      `text-stone-700 font-semibold text-sm pr-3 py-1 border-b-2 border-white hover:border-b-2 hover:border-brand-600 hover:text-brand-600`;
 
   if (type === "discover")
     style =
       baseStyle +
-      `text-stone-100 font-bold capitalize text-sm px-2 py-3 bg-stone-800 rounded-full w-[30%] sm:w-[40%] hover:bg-stone-700 thin:w-[60%] tiny:w-[40%]`;
+      `text-brand-100 font-bold capitalize text-sm px-2 py-3 bg-brand-600 rounded-full w-[30%] sm:w-[40%] hover:bg-brand-700 thin:w-[60%] tiny:w-[40%]`;
 
   if (type === 'icon-1')
-    style = baseStyle + `text-stone-700 text-xl p-[0.84rem] hover:bg-stone-200`;
+    style = baseStyle + `text-brand-600 text-xl p-[0.84rem] hover:bg-stone-200`;
 
   if (type === 'icon')
     style = baseStyle + `text-stone-700 text-xl p-2 hover:bg-stone-200`;

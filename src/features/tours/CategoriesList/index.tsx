@@ -19,7 +19,7 @@ export default function CategoriesList({ type }: { type?: 'normal' | 'full' }) {
   return (
     <div className="pt-16 px-12 flex flex-col gap-6 bg-stone-0">
       <div className="flex justify-between items-center">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 [&>h1]:text-brand-600">
           <Heading type="secondary">Explore our tours</Heading>
           <p className="text-sm text-stone-500">These popular types of tour have a lot to offer</p>
         </div>

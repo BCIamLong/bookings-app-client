@@ -7,7 +7,7 @@ export default function SearchBox() {
   return (
     <div className="flex justify-center">
       <div className="z-30 mx-auto md:w-[54rem] thin:w-[38rem] tiny:w-[45rem] sm:w-[48rem] -translate-y-96  text-stone-700 thin:-translate-y-80 tiny:-translate-y-96 absolute">
-        <div className="text-stone-0 text-5xl font-bold w-[30rem] mb-12 thin:max-tiny:text-3xl">
+        <div className="text-brand-600 text-5xl font-bold w-[30rem] mb-12 thin:max-tiny:text-3xl">
           <h1>{t('hero.box.title')}</h1>
         </div>
         {/* <nav className="flex gap-6 px-6 py-3 text-stone-300">

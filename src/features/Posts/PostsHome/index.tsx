@@ -17,7 +17,7 @@ export default function PostsHome() {
   if (isLoading) <Spinner size="normal" />
 
   return (
-    <div className="p-12 flex flex-col gap-6 bg-stone-0">
+    <div className="p-12 flex flex-col gap-6 bg-stone-0 [&>h1]:text-brand-600">
       <Heading type="secondary">Get inspiration for your next trip</Heading>
       <div className="grid grid-cols-[1.65fr_1fr] gap-x-12 items-center thin:max-sm:grid-cols-2 thin:max-sm:gap-y-12">
         <div className="row-span-2 relative thin:max-sm:col-span-2">

@@ -23,12 +23,12 @@ export default function Footer() {
           </p>
           <div className="flex gap-3">
             <Button type="footer">
-              <IoLogoGooglePlaystore className="text-lg" />
-              <span>{t('footer.play-store')}</span>
+              <IoLogoGooglePlaystore className="text-lg text-brand-600" />
+              <span className="text-brand-600">{t('footer.play-store')}</span>
             </Button>
             <Button type="footer">
-              <IoLogoAppleAppstore className="text-lg" />
-              <span>AppleStore</span>
+              <IoLogoAppleAppstore className="text-lg text-brand-600" />
+              <span className="text-brand-600">AppleStore</span>
             </Button>
           </div>
         </div>
@@ -78,16 +78,16 @@ export default function Footer() {
           <li>
             <div className="mt-2 flex gap-2 text-xl">
               <a href="">
-                <FaFacebookSquare />
+                <FaFacebookSquare className="text-brand-600" />
               </a>
               <a href="">
-                <FaTwitter />
+                <FaTwitter className="text-brand-600" />
               </a>
               <a href="">
-                <FaInstagram />
+                <FaInstagram className="text-brand-600" />
               </a>
               <a href="">
-                <FaLinkedin />
+                <FaLinkedin className="text-brand-600" />
               </a>
             </div>
           </li>

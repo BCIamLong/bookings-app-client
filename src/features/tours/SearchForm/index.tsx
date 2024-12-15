@@ -82,7 +82,7 @@ export default function SearchForm({ variant = "row" }: { variant?: 'col' | 'row
         }} />
         <DatePicker selectsMultiple className="px-0 " customInput={<div className="flex gap-2 w-full items-center justify-start py-1 px-2 ">
           <span className="cursor-pointer">
-            <HiCalendarDays className="text-stone-600 text-2xl" />
+            <HiCalendarDays className="text-brand-600 text-2xl" />
           </span>
           <input id="when" placeholder={'Date'} className="w-full bg-stone-0 py-2 text-stone-600" type="text" value={(!whenDate && dateChange <= 0) ? whenStr : whenDate} disabled />
         </div>} selected={!whenDate ? new Date() : new Date(whenDate)} onChange={(date) => {
@@ -124,7 +124,7 @@ export default function SearchForm({ variant = "row" }: { variant?: 'col' | 'row
       <FormItem type="search" label={'When?'} labelFor="when" errorMsg={errors.when?.message}>
         <DatePicker selectsMultiple className="px-0 " customInput={<div className="flex gap-2 w-40 items-center justify-start py-1">
           <span className="cursor-pointer">
-            <HiCalendarDays className="text-stone-600 text-2xl" />
+            <HiCalendarDays className="text-brand-600 text-2xl" />
           </span>
           <input id="when" placeholder={'When you are going?'} className="w-full bg-stone-0 " type="text" value={!whenDate ? '' : whenDate} disabled />
         </div>} selected={!whenDate ? new Date() : new Date(whenDate)} onChange={(date) => {
@@ -135,7 +135,7 @@ export default function SearchForm({ variant = "row" }: { variant?: 'col' | 'row
       </FormItem>
 
       <FormItem type="search" label={'Type of tour'} labelFor="type" errorMsg={errors.type?.message}>
-        <select id="type" className="text-stone-700 focus:outline-stone-400 px-0 py-1" onChange={(e) => setType(e.target.value)}>
+        <select id="type" className="text-stone-700 bg-stone-0 focus:outline-stone-400 px-0 py-1" onChange={(e) => setType(e.target.value)}>
           <option value="">Choose tour type</option>
           <option value="group">Group</option>
           <option value="private">Private</option>
@@ -143,7 +143,7 @@ export default function SearchForm({ variant = "row" }: { variant?: 'col' | 'row
         </select>
       </FormItem>
       <Button type="search">
-        <HiMagnifyingGlass className="text-3xl text-stone-50" />
+        <HiMagnifyingGlass className="text-4xl stroke-[0.5] text-brand-100" />
       </Button>
       {/* <button type="submit">Search</button> */}
     </Form >

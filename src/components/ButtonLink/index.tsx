@@ -54,7 +54,7 @@ export default function ButtonLink({
     style = baseStyle + `text-brand-700 text-sm font-semibold py-2 px-4 capitalize hover:bg-brand-300 `;
 
   if (type === 'simple1')
-    style = baseStyle + `flex justify-center items-center text-sm text-brand-700 underline hover:no-underline hover:text-brand-900 font-semibold`;
+    style = baseStyle + `flex justify-center items-center text-sm text-brand-600 underline hover:no-underline hover:text-brand-900 font-semibold`;
 
   if (type === 'popup-normal')
     style = baseStyle + 'py-2 text-red-600 text-center text-stone-600 font-semibold border-y-[1.5px] w-full hover:bg-stone-200 transition-all duration-300'

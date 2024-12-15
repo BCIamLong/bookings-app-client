@@ -15,7 +15,7 @@ function Languages() {
   }
   return <div className="[&>div]:hover:visible  [&>div]:hover:opacity-100 relative transition-all duration-400 ">
     <Button type="icon-1">
-      <HiLanguage className="stroke-1 px-0.5 text-stone-600" />
+      <HiLanguage className="stroke-1 px-0.5 text-brand-600" />
     </Button>
     <Box width="64" title="Languages">
       <li className={`${(i18n.language === 'en-US' || i18n.language === 'en') && 'bg-stone-300 rounded-md'}` + ' text-stone-600'}><Button type="menu-1" size="medium" onClick={() => handleClickBtn('en-US')}>{t('header.options.languages.english')}</Button></li>
