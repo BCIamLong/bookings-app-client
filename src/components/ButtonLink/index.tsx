@@ -51,7 +51,7 @@ export default function ButtonLink({
     style = baseStyle + `text-stone-700 text-lg font-semibold py-2 px-4 capitalize hover:underline `;
 
   if (type === 'menu')
-    style = baseStyle + `text-brand-700 text-sm font-semibold py-2 px-4 capitalize hover:bg-brand-300 `;
+    style = baseStyle + `text-stone-700  text-sm font-semibold py-2 px-4 rounded-md capitalize hover:bg-brand-300 hover:text-brand-700 `;
 
   if (type === 'simple1')
     style = baseStyle + `flex justify-center items-center text-sm text-brand-600 underline hover:no-underline hover:text-brand-900 font-semibold`;

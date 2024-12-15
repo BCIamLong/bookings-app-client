@@ -1,4 +1,4 @@
-import { HiBars3 } from "react-icons/hi2";
+import { HiBars3, HiBookmark, HiOutlineBookmark, HiOutlinePencilSquare, HiOutlineShoppingBag } from "react-icons/hi2";
 
 import Menu from "@/components/Menu";
 import ButtonLink from "@/components/ButtonLink";
@@ -23,20 +23,29 @@ export default function MenuOptions() {
         </Button>
         <div className="div1 transition-all flex opacity-0 ease-in-out duration-300 invisible absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md flex-col gap-3 ">
           {/* <div className="div1 absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md hidden flex-col gap-3 "> */}
-          <ul className="p-3 flex gap-3 flex-col">
+          <ul className="p-3 flex gap-3 flex-col [&>li>.active]:bg-brand-200 [&>li>.active]:text-brand-700">
             <li><ButtonLink href="/" type="menu" size="medium" isNavLink={true}>{t('header.nav.homepage')}</ButtonLink></li>
-            <li><ButtonLink href="/cabins" type="menu" size="medium" isNavLink={true}>{t('header.nav.cabins')}</ButtonLink></li>
+            <li><ButtonLink href="/tours" type="menu" size="medium" isNavLink={true}>Tours</ButtonLink></li>
             <li><ButtonLink href="/contact" type="menu" size="medium" isNavLink={true}>{t('header.nav.contact')}</ButtonLink></li>
             <li><ButtonLink href="about" type="menu" size="medium" isNavLink={true}>{t('header.nav.about')}</ButtonLink></li>
             <li><ButtonLink href="/bookmarks" type="menu" size="medium" isNavLink={true}>{t('header.options.menu.bookmarks')}</ButtonLink></li>
           </ul>
         </div>
-        <div className="div2 transition-all flex opacity-0 ease-in-out duration-300 invisible absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md flex-col gap-3 ">
+        <div className="div2 transition-all flex opacity-0 ease-in-out duration-300 invisible absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md flex-col gap-3">
           {/* <div className="div2 absolute p-3 top-12 right-0 w-64 bg-stone-50 rounded-md hidden flex-col gap-3 "> */}
-          <ul className="p-3 flex gap-3 flex-col">
-            <li><ButtonLink href="/bookmarks" type="menu" size="medium" isNavLink={true}>{t('header.options.menu.bookmarks')}</ButtonLink></li>
-            <li><ButtonLink href="/bookmarks" type="menu" size="medium" isNavLink={true}>{t('header.options.menu.bookmarks')}</ButtonLink></li>
-            <li><ButtonLink href="/bookmarks" type="menu" size="medium" isNavLink={true}>{t('header.options.menu.bookmarks')}</ButtonLink></li>
+          <ul className="p-3 flex gap-3 flex-col [&>li>.active]:bg-brand-200 [&>li>.active]:text-brand-700 [&>li>a]:justify-start [&>li]:w-full">
+            <li><ButtonLink href="/bookmarks" type="menu" size="medium" isNavLink={true}>
+              <span><HiOutlineBookmark className="text-xl text-brand-600" /></span>
+              <span>{t('header.options.menu.bookmarks')} </span>
+            </ButtonLink></li>
+            <li><ButtonLink href="/profile/reviews" type="menu" size="medium" isNavLink={true}>
+              <span><HiOutlineShoppingBag className="text-xl text-brand-600" /></span>
+              <span>Your bookings </span>
+            </ButtonLink></li>
+            <li><ButtonLink href="/profile/bookings" type="menu" size="medium" isNavLink={true}>
+              <span><HiOutlinePencilSquare className="text-xl text-brand-600" /></span>
+              <span>Your reviews </span>
+            </ButtonLink></li>
           </ul>
         </div>
       </div>
