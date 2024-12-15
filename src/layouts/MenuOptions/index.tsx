@@ -1,4 +1,4 @@
-import { HiBars3, HiBookmark, HiOutlineBookmark, HiOutlinePencilSquare, HiOutlineShoppingBag } from "react-icons/hi2";
+import { HiBars3, HiBookmark, HiOutlineBookmark, HiOutlineCamera, HiOutlinePencilSquare, HiOutlineShoppingBag } from "react-icons/hi2";
 
 import Menu from "@/components/Menu";
 import ButtonLink from "@/components/ButtonLink";
@@ -45,6 +45,10 @@ export default function MenuOptions() {
             <li><ButtonLink href="/profile/bookings" type="menu" size="medium" isNavLink={true}>
               <span><HiOutlinePencilSquare className="text-xl text-brand-600" /></span>
               <span>Your reviews </span>
+            </ButtonLink></li>
+            <li><ButtonLink href="/posts/my-posts" type="menu" size="medium" isNavLink={true}>
+              <span><HiOutlineCamera className="text-xl text-brand-600" /></span>
+              <span>Your posts </span>
             </ButtonLink></li>
           </ul>
         </div>
