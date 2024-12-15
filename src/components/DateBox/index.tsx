@@ -13,9 +13,9 @@ export default function DateBox() {
   return (
     <DatePicker selectsMultiple className="px-4 " customInput={<div className="flex gap-2 w-48 items-center">
       <span className="cursor-pointer">
-        <HiCalendarDays className="text-stone-600 text-2xl" />
+        <HiCalendarDays className="text-brand-600 text-2xl" />
       </span>
-      <input className="w-full" type="text" value={!startDate ? 'Date' : startDate} disabled />
+      <input className="w-full bg-stone-50" type="text" value={!startDate ? 'Date' : startDate} disabled />
     </div>} selected={!startDate ? new Date() : new Date(startDate)} onChange={(date) => {
       const dateStr = date?.[0]!.toLocaleDateString('en-US', { month: 'long', year: 'numeric', day: '2-digit' })
       setStartDate(dateStr)

@@ -17,12 +17,12 @@ export default function TourItem({ tour, type }: { tour: ITour, type?: 'normal' 
         <div className="cursor-pointer w-full hover:shadow-md hover:-translate-y-2 rounded-lg overflow-hidden bg-stone-50 shadow-sm transition-all duration-300">
           <img className="w-full h-[11rem]" src={tour.imageCover} alt="" />
           <div className="decorate flex justify-between bg-brand-500 px-4 py-1 sm:max-xl:px-2 thin:max-sm:px-3">
-            <p className="flex gap-1 text-stone-50 text-xs font-semibold lg:max-xl:text-xs">
+            <p className="flex gap-1 text-brand-100 text-xs font-semibold lg:max-xl:text-xs">
               <span>📅</span>
               <span>{tourDate}</span>
               {/* <span>12, September 2022</span> */}
             </p>
-            <p className="flex gap-1 text-stone-50 text-xs font-semibold lg:max-xl:text-xs">
+            <p className="flex gap-1 text-brand-100 text-xs font-semibold lg:max-xl:text-xs">
               <span>🤼</span>
               <span>{tour.maxGroupSize} People</span></p>
           </div>

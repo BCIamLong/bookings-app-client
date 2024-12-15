@@ -95,7 +95,7 @@ export default function SearchForm({ variant = "row" }: { variant?: 'col' | 'row
       <div className="mt-4 px-3 flex flex-col gap-2">
         <Heading type="heading-4">Filter by price</Heading>
         <div>
-          <input className="w-full" type="range" defaultValue={0} value={(!price && priceChange <= 0) ? priceRange || 0 : price} step={500} min={0} max={10000} name="" id=""
+          <input className="w-full accent-brand-600" type="range" defaultValue={0} value={(!price && priceChange <= 0) ? priceRange || 0 : price} step={500} min={0} max={10000} name="" id=""
             onChange={(e) => {
               setPriceChange((priceChange) => priceChange + 1)
               setPrice(+e.target.value)

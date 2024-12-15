@@ -9,9 +9,11 @@ import Button from "@/components/Button";
 import DateBox from "@/components/DateBox";
 import ButtonLink from "@/components/ButtonLink";
 import SearchForm from "@/features/tours/SearchForm";
+import { useDarkModeContext } from "@/context/DarkModeContext";
 
 export default function Tours() {
   const { t } = useTranslation()
+  const { isDarkMode } = useDarkModeContext()!
   const [searchParams, setSearchParams] = useSearchParams()
   if (!searchParams.get('sort')) searchParams.set('sort', 'none')
   const searchOb = JSON.parse(searchParams.get('search') || `{}`)
@@ -20,15 +22,17 @@ export default function Tours() {
 
   // if (!searchParams.get('sort')) searchParams.set('sort', 'name-low')
   // setSearchParams(searchParams)
+  const banner = isDarkMode ? "https://img.freepik.com/free-vector/night-flights-from-city-airport-cartoon_1441-2729.jpg?t=st=1734249498~exp=1734253098~hmac=f3d756ac8bef688e130121efa57c82065b576fcff24d13f7e5577c5bbbd8bca2&w=2000" : "https://img.freepik.com/free-photo/world-map-with-travelling-notebook_23-2148256047.jpg?t=st=1734247058~exp=1734250658~hmac=abf4471d5e32146d236bf03e70f7265cce3112fe67b72e308e3d850789dff01e&w=2000";
+  const textStyle = isDarkMode ? 'text-brand-300' : "text-brand-600"
 
   return (
     <>
       <div className="relative">
         <div className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-          <h2 className="uppercase text-stone-50 font-bold text-sm leading-8">Search Tour</h2>
-          <p className="text-8xl text-stone-50 font-semibold font-title">Travel with us</p>
+          <h2 className={`uppercase ${textStyle} font-bold text-sm leading-8`}>Search Tour</h2>
+          <p className={`text-8xl ${textStyle} font-semibold font-title`}>Travel with us</p>
         </div>
-        <img className="brightness-[90%] z-10 h-[33rem] w-full" src="https://images.pexels.com/photos/238622/pexels-photo-238622.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+        <img className="brightness-[90%] object-cover z-10 h-[33rem] w-full" src={banner} alt="" />
       </div>
       <div className="pb-24 bg-stone-0">
         <div className="">
@@ -107,7 +111,7 @@ export default function Tours() {
         </div>
         <div className="grid grid-cols-[1fr_3fr] gap-x-4 px-12  thin:max-tiny:grid-cols-1 items-start">
           <div className="bg-stone-50 px-5 py-4  shadow-md h-[full]">
-            <div className="text-center [&>h1]:justify-center flex flex-col gap-3">
+            <div className="text-center [&>h1]:justify-center flex flex-col gap-3 [&>h1]:text-brand-600">
               <div className="pt-6 pb-4 px-3 flex justify-center [&>button]:w-[80%]">
                 <Button type="secondary" onClick={() => window.location.assign('/tours')}>Reset filter</Button>
               </div>

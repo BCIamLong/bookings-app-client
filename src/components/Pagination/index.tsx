@@ -36,7 +36,7 @@ export default function Pagination({ count }: { count: number }) {
   if (numPages <= 1) return null
 
   return (
-    <div className="flex gap-2 justify-center [&>.active]:border-stone-700 [&>.active]:bg-stone-700 [&>.active]:text-stone-100 [&>.active]:hover:bg-stone-600 z-50 text-stone-700 thin:max-md:py-6 thin:max-md:mt-6">
+    <div className="flex gap-2 justify-center [&>.active]:border-brand-700 [&>.active]:bg-brand-600 [&>.active]:text-brand-100 [&>.active]:hover:bg-brand-700 z-50 text-stone-700 thin:max-md:py-6 thin:max-md:mt-6">
       <div className={classStyle} onClick={handleClickPrevious}><HiChevronLeft /></div>
       {Array.from({ length: numPages }).map((_, i) => {
         if (i + 1 === +currentPage) return <div key={i} onClick={() => handleClick(i + 1)} className={classStyle + ' active'}>{i + 1}</div>
