@@ -44,11 +44,11 @@ export default function ReviewsList({ isReviewsOfUser }: { isReviewsOfUser?: boo
       {reviewsLength > 4 && user &&
         <Modal>
           <Modal.Open openName="user-reviews">
-            <div className="w-[70%]">
+            <div className="w-[70%] ">
               <Button type="secondary" size="small">{t('reviews.btn')}</Button>
             </div>
           </Modal.Open>
-          <Modal.Window name="user-reviews">
+          <Modal.Window name="user-reviews" >
             <ReviewProfilePopup isReviewsOfUser={isReviewsOfUser} />
           </Modal.Window>
         </Modal>

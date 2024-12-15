@@ -135,10 +135,10 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
 
           {
             (isSlotFulled && type === 'group') ? null :
-              isNotAllowUserBook && !count && user ? <div className=""><Button size="small" type="primary">{t('cabin.card.notifies.your-booked')}</Button></div> :
+              isNotAllowUserBook && !count && user ? <div className=""><Button size="small" type="brand">{t('cabin.card.notifies.your-booked')}</Button></div> :
                 <>
                   {/* *** */}
-                  {Boolean(isCabinBooked) && !count && (isSlotFulled || type !== 'group') && isTourOfThisDateBooked && <div className=""><Button size="small" type="primary">
+                  {Boolean(isCabinBooked) && !count && (isSlotFulled || type !== 'group') && isTourOfThisDateBooked && <div className=""><Button size="small" type="brand">
                     {/* {t('cabin.card.notifies.cabin-booked')} */}
                     {type !== 'group' ? "This tour is already booked" : "This tour is full slot"}
                   </Button></div>}
@@ -165,7 +165,7 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
                       (isAllowGuestToBook || !isTourOfThisDateBooked) ?
                         // || ((isCabinBooked && !isSlotFulled) && Boolean(count))) //* this is not necessary
 
-                        <Button type="primary" size="small" onClick={handleClick}>
+                        <Button type="brand" size="small" onClick={handleClick}>
                           {isBooking ?
                             <Spinner size="small" />
                             :

@@ -73,7 +73,7 @@ export default function Button({ type, children, onClick, disabled, size, reset 
     style = baseStyle + `text-brand-600 text-lg font-semibold py-2 px-4 hover:bg-brand-200 rounded-lg border-2 capitalize border-brand-300`;
 
   if (type === 'brand')
-    style = baseStyle + `text-stone-100 text-lg font-semibold py-2 px-4 hover:bg-brand-700 bg-brand-600 rounded-lg capitalize`;
+    style = baseStyle + `text-brand-100 text-lg font-semibold py-2 px-4 hover:bg-brand-700 bg-brand-600 rounded-lg capitalize`;
 
   if (type === 'menu-1')
     style = 'flex items-center gap-2 duration-300 transition-all justify-start hover:bg-stone-300 rounded-md cursor-pointer w-full text-sm font-semibold'

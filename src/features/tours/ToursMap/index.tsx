@@ -90,7 +90,7 @@ function LocationMarker({ duration, locations }: { duration?: number, locations:
         return <Marker eventHandlers={{ add: openPopup }} position={[loc.coordinates[1], loc.coordinates[0]] as LatLngExpression} icon={customLightIcon}>
           <Popup closeButton={false} autoClose={false} closeOnClick={false}>
             {/* Day {ind + 1}: {loc.address} */}
-            <p className="text-center  font-semibold text-stone-600 text-xs">
+            <p className="text-center  font-semibold text-brand-700 text-xs">
               <span className="uppercase text-[0.7rem]">{titleDay}: </span>
               <span className="capitalize">{description}</span>
             </p>

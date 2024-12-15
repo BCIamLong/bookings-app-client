@@ -14,9 +14,11 @@ import TourCard from "../TourCard";
 import ToursMap from "../ToursMap";
 import { LatLngExpression } from "leaflet";
 import TourCardV2 from "../TourCardV2";
+import { useDarkModeContext } from "@/context/DarkModeContext";
 
 export default function TourDetail() {
   const { t } = useTranslation()
+  const { isDarkMode } = useDarkModeContext()!
   const { tour, isLoading }: { tour: ITour, isLoading: boolean } = useTour()
   const { name, imageCover, images, duration, maxGroupSize } = tour || {}
   const [image1, image2, image3] = images || []
@@ -31,10 +33,10 @@ export default function TourDetail() {
     <>
       <div className="relative">
         <div className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-          <h2 className="uppercase text-stone-50 font-bold text-sm leading-8">Explore</h2>
-          <p className="text-8xl text-stone-50 font-semibold font-title">{name}</p>
+          <h2 className="uppercase text-brand-100 font-bold text-sm leading-8">Explore</h2>
+          <p className="text-8xl text-brand-100 font-semibold font-title">{name}</p>
         </div>
-        <img className="brightness-[90%] z-10 h-[33rem] w-full" src="https://images.pexels.com/photos/238622/pexels-photo-238622.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+        <img className={`${isDarkMode ? "brightness-[60%]" : "brightness-[50%]"} object-cover object-top z-10 h-[33rem] w-full`} src={imageCover} alt="" />
       </div>
       <div className="px-6 pt-8 py-20">
         <div className="flex gap-1 items-center text-stone-500 ">
@@ -63,7 +65,7 @@ export default function TourDetail() {
             <div className={classStyle}>
               <img src={image1?.startsWith('tour-') ? `/${image1}` : image1} alt="" className="h-[15rem] w-full" />
             </div>
-          </div>
+          </div >
           <div className="grid grid-cols-[1.5fr_1fr] thin:max-tiny:flex thin:max-tiny:flex-col text-stone-700 p-6 gap-12 sm:max-md:gap-1">
             <div className="flex flex-col gap-8">
               <div className="flex justify-between items-center">
@@ -176,8 +178,8 @@ export default function TourDetail() {
             </div>
             <ToursMap duration={duration} locations={tour?.locations || []} />
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
     </>
   )
 }

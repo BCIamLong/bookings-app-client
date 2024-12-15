@@ -35,7 +35,7 @@ export default function Bookmark() {
     }
   </Button > :
     <Button type="icon" disabled={isDeleting} onClick={handleDeleteBookmark}> {isDeleting ? <Spinner size="small" /> :
-      <HiHeart className="stroke-2 text-2xl" />
+      <HiHeart className="stroke-2 text-2xl text-brand-600" />
     }</Button>}
   </>
 }
