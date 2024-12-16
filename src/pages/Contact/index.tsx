@@ -2,19 +2,22 @@ import Button from '@/components/Button'
 import Form from '@/components/form/Form'
 import FormItem from '@/components/form/FormItem'
 import Input from '@/components/form/Input'
+import { useDarkModeContext } from '@/context/DarkModeContext'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
 export default function Contact() {
   const { t } = useTranslation()
+  const { isDarkMode } = useDarkModeContext()!
+  const darkModeStyle = isDarkMode ? 'brightness-[70%]' : 'brightness-[100%]'
   return (
     <>
       <div className="relative">
         <div className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-          <h2 className="uppercase text-stone-50 font-bold text-sm leading-8">See how to</h2>
-          <p className="text-8xl text-stone-50 font-semibold font-title">Contact us</p>
+          <h2 className="uppercase text-brand-100 font-bold text-sm leading-8">See how to</h2>
+          <p className="text-8xl text-brand-100 font-semibold font-title">Contact us</p>
         </div>
-        <img className="brightness-[90%] z-10 h-[33rem] w-full" src="https://images.pexels.com/photos/1450340/pexels-photo-1450340.jpeg?auto=compress&cs=tinysrgb&w=800" alt="" />
+        <img className={`${darkModeStyle} object-cover z-10 h-[33rem] w-full`} src="/banner-tour-5.jpg" alt="" />
       </div>
       <motion.div style={{ backgroundImage: `url("/imgs/cabins/cabin-003.jpg")` }} className='bg-stone-0 p-12 min-h-screen text-stone-700' initial={{ opacity: 0, x: '100vw' }} animate={{ opacity: 1, x: 0 }}
         transition={{ type: 'spring', duration: 1, stiffness: 120, delay: 0.2 }}>

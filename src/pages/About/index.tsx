@@ -1,6 +1,7 @@
 import Button from '@/components/Button'
 import Contact from '@/components/Contact'
 import Heading from '@/components/Heading'
+import { useDarkModeContext } from '@/context/DarkModeContext'
 import CategoriesList from '@/features/tours/CategoriesList'
 import { Variants, motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
@@ -31,14 +32,16 @@ const buttonVariants: Variants = {
 
 export default function About() {
   const { t } = useTranslation()
+  const { isDarkMode } = useDarkModeContext()!
+  const darkModeStyle = isDarkMode ? 'brightness-[70%]' : 'brightness-[100%]'
   return (
     <div className='bg-stone-0'>
       <div className="relative">
         <div className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-          <h2 className="uppercase text-stone-50 font-bold text-sm leading-8">Read</h2>
-          <p className="text-8xl text-stone-50 font-semibold font-title">About Us</p>
+          <h2 className="uppercase text-brand-100 font-bold text-sm leading-8">Read</h2>
+          <p className="text-8xl text-brand-100 font-semibold font-title">About Us</p>
         </div>
-        <img className="brightness-[90%] z-10 h-[33rem] w-full" src="https://images.pexels.com/photos/1450340/pexels-photo-1450340.jpeg?auto=compress&cs=tinysrgb&w=800" alt="" />
+        <img className={`${darkModeStyle} object-cover z-10 h-[33rem] w-full`} src="/banner-tour-5.jpg" alt="" />
       </div>
       <div className='flex gap-16 px-36 py-24 w-[100%] items-center thin:max-sm:grid thin:max-sm:grid-cols-1 sm:max-md:gap-0 sm:max-md:px-28 md:max-xl:px-28'>
         <div className='flex flex-col gap-3 w-[60%] [&>h1]:leading-10 tiny:max-sm:w-[90%] sm:max-md:w-[90%] md:max-lg:w-[80%] thin:max-sm:w-[100%]'>
