@@ -118,7 +118,7 @@ export default function SearchForm({ variant = "row" }: { variant?: 'col' | 'row
   return (
     <Form type="search1" onSubmit={onSubmit}>
       <FormItem type="search" label={'Where to?'} labelFor="where" errorMsg={errors.where?.message}>
-        <input value={where} onChange={(e) => setWhere(e.target.value)} className="w-full outline-none focus:border-b-2 focus:border-stone-600 border-b-2 border-stone-0 transition-all duration-[600ms] ease-in-out bg-stone-0 py-1" type="text" id="where" placeholder={'Where you are going?'} />
+        <input value={where} onChange={(e) => setWhere(e.target.value)} className="w-full outline-none focus:border-b-2 focus:border-stone-600 border-b-2 border-stone-0 bg-stone-0 py-1" type="text" id="where" placeholder={'Where you are going?'} />
       </FormItem>
 
       <FormItem type="search" label={'When?'} labelFor="when" errorMsg={errors.when?.message}>
