@@ -10,7 +10,7 @@ export default function ProfileSidebar() {
   const { user, isLoading } = useUserSession()
   const { fullName, createdAt, enable2FA, avatar } = user || {}
 
-  const avatarStr = avatar?.includes('https') ? `/${avatar}` : avatar
+  const avatarStr = !avatar?.includes('https') ? `/${avatar}` : avatar
 
   if (isLoading) return <Spinner size="normal" />
 
