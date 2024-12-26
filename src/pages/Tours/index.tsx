@@ -10,6 +10,7 @@ import DateBox from "@/components/DateBox";
 import ButtonLink from "@/components/ButtonLink";
 import SearchForm from "@/features/tours/SearchForm";
 import { useDarkModeContext } from "@/context/DarkModeContext";
+import SearchTours from "@/features/tours/SearchTours";
 
 export default function Tours() {
   const { t } = useTranslation()
@@ -36,86 +37,93 @@ export default function Tours() {
       </div>
       <div className="pb-24 bg-stone-0">
         <div className="">
-          <ul className="flex justify-around items-center bg-stone-50 shadow-md px-6 py-3 w-[70%] thin:max-tiny:w-[90%] tiny:max-sm:w-[80%] mx-auto -translate-y-1/2 thin:max-tiny:grid thin:max-tiny:grid-cols-2 thin:max-tiny:gap-6 ">
-            <li className="text-stone-600 font-semibold flex gap-2">
-              {/* <span>📅</span>
-              <span>Date</span> */}
-              <DateBox />
-            </li>
-            <li className="text-stone-600 font-semibold flex gap-2">
-              <Select id="sort" type="type" defaultValue={typeStr || 'none'} onChange={(e) => setSearchParams(params => {
-                params.set('type', e.target.value)
-                return params
-              })}>
-                <Option type="type" value="none">
-                  <div className="flex gap-2">
-                    {/* <span>📅 </span> */}
-                    <span> Type</span>
-                  </div>
-                </Option>
-                <Option type="type" value="group">Group</Option>
-                <Option type="type" value="private">Private</Option>
-                <Option type="type" value="personal">Personal</Option>
-              </Select>
-
-            </li>
-            <li className="text-stone-600 font-semibold flex gap-2">
-              <Select id="sort" type="type" onChange={(e) => setSearchParams(params => {
-                params.set('difficulty', e.target.value)
-                return params
-              })}>
-                <Option type="type" value="none">
-                  <div className="flex gap-2">
-                    {/* <span>📅 </span> */}
-                    <span> Difficulty</span>
-                  </div>
-                </Option>
-                <Option type="type" value="easy">Easy</Option>
-                <Option type="type" value="medium">Medium</Option>
-                <Option type="type" value="difficult">Difficult</Option>
-              </Select>
-
-            </li>
-            <li className="text-stone-600 font-semibold flex gap-2">
-              <Select id="sort" type="sort" onChange={(e) => setSearchParams(params => {
-                params.set('status', e.target.value)
-                return params
-              })}>
-                <Option type="sort" value="none">
-                  <div className="flex gap-2">
-                    {/* <span>📅 </span> */}
-                    <span> Status</span>
-                  </div>
-                </Option>
-                <Option type="status" value="trending">Trending</Option>
-                <Option type="status" value="popular">Popular</Option>
-                <Option type="status" value="most-discount">Discount</Option>
-                <Option type="status" value="recommend">Recommend</Option>
-              </Select>
-            </li>
+          <ul className="flex justify-around items-center bg-stone-50 shadow-md px-6 py-3 w-[70%] thin:max-tiny:w-[90%] tiny:max-sm:w-[80%] mx-auto -translate-y-1/2 thin:max-tiny:grid thin:max-tiny:grid-cols-2 thin:max-tiny:gap-6">
             <li>
-              <Select id="sort" type="sort" onChange={(e) => setSearchParams(params => {
-                params.set('sort', e.target.value)
-                return params
-              })}>
-                <Option type="sort" value="none">{t('cabins.default.sort.default')}</Option>
-                <Option type="sort" value="latest">{t('cabins.default.sort.time-ins')}</Option>
-                <Option type="sort" value="oldest">{t('cabins.default.sort.time-des')}</Option>
-                <Option type="sort" value="name-low">{t('cabins.default.sort.name-ins')}</Option>
-                <Option type="sort" value="name-high">{t('cabins.default.sort.name-des')}</Option>
-                <Option type="sort" value="price-low">{t('cabins.default.sort.price-ins')}</Option>
-                <Option type="sort" value="price-high">{t('cabins.default.sort.price-des')}</Option>
-              </Select>
+              <SearchTours />
+            </li>
+            <li className="text-stone-600 font-semibold flex gap-2">
+              <DateBox />
             </li>
           </ul>
         </div>
         <div className="grid grid-cols-[1fr_3fr] gap-x-4 px-12  thin:max-tiny:grid-cols-1 items-start">
-          <div className="bg-stone-50 px-5 py-4  shadow-md h-[full]">
+          <div className="bg-stone-50 px-5 py-4 shadow-md h-[full]">
             <div className="text-center [&>h1]:justify-center flex flex-col gap-3 [&>h1]:text-brand-600">
-              <div className="pt-6 pb-4 px-3 flex justify-center [&>button]:w-[80%]">
+              <div className="pt-6 pb-1 px-3 flex justify-center [&>button]:w-[80%]">
                 <Button type="secondary" onClick={() => window.location.assign('/tours')}>Reset filter</Button>
               </div>
               <hr className="mb-2" />
+              <ul className="flex flex-col gap-1 pb-3 [&>li]:py-2 [&>li]:mx-auto">
+                <li className="text-stone-600 font-semibold flex gap-2">
+                  <Select id="sort" type="search" defaultValue={typeStr || 'none'} onChange={(e) => setSearchParams(params => {
+                    params.set('type', e.target.value)
+                    return params
+                  })}>
+                    <Option type="type" value="none">
+                      <div className="flex gap-2">
+                        {/* <span>📅 </span> */}
+                        <span> Type</span>
+                      </div>
+                    </Option>
+                    <Option type="type" value="group">Group</Option>
+                    <Option type="type" value="private">Private</Option>
+                    <Option type="type" value="personal">Personal</Option>
+                  </Select>
+
+                </li>
+                <hr className="" />
+                <li className="text-stone-600 font-semibold flex gap-2">
+                  <Select id="sort" type="search" onChange={(e) => setSearchParams(params => {
+                    params.set('difficulty', e.target.value)
+                    return params
+                  })}>
+                    <Option type="type" value="none">
+                      <div className="flex gap-2">
+                        {/* <span>📅 </span> */}
+                        <span> Difficulty</span>
+                      </div>
+                    </Option>
+                    <Option type="type" value="easy">Easy</Option>
+                    <Option type="type" value="medium">Medium</Option>
+                    <Option type="type" value="difficult">Difficult</Option>
+                  </Select>
+
+                </li>
+                <hr className="" />
+                <li className="text-stone-600 font-semibold flex gap-2">
+                  <Select id="sort" type="search" onChange={(e) => setSearchParams(params => {
+                    params.set('status', e.target.value)
+                    return params
+                  })}>
+                    <Option type="sort" value="none">
+                      <div className="flex gap-2">
+                        {/* <span>📅 </span> */}
+                        <span> Status</span>
+                      </div>
+                    </Option>
+                    <Option type="status" value="trending">Trending</Option>
+                    <Option type="status" value="popular">Popular</Option>
+                    <Option type="status" value="most-discount">Discount</Option>
+                    <Option type="status" value="recommend">Recommend</Option>
+                  </Select>
+                </li>
+                <hr className="" />
+                <li>
+                  <Select id="sort" type="search" onChange={(e) => setSearchParams(params => {
+                    params.set('sort', e.target.value)
+                    return params
+                  })}>
+                    <Option type="sort" value="none">{t('cabins.default.sort.default')}</Option>
+                    <Option type="sort" value="latest">{t('cabins.default.sort.time-ins')}</Option>
+                    <Option type="sort" value="oldest">{t('cabins.default.sort.time-des')}</Option>
+                    <Option type="sort" value="name-low">{t('cabins.default.sort.name-ins')}</Option>
+                    <Option type="sort" value="name-high">{t('cabins.default.sort.name-des')}</Option>
+                    <Option type="sort" value="price-low">{t('cabins.default.sort.price-ins')}</Option>
+                    <Option type="sort" value="price-high">{t('cabins.default.sort.price-des')}</Option>
+                  </Select>
+                </li>
+              </ul>
+              <hr className="" />
               <Heading type="secondary">Plan Your Trip</Heading>
               <p className="text-stone-500 text-xs">Ex optio sequi et quos praesentium in nostrum labore nam rerum iusto aut magni nesciunt? Quo quidem neque iste expedita est dolo.</p>
             </div>

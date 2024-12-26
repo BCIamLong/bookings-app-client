@@ -29,6 +29,10 @@ export default function Button({ type, children, onClick, disabled, size, reset 
     style =
       baseStyle +
       `flex items-center justify-center rounded-full border-none bg-brand-600 hover:bg-brand-700`;
+  if (type === "search-1")
+    style =
+      baseStyle +
+      `absolute p-[0.31rem] bg-brand-600 top-0 right-0 rounded-r-full hover:bg-brand-700`;
   if (type === "nav-header")
     style =
       baseStyle +

@@ -13,6 +13,7 @@ export default function Select({ id, type, disabled, registerOb, children, onCha
   if (type === 'delete-me') style = baseStyle + 'p-2 border-[1.5px] border-stone-300 rounded-lg w-[80%] outline-stone-500'
   if (type === 'sort') style = baseStyle + 'p-2 border-[1.5px] px-6 font-semibold border-stone-300 rounded-lg outline-stone-500'
   if (type === 'type') style = baseStyle + 'p-2 border-[1.5px] px-6 font-semibold border-stone-300 rounded-lg outline-stone-500'
+  if (type === 'search') style = baseStyle + 'p-2 border-[1.5px] px-6 font-semibold border-stone-300 rounded-lg outline-stone-500 w-[15rem]'
 
   return <select className={style} id={id} disabled={disabled} {...registerOb} onChange={onChange} defaultValue={defaultValue}>
     {children}

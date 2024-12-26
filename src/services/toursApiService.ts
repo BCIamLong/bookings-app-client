@@ -4,7 +4,7 @@ import { SortOptions } from '../interfaces/types'
 import { SearchTour } from '@/interfaces'
 
 axios.defaults.withCredentials = true
-const { SERVER_BASE_URL, PAGE_LIMIT } = appConfig
+const { SERVER_BASE_URL, PAGE_LIMIT, SERVER_RECOMMEND_URL } = appConfig
 
 const getTours = async function ({
   sort = 'none',
@@ -98,4 +98,20 @@ const getToursAvailableToPost = async function () {
   }
 }
 
-export { getTours, getTour, getToursAvailableToPost }
+const getSearchTours = async function (searchStr: string) {
+  try {
+    if (searchStr.length < 4) return
+    const res = await axios.get(
+      `${SERVER_RECOMMEND_URL}/recommend-search-tours?search_str=${searchStr}`,
+      {},
+    )
+
+    console.log(res)
+    return res?.data?.recommendations
+  } catch (err) {
+    // console.log(err)
+    throw err
+  }
+}
+
+export { getTours, getTour, getToursAvailableToPost, getSearchTours }

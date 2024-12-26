@@ -109,7 +109,7 @@ export default function SearchForm({ variant = "row" }: { variant?: 'col' | 'row
         </div>
       </div>
       <div className="mt-6 flex justify-center">
-        <Button type="brand">Search now</Button>
+        <Button type="brand">Filter now</Button>
       </div>
     </form>
   </>
