@@ -20,7 +20,7 @@ export default function TourDetail() {
   const { t } = useTranslation()
   const { isDarkMode } = useDarkModeContext()!
   const { tour, isLoading }: { tour: ITour, isLoading: boolean } = useTour()
-  const { name, imageCover, images, duration, maxGroupSize } = tour || {}
+  const { name, imageCover, images, duration, maxGroupSize, type } = tour || {}
   const [image1, image2, image3] = images || []
   // const tourImage = image?.startsWith('tour-') ? `/imgs/tours/${image}` : image
   const tourImage = imageCover?.startsWith('tour-') ? `/${imageCover}` : imageCover
@@ -83,7 +83,7 @@ export default function TourDetail() {
                   <HiOutlineDocumentText className="text-4xl text-brand-600" />
                   <p className="">
                     <span className="uppercase text-sm font-semibold">Type: </span>
-                    <span className="text-sm">Private</span>
+                    <span className="text-sm capitalize">{type}</span>
                   </p>
                 </div>
                 <div className="min-w-36 min-h-36 gap-1  rounded-md flex flex-col justify-center items-center bg-stone-200 text-stone-600">

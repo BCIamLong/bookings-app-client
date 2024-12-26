@@ -2,6 +2,7 @@ import ReviewsList from "@/features/reviews/ReviewsList";
 import AddReview from "@/features/reviews/AddReview";
 import ReviewHeading from "@/features/reviews/ReviewHeading";
 import TourDetail from "@/features/tours/TourDetail";
+import ToursList from "@/features/tours/ToursList";
 
 export default function Tour() {
   return (
@@ -13,6 +14,7 @@ export default function Tour() {
           <AddReview />
           <ReviewHeading />
           <ReviewsList />
+          <ToursList title="Similar tours" type="recommend-similar-tours" />
         </div>
       </div>
     </>

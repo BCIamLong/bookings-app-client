@@ -5,7 +5,7 @@ import Pagination from "@/components/Pagination";
 import { useTours } from "../useTours";
 import { ITour } from "@/interfaces";
 import Spinner from "@/components/Spinner";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { SortOptions } from "@/interfaces/types";
 import Empty from "@/components/Empty";
 import { appConfig } from "@/config";
@@ -18,7 +18,7 @@ const { PAGE_LIMIT } = appConfig
 const { CLIENT_BASE_UTL } = appConfig
 // * we will prepare tours data like for trending tours and best tours....
 // export default function ToursList({tours}:{tours: Tour[]}) {
-export default function ToursList({ type, title, statusType = 'trending' }: { type?: 'full' | 'normal' | 'recommend', title: string, statusType?: string }) {
+export default function ToursList({ type, title, statusType = 'trending' }: { type?: 'full' | 'normal' | 'recommend' | 'recommend-similar-tours', title: string, statusType?: string }) {
   const [searchParams] = useSearchParams()
   const sort = searchParams.get('sort') || "none"
   const page = +searchParams.get('page')! || 1
@@ -27,6 +27,9 @@ export default function ToursList({ type, title, statusType = 'trending' }: { ty
   const date = searchParams.get('date') || 'none'
   const difficulty = searchParams.get('difficulty') || 'none'
   const search = searchParams.get('search') || 'none'
+  const { id } = useParams()
+
+  const { recommendations: recommendationSimilarTours, isLoading: isLoadingRecommendationSimilarTours } = useRecommendTours({ tourId: id })
 
   const { user, isLoading: isLoadingUser } = useUserSession()
 
@@ -60,7 +63,7 @@ export default function ToursList({ type, title, statusType = 'trending' }: { ty
   //   sort: 'none', page: 1, limit: 4
   // })
 
-  if (isLoading || isLoadingRecommendations || isLoadingUser) return <Spinner size="normal" />
+  if (isLoading || isLoadingRecommendations || isLoadingUser || isLoadingRecommendationSimilarTours) return <Spinner size="normal" />
   if (!tours?.length) return <Empty>No tours found!</Empty>
 
   if (type === 'normal')
@@ -86,6 +89,18 @@ export default function ToursList({ type, title, statusType = 'trending' }: { ty
       </div>
       <ul className="grid grid-cols-4 gap-6 thin:max-sm:grid thin:max-sm:grid-cols-2 [&>li]:shadow-md">
         {recommendationsByPageCore?.map((tour: ITour, i: number) => i < 4 ? <TourItem key={tour._id} tour={tour} /> : null)}
+      </ul>
+    </div>
+  }</>
+
+  if (type === 'recommend-similar-tours') return <>{
+    Boolean(recommendationSimilarTours?.length) && <div className="p-12 flex flex-col gap-6 bg-stone-0">
+      <div className="flex justify-between items-center [&>h1]:text-brand-600">
+        <Heading type="secondary">{title}</Heading>
+        {/* <ButtonLink type="simple1" href={`${CLIENT_BASE_UTL}/tours?status=${statusType}`}>See more &#8594;</ButtonLink> */}
+      </div>
+      <ul className="grid grid-cols-4 gap-6 thin:max-sm:grid thin:max-sm:grid-cols-2 [&>li]:shadow-md">
+        {recommendationSimilarTours?.map((tour: ITour, i: number) => i < 4 ? <TourItem key={tour._id} tour={tour} /> : null)}
       </ul>
     </div>
   }</>
