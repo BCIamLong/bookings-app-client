@@ -52,7 +52,7 @@ export default function PostsItem({ post }: { post: IPost }) {
   })
 
   const { name, id } = tourId as unknown as { id: string, name: string } || {}
-  const { fullName, _id: guestId, avatar } = userId as unknown as { _id: string, fullName: string, avatar: string }
+  const { fullName, _id: guestId, avatar } = userId as unknown as { _id: string, fullName: string, avatar: string } || {}
   // const avatarStr = avatar?.includes('default') ? `/${avatar}` : avatar
   const avatarStr = !avatar?.includes('https') ? `/${avatar}` : avatar
 

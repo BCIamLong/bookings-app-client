@@ -22,7 +22,7 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
   const locale = i18n.language.split('-')[0]
   //! count is check the tour is booked by this user? (not checkout)
   // ! isCabinBooked is check the tour has any bookings (not checkout) or not
-  const { count, isLoading } = useUserBookings({ status: { operation: 'ne', value: 'checked-out' }, cabin: true })
+  const { count, isLoading, bookings: bookingsOfUser } = useUserBookings({ status: { operation: 'ne', value: 'checked-out' }, cabin: true })
   const { count: isNotAllowUserBook, isLoading: isLoadingUserBookings } = useUserBookings({ status: { operation: 'ne', value: 'checked-out' } })
   const { isBooking, bookTour } = useBookTour()
   const { user, isLoading: isLoadingUser } = useUserSession()
@@ -39,6 +39,7 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
   bookings?.forEach((b: IBooking) => {
     if (b.startDate === startDatesTmp[startDate]?.date) isTourOfThisDateBooked = true
   })
+  // const isUserBookedThisTour = startDatesTmp?.[startDate]?.date === bookingsOfUser?.[0]?.startDate
   // console.log('------', isTourOfThisDateBooked)
 
   // const price = regularPrice * days * guests
@@ -63,11 +64,12 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
   // if (isLoading || isLoadingUser || isLoadingBookings) return <Spinner size="normal" />
   // console.log(count, isCabinBooked, isCabinBooked, isNotAllowUserBook, isSlotFulled)
   // console.log(!isSlotFulled)
-  console.log(isCabinBooked)
+  // console.log(isCabinBooked)
   const isTourBooked = type !== 'group' ? !isCabinBooked : !isCabinBooked || !isSlotFulled
 
   const isAllowGuestToBook = (isTourBooked && !isSlotFulled) && !count
-  // console.log('------', isNotAllowUserBook, !count, user)
+
+  // console.log('------', isAllowGuestToBook, !isTourOfThisDateBooked, isUserBookedThisTour)
   return (
     <div className={`relative min-h-24 bg-stone-0 text-stone-700 shadow-md thin:max-sm:px-6 thin:max-sm:w-[17.4rem] shadow-stone-300 px-4 py-6 ${(count && isCabinBooked) || isCabinBooked || isNotAllowUserBook ? ' bg-stone-200' : ''}`}>
       <div className="absolute top-[-2rem] left-0 text-xs uppercase text-brand-700 border-dashed border-brand-500 border-2 px-2 hover:bg-brand-200 transition-all duration-300">
@@ -162,7 +164,7 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
                       //! count is check the tour is booked by this user? (not checkout)
                       // ! isCabinBooked is check the tour has any bookings (not checkout) or not
                       // (((isCabinBooked && !isSlotFulled) && !count))
-                      (isAllowGuestToBook || !isTourOfThisDateBooked) ?
+                      (isAllowGuestToBook || (!isTourOfThisDateBooked && !count)) ?
                         // || ((isCabinBooked && !isSlotFulled) && Boolean(count))) //* this is not necessary
 
                         <Button type="brand" size="small" onClick={handleClick}>
