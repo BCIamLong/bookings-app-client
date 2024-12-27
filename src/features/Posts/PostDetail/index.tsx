@@ -72,7 +72,7 @@ export default function PostDetail() {
   const finalComments = curUserComment ? [curUserComment, ...(comments1 || [])] : comments
 
   const isLiked = likes?.find((l: Like) => {
-    const { _id } = l.userId as unknown as { _id: string, name: string }
+    const { _id } = l.userId as unknown as { _id: string, name: string } || {}
     // console.log(_id, user._id)
     return _id === currentUserId
   })
@@ -246,7 +246,7 @@ export default function PostDetail() {
       <div className="mt-6 w-full">
         {/* <Button type="icon-2">-</Button> */}
         <div className={`flex w-full overflow-x-scroll ${!images.length || images.length === 1 ? 'no-scrollbar' : ''}`}>
-          {images.map((image: string) => <img className="w-full" src={image} alt="" />)}
+          {images.map((image: string, ind: number) => <img key={ind} className="w-full" src={image} alt="" />)}
           {/* <img className="w-full" src={images[0]} alt="" /> */}
         </div>
         {/* <img className="w-full" src={images[0]} alt="" /> */}

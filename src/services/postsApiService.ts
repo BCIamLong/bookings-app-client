@@ -4,7 +4,7 @@ import { SortOptions } from '@/interfaces/types'
 import axios from 'axios'
 
 axios.defaults.withCredentials = true
-const { SERVER_BASE_URL, PAGE_LIMIT } = appConfig
+const { SERVER_BASE_URL, PAGE_LIMIT, SERVER_RECOMMEND_URL } = appConfig
 
 const getPosts = async function ({
   random = false,
@@ -144,4 +144,20 @@ const deletePost = async function ({ id }: { id: string }) {
   }
 }
 
-export { getPost, createPost, getPosts, updatePost, deletePost }
+const getSearchPosts = async function (searchStr: string) {
+  try {
+    if (searchStr.length < 4) return
+    const res = await axios.get(
+      `${SERVER_RECOMMEND_URL}/recommend-search-posts?search_str=${searchStr}`,
+      {},
+    )
+
+    console.log(res)
+    return res?.data?.recommendations
+  } catch (err) {
+    // console.log(err)
+    throw err
+  }
+}
+
+export { getPost, createPost, getPosts, updatePost, deletePost, getSearchPosts }
