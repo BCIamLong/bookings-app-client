@@ -187,7 +187,7 @@ const editProfile = async function (data: EditProfileInput) {
   requestBody.append('name', name)
   requestBody.append('fullName', name)
 
-  if (avatar[0]) requestBody.append('avatar', avatar[0])
+  if (avatar?.[0]) requestBody.append('avatar', avatar?.[0])
 
   try {
     const res = await axios.patch(

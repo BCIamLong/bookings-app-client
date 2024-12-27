@@ -19,8 +19,8 @@ import { useTranslation } from "react-i18next";
 export default function UpdateProfileForm() {
   const { t } = useTranslation()
   const { editProfile, isEditing } = useEditProfile()
-  const { user: { fullName }, isLoading } = useUserSession()
-
+  const { user, isLoading } = useUserSession()
+  const { fullName } = user || {}
   const { register, handleSubmit, formState, resetField, } = useForm<EditProfileInput>({
     defaultValues: { name: fullName }
   })

@@ -23,7 +23,7 @@ export default function SearchTours() {
 
 
         {isLoading && <ul className='absolute top-12 bg-stone-100 w-[99%] text-stone-600 rounded-lg py-2 px-3 flex flex-col gap-1'><Spinner size='small' /></ul>}
-        {tours?.length &&
+        {tours?.length ?
           <ul className='absolute top-12 bg-stone-100 w-[99%] text-stone-600 rounded-lg py-2 px-3 flex flex-col gap-1'>
             {tours?.map((tour: ITour) =>
               <Link to={`/tours/${tour._id}`}>
@@ -33,7 +33,7 @@ export default function SearchTours() {
                 </li>
               </Link>)
             }
-          </ul>
+          </ul> : null
         }
       </div>
     </div>
