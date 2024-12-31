@@ -77,7 +77,7 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
       </div>
       {isLoading || isLoadingUser || isLoadingBookings || isLoadingUserBookings ? <Spinner size="normal" /> :
         <>
-          {Boolean(count) && Boolean(isCabinBooked) && <p className="py-1 px-2 text-xs uppercase font-semibold text-stone-50 bg-green-500 rounded-lg flex justify-center items-center mb-3">Payment Completed</p>}
+          {Boolean(count) && Boolean(isCabinBooked) && Boolean(user) && <p className="py-1 px-2 text-xs uppercase font-semibold text-stone-50 bg-green-500 rounded-lg flex justify-center items-center mb-3">Payment Completed</p>}
           <p className="pb-4 border-b-[1.5px] font-bold border-stone-300">
             <span className="line-through text-stone-400">$ {totalPrice} </span>
             <span> &rarr; $ {totalPrice} </span>
@@ -145,7 +145,7 @@ export default function TourCardV2({ tour }: { tour: ITour }) {
                     {type !== 'group' ? "This tour is already booked" : "This tour is full slot"}
                   </Button></div>}
 
-                  {Boolean(isCabinBooked) && Boolean(count)
+                  {Boolean(isCabinBooked) && Boolean(count) && Boolean(user)
                     // && !(type === 'group' && participantsVal > 0) 
                     && <div className="w-[62%]">
                       <ButtonLink href='/profile/bookings' type="primary" size="small">

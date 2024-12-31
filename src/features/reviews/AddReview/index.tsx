@@ -61,6 +61,7 @@ export default function AddReview() {
 
   if (!count) return null
   // <p>You need to purchase this cabin to review</p>
+  if (!user) return null
 
   if (reviews?.length) return <div id='your-review'> <Modal>
     <Modal.Open openName='your-review'>
