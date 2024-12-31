@@ -38,7 +38,7 @@ export default function EditPost() {
 
 
     // console.log(image)
-    updatePost(form as unknown as { data: Partial<IPost> }, {
+    updatePost({ data: form as Partial<IPost> }, {
       onSuccess: () => toast.success('Update post successfully')
     })
   }

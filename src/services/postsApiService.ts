@@ -98,8 +98,8 @@ const updatePost = async function ({
   basedComments?: boolean
 }) {
   try {
-    if (!basedComments && data.commentId) return
-    // console.log(data)
+    if (!basedComments && data?.commentId) return
+    console.log('------------------', data)
     let query = axios.patch(`${SERVER_BASE_URL}/api/v1/posts/${id}`, data, {
       headers: {
         'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ const updatePost = async function ({
 
     if (basedComments)
       query = axios.patch(
-        `${SERVER_BASE_URL}/api/v1/posts/${id}/comments/${data.commentId}`,
+        `${SERVER_BASE_URL}/api/v1/posts/${id}/comments/${data?.commentId}`,
         { likes: data.likes },
         {
           headers: {
