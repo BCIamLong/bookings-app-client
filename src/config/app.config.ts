@@ -16,10 +16,11 @@ export default {
       : 'https://tours-booking-api.onrender.com',
   // 'http://localhost:3009',
   SERVER_RECOMMEND_URL: 'https://tours-recommendation-system.onrender.com',
-  // SERVER_RECOMMEND_URL: 'http://127.0.0.1:3100',
+  // SERVER_RECOMMEND_URL: 'http://127.0.0.1:5000',
   CLIENT_BASE_UTL:
     import.meta.env.MODE === 'production'
-      ? 'https://bookings-app-client.vercel.app'
+      ? // ? 'https://bookings-app-client.vercel.app'
+        'https://bookings-app-client-4aah.vercel.app'
       : 'http://localhost:5173',
   PAGE_LIMIT: 6,
   MAP_API_KEY: 'IigiqXGj105kiRYHhgiW',

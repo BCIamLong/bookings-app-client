@@ -19,7 +19,7 @@ const { CLIENT_BASE_UTL } = appConfig
 // * we will prepare tours data like for trending tours and best tours....
 // export default function ToursList({tours}:{tours: Tour[]}) {
 export default function ToursList({ type, title, statusType = 'trending' }: { type?: 'full' | 'normal' | 'recommend' | 'recommend-similar-tours', title: string, statusType?: string }) {
-  const [searchParams] = useSearchParams(window.location.search)
+  const [searchParams] = useSearchParams()
   const sort = searchParams.get('sort') || "none"
   const page = +searchParams.get('page')! || 1
   const typeFilter = searchParams.get('type') || 'none'
