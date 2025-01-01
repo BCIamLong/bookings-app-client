@@ -191,7 +191,7 @@ export default function PostsItem({ post }: { post: IPost }) {
       <ul className={`flex justify-around py-4 px-3 text-xl text-stone-500 ${isUpdating ? 'pointer-events-none blur-[0.5px]' : ''}`}>
         <li className="flex gap-2 items-center">
           <Button type='icon-2' onClick={handleClickLike}>
-            {isLiked ? <HiHeart className="text-2xl text-brand-600" /> :
+            {isLiked && user ? <HiHeart className="text-2xl text-brand-600" /> :
               <HiOutlineHeart className="text-2xl" />}
             <span className="text-sm font-semibold">{numLikes}</span>
           </Button>

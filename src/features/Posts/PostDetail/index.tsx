@@ -260,7 +260,7 @@ export default function PostDetail() {
       <ul className="flex justify-around py-4 text-xl text-stone-500">
         <li className="flex gap-2 items-center">
           <Button type='icon-2' onClick={handleClickLike}>
-            {isLiked ? <HiHeart className="text-2xl text-brand-600" /> :
+            {isLiked && user ? <HiHeart className="text-2xl text-brand-600" /> :
               <HiOutlineHeart className="text-2xl" />}
             <span className="text-sm font-semibold">{numLikes}</span>
           </Button>
