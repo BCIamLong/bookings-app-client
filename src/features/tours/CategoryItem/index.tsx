@@ -7,7 +7,7 @@ export default function CategoryItem({ title, numTours, image }: { title: string
   let link = `${CLIENT_BASE_UTL}/tours?type=${title}`
   if (DIFFICULTY.flat().includes(title)) link = `${CLIENT_BASE_UTL}/tours?difficulty=${title}`
   return (
-    <Link to={link}>
+    <a href={link}>
       <li className="bg-stone-50 rounded-md hover:shadow-md transition-all duration-300 shadow-sm">
         <div className="flex flex-col gap-3 cursor-pointer mb-3">
           <img className="w-52 h-40 object-cover rounded-md rounded-b-none" src={image} alt="" />
@@ -17,6 +17,6 @@ export default function CategoryItem({ title, numTours, image }: { title: string
           </div>
         </div>
       </li>
-    </Link>
+    </a>
   )
 }
