@@ -15,7 +15,7 @@ export default function Header() {
           see the demo video{' '}
         </span>
         <a
-          href="https://www.youtube.com/watch?v=mNfc_v4Mo3E"
+          href="https://www.youtube.com/watch?v=Qt_LbF71pi0"
           target="_blank"
           className="uppercase text-brand-600 transition-all duration-300 hover:underline"
         >
